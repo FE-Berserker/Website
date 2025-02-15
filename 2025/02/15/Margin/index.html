@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Hexo</title>
+  <title>Margin | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Hexo">
+  <meta name="description" content="Margin | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Point介绍Point类是用来生成3D的点。 案例AddPoint (Flag&#x3D;1)AddPoint添加点坐标，案例中数据来自于matlab PCtool$^{[1]}$ data&#x3D;load(&#39;lion.xyz&#39;); a&#x3D;Point(&#39;Point Ass1&#39;); a&#x3D;AddPoint(a,data(:,1),data(:,2),data(:,3)); a">
 <meta property="og:type" content="article">
@@ -62,7 +62,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -245,12 +245,40 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-Margin" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Baffalo"><span class="toc-text">Baffalo</span></a></li></ol>
+        <h1 class="article-title">Margin</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Baffalo框架">Baffalo框架</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-02-15 21:09:44'>2025-02-15 21:07</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Margin"><span class="toc-text">Margin</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -263,54 +291,97 @@
     }
 </style>
 </div>
-            <h1 id="Baffalo"><a href="#Baffalo" class="headerlink" title="Baffalo"></a>Baffalo</h1><img src="./img/Baffalo.png" style="zoom: 25%;" />
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Margin"><a href="#Margin" class="headerlink" title="Margin"></a>Margin</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Margin用来探索整个系统的设计边界，它的输入为Component$^{[1]}$,输出为各个部件的安全系数。</p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>取两个部件Component1和Component2,作为Margin的输入</p>
+<pre><code class="language-matlab">inputStruct.a=1;
+inputStruct.b=2;
+paramsStruct=struct();
+baselineStruct.S1=2;
+T1=Component1(paramsStruct, inputStruct,baselineStruct);
+T1 = T1.solve();
 
-<p>Baffalo是开源的Matlab工具箱来建立系统分析的工具，他可将文件导出到ANSYS或者Simpack</p>
-<p>Baffalo本身不是求解器，他可以提供网格、画图和工程计算的功能.</p>
-<ol>
-<li>首先打开<strong>setBaffaloPath</strong>函数设置对应路径</li>
-</ol>
-<p>如果你拥有ANSYS,将ANSYS路径设置如下,ANSYS是优秀的有限元分析软件。</p>
-<pre><code class="language-matlab">% Set ANSYS Path
-ANSYS_Path=&#39;C:\Program Files\ANSYS Inc\v201\ansys\bin\winx64\ANSYS201.exe&#39;;
-</code></pre>
-<p>如果你拥有Simpack, 将Simpack路径设置如下，Simapck可提供系统的多体动力学分析。</p>
-<pre><code class="language-matlab">% SetSimpackPath
-Simpack_Path=&#39;D:\SimPack\run\bin\win64&#39;;
-</code></pre>
-<p>Paraview（<a href="https://www.paraview.org）是一款开源的可视化软件，Baffalo可将网格导出为VTK格式文件，Paraview路径设置如下：">https://www.paraview.org）是一款开源的可视化软件，Baffalo可将网格导出为VTK格式文件，Paraview路径设置如下：</a></p>
-<pre><code class="language-matlab">% SetParaViewPath
-ParaViewDir=&quot;D:\005_Lib\ParaView\bin&quot;;
-</code></pre>
-<ol start="2">
-<li>运行<strong>setBaffaloPath</strong></li>
-</ol>
-<p>Baffalo说明文档存放于Document中，案例文件存放于Tesing文件夹中。</p>
-<p>Baffalo is open source Matlab tool to do the system simulation, it can output file to ANSYS or Simpack.</p>
-<p>Baffalo itself is not a solver, can provide the mesh 、figure 、engineer calculation functions</p>
-<ol>
-<li>First open the <strong>setBaffaloPath</strong> function to set the corresponding path</li>
-</ol>
-<p>If you own ANSYS, set the ANSYS path as follows. ANSYS is an excellent finite element analysis software.</p>
-<pre><code class="language-matlab">% Set ANSYS Path
-ANSYS_Path=&#39;C:\Program Files\ANSYS Inc\v201\ansys\bin\winx64\ANSYS201.exe&#39;;
-</code></pre>
-<p>If you have Simpack, set the Simpack path as follows. Simapck can provide multi-body dynamics analysis of the system.</p>
-<pre><code class="language-matlab">% SetSimpackPath
-Simpack_Path=&#39;D:\SimPack\run\bin\win64&#39;;
-</code></pre>
-<p>Paraview (<a target="_blank" rel="noopener" href="https://www.paraview.org/">https://www.paraview.org</a>) is an open source visualization software. Baffalo can export grids to VTK format files. The Paraview path is set as follows:</p>
-<pre><code class="language-matlab">% SetParaViewPath
-ParaViewDir=&quot;D:\005_Lib\ParaView\bin&quot;;
-</code></pre>
-<ol start="2">
-<li>Run <strong>setBaffaloPath</strong></li>
-</ol>
-<p>Baffalo documentation is stored in Document, and case files are stored in the Tesing folder.</p>
+inputStruct.a=2;
+inputStruct.b=1;
+paramsStruct=struct();
+baselineStruct.S1=2;
+T2=Component2(paramsStruct, inputStruct,baselineStruct);
+T2 = T2.solve();
 
-        </article>
-        
-        
+inputStruct1.Component=&#123;T1,T2&#125;;
+paramsStruct1=struct();
+T=method.Margin(paramsStruct1, inputStruct1);
+T = T.solve();
+
+disp(T.capacity)
+PlotStruct(T);
+% Help(T)
+PlotCapacity(T);
+</code></pre>
+<p>利用PlotStruct()函数查看系统的结构，可以看到各个部件的安全系数已经导入到结构中：</p>
+<p><img src="/./img/Margin.assets/Fig1.jpg"></p>
+<p>利用PlotCapacity()函数来检查部件的安全余量，可以看到整个部件2的设计余量较低，需要提高。</p>
+<p><img src="/./img/Margin.assets/Fig2.jpg"></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] Component</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -319,11 +390,11 @@ ParaViewDir=&quot;D:\005_Lib\ParaView\bin&quot;;
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>

@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Line2D | Baffalo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Line2D | Baffalo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Line2D介绍Line2D类是用来生成2D的曲线，主要参考了FEM19$^{[1][2][3][4]}$开源项目。 关键曲线的参数： CT： 曲线类型（1：直线 2：圆弧 3：曲线 4：椭圆弧 5：贝塞尔6：B样条7：样条8：抛物线9：双曲线10：Nurb曲线） CIX： 曲线编号 C ： 曲线数据 案例Add different curves (Flag&#x3D;1)%% AddLine x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Line2D">
+<meta property="og:url" content="http://example.com/2025/02/16/Line2D/index.html">
+<meta property="og:site_name" content="Baffalo">
+<meta property="og:description" content="Line2D介绍Line2D类是用来生成2D的曲线，主要参考了FEM19$^{[1][2][3][4]}$开源项目。 关键曲线的参数： CT： 曲线类型（1：直线 2：圆弧 3：曲线 4：椭圆弧 5：贝塞尔6：B样条7：样条8：抛物线9：双曲线10：Nurb曲线） CIX： 曲线编号 C ： 曲线数据 案例Add different curves (Flag&#x3D;1)%% AddLine x">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig2.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig3.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig4.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig5.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig6.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig7.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig8.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig9.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig10.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig11.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig12.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig13.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig14.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig16.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig15.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig17.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig18.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig19.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig20.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig21.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig22.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig23.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig24.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig25.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig26.jpg">
+<meta property="og:image" content="http://example.com/img/Line2D.assets/Fig27.jpg">
+<meta property="article:published_time" content="2025-02-16T09:39:49.236Z">
+<meta property="article:modified_time" content="2025-02-16T09:46:39.408Z">
+<meta property="article:author" content="FE-Beserker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/Line2D.assets/Fig1.jpg">
+
+
+<link rel="icon" href="/img/Baffalo.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/Baffalo.png"/>
+</a>
+<div class="author">
+    <span>FE-Beserker</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/FE-Berserker"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:392176462@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(5)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo框架">
+            
+            Baffalo框架
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="5">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/16/Line2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Line2D">Line2D</span>
+            <span class="post-date" title="2025-02-16 17:39:49">2025/02/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Point/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Point">Point</span>
+            <span class="post-date" title="2025-02-15 21:15:50">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Point2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Point2D">Point2D</span>
+            <span class="post-date" title="2025-02-15 21:13:34">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Margin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Margin">Margin</span>
+            <span class="post-date" title="2025-02-15 21:07:31">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/13/Component/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Component">Component</span>
+            <span class="post-date" title="2025-02-13 18:00:56">2025/02/13</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Line2D" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Line2D</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Baffalo框架">Baffalo框架</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-02-16 17:46:39'>2025-02-16 17:39</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Line2D"><span class="toc-text">Line2D</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-different-curves-Flag-1"><span class="toc-text">Add different curves (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Calculate-the-boundary-of-points-Flag-2"><span class="toc-text">Calculate the boundary of points (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Draw-arrow-Flag-3"><span class="toc-text">Draw arrow (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Polygon-Flag-4"><span class="toc-text">Polygon (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AddStar-Flag-5"><span class="toc-text">AddStar (Flag&#x3D;5)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DeleteCurve-Flag-6"><span class="toc-text">DeleteCurve (Flag&#x3D;6)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bounding-box-Flag-7"><span class="toc-text">Bounding box (Flag&#x3D;7)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-radius-Flag-8"><span class="toc-text">Create radius (Flag&#x3D;8)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Circle-fit-Flag-9"><span class="toc-text">Circle fit (Flag&#x3D;9)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Curve-Intersection-Flag-10"><span class="toc-text">Curve Intersection (Flag&#x3D;10)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Round-Polygon-Flag-11"><span class="toc-text">Add Round Polygon (Flag&#x3D;11)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plot-Line2D-in-ParaView-Flag-12"><span class="toc-text">Plot Line2D in ParaView (Flag&#x3D;12)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Nurb-curve-Flag-13"><span class="toc-text">Add Nurb curve (Flag&#x3D;13)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Convert-to-nurbs-Flag-14"><span class="toc-text">Convert to nurbs (Flag&#x3D;14)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Cell-data-Flag-15"><span class="toc-text">Add Cell data (Flag&#x3D;15)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Max-Inscribed-Circle-Flag-16"><span class="toc-text">Max Inscribed Circle (Flag&#x3D;16)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ArchFit-Flag-17"><span class="toc-text">ArchFit (Flag&#x3D;17)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CheatTable"><span class="toc-text">CheatTable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-6 i,
+    .toc-level-6 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Line2D"><a href="#Line2D" class="headerlink" title="Line2D"></a>Line2D</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Line2D类是用来生成2D的曲线，主要参考了FEM19$^{[1][2][3][4]}$开源项目。</p>
+<p>关键曲线的参数：</p>
+<p>CT： 曲线类型（1：直线 2：圆弧 3：曲线 4：椭圆弧 5：贝塞尔6：B样条7：样条8：抛物线9：双曲线10：Nurb曲线）</p>
+<p>CIX： 曲线编号</p>
+<p>C ： 曲线数据</p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Add-different-curves-Flag-1"><a href="#Add-different-curves-Flag-1" class="headerlink" title="Add different curves (Flag&#x3D;1)"></a>Add different curves (Flag&#x3D;1)</h3><pre><code class="language-matlab">%% AddLine
+x1=[-1;1];
+y1=[-3;-3];
+a=Point2D(&#39;Point Ass1&#39;);
+a=AddPoint(a,x1,y1);
+b=Line2D(&#39;Line Ass1&#39;);
+b=AddLine(b,a,1);
+Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;);
+%% AddCurve
+x2=[0;0.3;-0.3;0];
+y2=[0;-1;-1;0];
+a=AddPoint(a,x2,y2);
+b=AddCurve(b,a,2);
+Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;,&#39;equal&#39;,0);
+%% AddCircle
+x3=-3;y3=2;
+x4=3;y4=2;
+x5=0;y5=0;
+a=AddPoint(a,x3,y3);
+a=AddPoint(a,x4,y4);
+a=AddPoint(a,x5,y5);
+b=AddCircle(b,0.5,a,3);
+b=AddCircle(b,0.5,a,4);
+b=AddCircle(b,5,a,5);
+Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;,&#39;equal&#39;,1);
+%% AddEllipse
+x6=0;y6=-3;
+a=AddPoint(a,x6,y6);
+b=AddEllipse(b,1,0.5,a,6,&#39;rot&#39;,-90,&#39;sang&#39;,-90,&#39;ang&#39;,180);
+Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;,&#39;equal&#39;,1);
+%% AddSpline
+x7=[-4;-3;-2];y7=[2.5;3;2.5];
+a=AddPoint(a,x7,y7);
+b=AddSpline(b,1,a,7);
+Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;,&#39;equal&#39;,1);
+%% AddBezier
+x8=[4;3;2];y8=[2.5;3;2.5];
+a=AddPoint(a,x8,y8);
+b=AddBezier(b,a,8);
+Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;,&#39;equal&#39;,1);
+%% AddBspline
+x9=[-1.5;0;1.5];y9=[3;3.5;3];
+a=AddPoint(a,x9,y9);
+b=AddBspline(b,3,a,9);
+Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;,&#39;equal&#39;,1);
+%% AddHyperbola
+b1=Line2D(&#39;Line Ass2&#39;);
+b1=AddHyperbola(b1, 2, 1,a,5,&#39;t1&#39;,-1,&#39;t2&#39;,3);
+b1=AddHyperbola(b1, 1, 1,a,5,&#39;t1&#39;,-3,&#39;t2&#39;,3);
+b1=AddHyperbola(b1, 2, 1,a,5,&#39;rot&#39;,90,&#39;t1&#39;,-3,&#39;t2&#39;,3);
+Plot(b1,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;--&#39;&#125;,&#39;equal&#39;,1);
+%% AddParabola
+b2=Line2D(&#39;Line Ass3&#39;);
+b2=AddParabola(b2, 2,a,5,&#39;t1&#39;,-1,&#39;t2&#39;,3);
+b2=AddParabola(b2, 1,a,5,&#39;t1&#39;,-3,&#39;t2&#39;,3);
+b2=AddParabola(b2, 2,a,5,&#39;rot&#39;,90,&#39;t1&#39;,-3,&#39;t2&#39;,3);
+Plot(b2,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;:&#39;&#125;,&#39;equal&#39;,1);
+</code></pre>
+<p>C1为直线，C2为多段的曲线，C3~C5为圆形，C6为半圆弧，C7为样条曲线，C8为贝塞尔曲线，C9为B样条</p>
+<img src="/./img/Line2D.assets/Fig1.jpg" style="zoom:33%;" />
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Line2D.assets/Fig2.jpg" style="zoom: 100%;"></td><td><img src="/./img/Line2D.assets/Fig3.jpg" style="zoom: 100%;"></td>
+		</tr>
+        <tr><td><strong>双曲线</strong></td><td><strong>抛物线</strong></td></tr>
+	</tbody>
+</table>
+
+<h3 id="Calculate-the-boundary-of-points-Flag-2"><a href="#Calculate-the-boundary-of-points-Flag-2" class="headerlink" title="Calculate the boundary of points (Flag&#x3D;2)"></a>Calculate the boundary of points (Flag&#x3D;2)</h3><p>Boundary用来计算点集的边界，调整松弛因子可得到不同的边界曲线。</p>
+<pre><code class="language-matlab">x1=-5 + (5+5)*rand(20,1);
+y1=-5 + (5+5)*rand(20,1);
+x2=-5 + (5+5)*rand(20,1);
+y2=-5 + (5+5)*rand(20,1);
+a=Point2D(&#39;Point Ass1&#39;);
+a1=Point2D(&#39;Point Ass2&#39;);
+a=AddPoint(a,x1,y1);
+a1=AddPoint(a1,x2,y2);
+Plot(a);
+b=Line2D(&#39;Line Ass1&#39;,&#39;Compress&#39;,0);
+b1=Line2D(&#39;Line Ass1&#39;,&#39;Compress&#39;,0);
+b=Boundary(b,a);
+b=Boundary(b,a,&#39;scale&#39;,1);
+b1=Boundary(b1,a1);
+b1=Boundary(b1,a1,&#39;scale&#39;,1);
+Plot(b,&#39;map&#39;,&#39;lch&#39;,&#39;color&#39;,1);
+Plot(b1,&#39;map&#39;,&#39;lch&#39;,&#39;color&#39;,1);
+L=Layer(&#39;Layer 1&#39;);
+L=AddElement(L,a,&#39;Transform&#39;,[0,0,0,0,0,0]);
+L=AddElement(L,a1,&#39;Transform&#39;,[0,0,1,0,0,0]);
+L=AddElement(L,b,&#39;Transform&#39;,[0,0,0,0,0,0]);
+L=AddElement(L,b1,&#39;Transform&#39;,[0,0,1,0,0,0]);
+Plot(L,&#39;linesmerge&#39;,1,&#39;equal&#39;,2);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Line2D.assets/Fig4.jpg" style="zoom: 100%;"></td><td><img src="/./img/Line2D.assets/Fig5.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Line2D.assets/Fig6.jpg" style="zoom: 100%;"></td><td><img src="/./img/Line2D.assets/Fig7.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Draw-arrow-Flag-3"><a href="#Draw-arrow-Flag-3" class="headerlink" title="Draw arrow (Flag&#x3D;3)"></a>Draw arrow (Flag&#x3D;3)</h3><p>绘制线段时，可将Arrow打开，并设置箭头的形式Form.</p>
+<pre><code class="language-matlab">a=Point2D(&#39;Point Ass1&#39;);
+for i=1:4
+x=[i-1;i-0.5];
+for j=1:3
+y=[j-1;j-0.5];
+a=AddPoint(a,x,y);
+end
+end
+b=Line2D(&#39;Line Ass1&#39;,&#39;Arrow&#39;,1,&#39;Form&#39;,(1:12)&#39;);
+for i=1:12
+b=AddLine(b,a,i);
+end
+Plot(b,&#39;equal&#39;,1)
+</code></pre>
+<img src="/./img/Line2D.assets/Fig8.jpg" style="zoom: 33%;" />
+
+<h3 id="Polygon-Flag-4"><a href="#Polygon-Flag-4" class="headerlink" title="Polygon (Flag&#x3D;4)"></a>Polygon (Flag&#x3D;4)</h3><pre><code class="language-matlab">b=Line2D(&#39;Line Ass1&#39;,&#39;Arrow&#39;,1,&#39;Adfac&#39;,0.01);
+b=AddPolygon(b,1,10,&#39;sang&#39;,90,&#39;close&#39;,0);
+b=Shift(b,1,2);
+Plot(b,&#39;equal&#39;,1,&#39;crv&#39;,1);
+Plot(b,&#39;equal&#39;,1,&#39;crv&#39;,2);
+</code></pre>
+<p>AddPolygon绘制多边形，打开close可得到封闭的多边形。</p>
+<img src="/./img/Line2D.assets/Fig9.jpg" style="zoom:33%;" />
+
+<p>运用shift函数可以转换连接点位置，比如Shift(obj,1,2)代表将曲线1端点移动两个位置，得到效果如下。</p>
+<img src="/./img/Line2D.assets/Fig10.jpg" style="zoom:33%;" />
+
+<h3 id="AddStar-Flag-5"><a href="#AddStar-Flag-5" class="headerlink" title="AddStar (Flag&#x3D;5)"></a>AddStar (Flag&#x3D;5)</h3><pre><code class="language-matlab">b=Line2D(&#39;Line Ass1&#39;);
+b=AddStar(b,51,1,&#39;sang&#39;,90,&#39;close&#39;,1,&#39;anglelimit&#39;,0);
+Plot(b,&#39;equal&#39;,1,&#39;base_size&#39;,0.1);
+</code></pre>
+<p>AddStar可以列出n角星绘制的所有可能，下图是一个51角星所有绘制方法合成的一张图。</p>
+<img src="/./img/Line2D.assets/Fig11.jpg" style="zoom:33%;" />
+
+<h3 id="DeleteCurve-Flag-6"><a href="#DeleteCurve-Flag-6" class="headerlink" title="DeleteCurve (Flag&#x3D;6)"></a>DeleteCurve (Flag&#x3D;6)</h3><pre><code class="language-matlab">b=Line2D(&#39;Line Ass1&#39;);
+b=AddStar(b,11,1,&#39;sang&#39;,90,&#39;close&#39;,1);
+Plot(b,&#39;equal&#39;,1,&#39;base_size&#39;,0.1);
+b=DeleteCurve(b,1);
+Plot(b,&#39;equal&#39;,1,&#39;base_size&#39;,0.1);
+</code></pre>
+<p>绘制11角星的所有可能，接下来把第一种方法删除，采用DeleteCurve来删除指定的曲线。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Line2D.assets/Fig12.jpg" style="zoom: 100%;"></td><td><img src="/./img/Line2D.assets/Fig13.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Bounding-box-Flag-7"><a href="#Bounding-box-Flag-7" class="headerlink" title="Bounding box (Flag&#x3D;7)"></a>Bounding box (Flag&#x3D;7)</h3><pre><code class="language-matlab">points=rand(100,2);
+a=Point2D(&#39;Point Ass1&#39;);
+a=AddPoint(a,points(:,1),points(:,2));
+b=Line2D(&#39;Line Ass1&#39;);
+b=BoundingBox(b,a);
+L=Layer(&#39;Layer 1&#39;);
+L=AddElement(L,a,&#39;Transform&#39;,[0,0,0,0,0,0]);
+L=AddElement(L,b,&#39;Transform&#39;,[0,0,0,0,0,0]);
+Plot(L,&#39;linesmerge&#39;,1);
+</code></pre>
+<p>BoundingBox采用矩形的方式将所有的点包围。</p>
+<img src="/./img/Line2D.assets/Fig14.jpg" style="zoom:33%;" />
+
+<h3 id="Create-radius-Flag-8"><a href="#Create-radius-Flag-8" class="headerlink" title="Create radius (Flag&#x3D;8)"></a>Create radius (Flag&#x3D;8)</h3><pre><code class="language-matlab">%% AddLine
+x1=[0;5];y1=[0;5];
+x2=[5;10];y2=[5;0];
+a=Point2D(&#39;Point Ass1&#39;);
+a=AddPoint(a,x1,y1);
+a=AddPoint(a,x2,y2);
+b=Line2D(&#39;Line Ass1&#39;);
+b=AddLine(b,a,1);
+b=AddLine(b,a,2);
+Plot(b,&#39;clabel&#39;,1);
+b = CreateRadius(b,1,4);
+Plot(b)
+</code></pre>
+<p>绘制两根相交的线段，采用CreateRadius在相交处生成倒角。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Line2D.assets/Fig16.jpg" style="zoom: 100%;"></td><td><img src="/./img/Line2D.assets/Fig15.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Circle-fit-Flag-9"><a href="#Circle-fit-Flag-9" class="headerlink" title="Circle fit (Flag&#x3D;9)"></a>Circle fit (Flag&#x3D;9)</h3><pre><code class="language-matlab">% Create data for a circle + noise
+th = linspace(0,2*pi,20)&#39;;
+R=1.1111111;
+sigma = R/10;
+x = R*cos(th)+randn(size(th))*sigma;
+y = R*sin(th)+randn(size(th))*sigma;
+a=Point2D(&#39;Point Ass1&#39;);
+a=AddPoint(a,x,y);
+Plot(a);
+b=Line2D(&#39;Line Ass1&#39;);
+[b,~,~,~]=CircleFit(b,a,1);
+[b,~,~,~]=CircleFit(b,a,1,&#39;method&#39;,&#39;Taubin&#39;);
+Plot(b);
+</code></pre>
+<p>Circle fit将散点拟合成圆形，设有两种方式 Taubin method$^{[6]}$和Pratt method$^{[5]}$,两种方法测试下来差别不大。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Line2D.assets/Fig17.jpg" style="zoom: 100%;"></td><td><img src="/./img/Line2D.assets/Fig18.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Curve-Intersection-Flag-10"><a href="#Curve-Intersection-Flag-10" class="headerlink" title="Curve Intersection (Flag&#x3D;10)"></a>Curve Intersection (Flag&#x3D;10)</h3><pre><code class="language-matlab">x=linspace(0,2*pi,100);
+y1=sin(x);
+y2=cos(x);
+plot(x,y1);hold on
+plot(x,y2);hold on
+a=Point2D(&#39;Point Ass1&#39;);
+a=AddPoint(a,x&#39;,y1&#39;);
+a=AddPoint(a,x&#39;,y2&#39;);
+b=Line2D(&#39;Line Ass1&#39;);
+b=AddCurve(b,a,1);
+b=AddCurve(b,a,2);
+[x0,y0]=CurveIntersection(b,1,2);
+plot(x0,y0,&#39;k*&#39;)
+</code></pre>
+<p>CurveIntersection计算曲线的交点$^{[7]}$</p>
+<img src="/./img/Line2D.assets/Fig19.jpg" style="zoom:50%;" />
+
+<h3 id="Add-Round-Polygon-Flag-11"><a href="#Add-Round-Polygon-Flag-11" class="headerlink" title="Add Round Polygon (Flag&#x3D;11)"></a>Add Round Polygon (Flag&#x3D;11)</h3><pre><code class="language-matlab">b=Line2D(&#39;Round Polygon&#39;);
+b=AddRoundPolygon(b,5*sqrt(2),4,2,&#39;sang&#39;,45);
+Plot(b)
+</code></pre>
+<p>绘制圆角多边形。</p>
+<img src="/./img/Line2D.assets/Fig20.jpg" style="zoom:33%;" />
+
+<h3 id="Plot-Line2D-in-ParaView-Flag-12"><a href="#Plot-Line2D-in-ParaView-Flag-12" class="headerlink" title="Plot Line2D in ParaView (Flag&#x3D;12)"></a>Plot Line2D in ParaView (Flag&#x3D;12)</h3><pre><code class="language-matlab">b=Line2D(&#39;Round Polygon&#39;);
+b=AddRoundPolygon(b,5*sqrt(2),6,2);
+Plot2(b)
+</code></pre>
+<p>Plot2可将曲线导出为VTK格式，并在Paraview中绘制。</p>
+<img src="/./img/Line2D.assets/Fig21.jpg" style="zoom:33%;" />
+
+<h3 id="Add-Nurb-curve-Flag-13"><a href="#Add-Nurb-curve-Flag-13" class="headerlink" title="Add Nurb curve (Flag&#x3D;13)"></a>Add Nurb curve (Flag&#x3D;13)</h3><pre><code class="language-matlab">Points = [0.5 1.5 4.5 3.0 7.5 6.0 8.5;
+3.0 5.5 5.5 1.5 1.5 4.0 4.5]&#39;;
+Knots=[0 0 0 1/10 2/5 3/5 4/5 1 1 1];
+b=Line2D(&#39;Nurb Test&#39;);
+b=AddNurb(b,Points,Knots);
+Plot(b);
+PlotNurbs(b,&#39;coefs&#39;,1);
+</code></pre>
+<p>AddNurb绘制Nurb曲线，参考于Nurbs tool$^{[8]}$.</p>
+<img src="/./img/Line2D.assets/Fig22.jpg" style="zoom:33%;" />
+
+<h3 id="Convert-to-nurbs-Flag-14"><a href="#Convert-to-nurbs-Flag-14" class="headerlink" title="Convert to nurbs (Flag&#x3D;14)"></a>Convert to nurbs (Flag&#x3D;14)</h3><pre><code class="language-matlab">%% AddLine
+x1=[-1;1];
+y1=[-3;-3];
+a=Point2D(&#39;Point Ass1&#39;);
+a=AddPoint(a,x1,y1);
+b=Line2D(&#39;Line Ass1&#39;);
+b=AddLine(b,a,1);
+%% AddCurve
+x2=[0;0.15;0.3;-0.3;0];
+y2=[0;-0.5;-1;-1;0];
+a=AddPoint(a,x2,y2);
+b=AddCurve(b,a,2);
+%% AddCircle
+x3=-3;y3=2;
+x4=3;y4=2;
+x5=0;y5=0;
+a=AddPoint(a,x3,y3);
+a=AddPoint(a,x4,y4);
+a=AddPoint(a,x5,y5);
+b=AddCircle(b,0.5,a,3);
+b=AddCircle(b,0.5,a,4);
+b=AddCircle(b,5,a,5);
+%% AddEllipse
+x6=0;y6=-3;
+a=AddPoint(a,x6,y6);
+b=AddEllipse(b,1,0.5,a,6,&#39;rot&#39;,-90,&#39;sang&#39;,-90,&#39;ang&#39;,180);
+%% AddSpline
+x7=[-4;-3;-2];y7=[2.5;3;2.5];
+a=AddPoint(a,x7,y7);
+b=AddSpline(b,1,a,7);
+%% AddBezier
+x8=[4;3;2];y8=[2.5;3;2.5];
+a=AddPoint(a,x8,y8);
+b=AddBezier(b,a,8);
+%% AddBspline
+x9=[-1.5;0;1.5];y9=[3;3.5;3];
+a=AddPoint(a,x9,y9);
+b=AddBspline(b,3,a,9);
+Plot(b,&#39;equal&#39;,1);
+for i=1:9
+b=Convert2Nurb(b,i);
+end
+PlotNurbs(b,&#39;equal&#39;,1,&#39;coefs&#39;,0);
+</code></pre>
+<p>Convert2Nurb可将多段线转环为Nurb曲线。</p>
+<img src="/./img/Line2D.assets/Fig23.jpg" style="zoom:33%;" />
+
+<h3 id="Add-Cell-data-Flag-15"><a href="#Add-Cell-data-Flag-15" class="headerlink" title="Add Cell data (Flag&#x3D;15)"></a>Add Cell data (Flag&#x3D;15)</h3><pre><code class="language-matlab">%% AddLine
+x1=[-1;1];
+y1=[-3;-3];
+a=Point2D(&#39;Point Ass1&#39;);
+a=AddPoint(a,x1,y1);
+b=Line2D(&#39;Line Ass1&#39;);
+b=AddLine(b,a,1);
+%% AddCurve
+x2=[0;0.15;0.3;-0.3;0];
+y2=[0;-0.5;-1;-1;0];
+a=AddPoint(a,x2,y2);
+b=AddCurve(b,a,2);
+%% AddCircle
+x3=-3;y3=2;
+x4=3;y4=2;
+x5=0;y5=0;
+a=AddPoint(a,x3,y3);
+a=AddPoint(a,x4,y4);
+a=AddPoint(a,x5,y5);
+b=AddCircle(b,0.5,a,3);
+b=AddCircle(b,0.5,a,4);
+b=AddCircle(b,5,a,5);
+%% AddEllipse
+x6=0;y6=-3;
+a=AddPoint(a,x6,y6);
+b=AddEllipse(b,1,0.5,a,6,&#39;rot&#39;,-90,&#39;sang&#39;,-90,&#39;ang&#39;,180);
+%% AddSpline
+x7=[-4;-3;-2];y7=[2.5;3;2.5];
+a=AddPoint(a,x7,y7);
+b=AddSpline(b,1,a,7);
+%% AddBezier
+x8=[4;3;2];y8=[2.5;3;2.5];
+a=AddPoint(a,x8,y8);
+b=AddBezier(b,a,8);
+%% AddBspline
+x9=[-1.5;0;1.5];y9=[3;3.5;3];
+a=AddPoint(a,x9,y9);
+b=AddBspline(b,3,a,9);
+b=AddCellData(b,(1:9)&#39;);
+Plot(b,&#39;equal&#39;,1);
+Plot2(b)
+</code></pre>
+<p>为曲线添加celldata，不同的曲线会有不同的色彩，celldata可以为计算分析中得到的值。</p>
+<img src="/./img/Line2D.assets/Fig24.jpg" style="zoom:25%;" />
+
+<h3 id="Max-Inscribed-Circle-Flag-16"><a href="#Max-Inscribed-Circle-Flag-16" class="headerlink" title="Max Inscribed Circle (Flag&#x3D;16)"></a>Max Inscribed Circle (Flag&#x3D;16)</h3><pre><code>b=Line2D(&#39;Round Polygon&#39;);
+b=AddRoundPolygon(b,5*sqrt(2),4,2);
+b=MaxInscribedCircle(b,1);
+Plot(b)
+</code></pre>
+<p>计算最大内切圆$^{[9]}$</p>
+<img src="/./img/Line2D.assets/Fig25.jpg" style="zoom:33%;" />
+
+<h3 id="ArchFit-Flag-17"><a href="#ArchFit-Flag-17" class="headerlink" title="ArchFit (Flag&#x3D;17)"></a>ArchFit (Flag&#x3D;17)</h3><pre><code class="language-matlab">load N_5 N_5
+a=Point2D(&#39;Point Ass&#39;);
+a=AddPoint(a,N_5(:,1),N_5(:,2));
+b=Line2D(&#39;Line Ass&#39;);
+b=AddCurve(b,a,1);
+Plot(b);
+bFit=ArchFit(b,1,0.1,4,1.7);
+Plot(bFit)
+</code></pre>
+<p>将曲线用圆弧来拟合$^{[10]}$，在切割加工的场景下会有很多应用。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Line2D.assets/Fig26.jpg" style="zoom: 100%;"></td><td><img src="/./img/Line2D.assets/Fig27.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2 id="CheatTable"><a href="#CheatTable" class="headerlink" title="CheatTable"></a>CheatTable</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Varargin</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AddBezier(obj,Point2D,P)</td>
+<td></td>
+<td>AddbBezier curve</td>
+</tr>
+<tr>
+<td>AddBspline( obj, c, Point2D, P )</td>
+<td></td>
+<td>Add bspline curve</td>
+</tr>
+<tr>
+<td>AddCellData(obj,Data)</td>
+<td></td>
+<td>Add cell data to curve</td>
+</tr>
+<tr>
+<td>AddCircle(obj,r,Point2D,P)</td>
+<td>‘sang’,’ang’,’seg’</td>
+<td>Add circle</td>
+</tr>
+<tr>
+<td>AddCurve(obj,Point2D,P)</td>
+<td></td>
+<td>Add curve</td>
+</tr>
+<tr>
+<td>AddEllipse( obj, a, b,Point2D,P)</td>
+<td>‘rot’,’sang’,’ang’,’seg’</td>
+<td>Add ellipse</td>
+</tr>
+<tr>
+<td>AddHyperbola( obj, a, b,Point2D,P)</td>
+<td>‘rot’,’t1’,’t2’</td>
+<td>Add hyperbola</td>
+</tr>
+<tr>
+<td>AddLine(obj,Point2D,P)</td>
+<td></td>
+<td>Add straight line</td>
+</tr>
+<tr>
+<td>AddLineThickness(obj,id,Thickness,theta)</td>
+<td>‘add’,’close’</td>
+<td>Offset curve</td>
+</tr>
+<tr>
+<td>AddNurb(obj,coefs,knots)</td>
+<td>‘seg’</td>
+<td>Add nurb curve</td>
+</tr>
+<tr>
+<td>AddParabola(obj,f,Point2D,P)</td>
+<td>‘rot’,’t1’,’t2’</td>
+<td>Add parabola</td>
+</tr>
+<tr>
+<td>AddPolygon(obj,r,seg)</td>
+<td>‘sang’,’close’</td>
+<td>Add polygon</td>
+</tr>
+<tr>
+<td>AddRoundPolygon(obj,r,seg,fillet)</td>
+<td>‘sang’</td>
+<td>Add round polygon</td>
+</tr>
+<tr>
+<td>AddSpline( obj, ctype, Point2D, P )</td>
+<td>‘a1’,a2’,’s1’,’s2’</td>
+<td>Add spline</td>
+</tr>
+<tr>
+<td>AddStar(obj,N,r)</td>
+<td>‘sang’,’close’,’anglelimit’</td>
+<td>Add star</td>
+</tr>
+<tr>
+<td>ArchFit(obj,LineNum,e,min_dots,max_dist)</td>
+<td></td>
+<td>Curve arch fit</td>
+</tr>
+<tr>
+<td>Boundary(obj,PP)</td>
+<td>‘scale’,’group’</td>
+<td>Calculate boundary of points</td>
+</tr>
+<tr>
+<td>BoundingBox(obj,PP)</td>
+<td>‘group’</td>
+<td>Calculate box boundary of points</td>
+</tr>
+<tr>
+<td>CircleFit(obj,PP,P)</td>
+<td>‘method’</td>
+<td>Circle fit of points</td>
+</tr>
+<tr>
+<td>Convert2Nurb( obj,CrvNum)</td>
+<td>‘seg’</td>
+<td>Convert poly curve to nurb curve</td>
+</tr>
+<tr>
+<td>CreateRadius(obj,l1,Radius)</td>
+<td></td>
+<td>Round corner of curves</td>
+</tr>
+<tr>
+<td>CurveIntersection(obj,l1,l2)</td>
+<td></td>
+<td>Calculate intersection of curves</td>
+</tr>
+<tr>
+<td>DeleteCurve(obj,ic)</td>
+<td></td>
+<td>Delete curve</td>
+</tr>
+<tr>
+<td>GetCurve(obj,id)</td>
+<td></td>
+<td>Get curve points</td>
+</tr>
+<tr>
+<td>GetNcrv(obj)</td>
+<td></td>
+<td>Get total number of curve</td>
+</tr>
+<tr>
+<td>GetNNurb(obj)</td>
+<td></td>
+<td>Get total number of nurb</td>
+</tr>
+<tr>
+<td>Help(obj)</td>
+<td></td>
+<td>Open help file</td>
+</tr>
+<tr>
+<td>MaxInscribedCircle(obj,LineNum)</td>
+<td></td>
+<td>Get the maximum inscribed circle that fits inside</td>
+</tr>
+<tr>
+<td>Meshoutput(obj)</td>
+<td></td>
+<td>Output Line2D mesh</td>
+</tr>
+<tr>
+<td>NrbEval(obj,nurbsnum,tt)</td>
+<td></td>
+<td>Evaluate a NURBS at parameteric points</td>
+</tr>
+<tr>
+<td>Plot(obj)</td>
+<td>‘grid’,’axe’,’clabel’,’styles’,<br>‘equal’,’crv’,’map’,’color’,<br>‘base_size’,’xlim’,’ylim’</td>
+<td>Plot line2D object</td>
+</tr>
+<tr>
+<td>Plot2(obj)</td>
+<td></td>
+<td>Plot line2D on paraview</td>
+</tr>
+<tr>
+<td>PlotNurbs(obj)</td>
+<td>‘grid’,’axe’,’clabel’,’styles’,<br>‘equal’,’crv’,’map’,’base_size’,<br>‘xlim’,’ylim’,’coefs’</td>
+<td>Plot nurb curves</td>
+</tr>
+<tr>
+<td>PolyCurve( obj, id)</td>
+<td>‘hmax’,’opt’</td>
+<td>Polynomal approx. of the curve</td>
+</tr>
+<tr>
+<td>RebuildCurve(obj,num,n)</td>
+<td>‘interPar’,’closeLoopOpt’,<br>‘spacingFlag’</td>
+<td>Rebuild curve</td>
+</tr>
+<tr>
+<td>Shift(obj,ic,seq)</td>
+<td></td>
+<td>Change the sequence of the lines</td>
+</tr>
+<tr>
+<td>VTKWrite(obj)</td>
+<td></td>
+<td>Write VTK file of 2D</td>
+</tr>
+</tbody></table>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] <a target="_blank" rel="noopener" href="https://www.mathworks.com/matlabcentral/fileexchange/72573-fem19?s_tid=srchtitle">https://www.mathworks.com/matlabcentral/fileexchange/72573-fem19?s_tid=srchtitle</a><br>[2] <a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/335465380_FEM19_Quick_Startpdf">https://www.researchgate.net/publication/335465380_FEM19_Quick_Startpdf</a><br>[3] <a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/335465632_FEM19_Examples_v01pdf">https://www.researchgate.net/publication/335465632_FEM19_Examples_v01pdf</a><br>[4] <a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/335465623_FEM19_Manual_v01">https://www.researchgate.net/publication/335465623_FEM19_Manual_v01</a><br>[5] <a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/matlabcentral/fileexchange/22643-circle-fit-pratt-method?s_tid=srchtitle">https://ww2.mathworks.cn/matlabcentral/fileexchange/22643-circle-fit-pratt-method?s_tid=srchtitle</a><br>[6] <a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/matlabcentral/fileexchange/22678-circle-fit-taubin-method?s_tid=srchtitle">https://ww2.mathworks.cn/matlabcentral/fileexchange/22678-circle-fit-taubin-method?s_tid=srchtitle</a><br>[7] <a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/matlabcentral/fileexchange/11837-fast-and-robust-curve-intersections?s_tid=srchtitle">https://ww2.mathworks.cn/matlabcentral/fileexchange/11837-fast-and-robust-curve-intersections?s_tid=srchtitle</a><br>[8] <a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/matlabcentral/fileexchange/26390-nurbs-toolbox-by-d-m-spink?s_tid=srchtitle">https://ww2.mathworks.cn/matlabcentral/fileexchange/26390-nurbs-toolbox-by-d-m-spink?s_tid=srchtitle</a><br>[9] <a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/matlabcentral/fileexchange/71995-max_inscribed_circle?s_tid=srchtitle">https://ww2.mathworks.cn/matlabcentral/fileexchange/71995-max_inscribed_circle?s_tid=srchtitle</a><br>[10] <a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/matlabcentral/fileexchange/68439-polyline-approximation-with-arcs-and-segments?s_tid=srchtitle">https://ww2.mathworks.cn/matlabcentral/fileexchange/68439-polyline-approximation-with-arcs-and-segments?s_tid=srchtitle</a></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2025 FE-Berserker
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

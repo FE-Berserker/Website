@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Component | Baffalo</title>
+  <title>Line | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Component | Baffalo">
+  <meta name="description" content="Line | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Line2D介绍Line2D类是用来生成2D的曲线，主要参考了FEM19$^{[1][2][3][4]}$开源项目。 关键曲线的参数： CT： 曲线类型（1：直线 2：圆弧 3：曲线 4：椭圆弧 5：贝塞尔6：B样条7：样条8：抛物线9：双曲线10：Nurb曲线） CIX： 曲线编号 C ： 曲线数据 案例Add different curves (Flag&#x3D;1)%% AddLine x">
 <meta property="og:type" content="article">
@@ -287,9 +287,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Component" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Line" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Component</h1>
+        <h1 class="article-title">Line</h1>
     
     <div class="article-meta">
         
@@ -307,7 +307,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-02-15 21:26:47'>2025-02-13 18:00</time>
+            发布时间 : <time class="date" title='最后更新: 2025-02-17 17:58:00'>2025-02-17 17:54</time>
         
     </div>
     <div class="article-meta">
@@ -318,7 +318,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Component"><span class="toc-text">Component</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Line"><span class="toc-text">Line</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-different-curves-Flag-1"><span class="toc-text">Add different curves (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Insert-new-knots-Flag-2"><span class="toc-text">Insert new knots (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Move-curve-Flag-3"><span class="toc-text">Move curve (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotate-curve-Flag-4"><span class="toc-text">Rotate curve (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scale-curve-Flag-5"><span class="toc-text">Scale curve (Flag&#x3D;5)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CheatTable"><span class="toc-text">CheatTable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -334,94 +334,179 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Component是一个部件抽象类，他提供了输入输出以及安全系数的接口，现有的机械结构计算都基于概率理论基础上的可靠度设计方法$^{[1][2][3][4]}$。</p>
-<p>任何工程结构，不管其用途如何，总应考虑各种荷载在结构中产生的荷载效应S和结构本身的抗力R两个基本变量。当R＞S时，结构处于安全状态；R&#x3D;S时，结构处于极限状态；R＜S时，结构处于失效状态。</p>
-<p>针对载荷本身，我们可以将结构载荷分为几类：</p>
-<ul>
-<li>永久荷载</li>
-<li>可变荷载</li>
-<li>偶然荷载</li>
-</ul>
-<p>根据不同的载荷类型，考虑自身特点，以及空间、时间相关性等构建对应的可靠度参数，构建载荷效应S的方程。</p>
-<p>对于材料，应基于不同的尺度予以考虑：</p>
-<img src="/./img/Component.assets/Fig1.JPG" style="zoom: 25%;" />
+        <h1 id="Line"><a href="#Line" class="headerlink" title="Line"></a>Line</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Line类是用来生成3D的曲线，基于Nurb tool$^{[1]}$，生成3D曲线。</p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Add-different-curves-Flag-1"><a href="#Add-different-curves-Flag-1" class="headerlink" title="Add different curves (Flag&#x3D;1)"></a>Add different curves (Flag&#x3D;1)</h3><pre><code class="language-matlab">%% AddLine
+a=Point(&#39;Point Ass1&#39;);
+a=AddPoint(a,[0;5],[0;4],[0;2]);
+b=Line(&#39;Line Ass1&#39;);
+b=AddLine(b,a,1);
+Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;);
+%% AddCurve
+P = [0.5 1.5 4.5 3.0 7.5 6.0 8.5;
+    3.0 5.5 5.5 1.5 1.5 4.0 4.5;
+    0.0 0.0 0.0 0.0 0.0 0.0 0.0];
+a=AddPoint(a,P(1,:)&#39;,P(2,:)&#39;,P(3,:)&#39;);
+b=AddCurve(b,a,2);
+Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;);
+%% AddCircle
+a=AddPoint(a,0,0,5);
+b=AddCircle(b,2.5,a,3);
+b=AddCircle(b,3,a,3,&#39;rot&#39;,[45,45,45]);
+Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;);
+%% AddEllipse
+b=AddEllipse(b,6,3,a,3,&#39;rot&#39;,[0,-90,0],&#39;sang&#39;,-90,&#39;ang&#39;,180);
+Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;);
+%% AddNurb
+coefs = [0.0 7.5 15.0 25.0 35.0 30.0 27.5 30.0;
+    0.0 2.5  0.0 -5.0  5.0 15.0 22.5 30.0;
+    0 0 0 0 0 0 0 0]&#39;;
+knots = [0.0 0.0 0.0 1/6 1/3 1/2 2/3 5/6 1.0 1.0 1.0];
+b=AddNurb(b,coefs,knots);
+Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;);
+</code></pre>
+<img src="/./img/Line.assets/Fig1.jpg" style="zoom:33%;" />
 
-<p>从微观到宏观，观测手段、测试方法不同，同时不同的破坏形式（脆性、延性、疲劳和冲击），对材料抗力的构建方式均不相同。</p>
-<p>其他的因素例如结构重要性，心理因素等也应考虑到结构设计中。</p>
-<p>为此在Baffalo中设计了抽象的部件类：</p>
-<ul>
-<li>input : 输入，可以是载荷，几何尺寸</li>
-<li>params : 参数， 默认的设置，材料等</li>
-<li>output : 输出，网格模型，关键设计参数</li>
-<li>baseline : 基准，部件须达到的设计基准</li>
-<li>capacity : 能力，部件的安全系数</li>
-</ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>我们设计一个工程算法，输入a和b,定义比例系数p</p>
-<p>输出安全系数S1:<br>$$<br>S1&#x3D;(a+b)×p<br>$$<br>输出安全系数S2:<br>$$<br>S2&#x3D;S1&#x2F;1.2<br>$$<br>默认定义S1和S2的基础均为1，也就是说当S1和S2均大于1，我们认为结构安全。</p>
-<pre><code class="language-matlab">classdef TestComponent &lt; Component
-% Class TestComponent
-% Author: Xie Yu
-properties(Hidden, Constant)
-    paramsExpectedFields = &#123;
-        &#39;p&#39;
-        &#125;;
-    inputExpectedFields = &#123;
-        &#39;a&#39; 
-        &#39;b&#39;
-        &#125;;
-    outputExpectedFields = &#123;
-        &#39;c&#39;
-        &#125;;
-    baselineExpectedFields = &#123;
-        &#39;S1&#39;
-        &#39;S2&#39;
-        &#125;;
-    statesExpectedFields = &#123;&#125;;
-    default_p=1;
-    base_S1=1;
-    base_S2=1;
-end
-methods
-    function obj = TestComponent(paramsStruct,inputStruct,varargin)
-        obj = obj@Component(paramsStruct,inputStruct,varargin);
-        obj.documentname=&#39;Test Component.html&#39;;
-    end
-    function obj = solve(obj)
-        a=obj.input.a;
-        b=obj.input.b;
-        p=obj.params.p;
-        c=(a+b)*p;
-        obj.output.c=c;
-        obj.capacity.S1=c;
-        obj.capacity.S2=c/1.2;
-    end
-end
-end
+
+<h3 id="Insert-new-knots-Flag-2"><a href="#Insert-new-knots-Flag-2" class="headerlink" title="Insert new knots (Flag&#x3D;2)"></a>Insert new knots (Flag&#x3D;2)</h3><p>Nurb曲线插入新的控制点。</p>
+<pre><code class="language-matlab">coefs = [0.5 1.5 4.5 3.0 7.5 6.0 8.5;
+    3.0 5.5 5.5 1.5 1.5 4.0 4.5;
+    0.0 0.0 0.0 0.0 0.0 0.0 0.0]&#39;;
+knots=[0 0 0 1/10 2/5 3/5 4/5 1 1 1];
+b=Line(&#39;Line Ass1&#39;);
+b=AddNurb(b,coefs,knots);
+Plot(b,&#39;coefs&#39;,1);
+b=InsertKnots(b,1,[0.125 0.375 0.625 0.875]);
+Plot(b,&#39;coefs&#39;,1);
 </code></pre>
-<p>输入a&#x3D;1,b&#x3D;2，将S1的基准改为2</p>
-<pre><code class="language-matlab">inputStruct.a=1;
-inputStruct.b=2;
-paramsStruct=struct();
-baselineStruct.S1=2;
-T= TestComponent(paramsStruct, inputStruct,baselineStruct);
-T = T.solve();
-disp(T.capacity.S1)
-PlotStruct(T);
-Help(T)
-PlotCapacity(T);
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Line.assets/Fig2.jpg" style="zoom: 100%;"></td><td><img src="/./img/Line.assets/Fig3.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Move-curve-Flag-3"><a href="#Move-curve-Flag-3" class="headerlink" title="Move curve (Flag&#x3D;3)"></a>Move curve (Flag&#x3D;3)</h3><p>移动曲线。</p>
+<pre><code class="language-matlab">coefs = [0.5 1.5 4.5 3.0 7.5 6.0 8.5;
+    3.0 5.5 5.5 1.5 1.5 4.0 4.5;
+    0.0 0.0 0.0 0.0 0.0 0.0 0.0]&#39;;
+knots=[0 0 0 1/10 2/5 3/5 4/5 1 1 1];
+b=Line(&#39;Line Ass1&#39;);
+b=AddNurb(b,coefs,knots);
+b=Move(b,1,[0,0,5],&#39;new&#39;,1);
+Plot(b);
 </code></pre>
-<p>利用PlotStruct()函数查看部件结构：</p>
-<p><img src="/./img/Component.assets/Fig2.JPG"></p>
-<p>利用PlotCapacity()函数来检查部件的安全余量，此时我们看到S1的余量为1.5，表示该部件安全。</p>
-<p><img src="/./img/Component.assets/Fig3.JPG"></p>
-<p>如果将S1的基准调整为4，此时S1的安全余量为0.75，该部件不安全。</p>
-<pre><code class="language-matlab">baselineStruct.S1=2;
+<img src="/./img/Line.assets/Fig4.jpg" style="zoom:33%;" />
+
+<h3 id="Rotate-curve-Flag-4"><a href="#Rotate-curve-Flag-4" class="headerlink" title="Rotate curve (Flag&#x3D;4)"></a>Rotate curve (Flag&#x3D;4)</h3><p>旋转曲线。</p>
+<pre><code class="language-matlab">coefs = [0.5 1.5 4.5 3.0 7.5 6.0 8.5;
+    3.0 5.5 5.5 1.5 1.5 4.0 4.5;
+    0.0 0.0 0.0 0.0 0.0 0.0 0.0]&#39;;
+knots=[0 0 0 1/10 2/5 3/5 4/5 1 1 1];
+b=Line(&#39;Line Ass1&#39;);
+b=AddNurb(b,coefs,knots);
+b=Move(b,1,[0,0,5],&#39;new&#39;,1);
+b=Rotate(b,2,[0,0,90]);
+Plot(b);
 </code></pre>
-<p>在Component下设置documentname，并将对应的文件放在Baffalo中的Document下，即可用Help函数打开对应的帮助文件。</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] JCSS PMC PART_I</p>
-<p>[2] JCSS PMC PART_II</p>
-<p>[3] JCSS PMC PART_III</p>
-<p>[4] <a target="_blank" rel="noopener" href="https://www.jcss-lc.org/jcss-probabilistic-model-code/">https://www.jcss-lc.org/jcss-probabilistic-model-code/</a></p>
+<img src="/./img/Line.assets/Fig5.jpg" style="zoom:33%;" />
+
+
+
+<h3 id="Scale-curve-Flag-5"><a href="#Scale-curve-Flag-5" class="headerlink" title="Scale curve (Flag&#x3D;5)"></a>Scale curve (Flag&#x3D;5)</h3><p>缩放曲线。</p>
+<pre><code class="language-matlab">coefs = [0.5 1.5 4.5 3.0 7.5 6.0 8.5;
+    3.0 5.5 5.5 1.5 1.5 4.0 4.5;
+    0.0 0.0 0.0 0.0 0.0 0.0 0.0]&#39;;
+knots=[0 0 0 1/10 2/5 3/5 4/5 1 1 1];
+b=Line(&#39;Line Ass1&#39;);
+b=AddNurb(b,coefs,knots);
+b=Move(b,1,[0,0,5],&#39;new&#39;,1);
+b=Scale(b,2,[0.5,0.5,1]);
+Plot(b);
+</code></pre>
+<img src="/./img/Line.assets/Fig6.jpg" style="zoom:33%;" />
+
+
+<h2 id="CheatTable"><a href="#CheatTable" class="headerlink" title="CheatTable"></a>CheatTable</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Varargin</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AddCircle(obj,r,Point2D,P)</td>
+<td>‘sang’,’ang’,’seg’,’rot’</td>
+<td>Add circle</td>
+</tr>
+<tr>
+<td>AddCurve(obj,Point2D,P)</td>
+<td></td>
+<td>Add curve</td>
+</tr>
+<tr>
+<td>AddEllipse( obj, a, b,Point2D,P)</td>
+<td>‘rot’,’sang’,’ang’,’seg’</td>
+<td>Add ellipse</td>
+</tr>
+<tr>
+<td>AddLine(obj,Point2D,P)</td>
+<td></td>
+<td>Add straight line</td>
+</tr>
+<tr>
+<td>AddNurb(obj,coefs,knots)</td>
+<td>‘seg’</td>
+<td>Add nurb curve</td>
+</tr>
+<tr>
+<td>GetNcrv(obj)</td>
+<td></td>
+<td>Get total number of curve</td>
+</tr>
+<tr>
+<td>InsertKnots(obj,LineNo,knots)</td>
+<td></td>
+<td>Insert knots</td>
+</tr>
+<tr>
+<td>Help(obj)</td>
+<td></td>
+<td>Open help file</td>
+</tr>
+<tr>
+<td>Move(obj,num,dis)</td>
+<td>‘new’</td>
+<td>Move curve</td>
+</tr>
+<tr>
+<td>Plot(obj)</td>
+<td>‘grid’,’axe’,’clabel’,’styles’,<br>‘equal’,’crv’,’map’,’color’,<br>‘base_size’,’xlim’,’ylim’</td>
+<td>Plot line object</td>
+</tr>
+<tr>
+<td>Plot2(obj)</td>
+<td></td>
+<td>Plot line on paraview</td>
+</tr>
+<tr>
+<td>Rotate(obj,num,rot)</td>
+<td>‘new’, ‘ori’</td>
+<td>Rotate curve</td>
+</tr>
+<tr>
+<td>Scale(obj,num,factor)</td>
+<td>‘new’, ‘ori’</td>
+<td>Sacale curve</td>
+</tr>
+<tr>
+<td>VTKWrite(obj)</td>
+<td></td>
+<td>Write VTK file of line</td>
+</tr>
+</tbody></table>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] <a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/matlabcentral/fileexchange/26390-nurbs-toolbox-by-d-m-spink?s_tid=srchtitle">https://ww2.mathworks.cn/matlabcentral/fileexchange/26390-nurbs-toolbox-by-d-m-spink?s_tid=srchtitle</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>

@@ -6,55 +6,82 @@
   <meta name="keywords" content="">
   <meta name="description" content="Component | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Mesh2D介绍Mesh2D用来建立二维网格，可以导入Surface2D来进行网格划分。 原理MESH2D: Delaunay-based unstructured mesh-generationBaffalo 采用MESH2D$^{[1]}$作为2D网格划分求解器，它可基于给定的边界采用Delaunay三角形进行网格划分。  	 		 			 		 	   案例Create gear obj (">
+<meta name="description" content="Mesh介绍Baffalo_Mesh 是划分3D网格的模块，主要功能是：  将2D的网格转换为3D的网格。 建立基本的3D网格体 雕刻3D网格  主要参考的工具箱或代码：Gibbon$^{[1][2]}$,MRST$^{[3]}$,TetGen$^{[4]}$,voronoi3d$^{[5]}$ 案例Create cube mesh (Flag&#x3D;1)%% Specifying dimen">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mesh2D">
-<meta property="og:url" content="http://example.com/2025/02/18/Mesh2D/index.html">
+<meta property="og:title" content="Mesh">
+<meta property="og:url" content="http://example.com/2025/02/19/Mesh/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="Mesh2D介绍Mesh2D用来建立二维网格，可以导入Surface2D来进行网格划分。 原理MESH2D: Delaunay-based unstructured mesh-generationBaffalo 采用MESH2D$^{[1]}$作为2D网格划分求解器，它可基于给定的边界采用Delaunay三角形进行网格划分。  	 		 			 		 	   案例Create gear obj (">
+<meta property="og:description" content="Mesh介绍Baffalo_Mesh 是划分3D网格的模块，主要功能是：  将2D的网格转换为3D的网格。 建立基本的3D网格体 雕刻3D网格  主要参考的工具箱或代码：Gibbon$^{[1][2]}$,MRST$^{[3]}$,TetGen$^{[4]}$,voronoi3d$^{[5]}$ 案例Create cube mesh (Flag&#x3D;1)%% Specifying dimen">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig34.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig35.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig2.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig3.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig4.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig5.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig6.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig7.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig8.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig9.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig10.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig11.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig12.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig16.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig17.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig13.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig14.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig15.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig18.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig19.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig20.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig21.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig22.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig23.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig24.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig25.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig26.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig27.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig28.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig29.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig30.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig32.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig33.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig60.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig61.jpg">
-<meta property="og:image" content="http://example.com/img/Mesh2D.assets/Fig62.jpg">
-<meta property="article:published_time" content="2025-02-18T09:23:50.190Z">
-<meta property="article:modified_time" content="2025-02-18T09:29:42.522Z">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig2.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig3.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig4.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig5.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig6.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig7.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig8.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig9.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig10.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig11.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig12.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig13.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig14.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig15.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig16.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig17.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig18.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig19.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig20.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig21.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig22.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig23.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig24.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig25.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig26.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig27.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig28.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig29.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig30.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig31.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig32.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig33.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig34.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig35.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig36.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig37.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig38.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig39.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig40.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig41.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig42.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig43.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig44.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig45.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig46.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig47.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig48.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig49.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig50.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig53.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig52.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig51.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig54.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig55.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig56.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig57.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig58.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig59.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig60.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig61.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig62.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig63.jpg">
+<meta property="og:image" content="http://example.com/img/Mesh.assets/Fig64.jpg">
+<meta property="article:published_time" content="2025-02-19T10:42:15.563Z">
+<meta property="article:modified_time" content="2025-02-19T10:49:15.706Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/Mesh2D.assets/Fig34.jpg">
+<meta name="twitter:image" content="http://example.com/img/Mesh.assets/Fig1.jpg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -141,7 +168,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(8)</small>
+                <small>(9)</small>
             
         </div>
     </li>
@@ -153,7 +180,7 @@
         <div data-rel="Baffalo框架">
             
             Baffalo框架
-            <small>(8)</small>
+            <small>(9)</small>
         </div>
         
     </li>
@@ -174,7 +201,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="8">
+<input type="hidden" id="yelog_site_posts_number" value="9">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -224,6 +251,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/19/Mesh/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mesh">Mesh</span>
+            <span class="post-date" title="2025-02-19 18:42:15">2025/02/19</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo框架 "

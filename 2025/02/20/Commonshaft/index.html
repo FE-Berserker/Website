@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Point | Baffalo</title>
+  <title>Commonshaft | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Point | Baffalo">
+  <meta name="description" content="Commonshaft | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Commonshaft介绍Commonshaft用来设计轴，依据输入的长度、外径和内径可生成轴的3D网格和梁网格。 类结构 输入 input：  Meshsize : 单元尺寸 OD : 轴外径 ID : 轴内径 Length : 轴长度  参数 params:  Order ：单元阶数 Name : 名称 N_Slice: 梁单元轴向网格划分数量 E_Revolve: 实体单元旋转方向网格划分数">
 <meta property="og:type" content="article">
@@ -335,9 +335,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Point" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Commonshaft" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Point</h1>
+        <h1 class="article-title">Commonshaft</h1>
     
     <div class="article-meta">
         
@@ -347,7 +347,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo框架">Baffalo框架</a>
+            <a  data-rel="Baffalo部件">Baffalo部件</a>
             
         </span>
         
@@ -355,7 +355,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-02-15 21:27:54'>2025-02-15 21:15</time>
+            发布时间 : <time class="date" title='最后更新: 2025-02-20 13:38:07'>2025-02-20 12:07</time>
         
     </div>
     <div class="article-meta">
@@ -366,7 +366,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Point"><span class="toc-text">Point</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AddPoint-Flag-1"><span class="toc-text">AddPoint (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Calculate-normal-Flag-2"><span class="toc-text">Calculate normal (Flag&#x3D;2)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CheatTable"><span class="toc-text">CheatTable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Commonshaft"><span class="toc-text">Commonshaft</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft1-Flag-1"><span class="toc-text">Shaft1 (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft2-Flag-2"><span class="toc-text">Shaft2 (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft3-Flag-3"><span class="toc-text">Shaft3 (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft4-Flag-4"><span class="toc-text">Shaft4 (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft-5-Flag-5"><span class="toc-text">Shaft 5 (Flag&#x3D;5)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft-6-Flag-6"><span class="toc-text">Shaft 6(Flag&#x3D;6)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft-7-Flag-7"><span class="toc-text">Shaft 7(Flag&#x3D;7)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft8-Flag-8"><span class="toc-text">Shaft8(Flag&#x3D;8)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OutputSoliodModel-to-ANSYS-Flag-9"><span class="toc-text">OutputSoliodModel to ANSYS (Flag&#x3D;9)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OutputBeamModel-to-ANSYS-Flag-10"><span class="toc-text">OutputBeamModel to ANSYS (Flag&#x3D;10)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deform-Face-Flag-11"><span class="toc-text">Deform Face (Flag&#x3D;11)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plot-faceno-Flag-12"><span class="toc-text">Plot faceno (Flag&#x3D;12)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output-STL-Flag-13"><span class="toc-text">Output STL (Flag&#x3D;13)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -382,110 +382,335 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Point"><a href="#Point" class="headerlink" title="Point"></a>Point</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Point类是用来生成3D的点。</p>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="AddPoint-Flag-1"><a href="#AddPoint-Flag-1" class="headerlink" title="AddPoint (Flag&#x3D;1)"></a>AddPoint (Flag&#x3D;1)</h3><p>AddPoint添加点坐标，案例中数据来自于matlab PCtool$^{[1]}$</p>
-<pre><code class="language-matlab">data=load(&#39;lion.xyz&#39;);
-a=Point(&#39;Point Ass1&#39;);
-a=AddPoint(a,data(:,1),data(:,2),data(:,3));
-a=AddPointData(a,data(:,4));
-Plot(a);
-Plot2(a);
+        <h1 id="Commonshaft"><a href="#Commonshaft" class="headerlink" title="Commonshaft"></a>Commonshaft</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Commonshaft用来设计轴，依据输入的长度、外径和内径可生成轴的3D网格和梁网格。</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/Commonshaft.assets/Fig24.jpg"></p>
+<p>输入 input：</p>
+<ul>
+<li>Meshsize : 单元尺寸</li>
+<li>OD : 轴外径</li>
+<li>ID : 轴内径</li>
+<li>Length : 轴长度</li>
+</ul>
+<p>参数 params:</p>
+<ul>
+<li>Order ：单元阶数</li>
+<li>Name : 名称</li>
+<li>N_Slice: 梁单元轴向网格划分数量</li>
+<li>E_Revolve: 实体单元旋转方向网格划分数量</li>
+<li>Material : 轴材料</li>
+<li>Beam_N : 梁单元截面环向划分</li>
+</ul>
+<p>输出 output :</p>
+<ul>
+<li>Assembly1 : 梁单元装配</li>
+<li>Assembly : 实体单元装配</li>
+<li>BeamMesh : 梁网格</li>
+<li>SolidMesh : 实体网格</li>
+<li>OD : 梁各个单元对应外径</li>
+<li>ID : 梁各个单元对应内径</li>
+<li>Node : 梁单元节点</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Shaft1-Flag-1"><a href="#Shaft1-Flag-1" class="headerlink" title="Shaft1 (Flag&#x3D;1)"></a>Shaft1 (Flag&#x3D;1)</h3><pre><code class="language-matlab">% Shaft 1
+inputshaft1.Length = 115;
+inputshaft1.ID = [0,0];
+inputshaft1.OD = [36,36];
+paramsshaft1 = struct();
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot2D(obj1);
+Plot3D(obj1);
 </code></pre>
-<p>Plot实在matlab中绘图，效果如下：</p>
-<img src="/./img/Point.assets/Fig3.jpg" style="zoom:50%;" />
-
-<p>Plot2在Paraview中绘图，其点显示会更精细，效果如下：</p>
-<img src="/./img/Point.assets/Fig2.jpg" style="zoom:33%;" />
-
-
-<h3 id="Calculate-normal-Flag-2"><a href="#Calculate-normal-Flag-2" class="headerlink" title="Calculate normal (Flag&#x3D;2)"></a>Calculate normal (Flag&#x3D;2)</h3><p>CalNormals计算表面的法向，</p>
-<pre><code class="language-matlab">data=load(&#39;lion.xyz&#39;);
-a=Point(&#39;Point Ass1&#39;);
-a=AddPoint(a,data(:,1),data(:,2),data(:,3));
-a=AddPointData(a,data(:,4));
-a=CalNormals(a,2);
-Plot(a,&#39;Normal&#39;,1,&#39;VectorScale&#39;,5);
-Plot2(a,&#39;Normal&#39;,1);
-</code></pre>
-<p>在Matlab中放大图像即可看到箭头如下所示：</p>
+<p>建立轴时定义好长度，内径和外径，即可生成轴网格：</p>
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
 		<tr>
-			<td style="padding: 6px"><img src="/./img/Point.assets/Fig4.jpg" style="zoom: 100%;"></td><td><img src="/./img/Point.assets/Fig5.jpg" style="zoom: 100%;"></td>
+			<td style="padding: 6px"><img src="/./img/Commonshaft.assets/Fig1.jpg" style="zoom: 100%;"></td><td><img src="/./img/Commonshaft.assets/Fig2.jpg" style="zoom: 100%;"></td>
 		</tr>
 	</tbody>
 </table>
 
-<p>在Paraview中设置原始坐标点为黑色，再叠加张位移图，可以看到坐标点沿着法向移动。</p>
-<img src="/./img/Point.assets/Fig1.jpg" style="zoom:50%;" />
+<h3 id="Shaft2-Flag-2"><a href="#Shaft2-Flag-2" class="headerlink" title="Shaft2 (Flag&#x3D;2)"></a>Shaft2 (Flag&#x3D;2)</h3><pre><code class="language-matlab">% Shaft 2
+inputshaft1.Length = 120;
+inputshaft1.ID = [6,6];
+inputshaft1.OD = [36,36];
+paramsshaft1 = struct();
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot2D(obj1);
+Plot3D(obj1);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Commonshaft.assets/Fig3.jpg" style="zoom: 100%;"></td><td><img src="/./img/Commonshaft.assets/Fig4.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
 
+<h3 id="Shaft3-Flag-3"><a href="#Shaft3-Flag-3" class="headerlink" title="Shaft3 (Flag&#x3D;3)"></a>Shaft3 (Flag&#x3D;3)</h3><pre><code class="language-matlab">% Shaft 3
+inputshaft1.Length = [29;53;77;115];
+inputshaft1.ID = [[0,0];[0,0];[0,0];[0,0]];
+inputshaft1.OD = [[22.5,22.5];[26.5,26.5];[29.5,29.5];[36,36]];
+paramsshaft1 = struct();
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot2D(obj1);
+Plot3D(obj1);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Commonshaft.assets/Fig5.jpg" style="zoom: 100%;"></td><td><img src="/./img/Commonshaft.assets/Fig6.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
 
-<h2 id="CheatTable"><a href="#CheatTable" class="headerlink" title="CheatTable"></a>CheatTable</h2><table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Varargin</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>AddPoint(obj,x,y)</td>
-<td>‘delta’</td>
-<td>Add points</td>
-</tr>
-<tr>
-<td>AddPointData(obj,Data)</td>
-<td></td>
-<td>Add point data</td>
-</tr>
-<tr>
-<td>AddPointVector(obj,Vec)</td>
-<td></td>
-<td>Add point vector</td>
-</tr>
-<tr>
-<td>CalNormals(obj, searchRadius)</td>
-<td>‘MinNoNeighbours’,’MaxNoNeighbours’</td>
-<td>Calculate point normal</td>
-</tr>
-<tr>
-<td>GetNgpts(obj)</td>
-<td></td>
-<td>Get total number of point group</td>
-</tr>
-<tr>
-<td>GetNpts(obj)</td>
-<td></td>
-<td>Get total number of points</td>
-</tr>
-<tr>
-<td>NormalizeNormals</td>
-<td></td>
-<td>Normalize normals</td>
-</tr>
-<tr>
-<td>Help(obj)</td>
-<td></td>
-<td>Open help file</td>
-</tr>
-<tr>
-<td>Plot(obj)</td>
-<td>‘Plabel’,Grid’,’Group’,’Equal’,<br>‘Vector’,’VectorScale’,</td>
-<td>Plot Point2D object</td>
-</tr>
-<tr>
-<td>Plot2(obj)</td>
-<td></td>
-<td>Plot Point2D object in Paraview</td>
-</tr>
-<tr>
-<td>VTKWrite(obj)</td>
-<td>‘Echo’,’Normal’,’NormNormal’</td>
-<td>Write VTK file of Point2D</td>
-</tr>
-</tbody></table>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[1] <a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/matlabcentral/fileexchange/54412-point-cloud-tools-for-matlab">https://ww2.mathworks.cn/matlabcentral/fileexchange/54412-point-cloud-tools-for-matlab</a></p>
+<h3 id="Shaft4-Flag-4"><a href="#Shaft4-Flag-4" class="headerlink" title="Shaft4 (Flag&#x3D;4)"></a>Shaft4 (Flag&#x3D;4)</h3><pre><code>% Shaft 4
+inputshaft1.Length = [29;53;71;77;115];
+inputshaft1.ID = [[6.6,6.6];[6.6,6.6];[6.6,6.6];[0,0];[0,0]];
+inputshaft1.OD = [[22.5,22.5];[26.5,26.5];[29.5,29.5];[29.5,29.5];[36,36]];
+paramsshaft1 = struct();
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot2D(obj1);
+Plot3D(obj1);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Commonshaft.assets/Fig7.jpg" style="zoom: 100%;"></td><td><img src="/./img/Commonshaft.assets/Fig8.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
 
+<h3 id="Shaft-5-Flag-5"><a href="#Shaft-5-Flag-5" class="headerlink" title="Shaft 5 (Flag&#x3D;5)"></a>Shaft 5 (Flag&#x3D;5)</h3><pre><code class="language-matlab">% Shaft 5
+inputshaft1.Length = [29;53;71;77;115];
+inputshaft1.ID = [[6.6,6.6];[6.6,6.6];[6.6,6.6];[18.5,18.5];[18.5,18.5]];
+inputshaft1.OD = [[22.5,22.5];[26.5,26.5];[29.5,29.5];[29.5,29.5];[36,36]];
+paramsshaft1 = struct();
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot2D(obj1);
+Plot3D(obj1);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Commonshaft.assets/Fig9.jpg" style="zoom: 100%;"></td><td><img src="/./img/Commonshaft.assets/Fig10.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Shaft-6-Flag-6"><a href="#Shaft-6-Flag-6" class="headerlink" title="Shaft 6(Flag&#x3D;6)"></a>Shaft 6(Flag&#x3D;6)</h3><pre><code class="language-matlab">% Shaft 6
+inputshaft1.Length = [29;53;71;77;115];
+inputshaft1.ID = [[6.6,6.6];[6.6,6.6];[6.6,6.6];[6.6,18.5];[18.5,18.5]];
+inputshaft1.OD = [[22.5,22.5];[26.5,26.5];[26.5,29.5];[29.5,29.5];[36,36]];
+paramsshaft1 = struct();
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot2D(obj1);
+Plot3D(obj1);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Commonshaft.assets/Fig11.jpg" style="zoom: 100%;"></td><td><img src="/./img/Commonshaft.assets/Fig12.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Shaft-7-Flag-7"><a href="#Shaft-7-Flag-7" class="headerlink" title="Shaft 7(Flag&#x3D;7)"></a>Shaft 7(Flag&#x3D;7)</h3><pre><code class="language-matlab">% Shaft 7
+inputshaft1.Length = [7;8;29;53;71;77;107;108;115];
+inputshaft1.ID = [[6.6,6.6];[6.6,0];[0,0];[0,0];[0,0];[0,0];[0,0];[0,6.6];[6.6,6.6]];
+inputshaft1.OD = [[22.5,22.5];[22.5,22.5];[22.5,22.5];[26.5,26.5];[26.5,29.5];[29.5,29.5];...
+[36,36];[36,36];[36,36]];
+inputshaft1.Meshsize=0.5;
+paramsshaft1 = struct();
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot2D(obj1);
+Plot3D(obj1);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Commonshaft.assets/Fig13.jpg" style="zoom: 100%;"></td><td><img src="/./img/Commonshaft.assets/Fig14.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Shaft8-Flag-8"><a href="#Shaft8-Flag-8" class="headerlink" title="Shaft8(Flag&#x3D;8)"></a>Shaft8(Flag&#x3D;8)</h3><pre><code class="language-matlab">% Shaft 8
+inputshaft1.Length = [32;35;320-35;320-32;320];
+inputshaft1.ID = [[0,0];[0,0];[0,0];[0,0];[0,0]];
+inputshaft1.OD = [[45,45];[43,43];[54,54];[43,43];[45,45]];
+paramsshaft1.Order = 1;
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot2D(obj1);
+Plot3D(obj1);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Commonshaft.assets/Fig17.jpg" style="zoom: 100%;"></td><td><img src="/./img/Commonshaft.assets/Fig18.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="OutputSoliodModel-to-ANSYS-Flag-9"><a href="#OutputSoliodModel-to-ANSYS-Flag-9" class="headerlink" title="OutputSoliodModel to ANSYS (Flag&#x3D;9)"></a>OutputSoliodModel to ANSYS (Flag&#x3D;9)</h3><pre><code class="language-matlab">% Shaft 7
+inputshaft1.Length = [7;8;29;53;71;77;107;108;115];
+inputshaft1.ID = [[6.6,6.6];[6.6,0];[0,0];[0,0];[0,0];[0,0];[0,0];[0,6.6];[6.6,6.6]];
+inputshaft1.OD = [[22.5,22.5];[22.5,22.5];[22.5,22.5];[26.5,26.5];[26.5,29.5];[29.5,29.5];...
+[36,36];[36,36];[36,36]];
+paramsshaft1.Order = 2;
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot2D(obj1);
+Plot3D(obj1);
+%% Assembly
+m=obj1.output.SolidMesh;
+Ass=Assembly(&#39;Shaft_Assembly&#39;);
+Ass=AddPart(Ass,m.Meshoutput);
+% Boundary
+Ass=AddBoundary(Ass,1,&#39;No&#39;,302);
+Bound1=[1,1,1,0,0,0];
+Ass=SetBoundaryType(Ass,1,Bound1);
+% Load
+Ass=AddLoad(Ass,1,&#39;No&#39;,305);
+Load1=[0,-1e4,0,0,0,0];
+Ass=SetLoad(Ass,1,Load1);
+Plot(Ass,&#39;boundary&#39;,1,&#39;load&#39;,1);
+% Material
+mat.Name=&#39;Steel&#39;;
+mat.table=[&quot;DENS&quot;,7.85e-9;&quot;EX&quot;,210000;&quot;NUXY&quot;,0.3];
+Ass=AddMaterial(Ass,mat);
+Ass=SetMaterial(Ass,1,1);
+% Element type
+if paramsshaft1.Order==1
+ET.name=&#39;185&#39;;
+else
+ET.name=&#39;186&#39;;
+end
+ET.opt=[];
+ET.R=[];
+Ass=AddET(Ass,ET);
+Ass=SetET(Ass,1,1);
+Ass=AddSensor(Ass,&#39;Stress&#39;,1);
+opt.ANTYPE=0;
+Ass=AddSolu(Ass,opt);
+%% Output to ANSYS
+ANSYS_Output(Ass);
+ANSYSSolve(Ass)
+PlotSensor(Ass,1)
+</code></pre>
+<p>建立轴模型，通过ANSYS分析计算，最终将结果导出到Paraview中显示：</p>
+<img src="/./img/Commonshaft.assets/Fig15.jpg" style="zoom: 25%;" />
+
+<h3 id="OutputBeamModel-to-ANSYS-Flag-10"><a href="#OutputBeamModel-to-ANSYS-Flag-10" class="headerlink" title="OutputBeamModel to ANSYS (Flag&#x3D;10)"></a>OutputBeamModel to ANSYS (Flag&#x3D;10)</h3><pre><code class="language-matlab">% Shaft 7
+inputshaft1.Length = [7;8;29;53;71;77;107;108;115];
+inputshaft1.ID = [[6.6,6.6];[6.6,0];[0,0];[0,0];[0,0];[0,0];[0,0];[0,6.6];[6.6,6.6]];
+inputshaft1.OD = [[22.5,22.5];[22.5,22.5];[22.5,22.5];[26.5,26.5];[26.5,29.5];[29.5,29.5];...
+[36,36];[36,36];[36,36]];
+paramsshaft1 = struct();
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+%% Add assembly
+Ass=Assembly(&#39;Common_shaft_BeamModel&#39;);
+Ass=AddPart(Ass,obj1.output.BeamMesh.Meshoutput);
+% Boundary
+Ass=AddBoundary(Ass,1,&#39;No&#39;,1);
+Bound1=[1,1,1,1,1,1];
+Ass=SetBoundaryType(Ass,1,Bound1);
+% Material
+mat.table=[&quot;EX&quot;,2.1e5;&quot;PRXY&quot;,0.3];
+Ass=AddMaterial(Ass,mat);
+Ass=SetMaterial(Ass,1,1);
+% Add load
+Ass=AddLoad(Ass,1,&#39;No&#39;,101);
+Load1=[0,-1e4,0,0,0,0];
+Ass=SetLoad(Ass,1,Load1);
+% Element type
+ET.name=&#39;188&#39;;
+ET.opt=[];
+ET.R=[];
+Ass=AddET(Ass,ET);
+Ass=SetET(Ass,1,1);
+Ass=BeamK(Ass,1);
+% Section
+Section=obj1.output.BeamMesh.Section;
+Ass=DividePart(Ass,1,mat2cell((1:size(Section,1))&#39;,ones(1,size(Section,1))));
+for i=1:size(Section,1)
+Ass=AddSection(Ass,Section&#123;i,1&#125;);
+Ass=SetSection(Ass,i,i);
+end
+Plot(Ass,&#39;boundary&#39;,1,&#39;load&#39;,1,&#39;load_scale&#39;,0.1);
+%% Output to ANSYS
+Ass=AddSensor(Ass,&#39;U&#39;,1);
+opt.ANTYPE=0;
+Ass=AddSolu(Ass,opt);
+%% Output to ANSYS
+ANSYS_Output(Ass);
+ANSYSSolve(Ass)
+PlotSensor(Ass,1)
+</code></pre>
+<p>将轴网格导出到Paraview中显示：</p>
+<p><img src="/./img/Commonshaft.assets/Fig16.jpg"></p>
+<h3 id="Deform-Face-Flag-11"><a href="#Deform-Face-Flag-11" class="headerlink" title="Deform Face (Flag&#x3D;11)"></a>Deform Face (Flag&#x3D;11)</h3><pre><code class="language-matlab">inputShaft1.Length = [6.4;22;50;55;78;145];
+inputShaft1.ID = [[180,133];[40,40];[40,40];[40,40];[8.5,8.5];[20,20]];
+inputShaft1.OD = [[210,210];[210,130];[130,130];[89,89];[89,89];[65,65]];
+paramsShaft1 = struct();
+obj1 = shaft.Commonshaft(paramsShaft1, inputShaft1);
+obj1 = obj1.solve();
+Plot3D(obj1,&#39;faceno&#39;,102);
+f=@(r)sqrt(250^2-r.^2)+22-sqrt(250^2-65^2);
+obj1=DeformFace(obj1,102,f);
+Plot3D(obj1);
+</code></pre>
+<p>支持小幅度的网格节点偏移。<br>注意：当网格节点偏移时，网格会发生变形，可能引起网格读取错误</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Commonshaft.assets/Fig19.jpg" style="zoom: 100%;"></td><td><img src="/./img/Commonshaft.assets/Fig20.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<img src="/./img/Commonshaft.assets/Fig21.jpg" style="zoom:33%;" />
+
+<h3 id="Plot-faceno-Flag-12"><a href="#Plot-faceno-Flag-12" class="headerlink" title="Plot faceno (Flag&#x3D;12)"></a>Plot faceno (Flag&#x3D;12)</h3><pre><code class="language-matlab">Shaft2_Height=243.7;
+Shaft2_Step_Height=20;
+inputShaft2.Length = [40;117.7;201.7;Shaft2_Height-Shaft2_Step_Height;Shaft2_Height];
+inputShaft2.OD = [[35,35];[42,42];[65,65];[90,90];[54,54]];
+inputShaft2.ID = [[10,10];[10,10];[10,10];[10,10];[10,10]];
+inputShaft2.Meshsize=15;
+paramsShaft2.E_Revolve = 60;
+obj1 = shaft.Commonshaft(paramsShaft2, inputShaft2);
+obj1 = obj1.solve();
+Plot3D(obj1,&#39;faceno&#39;,101);
+</code></pre>
+<p>显示面编号：</p>
+<img src="/./img/Commonshaft.assets/Fig22.jpg" style="zoom:33%;" />
+
+<h3 id="Output-STL-Flag-13"><a href="#Output-STL-Flag-13" class="headerlink" title="Output STL (Flag&#x3D;13)"></a>Output STL (Flag&#x3D;13)</h3><pre><code class="language-matlab">% Shaft 2
+inputshaft1.Length = 120;
+inputshaft1.ID = [6,6];
+inputshaft1.OD = [36,36];
+paramsshaft1 = struct();
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot2D(obj1);
+Plot3D(obj1);
+OutputSTL(obj1)
+% Load stl file
+L=Layer(&#39;test&#39;);
+Name=strcat(obj1.params.Name,&#39;.stl&#39;);
+L=STLRead(L,Name);
+Plot(L);
+end
+</code></pre>
+<img src="/./img/Commonshaft.assets/Fig23.jpg" style="zoom:33%;" />
+
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
     </div>

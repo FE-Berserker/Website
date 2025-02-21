@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Line | Baffalo</title>
+  <title>SubStr | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Line | Baffalo">
+  <meta name="description" content="SubStr | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Commonshaft介绍SubStr类用于生成子结构(在ANSYS中称为子结构或者超单元，在simpack中称为柔体)，它可以导出ANSYS的.sup文件和simpack的.fbi文件。子结构就是将一组单元用矩阵凝聚为一个单元的过程。这个单一的矩阵单元称为超单元。在ANSYS分析中，超单元可以象其他单元类型一样使用。 类结构 输入 input：  Master: 主节点 SubStr : 子结构">
 <meta property="og:type" content="article">
@@ -344,9 +344,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Line" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-SubStr" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Line</h1>
+        <h1 class="article-title">SubStr</h1>
     
     <div class="article-meta">
         
@@ -356,7 +356,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo框架">Baffalo框架</a>
+            <a  data-rel="Baffalo求解">Baffalo求解</a>
             
         </span>
         
@@ -364,7 +364,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-02-17 17:58:00'>2025-02-17 17:54</time>
+            发布时间 : <time class="date" title='最后更新: 2025-02-21 12:28:49'>2025-02-21 12:22</time>
         
     </div>
     <div class="article-meta">
@@ -375,7 +375,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Line"><span class="toc-text">Line</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-different-curves-Flag-1"><span class="toc-text">Add different curves (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Insert-new-knots-Flag-2"><span class="toc-text">Insert new knots (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Move-curve-Flag-3"><span class="toc-text">Move curve (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotate-curve-Flag-4"><span class="toc-text">Rotate curve (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scale-curve-Flag-5"><span class="toc-text">Scale curve (Flag&#x3D;5)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CheatTable"><span class="toc-text">CheatTable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Commonshaft"><span class="toc-text">Commonshaft</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft1-compare-Rigid-connection-Flag-1"><span class="toc-text">Shaft1 compare (Rigid connection) (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft1-compare-Flexible-connection-Flag-2"><span class="toc-text">Shaft1 compare (Flexible connection) (Flag&#x3D;2)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -391,180 +391,179 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Line"><a href="#Line" class="headerlink" title="Line"></a>Line</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Line类是用来生成3D的曲线，基于Nurb tool$^{[1]}$，生成3D曲线。</p>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Add-different-curves-Flag-1"><a href="#Add-different-curves-Flag-1" class="headerlink" title="Add different curves (Flag&#x3D;1)"></a>Add different curves (Flag&#x3D;1)</h3><pre><code class="language-matlab">%% AddLine
-a=Point(&#39;Point Ass1&#39;);
-a=AddPoint(a,[0;5],[0;4],[0;2]);
-b=Line(&#39;Line Ass1&#39;);
-b=AddLine(b,a,1);
-Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;);
-%% AddCurve
-P = [0.5 1.5 4.5 3.0 7.5 6.0 8.5;
-    3.0 5.5 5.5 1.5 1.5 4.0 4.5;
-    0.0 0.0 0.0 0.0 0.0 0.0 0.0];
-a=AddPoint(a,P(1,:)&#39;,P(2,:)&#39;,P(3,:)&#39;);
-b=AddCurve(b,a,2);
-Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;);
-%% AddCircle
-a=AddPoint(a,0,0,5);
-b=AddCircle(b,2.5,a,3);
-b=AddCircle(b,3,a,3,&#39;rot&#39;,[45,45,45]);
-Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;);
-%% AddEllipse
-b=AddEllipse(b,6,3,a,3,&#39;rot&#39;,[0,-90,0],&#39;sang&#39;,-90,&#39;ang&#39;,180);
-Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;);
-%% AddNurb
-coefs = [0.0 7.5 15.0 25.0 35.0 30.0 27.5 30.0;
-    0.0 2.5  0.0 -5.0  5.0 15.0 22.5 30.0;
-    0 0 0 0 0 0 0 0]&#39;;
-knots = [0.0 0.0 0.0 1/6 1/3 1/2 2/3 5/6 1.0 1.0 1.0];
-b=AddNurb(b,coefs,knots);
-Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;);
-</code></pre>
-<img src="/./img/Line.assets/Fig1.jpg" style="zoom:33%;" />
-
-
-<h3 id="Insert-new-knots-Flag-2"><a href="#Insert-new-knots-Flag-2" class="headerlink" title="Insert new knots (Flag&#x3D;2)"></a>Insert new knots (Flag&#x3D;2)</h3><p>Nurb曲线插入新的控制点。</p>
-<pre><code class="language-matlab">coefs = [0.5 1.5 4.5 3.0 7.5 6.0 8.5;
-    3.0 5.5 5.5 1.5 1.5 4.0 4.5;
-    0.0 0.0 0.0 0.0 0.0 0.0 0.0]&#39;;
-knots=[0 0 0 1/10 2/5 3/5 4/5 1 1 1];
-b=Line(&#39;Line Ass1&#39;);
-b=AddNurb(b,coefs,knots);
-Plot(b,&#39;coefs&#39;,1);
-b=InsertKnots(b,1,[0.125 0.375 0.625 0.875]);
-Plot(b,&#39;coefs&#39;,1);
-</code></pre>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/Line.assets/Fig2.jpg" style="zoom: 100%;"></td><td><img src="/./img/Line.assets/Fig3.jpg" style="zoom: 100%;"></td>
-		</tr>
-	</tbody>
-</table>
-
-<h3 id="Move-curve-Flag-3"><a href="#Move-curve-Flag-3" class="headerlink" title="Move curve (Flag&#x3D;3)"></a>Move curve (Flag&#x3D;3)</h3><p>移动曲线。</p>
-<pre><code class="language-matlab">coefs = [0.5 1.5 4.5 3.0 7.5 6.0 8.5;
-    3.0 5.5 5.5 1.5 1.5 4.0 4.5;
-    0.0 0.0 0.0 0.0 0.0 0.0 0.0]&#39;;
-knots=[0 0 0 1/10 2/5 3/5 4/5 1 1 1];
-b=Line(&#39;Line Ass1&#39;);
-b=AddNurb(b,coefs,knots);
-b=Move(b,1,[0,0,5],&#39;new&#39;,1);
-Plot(b);
-</code></pre>
-<img src="/./img/Line.assets/Fig4.jpg" style="zoom:33%;" />
-
-<h3 id="Rotate-curve-Flag-4"><a href="#Rotate-curve-Flag-4" class="headerlink" title="Rotate curve (Flag&#x3D;4)"></a>Rotate curve (Flag&#x3D;4)</h3><p>旋转曲线。</p>
-<pre><code class="language-matlab">coefs = [0.5 1.5 4.5 3.0 7.5 6.0 8.5;
-    3.0 5.5 5.5 1.5 1.5 4.0 4.5;
-    0.0 0.0 0.0 0.0 0.0 0.0 0.0]&#39;;
-knots=[0 0 0 1/10 2/5 3/5 4/5 1 1 1];
-b=Line(&#39;Line Ass1&#39;);
-b=AddNurb(b,coefs,knots);
-b=Move(b,1,[0,0,5],&#39;new&#39;,1);
-b=Rotate(b,2,[0,0,90]);
-Plot(b);
-</code></pre>
-<img src="/./img/Line.assets/Fig5.jpg" style="zoom:33%;" />
-
-
-
-<h3 id="Scale-curve-Flag-5"><a href="#Scale-curve-Flag-5" class="headerlink" title="Scale curve (Flag&#x3D;5)"></a>Scale curve (Flag&#x3D;5)</h3><p>缩放曲线。</p>
-<pre><code class="language-matlab">coefs = [0.5 1.5 4.5 3.0 7.5 6.0 8.5;
-    3.0 5.5 5.5 1.5 1.5 4.0 4.5;
-    0.0 0.0 0.0 0.0 0.0 0.0 0.0]&#39;;
-knots=[0 0 0 1/10 2/5 3/5 4/5 1 1 1];
-b=Line(&#39;Line Ass1&#39;);
-b=AddNurb(b,coefs,knots);
-b=Move(b,1,[0,0,5],&#39;new&#39;,1);
-b=Scale(b,2,[0.5,0.5,1]);
-Plot(b);
-</code></pre>
-<img src="/./img/Line.assets/Fig6.jpg" style="zoom:33%;" />
-
-
-<h2 id="CheatTable"><a href="#CheatTable" class="headerlink" title="CheatTable"></a>CheatTable</h2><table>
+        <h1 id="Commonshaft"><a href="#Commonshaft" class="headerlink" title="Commonshaft"></a>Commonshaft</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>SubStr类用于生成子结构(在ANSYS中称为子结构或者超单元，在simpack中称为柔体)，它可以导出ANSYS的.sup文件和simpack的.fbi文件。子结构就是将一组单元用矩阵凝聚为一个单元的过程。这个单一的矩阵单元称为超单元。在ANSYS分析中，超单元可以象其他单元类型一样使用。</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/SubStr.assets/Fig1.jpg"></p>
+<p>输入 input：</p>
+<ul>
+<li>Master: 主节点</li>
+<li>SubStr : 子结构的网格模型</li>
+</ul>
+<p>参数 params:</p>
+<ul>
+<li><p>Name : 名称</p>
+</li>
+<li><p>NMode : 模态数量，默认数量50</p>
+</li>
+<li><p>Freq: 频率范围，默认0~2000Hz</p>
+</li>
+<li><p>CMSMehod: CMS方法</p>
+<p>参照ANSYS帮助文件，主要有以下三种方法，默认为‘FIX’。</p>
+<table>
 <thead>
 <tr>
-<th>Name</th>
-<th>Varargin</th>
+<th>CMSMethod</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>AddCircle(obj,r,Point2D,P)</td>
-<td>‘sang’,’ang’,’seg’,’rot’</td>
-<td>Add circle</td>
+<td><strong>FIX</strong></td>
+<td>Fixed-interface method.</td>
 </tr>
 <tr>
-<td>AddCurve(obj,Point2D,P)</td>
-<td></td>
-<td>Add curve</td>
+<td><strong>FREE</strong></td>
+<td>Free-interface method.</td>
 </tr>
 <tr>
-<td>AddEllipse( obj, a, b,Point2D,P)</td>
-<td>‘rot’,’sang’,’ang’,’seg’</td>
-<td>Add ellipse</td>
-</tr>
-<tr>
-<td>AddLine(obj,Point2D,P)</td>
-<td></td>
-<td>Add straight line</td>
-</tr>
-<tr>
-<td>AddNurb(obj,coefs,knots)</td>
-<td>‘seg’</td>
-<td>Add nurb curve</td>
-</tr>
-<tr>
-<td>GetNcrv(obj)</td>
-<td></td>
-<td>Get total number of curve</td>
-</tr>
-<tr>
-<td>InsertKnots(obj,LineNo,knots)</td>
-<td></td>
-<td>Insert knots</td>
-</tr>
-<tr>
-<td>Help(obj)</td>
-<td></td>
-<td>Open help file</td>
-</tr>
-<tr>
-<td>Move(obj,num,dis)</td>
-<td>‘new’</td>
-<td>Move curve</td>
-</tr>
-<tr>
-<td>Plot(obj)</td>
-<td>‘grid’,’axe’,’clabel’,’styles’,<br>‘equal’,’crv’,’map’,’color’,<br>‘base_size’,’xlim’,’ylim’</td>
-<td>Plot line object</td>
-</tr>
-<tr>
-<td>Plot2(obj)</td>
-<td></td>
-<td>Plot line on paraview</td>
-</tr>
-<tr>
-<td>Rotate(obj,num,rot)</td>
-<td>‘new’, ‘ori’</td>
-<td>Rotate curve</td>
-</tr>
-<tr>
-<td>Scale(obj,num,factor)</td>
-<td>‘new’, ‘ori’</td>
-<td>Sacale curve</td>
-</tr>
-<tr>
-<td>VTKWrite(obj)</td>
-<td></td>
-<td>Write VTK file of line</td>
+<td><strong>RFFB</strong></td>
+<td>Residual-flexible free-interface method</td>
 </tr>
 </tbody></table>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] <a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/matlabcentral/fileexchange/26390-nurbs-toolbox-by-d-m-spink?s_tid=srchtitle">https://ww2.mathworks.cn/matlabcentral/fileexchange/26390-nurbs-toolbox-by-d-m-spink?s_tid=srchtitle</a></p>
+</li>
+</ul>
+<p>输出 output :</p>
+<ul>
+<li>Path : 子结构存储路径</li>
+<li>Geom : 几何信息</li>
+<li>Nodes : 连接节点</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Shaft1-compare-Rigid-connection-Flag-1"><a href="#Shaft1-compare-Rigid-connection-Flag-1" class="headerlink" title="Shaft1 compare (Rigid connection) (Flag&#x3D;1)"></a>Shaft1 compare (Rigid connection) (Flag&#x3D;1)</h3><pre><code class="language-matlab">% Shaft 1
+inputshaft1.Length = 500;
+inputshaft1.ID = [0,0];
+inputshaft1.OD = [50,50];
+paramsshaft1 = struct();
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+SubAss=obj1.output.Assembly;
+%% Define Element Types
+ET1.name=&#39;21&#39;;ET1.opt=[3,0];ET1.R=[0,0,0,0,0,0];
+SubAss=AddET(SubAss,ET1);
+Acc_ET=GetNET(SubAss);
+%% Define Connections
+SubAss=AddCnode(SubAss,-0.001,0,0);
+SubAss=AddMaster(SubAss,0,1);
+SubAss=AddSlaver(SubAss,1,&#39;face&#39;,301);
+SubAss=SetCnode(SubAss,1,Acc_ET);
+SubAss=SetRbe2(SubAss,1,1);
 
+SubAss=AddCnode(SubAss,500.001,0,0);
+SubAss=AddMaster(SubAss,0,2);
+SubAss=AddSlaver(SubAss,1,&#39;face&#39;,302);
+SubAss=SetCnode(SubAss,2,Acc_ET);
+SubAss=SetRbe2(SubAss,2,2);
+
+NodeNum=[1;2];
+Type=&#123;&#39;All&#39;;&#39;All&#39;&#125;;
+PartNum=[0;0];
+Master=table(PartNum,NodeNum,Type);
+inputSubStr.SubStr=SubAss;
+inputSubStr.Master=Master;
+paramsSubStr.Name=&quot;Shaft1&quot;;
+Sub = solve.SubStr(paramsSubStr,inputSubStr);
+Sub = Sub.solve();
+Plot3D(Sub)
+FbiGenerate(Sub)
+
+Multi=MultiBody(&#39;Shaft1 Test&#39;);
+Multi=AddBody(Multi,Sub);
+Simpack_Output(Multi);
+</code></pre>
+<p>当采用刚性连接时，使用SetRbe2建立刚性区域，设置完成后，使用Baffalo SubStr模块导出超单元，并生成fbi文件。对比ANSYS和Simpac导入模态的结果，可以发现二者基本一致。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ANSYS模态计算</th>
+<th>Simpack模态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1阶弯曲</td>
+<td><img src="/./img/SubStr.assets/Fig159.jpg" style="zoom:50%;" /></td>
+<td><img src="/./img/SubStr.assets/Fig162.jpg"></td>
+</tr>
+<tr>
+<td>2阶弯曲</td>
+<td><img src="/./img/SubStr.assets/Fig160.jpg" style="zoom:50%;" /></td>
+<td><img src="/./img/SubStr.assets/Fig163.jpg"></td>
+</tr>
+<tr>
+<td>1阶扭转</td>
+<td><img src="/./img/SubStr.assets/Fig161.jpg" style="zoom:50%;" /></td>
+<td><img src="/./img/SubStr.assets/Fig164.jpg"></td>
+</tr>
+</tbody></table>
+<p>以下分别为ANSYS和Simpack的计算结果，两者的误差非常小。</p>
+<img src="/./img/SubStr.assets/Fig166.jpg" style="zoom:50%;" />
+
+<p><img src="/./img/SubStr.assets/Fig165.jpg"></p>
+<h3 id="Shaft1-compare-Flexible-connection-Flag-2"><a href="#Shaft1-compare-Flexible-connection-Flag-2" class="headerlink" title="Shaft1 compare (Flexible connection) (Flag&#x3D;2)"></a>Shaft1 compare (Flexible connection) (Flag&#x3D;2)</h3><pre><code class="language-matlab">% Shaft 1
+inputshaft1.Length = 500;
+inputshaft1.ID = [0,0];
+inputshaft1.OD = [50,50];
+paramsshaft1 = struct();
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+SubAss=obj1.output.Assembly;
+
+mat1.table=[&quot;MU&quot;,0.15];
+SubAss=AddMaterial(SubAss,mat1);
+Acc_Mat=GetNMaterial(SubAss);
+
+%% Define Element Types
+ET1.name=&#39;173&#39;;ET1.opt=[2,2;4,1;12,5];ET1.R=[];
+SubAss=AddET(SubAss,ET1);
+ET2.name=&#39;170&#39;;ET2.opt=[2,1;4,111111];ET2.R=[];
+SubAss=AddET(SubAss,ET2);
+ET3.name=&#39;21&#39;;ET3.opt=[3,0];ET3.R=[0,0,0,0,0,0];
+SubAss=AddET(SubAss,ET3);
+Acc_ET=GetNET(SubAss);
+%% Define Contacts
+SubAss=AddCnode(SubAss,0,0,0);
+SubAss=AddCnode(SubAss,500,0,0);
+SubAss=SetCnode(SubAss,1,Acc_ET);
+SubAss=SetCnode(SubAss,2,Acc_ET);
+
+SubAss=AddCon(SubAss,1,301);
+SubAss=AddTar(SubAss,1,0,1);
+SubAss=SetConMaterial(SubAss,1,Acc_Mat);
+SubAss=SetConET(SubAss,1,Acc_ET-2);
+SubAss=SetTarET(SubAss,1,Acc_ET-1);
+
+SubAss=AddCon(SubAss,1,302);
+SubAss=AddTar(SubAss,2,0,2);
+SubAss=SetConMaterial(SubAss,2,Acc_Mat);
+SubAss=SetConET(SubAss,2,Acc_ET-2);
+SubAss=SetTarET(SubAss,2,Acc_ET-1);
+
+NodeNum=[1;2];
+Type=&#123;&#39;All&#39;;&#39;All&#39;&#125;;
+PartNum=[0;0];
+Master=table(PartNum,NodeNum,Type);
+inputSubStr.SubStr=SubAss;
+inputSubStr.Master=Master;
+paramsSubStr.Name=&quot;Shaft1&quot;;
+Sub = solve.SubStr(paramsSubStr,inputSubStr);
+Sub = Sub.solve();
+Plot3D(Sub)
+FbiGenerate(Sub)
+
+Multi=MultiBody(&#39;Shaft1 Test&#39;);
+Multi=AddBody(Multi,Sub);
+Simpack_Output(Multi);
+</code></pre>
+<p>采用柔性连接时，不能直接采用SetRbe3建立连接，Simpack不识别ANSYS中此连接。需采用建立接触对的方式建立柔性连接，设置Contact属性为ET1.opt&#x3D;[2,2;4,1;12,5]，接着设置Target属性ET2.opt&#x3D;[2,1;4,111111]，此时的Marker点为ANSYS中的从节点。</p>
+<p>在实际工程中需要依据经验和测试的结果来决定连接采用柔性还是刚性，比如螺栓连接，相对较刚，可采用刚性连接，再比如轴承，如果直径较大，建议采用柔性连接。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
     </div>

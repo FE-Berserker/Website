@@ -6,20 +6,62 @@
   <meta name="keywords" content="">
   <meta name="description" content="Margin | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="ISO1940介绍ISO1940用于计算动平衡的不平衡量。 类结构 输入 input：  Mass : 转子质量 单位ton n: 转速 RPM LA : 跨距A LB : 跨距B  参数 params:  Ratio ：估算不平衡质量比例 Name : 名称 G: 平衡品质等级  输出 output :  DisA : A端不平衡质量离中心距离 DisB : B端不平衡质量离中心距离 MA: A">
+<meta name="description" content="Layer介绍Baffalo_Layer 作为一个类似于图层的类，他可以存储不同的元素（点、线、网格），且更加关注不同元素间的计算和转换。 主要参考的工具箱或代码：Gibbon$^{[1][2]}$,MRST$^{[3]}$ 案例LoftLinear (Flag&#x3D;1)%% Bottom verts ns&#x3D;75; t&#x3D;linspace(0,2*pi,ns); t&#x3D;t(1:end-1); r">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ISO1940">
-<meta property="og:url" content="http://example.com/2025/02/22/ISO1940/index.html">
+<meta property="og:title" content="Layer">
+<meta property="og:url" content="http://example.com/2025/02/22/Layer/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="ISO1940介绍ISO1940用于计算动平衡的不平衡量。 类结构 输入 input：  Mass : 转子质量 单位ton n: 转速 RPM LA : 跨距A LB : 跨距B  参数 params:  Ratio ：估算不平衡质量比例 Name : 名称 G: 平衡品质等级  输出 output :  DisA : A端不平衡质量离中心距离 DisB : B端不平衡质量离中心距离 MA: A">
+<meta property="og:description" content="Layer介绍Baffalo_Layer 作为一个类似于图层的类，他可以存储不同的元素（点、线、网格），且更加关注不同元素间的计算和转换。 主要参考的工具箱或代码：Gibbon$^{[1][2]}$,MRST$^{[3]}$ 案例LoftLinear (Flag&#x3D;1)%% Bottom verts ns&#x3D;75; t&#x3D;linspace(0,2*pi,ns); t&#x3D;t(1:end-1); r">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/ISO1940.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/ISO1940.assets/fig8.png">
-<meta property="article:published_time" content="2025-02-22T02:21:27.761Z">
-<meta property="article:modified_time" content="2025-02-22T02:23:26.977Z">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig2.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig3.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig4.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig5.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig6.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig7.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig8.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig9.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig10.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig11.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig12.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig13.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig14.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig15.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig16.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig17.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig18.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig19.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig20.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig21.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig22.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig23.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig24.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig25.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig26.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig27.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig28.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig29.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig30.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig31.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig32.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig33.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig34.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig35.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig36.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig37.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig38.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig39.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig40.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig41.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig42.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig43.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig44.jpg">
+<meta property="article:published_time" content="2025-02-22T08:48:02.392Z">
+<meta property="article:modified_time" content="2025-02-22T08:50:07.151Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/ISO1940.assets/Fig1.jpg">
+<meta name="twitter:image" content="http://example.com/img/Layer.assets/Fig1.jpg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -106,7 +148,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(12)</small>
+                <small>(13)</small>
             
         </div>
     </li>
@@ -118,7 +160,7 @@
         <div data-rel="Baffalo框架">
             
             Baffalo框架
-            <small>(9)</small>
+            <small>(10)</small>
         </div>
         
     </li>
@@ -184,7 +226,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="12">
+<input type="hidden" id="yelog_site_posts_number" value="13">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -234,6 +276,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/22/Layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Layer">Layer</span>
+            <span class="post-date" title="2025-02-22 16:48:02">2025/02/22</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo方法 "

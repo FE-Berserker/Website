@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Layer | Baffalo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="Layer | Baffalo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="Layer介绍Baffalo_Layer 作为一个类似于图层的类，他可以存储不同的元素（点、线、网格），且更加关注不同元素间的计算和转换。 主要参考的工具箱或代码：Gibbon$^{[1][2]}$,MRST$^{[3]}$ 案例LoftLinear (Flag&#x3D;1)%% Bottom verts ns&#x3D;75; t&#x3D;linspace(0,2*pi,ns); t&#x3D;t(1:end-1); r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Layer">
+<meta property="og:url" content="http://example.com/2025/02/22/Layer/index.html">
+<meta property="og:site_name" content="Baffalo">
+<meta property="og:description" content="Layer介绍Baffalo_Layer 作为一个类似于图层的类，他可以存储不同的元素（点、线、网格），且更加关注不同元素间的计算和转换。 主要参考的工具箱或代码：Gibbon$^{[1][2]}$,MRST$^{[3]}$ 案例LoftLinear (Flag&#x3D;1)%% Bottom verts ns&#x3D;75; t&#x3D;linspace(0,2*pi,ns); t&#x3D;t(1:end-1); r">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig2.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig3.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig4.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig5.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig6.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig7.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig8.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig9.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig10.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig11.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig12.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig13.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig14.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig15.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig16.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig17.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig18.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig19.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig20.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig21.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig22.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig23.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig24.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig25.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig26.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig27.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig28.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig29.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig30.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig31.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig32.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig33.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig34.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig35.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig36.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig37.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig38.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig39.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig40.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig41.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig42.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig43.jpg">
+<meta property="og:image" content="http://example.com/img/Layer.assets/Fig44.jpg">
+<meta property="article:published_time" content="2025-02-22T08:48:02.392Z">
+<meta property="article:modified_time" content="2025-02-22T08:50:07.151Z">
+<meta property="article:author" content="FE-Beserker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/Layer.assets/Fig1.jpg">
+
+
+<link rel="icon" href="/img/Baffalo.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/Baffalo.png"/>
+</a>
+<div class="author">
+    <span>FE-Beserker</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/FE-Berserker"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:392176462@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(13)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo框架">
+            
+            Baffalo框架
+            <small>(10)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo部件">
+            
+            Baffalo部件
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo方法">
+            
+            Baffalo方法
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo求解">
+            
+            Baffalo求解
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="13">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/22/Layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Layer">Layer</span>
+            <span class="post-date" title="2025-02-22 16:48:02">2025/02/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/02/22/ISO1940/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ISO1940">ISO1940</span>
+            <span class="post-date" title="2025-02-22 10:21:27">2025/02/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo求解 "
+           href="/2025/02/21/SubStr/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SubStr">SubStr</span>
+            <span class="post-date" title="2025-02-21 12:22:35">2025/02/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/02/20/Commonshaft/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Commonshaft">Commonshaft</span>
+            <span class="post-date" title="2025-02-20 12:07:33">2025/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/19/Mesh/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mesh">Mesh</span>
+            <span class="post-date" title="2025-02-19 18:42:15">2025/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/18/Mesh2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mesh2D">Mesh2D</span>
+            <span class="post-date" title="2025-02-18 17:23:50">2025/02/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/18/Surface2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Surface2D">Surface2D</span>
+            <span class="post-date" title="2025-02-18 17:19:49">2025/02/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/17/Line/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Line">Line</span>
+            <span class="post-date" title="2025-02-17 17:54:26">2025/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/16/Line2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Line2D">Line2D</span>
+            <span class="post-date" title="2025-02-16 17:39:49">2025/02/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Point/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Point">Point</span>
+            <span class="post-date" title="2025-02-15 21:15:50">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Point2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Point2D">Point2D</span>
+            <span class="post-date" title="2025-02-15 21:13:34">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Margin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Margin">Margin</span>
+            <span class="post-date" title="2025-02-15 21:07:31">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/13/Component/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Component">Component</span>
+            <span class="post-date" title="2025-02-13 18:00:56">2025/02/13</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Layer" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Layer</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Baffalo框架">Baffalo框架</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-02-22 16:50:07'>2025-02-22 16:48</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Layer"><span class="toc-text">Layer</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LoftLinear-Flag-1"><span class="toc-text">LoftLinear (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Extrude-to-face-Flag-2"><span class="toc-text">Extrude to face (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Helical-Line-Flag-3"><span class="toc-text">Helical Line (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Mesh-Flag-4"><span class="toc-text">Add Mesh (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Curve-and-calculate-curvature-Flag-5"><span class="toc-text">Add Curve and calculate curvature (Flag&#x3D;5)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-thickness-of-a-plate-Flag-6"><span class="toc-text">Add thickness of a plate (Flag&#x3D;6)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bounding-Box-Flag-7"><span class="toc-text">Bounding Box (Flag&#x3D;7)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sweep-loft-Flag-8"><span class="toc-text">Sweep loft (Flag&#x3D;8)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Read-STL-file-Flag-9"><span class="toc-text">Read STL file (Flag&#x3D;9)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Read-msh-file-Flag-10"><span class="toc-text">Read msh file (Flag&#x3D;10)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tri-to-Dual-Flag-11"><span class="toc-text">Tri to Dual (Flag&#x3D;11)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plane-Mesh-intersections-Flag-12"><span class="toc-text">Plane Mesh intersections (Flag&#x3D;12)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-Mesh-intersections-Flag-13"><span class="toc-text">Mesh Mesh intersections (Flag&#x3D;13)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Combine-Mesh-pair-Flag-14"><span class="toc-text">Combine Mesh pair (Flag&#x3D;14)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Curve-to-Mesh-Flag-15"><span class="toc-text">Curve to Mesh (Flag&#x3D;15)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Line-Mesh-intersections-Flag-16"><span class="toc-text">Line Mesh intersections (Flag&#x3D;16)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Project-points-to-plane-Flag-17"><span class="toc-text">Project points to plane (Flag&#x3D;17)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Project-curves-to-plane-Flag-18"><span class="toc-text">Project curves to plane (Flag&#x3D;18)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Line-Plane-intersections-Flag-19"><span class="toc-text">Line Plane intersections (Flag&#x3D;19)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scale-Flag-20"><span class="toc-text">Scale (Flag&#x3D;20)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Grid-Flag-21"><span class="toc-text">Add Grid (Flag&#x3D;21)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-ShellGrid-Flag-22"><span class="toc-text">Add ShellGrid (Flag&#x3D;22)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Line-object-Flag-23"><span class="toc-text">Add Line object (Flag&#x3D;23)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CheatTable"><span class="toc-text">CheatTable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-6 i,
+    .toc-level-6 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Layer"><a href="#Layer" class="headerlink" title="Layer"></a>Layer</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Baffalo_Layer 作为一个类似于图层的类，他可以存储不同的元素（点、线、网格），且更加关注不同元素间的计算和转换。</p>
+<p>主要参考的工具箱或代码：Gibbon$^{[1][2]}$,MRST$^{[3]}$</p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="LoftLinear-Flag-1"><a href="#LoftLinear-Flag-1" class="headerlink" title="LoftLinear (Flag&#x3D;1)"></a>LoftLinear (Flag&#x3D;1)</h3><pre><code class="language-matlab">%% Bottom verts
+ns=75;
+t=linspace(0,2*pi,ns);
+t=t(1:end-1);
+r=5;
+x=r*cos(t);
+y=r*sin(t);
+a=Point2D(&#39;Bottom Verts&#39;);
+a=AddPoint(a,x&#39;,y&#39;);
+Plot(a);
+%% Top verts
+t=linspace(0,2*pi,ns);
+t=t(1:end-1);
+r=6+2.*sin(5*t);
+[x,y] = pol2cart(t,r);
+a1=Point2D(&#39;Top Verts&#39;);
+a1=AddPoint(a1,x&#39;,y&#39;);
+Plot(a1);
+%% Layer
+l1=Layer(&#39;Layer&#39;);
+l1=AddElement(l1,a);
+l1=AddElement(l1,a1,&#39;transform&#39;,[6,3,12,0,0,90]);
+Plot(l1);
+l1=LoftLinear(l1,1,2,&#39;closeLoopOpt&#39;,1,&#39;patchType&#39;,&#39;tri_slash&#39;);
+l1=LoftLinear(l1,1,2,&#39;closeLoopOpt&#39;,1,&#39;patchType&#39;,&#39;tri&#39;);
+l1=Move(l1,[20,0,0],&#39;Meshes&#39;,1);
+Plot(l1);
+</code></pre>
+<p>通过点loft出曲面。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Layer.assets/Fig1.jpg" style="zoom: 100%;"></td><td><img src="/./img/Layer.assets/Fig2.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Layer.assets/Fig3.jpg" style="zoom: 100%;"></td><td><img src="/./img/Layer.assets/Fig4.jpg" style="zoom: 120%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Extrude-to-face-Flag-2"><a href="#Extrude-to-face-Flag-2" class="headerlink" title="Extrude to face (Flag&#x3D;2)"></a>Extrude to face (Flag&#x3D;2)</h3><pre><code class="language-matlab">%% Bottom verts
+ns=75;
+t=linspace(0,2*pi,ns);
+t=t(1:end-1);
+r=5;
+x=r*cos(t);
+y=r*sin(t);
+a=Point2D(&#39;Bottom Verts&#39;);
+a=AddPoint(a,x&#39;,y&#39;);
+Plot(a);
+%% Top verts
+t=linspace(0,2*pi,ns);
+t=t(1:end-1);
+r=6+2.*sin(5*t);
+[x,y] = pol2cart(t,r);
+a1=Point2D(&#39;Top Verts&#39;);
+a1=AddPoint(a1,x&#39;,y&#39;);
+Plot(a1);
+%% Layer
+l1=Layer(&#39;Layer&#39;);
+l1=AddElement(l1,a);
+l1=AddElement(l1,a1,&#39;transform&#39;,[6,3,12,0,0,90]);
+Plot(l1);
+l1=LoftLinear(l1,1,2,&#39;closeLoopOpt&#39;,1,&#39;patchType&#39;,&#39;tri_slash&#39;);
+l1=LoftLinear(l1,1,2,&#39;closeLoopOpt&#39;,1,&#39;patchType&#39;,&#39;tri&#39;);
+l1=Move(l1,[20,0,0],&#39;Meshes&#39;,1);
+Plot(l1);
+</code></pre>
+<p>拉伸出曲面。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Layer.assets/Fig5.jpg" style="zoom: 100%;"></td><td><img src="/./img/Layer.assets/Fig6.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Helical-Line-Flag-3"><a href="#Helical-Line-Flag-3" class="headerlink" title="Helical Line (Flag&#x3D;3)"></a>Helical Line (Flag&#x3D;3)</h3><pre><code class="language-matlab">%% Creat circle
+a=Point2D(&#39;Point&#39;);
+a=AddPoint(a,0,0);
+b=Line2D(&#39;Line&#39;);
+b=AddCircle(b,10,a,1,&#39;seg&#39;,80);
+l1=Layer(&#39;Layer1&#39;);
+l1=AddElement(l1,b);
+Plot(l1);
+l1=Move(l1,[zeros(80,1),zeros(80,1),0.1*(0:79)&#39;],&#39;Lines&#39;,1);
+Plot(l1);
+for i=1:9
+l1=Move(l1,[0,0,0.1*80*i],&#39;Lines&#39;,1,&#39;new&#39;,1);
+end
+Plot(l1);
+</code></pre>
+<p>生成螺旋线。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Layer.assets/Fig7.jpg" style="zoom: 100%;"></td><td><img src="/./img/Layer.assets/Fig8.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+<img src="/./img/Layer.assets/Fig9.jpg" style="zoom:33%;" />
+
+<h3 id="Add-Mesh-Flag-4"><a href="#Add-Mesh-Flag-4" class="headerlink" title="Add Mesh (Flag&#x3D;4)"></a>Add Mesh (Flag&#x3D;4)</h3><pre><code class="language-matlab">%% Creat circle
+a=Point2D(&#39;Point&#39;);
+a=AddPoint(a,0,0);
+b=Line2D(&#39;Line&#39;);
+b=AddEllipse(b,20,20,a,1,&#39;ang&#39;,80);
+mm=Mesh(&#39;Shell Mesh&#39;);
+mm=Rot2Shell(mm,b,&#39;Slice&#39;,72,&#39;Type&#39;,2);
+mm=ReverseNormals(mm);
+l1=Layer(&#39;Layer1&#39;);
+l1=AddElement(l1,mm,&#39;Transform&#39;,[0,0,0,-90,0,0]);
+Plot(l1);
+m1=Mesh2D(&#39;Mesh1&#39;);
+m1=MeshQuadPlate(m1,[50,50]);
+Plot(m1);
+l1=AddElement(l1,m1,&#39;Transform&#39;,[0,0,0,-80,0,0]);
+l1=AddElement(l1,m1,&#39;Transform&#39;,[0,0,0,-60,0,0]);
+l1=AddElement(l1,m1,&#39;Transform&#39;,[0,0,0,-40,0,0]);
+l1=AddElement(l1,m1,&#39;Transform&#39;,[0,0,0,-20,0,0]);
+% l1=AddElement(l,m1,&#39;Transform&#39;,[0,0,0,-80,0,0]);
+% l1=AddElement(l,m1,&#39;Transform&#39;,[0,5,0,-80,0,0]);
+% l1=AddElement(l,m1,&#39;Transform&#39;,[0,10,0,-80,0,0]);
+% l1=AddElement(l,m1,&#39;Transform&#39;,[0,15,0,-80,0,0]);
+% l1=AddElement(l,m1,&#39;Transform&#39;,[0,0,0,0,0,0]);
+% l1=AddElement(l,m1,&#39;Transform&#39;,[0,0,5,0,0,0]);
+% l1=AddElement(l,m1,&#39;Transform&#39;,[0,0,10,0,0,0]);
+% l1=AddElement(l,m1,&#39;Transform&#39;,[0,0,15,0,0,0]);
+Plot(l1);
+</code></pre>
+<p>加入网格。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Layer.assets/Fig10.jpg" style="zoom: 100%;"></td><td><img src="/./img/Layer.assets/Fig11.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+<img src="/./img/Layer.assets/Fig12.jpg" style="zoom:50%;" />
+
+<h3 id="Add-Curve-and-calculate-curvature-Flag-5"><a href="#Add-Curve-and-calculate-curvature-Flag-5" class="headerlink" title="Add Curve and calculate curvature (Flag&#x3D;5)"></a>Add Curve and calculate curvature (Flag&#x3D;5)</h3><pre><code class="language-matlab">N = 101;
+theta = linspace(0,pi,N);
+x = sin(2*theta);
+y = cos(4*theta);
+z = cos(6*theta);
+P = [x&#39;,y&#39;,z&#39;];
+l1=Layer(&#39;Layer1&#39;);
+l1=AddCurve(l1,P);
+Plot(l1);
+[L,R,K,~] = CalculateCurvature(l1,1);
+figure;
+plot(L,1./R)
+xlabel L
+ylabel R
+title(&#39;Curvature vs. cumulative curve length&#39;)
+figure;
+h = plot3(P(:,1),P(:,2),P(:,3));
+grid on;
+axis equal
+set(h,&#39;marker&#39;,&#39;.&#39;);
+xlabel x
+ylabel y
+zlabel z
+title(&#39;3D curve with curvature vectors&#39;)
+hold on
+quiver3(P(:,1),P(:,2),P(:,3),K(:,1),K(:,2),K(:,3));
+hold off
+</code></pre>
+<p>曲线曲率计算参考于$^{[4]}$,用于计算空间中曲线的曲率。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Layer.assets/Fig13.jpg" style="zoom: 100%;"></td><td><img src="/./img/Layer.assets/Fig14.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Add-thickness-of-a-plate-Flag-6"><a href="#Add-thickness-of-a-plate-Flag-6" class="headerlink" title="Add thickness of a plate (Flag&#x3D;6)"></a>Add thickness of a plate (Flag&#x3D;6)</h3><pre><code class="language-matlab">m=Mesh2D(&#39;Mesh1&#39;);
+m=MeshQuadPlate(m,[10,10],[100,100]);
+l1=Layer(&#39;Layer1&#39;);
+l1=AddElement(l1,m);
+f=@(x,y,z)and(x&gt;0,y&gt;0);
+l1=AddHeight(l1,1,1,&#39;fun&#39;,f);
+f=@(x,y,z)and(x&gt;2,y&gt;2);
+l1=AddHeight(l1,1,1,&#39;fun&#39;,f);
+Plot(l1)
+</code></pre>
+<p>对一个平板增加高度。</p>
+<img src="/./img/Layer.assets/Fig15.jpg" style="zoom:50%;" />
+
+<h3 id="Bounding-Box-Flag-7"><a href="#Bounding-Box-Flag-7" class="headerlink" title="Bounding Box (Flag&#x3D;7)"></a>Bounding Box (Flag&#x3D;7)</h3><pre><code class="language-matlab">points=rand(100,3);
+l1=Layer(&#39;Layer1&#39;);
+l1=AddPoint(l1,points);
+l1=BoundingBox(l1,1);
+Plot(l1,&#39;face_alpha&#39;,0.3);
+</code></pre>
+<p>计算空间中点包络。</p>
+<img src="/./img/Layer.assets/Fig16.jpg" style="zoom:50%;" />
+
+<h3 id="Sweep-loft-Flag-8"><a href="#Sweep-loft-Flag-8" class="headerlink" title="Sweep loft (Flag&#x3D;8)"></a>Sweep loft (Flag&#x3D;8)</h3><pre><code class="language-matlab">%% Load data as structure
+dataStruct=load(&#39;Concannon_aorta_segmentation.mat&#39;);
+%Define smoothing Parameters
+pointSpacing=1.7;
+smoothFactorCentreLine=0.01; %Cubic smooth spline parameter [0-1] use empty to turn off
+smoothFactorSegments=0.01; %Cubic smooth spline parameter [0-1], 0=straight line, 1=cubic
+%% Access data structure components
+V_cent=dataStruct.Cent; %Centroid list
+segmentCell=dataStruct.Points; %Lumen boundary coordinates
+%Define thickness information
+dataStruct.WallThickness=[1.425 0.9 1 1.025 0.833333333 0.891666667 0.95 0.975 0.9 0.825];
+wallThickness=dataStruct.WallThickness; %Raw data for wall thickness as a function of location
+%% Resampling aorta section contours
+%Resample boundary points so each plane has same number of points for lofting
+%Find number of points to use based on biggest circumference
+d=zeros(size(segmentCell,2),1);
+SegNum=size(segmentCell,2);
+l1=Layer(&#39;Layer1&#39;);% Original Curve
+for indNow=1:1:SegNum
+l1=AddCurve(l1,segmentCell&#123;1,indNow&#125;&#39;);
+[Length,~,~,~] = CalculateCurvature(l1,indNow);
+d(indNow)=max(Length);
+end
+nSegment=round(max(d)/pointSpacing);
+%Resample
+segmentCellSmooth=segmentCell;
+segmentCellMean=segmentCell;
+w=ones(size(V_cent,1),1); %Cubic smoothing spline weights
+indexPlanePoints_V_cent=zeros(1,size(segmentCell,2)); %Indices of centre line points at sections
+for indNow=1:1:SegNum
+%Resample section contour
+l1=RebuildCurve(l1,indNow,nSegment,&#39;interpPar&#39;,smoothFactorSegments,&#39;closeLoopOpt&#39;,1);
+Num=GetNLines(l1);
+Vs_1_mean=mean(l1.Lines&#123;Num,1&#125;.P,1);
+segmentCellSmooth&#123;1,indNow&#125;=l1.Lines&#123;Num,1&#125;.P&#39;;
+segmentCellMean&#123;1,indNow&#125;=Vs_1_mean;
+%Prepare for center line smoothing by setting weight vector
+[~,indVertex_1]=min(sqrt(sum((V_cent-Vs_1_mean(ones(size(V_cent,1),1),:)).^2,2))); %Index closest to section
+w(indVertex_1)=1e9; %Heigh weight at contour sections
+indexPlanePoints_V_cent(indNow)=indVertex_1; %Store index of closets
+end
+%% Smooth center line
+%Fit smoothing spline through centreline points for loft
+l2=Layer(&#39;Layer2&#39;);
+if ~isempty(smoothFactorCentreLine)
+V_cent_original=V_cent;
+l2=AddCurve(l2,V_cent_original);
+[d,~,~,~] = CalculateCurvature(l2,1);
+V_cent = csaps(d,V_cent_original&#39;,smoothFactorCentreLine,d,w)&#39;; %Smoothed
+l2=AddPoint(l2,V_cent);
+l2=AddPoint(l2,V_cent(w==max(w),:));
+Plot(l2)
+end
+%% Offsetting section curves outward if thickening is inward
+for q=1:SegNum
+l1=CurveOffset(l1,SegNum+q,wallThickness(q));
+Num=GetNLines(l1);
+segmentCellSmooth&#123;1,q&#125;=l1.Lines&#123;Num,1&#125;.P&#39;;
+end
+%% Visualize offset curves
+Plot(l1,&#39;lineson&#39;,1,&#39;group&#39;,(SegNum+1:SegNum*3)&#39;)
+%% Perform main trunk loft
+% Initialize figure with center line
+l1=AddCurve(l1,V_cent);
+controlParameter.n=100;
+controlParameter.Method=&#39;HC&#39;;
+l1=SweepLoft(l1,(SegNum*2+1:SegNum*3)&#39;,GetNLines(l1),&#39;PointSpacing&#39;,pointSpacing,&#39;Smooth&#39;,controlParameter);
+Plot(l1,&#39;Lineson&#39;,0)
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Layer.assets/Fig17.jpg" style="zoom: 100%;"></td><td><img src="/./img/Layer.assets/Fig18.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<img src="/./img/Layer.assets/Fig19.jpg" style="zoom:50%;" />
+
+<h3 id="Read-STL-file-Flag-9"><a href="#Read-STL-file-Flag-9" class="headerlink" title="Read STL file (Flag&#x3D;9)"></a>Read STL file (Flag&#x3D;9)</h3><pre><code class="language-matlab">l1=Layer(&#39;Layer1&#39;);
+l1=STLRead(l1,&#39;femur_binary.stl&#39;);
+Plot(l1);
+l2=Layer(&#39;Layer2&#39;);
+l2=STLRead(l2,&#39;sphere_ascii.stl&#39;);
+% STLRead(l2,&#39;pallet_montado.stl&#39;);
+Plot(l2);
+</code></pre>
+<p>读取stl文件。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Layer.assets/Fig20.jpg" style="zoom: 100%;"></td><td><img src="/./img/Layer.assets/Fig21.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Read-msh-file-Flag-10"><a href="#Read-msh-file-Flag-10" class="headerlink" title="Read msh file (Flag&#x3D;10)"></a>Read msh file (Flag&#x3D;10)</h3><pre><code class="language-matlab">l1=Layer(&#39;Layer1&#39;);
+l1=LoadMsh(l1,&#39;bunny.msh&#39;);
+Plot(l1)
+</code></pre>
+<p>读取msh文件</p>
+<img src="/./img/Layer.assets/Fig22.jpg" style="zoom:50%;" />
+
+<h3 id="Tri-to-Dual-Flag-11"><a href="#Tri-to-Dual-Flag-11" class="headerlink" title="Tri to Dual (Flag&#x3D;11)"></a>Tri to Dual (Flag&#x3D;11)</h3><pre><code class="language-matlab">l1=Layer(&#39;Layer1&#39;);
+l1=LoadMsh(l1,&#39;bunny.msh&#39;);
+l1=Tri2Dual(l1,1);
+Plot(l1,&#39;mesheson&#39;,0);
+m=Mesh2D(&#39;Mesh1&#39;);
+m=LoadMsh(m,&#39;airfoil.msh&#39;);
+m=MeshDual(m);
+l1=AddElement(l1,m);
+l1=LoadMsh(l1,&#39;thinker.msh&#39;);
+l1=Tri2Dual(l1,3);
+Plot(l1,&#39;mesheson&#39;,0,&#39;xlim&#39;,[-0.5,1],&#39;ylim&#39;,[-1,1]);
+</code></pre>
+<p>将三角形网格转化为多边形网格</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Layer.assets/Fig23.jpg" style="zoom: 100%;"></td><td><img src="/./img/Layer.assets/Fig24.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Plane-Mesh-intersections-Flag-12"><a href="#Plane-Mesh-intersections-Flag-12" class="headerlink" title="Plane Mesh intersections (Flag&#x3D;12)"></a>Plane Mesh intersections (Flag&#x3D;12)</h3><pre><code class="language-matlab">%Sphere parameters
+numRefineStepsSphere=3;
+sphereRadius=2;
+mm=Mesh(&#39;Demo Sphere Mesh&#39;);
+mm=MeshSphere(mm,numRefineStepsSphere,sphereRadius);
+mm=Mesh3D(mm);
+l1=Layer(&#39;Layer1&#39;);
+l1=AddElement(l1,mm);
+pos=[0,0,0];
+vec=[1,1,1];
+l1=AddPlane(l1,pos,vec);
+l1=IntersectPlaneMesh(l1,1,1);
+Plot(l1,&#39;face_alpha&#39;,0.2,&#39;planescale&#39;,3);
+</code></pre>
+<p>计算平面与网格的交点。</p>
+<img src="/./img/Layer.assets/Fig25.jpg" style="zoom:50%;" />
+
+<h3 id="Mesh-Mesh-intersections-Flag-13"><a href="#Mesh-Mesh-intersections-Flag-13" class="headerlink" title="Mesh Mesh intersections (Flag&#x3D;13)"></a>Mesh Mesh intersections (Flag&#x3D;13)</h3><pre><code class="language-matlab">%Sphere parameters
+numRefineStepsSphere=3;
+sphereRadius=2;
+mm=Mesh(&#39;Demo Sphere Mesh&#39;);
+mm=MeshSphere(mm,numRefineStepsSphere,sphereRadius);
+mm=Mesh3D(mm);
+l1=Layer(&#39;Layer1&#39;);![[Assets/RoTA_Layer.assets/Fig27.jpg]]
+l1=AddElement(l1,mm);
+l1=AddElement(l1,mm,&#39;Transform&#39;,[2,0,0,0,0,0]);
+Plot(l1)
+[Slice,~,~]=IntersectMeshMesh(l1,1,2);
+Plot(l1,&#39;face_alpha&#39;,0.1);
+Plot(Slice);
+</code></pre>
+<p>计算网格与网格间的交点</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Layer.assets/Fig26.jpg" style="zoom: 100%;"></td><td><img src="/./img/Layer.assets/Fig27.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+<img src="/./img/Layer.assets/Fig28.jpg" style="zoom:50%;" />
+
+<h3 id="Combine-Mesh-pair-Flag-14"><a href="#Combine-Mesh-pair-Flag-14" class="headerlink" title="Combine Mesh pair (Flag&#x3D;14)"></a>Combine Mesh pair (Flag&#x3D;14)</h3><pre><code class="language-matlab">%Sphere parameters
+numRefineStepsSphere=3;
+sphereRadius=2;
+mm=Mesh(&#39;Demo Sphere Mesh&#39;);
+mm=MeshSphere(mm,numRefineStepsSphere,sphereRadius);
+mm=Mesh3D(mm);
+l1=Layer(&#39;Layer1&#39;);
+l1=AddElement(l1,mm);
+l1=AddElement(l1,mm,&#39;Transform&#39;,[2,0,0,0,0,0]);
+[~,m1,m2]=IntersectMeshMesh(l1,1,2);
+m1=KeepGroup(m1,1);
+m2=KeepGroup(m2,2);
+PlotFace(m1);
+PlotFace(m2);
+l2=Layer(&#39;Layer2&#39;);
+l2=AddElement(l2,m1);AddElement(l2,m2);
+Plot(l2);
+l2=CombineMeshPair(l2,1,2,&#39;reverse&#39;,1);
+l2=Move(l2,[10,0,0],&#39;Meshes&#39;,3);
+Plot(l2);
+l2=CombineMeshPair(l2,1,2,&#39;remesh&#39;,0.2,&#39;reverse&#39;,1);
+l2=Move(l2,[20,0,0],&#39;Meshes&#39;,4);
+Plot(l2);
+l2=Tri2Dual(l2,4);
+l2=Move(l2,[10,0,0],&#39;Duals&#39;,1);
+Plot(l2);
+</code></pre>
+<p>合并网格。</p>
+<img src="/./img/Layer.assets/Fig29.jpg" style="zoom:50%;" />
+
+<h3 id="Curve-to-Mesh-Flag-15"><a href="#Curve-to-Mesh-Flag-15" class="headerlink" title="Curve to Mesh (Flag&#x3D;15)"></a>Curve to Mesh (Flag&#x3D;15)</h3><pre><code class="language-matlab">%% Constants
+% number of vertices of trefoil curve
+nPoints = 200;
+% thickness of the 3D mesh
+thickness = .5;
+% number of corners around each curve vertex
+nCorners = 16;
+%% Create trefoil curve
+% parameterisation variable
+t = linspace(0, 2*pi, nPoints + 1);
+t(end) = [];
+% trefoil curve coordinates
+curve(:,1) = sin(t) + 2 * sin(2 * t);
+curve(:,2) = cos(t) - 2 * cos(2 * t);
+curve(:,3) = -sin(3 * t);
+l1=Layer(&#39;Layer1&#39;);
+l1=AddCurve(l1,curve);
+Plot(l1);
+l1=Curve2Mesh(l1,1,thickness,nCorners);
+Plot(l1);
+</code></pre>
+<p>曲线生成网格。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Layer.assets/Fig30.jpg" style="zoom: 100%;"></td><td><img src="/./img/Layer.assets/Fig31.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Line-Mesh-intersections-Flag-16"><a href="#Line-Mesh-intersections-Flag-16" class="headerlink" title="Line Mesh intersections (Flag&#x3D;16)"></a>Line Mesh intersections (Flag&#x3D;16)</h3><pre><code class="language-matlab">% Sphere Mesh
+numRefineStepsSphere=3;
+sphereRadius=2;
+mm=Mesh(&#39;Demo Sphere Mesh&#39;);
+mm=MeshSphere(mm,numRefineStepsSphere,sphereRadius);
+mm=Mesh3D(mm);
+l1=Layer(&#39;Layer1&#39;);
+l1=AddElement(l1,mm);
+Plot(l1);
+% Curve
+curve(:,1)=[-10;-1;1;10];
+curve(:,2)=[-10;-1;1;10];
+curve(:,3)=[-10;-1;1;10];
+l1=AddCurve(l1,curve);
+t = linspace(-2*pi, 2*pi, 200);
+curve1(:,1) = t&#39;;
+curve1(:,2)=sin(t&#39;);
+curve1(:,3)=zeros(200,1);
+l1=AddCurve(l1,curve1);
+Plot(l1);
+l1=IntersectCurveMesh(l1,[1;2],1);
+Plot(l1,&#39;face_alpha&#39;,0.1,&#39;edge_alpha&#39;,0.1);
+</code></pre>
+<p>线与网格的交点。</p>
+<img src="/./img/Layer.assets/Fig32.jpg" style="zoom:50%;" />
+
+<h3 id="Project-points-to-plane-Flag-17"><a href="#Project-points-to-plane-Flag-17" class="headerlink" title="Project points to plane (Flag&#x3D;17)"></a>Project points to plane (Flag&#x3D;17)</h3><pre><code class="language-matlab">l1=Layer(&#39;Layer1&#39;);
+pos=[0,0,0];
+vec=[1,0,0];
+l1=AddPlane(l1,pos,vec);
+pos=[0,0,0];
+vec=[1,1,0];
+l1=AddPlane(l1,pos,vec);
+P=-5+10*rand(10,3);
+l1=AddPoint(l1,P);
+Plot(l1,&#39;planescale&#39;,5);
+l1=ProjectPointPlane(l1,1,1);
+l1=ProjectPointPlane(l1,1,2);
+Plot(l1,&#39;planescale&#39;,5);
+</code></pre>
+<p>将点投影到平面。</p>
+<img src="/./img/Layer.assets/Fig33.jpg" style="zoom:50%;" />
+
+<h3 id="Project-curves-to-plane-Flag-18"><a href="#Project-curves-to-plane-Flag-18" class="headerlink" title="Project curves to plane (Flag&#x3D;18)"></a>Project curves to plane (Flag&#x3D;18)</h3><pre><code class="language-matlab">l1=Layer(&#39;Layer1&#39;);
+pos=[0,0,0];
+vec=[1,0,1];
+l1=AddPlane(l1,pos,vec);
+pos=[0,0,0];
+vec=[1,1,1];
+l1=AddPlane(l1,pos,vec);
+t = linspace(-2*pi, 2*pi, 200);
+curve1(:,1) = t&#39;;
+curve1(:,2)=sin(t&#39;);
+curve1(:,3)=zeros(200,1);
+l1=AddCurve(l1,curve1);
+Plot(l1,&#39;planescale&#39;,5);
+l1=ProjectCurvePlane(l1,1,1);
+l1=ProjectCurvePlane(l1,1,2);
+Plot(l1,&#39;planescale&#39;,5);
+</code></pre>
+<p>曲线投影到平面</p>
+<img src="/./img/Layer.assets/Fig34.jpg" style="zoom:50%;" />
+
+<h3 id="Line-Plane-intersections-Flag-19"><a href="#Line-Plane-intersections-Flag-19" class="headerlink" title="Line Plane intersections (Flag&#x3D;19)"></a>Line Plane intersections (Flag&#x3D;19)</h3><pre><code class="language-matlab">l1=Layer(&#39;Layer1&#39;);
+pos=[0,0,0];
+vec=[1,0,1];
+l1=AddPlane(l1,pos,vec);
+pos=[1,0,0];
+vec=[1,1,1];
+l1=AddPlane(l1,pos,vec);
+t = linspace(-2*pi, 2*pi, 200);
+curve1(:,1) = t&#39;;
+curve1(:,2)=sin(t&#39;);
+curve1(:,3)=zeros(200,1);
+l1=AddCurve(l1,curve1);
+Plot(l1,&#39;planescale&#39;,5);
+l1=IntersectCurvePlane(l1,1,1);
+l1=IntersectCurvePlane(l1,1,2);
+Plot(l1,&#39;planescale&#39;,5);
+</code></pre>
+<p>曲线与平面交点。</p>
+<img src="/./img/Layer.assets/Fig35.jpg" style="zoom:50%;" />
+
+<h3 id="Scale-Flag-20"><a href="#Scale-Flag-20" class="headerlink" title="Scale (Flag&#x3D;20)"></a>Scale (Flag&#x3D;20)</h3><pre><code class="language-matlab">l1=Layer(&#39;Layer1&#39;);
+l1=LoadMsh(l1,&#39;bunny.msh&#39;);
+Plot(l1);
+l1=Scale(l1,0.5,&#39;Meshes&#39;,1,&#39;new&#39;,1);
+Plot(l1,&#39;face_alpha&#39;,0.5);
+</code></pre>
+<p>缩放网格。</p>
+<img src="/./img/Layer.assets/Fig36.jpg" style="zoom:33%;" />
+
+<h3 id="Add-Grid-Flag-21"><a href="#Add-Grid-Flag-21" class="headerlink" title="Add Grid (Flag&#x3D;21)"></a>Add Grid (Flag&#x3D;21)</h3><pre><code class="language-matlab">l1=Layer(&#39;Layer1&#39;);
+l1=AddGrid(l1,1000,1000,7,8);
+Plot(l1);
+l2=Layer(&#39;Layer2&#39;);
+l2=AddGrid(l2,1000,1000,7,8,&#39;Type&#39;,2);
+Plot(l2);
+l3=Layer(&#39;Layer3&#39;);
+l3=AddGrid(l3,1000,1000,7,8,&#39;Type&#39;,4);
+Plot(l3);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Layer.assets/Fig37.jpg" style="zoom: 100%;"></td><td><img src="/./img/Layer.assets/Fig38.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<img src="/./img/Layer.assets/Fig39.jpg" style="zoom:33%;" />
+
+<h3 id="Add-ShellGrid-Flag-22"><a href="#Add-ShellGrid-Flag-22" class="headerlink" title="Add ShellGrid (Flag&#x3D;22)"></a>Add ShellGrid (Flag&#x3D;22)</h3><pre><code class="language-matlab">l1=Layer(&#39;Layer1&#39;);
+l1=AddShellGrid(l1,6800,30000,24,6);
+Plot(l1);
+l2=Layer(&#39;Layer2&#39;);
+l2=AddShellGrid(l2,6800,30000,24,6,&#39;Type&#39;,2);
+Plot(l2);
+l3=Layer(&#39;Layer3&#39;);
+l3=AddShellGrid(l3,6800,30000,24,6,&#39;Type&#39;,3);
+Plot(l3);
+l4=Layer(&#39;Layer4&#39;);
+l4=AddShellGrid(l4,6800,30000,6,6,&#39;Type&#39;,4);
+Plot(l4);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Layer.assets/Fig40.jpg" style="zoom: 100%;"></td><td><img src="/./img/Layer.assets/Fig41.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Layer.assets/Fig42.jpg" style="zoom: 100%;"></td><td><img src="/./img/Layer.assets/Fig43.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Add-Line-object-Flag-23"><a href="#Add-Line-object-Flag-23" class="headerlink" title="Add Line object (Flag&#x3D;23)"></a>Add Line object (Flag&#x3D;23)</h3><pre><code class="language-matlab">%% AddLine
+a=Point(&#39;Point Ass1&#39;);
+a=AddPoint(a,[0;5],[0;4],[0;2]);
+b=Line(&#39;Line Ass1&#39;);
+b=AddLine(b,a,1);
+%% AddCurve
+P = [0.5 1.5 4.5 3.0 7.5 6.0 8.5;
+    3.0 5.5 5.5 1.5 1.5 4.0 4.5;
+    0.0 0.0 0.0 0.0 0.0 0.0 0.0];
+a=AddPoint(a,P(1,:)&#39;,P(2,:)&#39;,P(3,:)&#39;);
+b=AddCurve(b,a,2);
+%% AddCircle
+a=AddPoint(a,0,0,5);
+b=AddCircle(b,2.5,a,3);
+b=AddCircle(b,3,a,3,&#39;rot&#39;,[45,45,45]);
+%% AddEllipse
+b=AddEllipse(b,6,3,a,3,&#39;rot&#39;,[0,-90,0],&#39;sang&#39;,-90,&#39;ang&#39;,180);
+Plot(b,&#39;clabel&#39;,1,&#39;styles&#39;,&#123;&#39;-&#39;&#125;);
+l1=Layer(&#39;Layer1&#39;);
+l1=AddElement(l1,b);
+Plot(l1);
+</code></pre>
+<img src="/./img/Layer.assets/Fig44.jpg" style="zoom:33%;" />
+
+<h2 id="CheatTable"><a href="#CheatTable" class="headerlink" title="CheatTable"></a>CheatTable</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Varargin</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AddCurve(obj,P)</td>
+<td></td>
+<td>Add curves</td>
+</tr>
+<tr>
+<td>AddElement(obj,inputobj)</td>
+<td>‘Transform’,’Compress’</td>
+<td>Add objects</td>
+</tr>
+<tr>
+<td>AddGrid(obj,lx,ly,nx,ny)</td>
+<td>‘Type’</td>
+<td>Add grids</td>
+</tr>
+<tr>
+<td>AddHeight(obj,Num,Height)</td>
+<td>‘coor’,fun’,’new’</td>
+<td>Add Mesh Height</td>
+</tr>
+<tr>
+<td>AddMesh(obj,meshinput)</td>
+<td></td>
+<td>Add Mesh</td>
+</tr>
+<tr>
+<td>AddPlane(obj,P0,N)</td>
+<td></td>
+<td>Add plane</td>
+</tr>
+<tr>
+<td>AddPoint(obj,P)</td>
+<td></td>
+<td>Add points</td>
+</tr>
+<tr>
+<td>AddShellGrid(obj,f,L,kn,nx)</td>
+<td>‘Type’</td>
+<td>Add shell grid</td>
+</tr>
+<tr>
+<td>BoundingBox(obj,pointsNum)</td>
+<td></td>
+<td>Bound box of points</td>
+</tr>
+<tr>
+<td>CalculateCurvature(obj,LineNo)</td>
+<td></td>
+<td>Calculate curvature of curves</td>
+</tr>
+<tr>
+<td>CombineMeshPair(obj,<br>meshno1,meshno2)</td>
+<td>‘remesh’,’reverse’</td>
+<td>Combine mesh pair</td>
+</tr>
+<tr>
+<td>ComputeGeometryDual(obj,Num)</td>
+<td></td>
+<td>Compute geometry dual</td>
+</tr>
+<tr>
+<td>ConnectPoints(obj,source,tar,<br>point1,point2)</td>
+<td></td>
+<td>Connect points</td>
+</tr>
+<tr>
+<td>Curve2Mesh(obj,lineno,<br>thickness,nCorners)</td>
+<td>‘close’</td>
+<td>Use curve to generate mesh</td>
+</tr>
+<tr>
+<td>CurveClockwise(obj,LineNum)</td>
+<td></td>
+<td>Check curve clockwise</td>
+</tr>
+<tr>
+<td>CurveOffset(obj,LinesNum,dis)</td>
+<td></td>
+<td>Curve offset</td>
+</tr>
+<tr>
+<td>Extrude2Face(obj,nn,depth)</td>
+<td>‘numSteps’,’pointSpacing’,<br>‘patchType’,’dir’,’closeLoopOpt’</td>
+<td>Extrude curve to face</td>
+</tr>
+<tr>
+<td>FindBoundaryCurve(obj,MeshNum)</td>
+<td>‘color’</td>
+<td>Find mesh boundary curve</td>
+</tr>
+<tr>
+<td>FindMeshBoundary(obj,MeshNum)</td>
+<td>‘color’</td>
+<td>Find mesh boundary edge</td>
+</tr>
+<tr>
+<td>GetNDuals(obj)</td>
+<td></td>
+<td>Get total number of duals</td>
+</tr>
+<tr>
+<td>GetNLines(obj)</td>
+<td></td>
+<td>Get total number of lines</td>
+</tr>
+<tr>
+<td>GetNMeshes(obj)</td>
+<td></td>
+<td>Get total number of meshes</td>
+</tr>
+<tr>
+<td>GetNMeshoutput(obj)</td>
+<td></td>
+<td>Get total number of meshoutput</td>
+</tr>
+<tr>
+<td>GetNPlanes(obj)</td>
+<td></td>
+<td>Get total number of planes</td>
+</tr>
+<tr>
+<td>GetNPoints(obj)</td>
+<td></td>
+<td>Get total number of point groups</td>
+</tr>
+<tr>
+<td>IntersectCurveMesh(obj,lineno,meshno)</td>
+<td>‘eps’</td>
+<td>Intersect curves and meshes</td>
+</tr>
+<tr>
+<td>IntersectCurvePlane(obj,lineno,planeno)</td>
+<td></td>
+<td>Intersect curves and planes</td>
+</tr>
+<tr>
+<td>IntersectMeshMesh(obj,meshno1,meshno2)</td>
+<td></td>
+<td>Intersect meshes and meshes</td>
+</tr>
+<tr>
+<td>IntersectPlaneMesh(obj,planeno,meshno)</td>
+<td></td>
+<td>Intersect meshes and planes</td>
+</tr>
+<tr>
+<td>LoadMsh(obj,name)</td>
+<td></td>
+<td>Load msh file</td>
+</tr>
+<tr>
+<td>LoftLinear(obj,start,last)</td>
+<td>‘numSteps’,’closeLoopOpt’,<br>‘patchType’,’untwistOpt’,</td>
+<td>Create a loft between the two input curves</td>
+</tr>
+<tr>
+<td>Meshoutput(obj)</td>
+<td>‘Lines’,’Compress’,’Dtol’</td>
+<td>Output Layer lines to mesh</td>
+</tr>
+<tr>
+<td>Move(obj,dis)</td>
+<td>‘Meshes’,’Points’,’Lines’,<br>‘Surfaces’,’Duals’,’new’</td>
+<td>Move object</td>
+</tr>
+<tr>
+<td>ObjRead(obj,filename)</td>
+<td></td>
+<td>Read object file</td>
+</tr>
+<tr>
+<td>Plot(obj)</td>
+<td>‘group’,’pointson’,’lineson’,<br>‘mesheson’,’dualson’,’planeson’,<br>‘linesmerge’,’surfaceson’,<br>‘face_normal’,’face_alpha’<br>,’edge_alpha’,’xlim’,’ylim’,<br>,’zlim’,’edgecolor’,’planescale’,<br>‘View’,’equal’,’grid’,’axe’</td>
+<td>Plot Layer object</td>
+</tr>
+<tr>
+<td>Plot2(obj)</td>
+<td></td>
+<td>Plot Layer object in Paraview</td>
+</tr>
+<tr>
+<td>ProjectCurvePlane(obj,lineno,planeno)</td>
+<td></td>
+<td>Project curves to planes</td>
+</tr>
+<tr>
+<td>ProjectPointPlane(obj,pointno,planeno)</td>
+<td></td>
+<td>Project points to planes</td>
+</tr>
+<tr>
+<td>RebuildCurve(obj,LinesNum,n)</td>
+<td>‘interpPar’,’closeLoopOpt’,<br>‘spacingFlag’,</td>
+<td>Rebuild curve</td>
+</tr>
+<tr>
+<td>Remesh(obj,MeshNo,opt)</td>
+<td></td>
+<td>Remesh the mesh</td>
+</tr>
+<tr>
+<td>Rotate(obj,angle)</td>
+<td>‘Meshes’,’Points’,’Lines’,<br>‘Surfaces’,’Duals’,’new’,<br>‘origin’</td>
+<td>Rotate the object</td>
+</tr>
+<tr>
+<td>Scale(obj,factor)</td>
+<td>‘Meshes’,’Points’,’Lines’,<br>‘Surfaces’,’Duals’,’new’,<br>‘origin’</td>
+<td>Scale the object</td>
+</tr>
+<tr>
+<td>STLRead(obj,filename)</td>
+<td></td>
+<td>Read stl file</td>
+</tr>
+<tr>
+<td>Subtract(obj,basemeshno,meshno)</td>
+<td></td>
+<td>Subtract meshes</td>
+</tr>
+<tr>
+<td>SweepLoft(obj,LineNum,guideline)</td>
+<td>‘PointSpacing’,’Nseg’,<br>‘Smooth’</td>
+<td>Sweep loft of lines</td>
+</tr>
+<tr>
+<td>Tri2Dual(obj,meshno)</td>
+<td></td>
+<td>Convert Tri mesh to Dual mesh</td>
+</tr>
+<tr>
+<td>Union(obj,meshno)</td>
+<td></td>
+<td>Union the meshes</td>
+</tr>
+<tr>
+<td>VTKWriteLines(obj)</td>
+<td></td>
+<td>Write VTK file of lines</td>
+</tr>
+<tr>
+<td>VTKWriteMeshes(obj)</td>
+<td></td>
+<td>Write VTK file of meshes</td>
+</tr>
+<tr>
+<td>VTKWritePoints(obj)</td>
+<td></td>
+<td>Write VTK file of</td>
+</tr>
+</tbody></table>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] <a target="_blank" rel="noopener" href="https://www.mathworks.com/matlabcentral/fileexchange/48208-gibboncode-gibbon?s_tid=srchtitle">https://www.mathworks.com/matlabcentral/fileexchange/48208-gibboncode-gibbon?s_tid=srchtitle</a></p>
+<p>[2]  <a target="_blank" rel="noopener" href="https://www.gibboncode.org/">https://www.gibboncode.org</a></p>
+<p>[3] <a target="_blank" rel="noopener" href="https://www.sintef.no/projectweb/mrst/">https://www.sintef.no/projectweb/mrst/</a></p>
+<p>[4] <a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/matlabcentral/fileexchange/69452-curvature-of-a-1d-curve-in-a-2d-or-3d-space?s_tid=srchtitle">https://ww2.mathworks.cn/matlabcentral/fileexchange/69452-curvature-of-a-1d-curve-in-a-2d-or-3d-space?s_tid=srchtitle</a></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2025 FE-Berserker
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

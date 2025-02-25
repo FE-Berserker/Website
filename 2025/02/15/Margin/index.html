@@ -6,62 +6,29 @@
   <meta name="keywords" content="">
   <meta name="description" content="Margin | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Layer介绍Baffalo_Layer 作为一个类似于图层的类，他可以存储不同的元素（点、线、网格），且更加关注不同元素间的计算和转换。 主要参考的工具箱或代码：Gibbon$^{[1][2]}$,MRST$^{[3]}$ 案例LoftLinear (Flag&#x3D;1)%% Bottom verts ns&#x3D;75; t&#x3D;linspace(0,2*pi,ns); t&#x3D;t(1:end-1); r">
+<meta name="description" content="Commonplate介绍Commonplate是平板类，它可以通过拉伸一个平面生成网格。 类结构 输入 input：  Meshsize : 单元尺寸 Thickness : 厚度 Hole : 孔边界Line2D Outline : 外轮廓Line2D  参数 params:  Order ：单元阶数 Offset : 壳单元基准面 Name : 名称 N_Slice: 厚度方向网格划分数量">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Layer">
-<meta property="og:url" content="http://example.com/2025/02/22/Layer/index.html">
+<meta property="og:title" content="Commonplate">
+<meta property="og:url" content="http://example.com/2025/02/25/Commonplate/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="Layer介绍Baffalo_Layer 作为一个类似于图层的类，他可以存储不同的元素（点、线、网格），且更加关注不同元素间的计算和转换。 主要参考的工具箱或代码：Gibbon$^{[1][2]}$,MRST$^{[3]}$ 案例LoftLinear (Flag&#x3D;1)%% Bottom verts ns&#x3D;75; t&#x3D;linspace(0,2*pi,ns); t&#x3D;t(1:end-1); r">
+<meta property="og:description" content="Commonplate介绍Commonplate是平板类，它可以通过拉伸一个平面生成网格。 类结构 输入 input：  Meshsize : 单元尺寸 Thickness : 厚度 Hole : 孔边界Line2D Outline : 外轮廓Line2D  参数 params:  Order ：单元阶数 Offset : 壳单元基准面 Name : 名称 N_Slice: 厚度方向网格划分数量">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig2.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig3.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig4.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig5.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig6.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig7.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig8.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig9.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig10.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig11.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig12.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig13.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig14.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig15.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig16.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig17.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig18.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig19.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig20.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig21.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig22.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig23.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig24.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig25.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig26.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig27.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig28.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig29.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig30.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig31.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig32.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig33.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig34.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig35.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig36.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig37.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig38.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig39.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig40.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig41.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig42.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig43.jpg">
-<meta property="og:image" content="http://example.com/img/Layer.assets/Fig44.jpg">
-<meta property="article:published_time" content="2025-02-22T08:48:02.392Z">
-<meta property="article:modified_time" content="2025-02-22T08:50:07.151Z">
+<meta property="og:image" content="http://example.com/img/Commonplate.assets/Fig1.png">
+<meta property="og:image" content="http://example.com/img/Commonplate.assets/Fig2.png">
+<meta property="og:image" content="http://example.com/img/Commonplate.assets/Fig3.png">
+<meta property="og:image" content="http://example.com/img/Commonplate.assets/Fig4.png">
+<meta property="og:image" content="http://example.com/img/Commonplate.assets/Fig5.png">
+<meta property="og:image" content="http://example.com/img/Commonplate.assets/Fig6.png">
+<meta property="og:image" content="http://example.com/img/Commonplate.assets/Fig7.png">
+<meta property="og:image" content="http://example.com/img/Commonplate.assets/Fig8.png">
+<meta property="og:image" content="http://example.com/img/Commonplate.assets/Fig9.png">
+<meta property="og:image" content="http://example.com/img/Commonplate.assets/Fig10.png">
+<meta property="og:image" content="http://example.com/img/Commonplate.assets/Fig11.png">
+<meta property="article:published_time" content="2025-02-25T15:39:29.493Z">
+<meta property="article:modified_time" content="2025-02-25T15:41:24.879Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/Layer.assets/Fig1.jpg">
+<meta name="twitter:image" content="http://example.com/img/Commonplate.assets/Fig1.png">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -148,7 +115,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(13)</small>
+                <small>(14)</small>
             
         </div>
     </li>
@@ -175,7 +142,7 @@
         <div data-rel="Baffalo部件">
             
             Baffalo部件
-            <small>(1)</small>
+            <small>(2)</small>
         </div>
         
     </li>
@@ -226,7 +193,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="13">
+<input type="hidden" id="yelog_site_posts_number" value="14">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -276,6 +243,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/02/25/Commonplate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Commonplate">Commonplate</span>
+            <span class="post-date" title="2025-02-25 23:39:29">2025/02/25</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo框架 "

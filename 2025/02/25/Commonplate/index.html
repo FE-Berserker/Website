@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Baffalo</title>
+  <title>Commonplate | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Baffalo">
+  <meta name="description" content="Commonplate | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Commonplate介绍Commonplate是平板类，它可以通过拉伸一个平面生成网格。 类结构 输入 input：  Meshsize : 单元尺寸 Thickness : 厚度 Hole : 孔边界Line2D Outline : 外轮廓Line2D  参数 params:  Order ：单元阶数 Offset : 壳单元基准面 Name : 名称 N_Slice: 厚度方向网格划分数量">
 <meta property="og:type" content="article">
@@ -68,7 +68,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -386,12 +386,40 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-Commonplate" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Baffalo"><span class="toc-text">Baffalo</span></a></li></ol>
+        <h1 class="article-title">Commonplate</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Baffalo部件">Baffalo部件</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-02-25 23:41:24'>2025-02-25 23:39</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Commonplate"><span class="toc-text">Commonplate</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-plate-Flag-1"><span class="toc-text">Create a plate (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plate-Outline-subdivision%EF%BC%8Cwith-order-2-elements-Flag-2"><span class="toc-text">Plate Outline subdivision，with order 2 elements (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output-shell-elements-Flag-3"><span class="toc-text">Output shell elements (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Oupput-STL-file-Flag-4"><span class="toc-text">Oupput STL file (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deform-face-Flag-5"><span class="toc-text">Deform face (Flag&#x3D;5)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -404,54 +432,288 @@
     }
 </style>
 </div>
-            <h1 id="Baffalo"><a href="#Baffalo" class="headerlink" title="Baffalo"></a>Baffalo</h1><img src="./img/Baffalo.png" style="zoom: 25%;" />
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Commonplate"><a href="#Commonplate" class="headerlink" title="Commonplate"></a>Commonplate</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Commonplate是平板类，它可以通过拉伸一个平面生成网格。</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/Commonplate.assets/Fig1.png"></p>
+<p>输入 input：</p>
+<ul>
+<li>Meshsize : 单元尺寸</li>
+<li>Thickness : 厚度</li>
+<li>Hole : 孔边界Line2D</li>
+<li>Outline : 外轮廓Line2D</li>
+</ul>
+<p>参数 params:</p>
+<ul>
+<li>Order ：单元阶数</li>
+<li>Offset : 壳单元基准面</li>
+<li>Name : 名称</li>
+<li>N_Slice: 厚度方向网格划分数量</li>
+<li>Material : 材料</li>
+</ul>
+<p>输出 output :</p>
+<ul>
+<li>Assembly : 实体单元装配</li>
+<li>Assembly1 : 壳单元装配</li>
+<li>Surface : 截面</li>
+<li>SolidMesh : 实体网格</li>
+<li>ShellMesh : 壳网格</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-a-plate-Flag-1"><a href="#Create-a-plate-Flag-1" class="headerlink" title="Create a plate (Flag&#x3D;1)"></a>Create a plate (Flag&#x3D;1)</h3><pre><code class="language-matlab">% Plate 1
+IR=640/2;
+OR=768/2;
+par=442;
+radius=70;
+R=116/2;
+num=6;
+Rp=460;
+t=30;
+hd=17.5;
+sang=asin(R/OR)/pi*180;
+ang=360/num-2*sang;
+a=Point2D(&#39;Point Ass1&#39;);
+b=Line2D(&#39;Line Ass1&#39;,&#39;Dtol&#39;,1);
+a=AddPoint(a,0,0);
+for i=1:num
+b=AddCircle(b,OR,a,1,&#39;sang&#39;,sang+ang-360/num*(i-1),&#39;ang&#39;,-ang);
+theta=-360/num/180*pi*(i-1);
+mat=[cos(theta),-sin(theta);sin(theta),cos(theta)];
+p1=mat*[sqrt(OR^2-R^2),par;R,R];
+p1=p1&#39;;
+a=AddPoint(a,p1(:,1),p1(:,2));
+b=AddLine(b,a,2+3*(i-1));
+p2=mat*[par;0];
+p2=p2&#39;;
+a=AddPoint(a,p2(1,1),p2(1,2));
+b=AddCircle(b,R,a,3+3*(i-1),&#39;sang&#39;,90+theta/pi*180,&#39;ang&#39;,-180);
+p3=mat*[par,sqrt(OR^2-R^2);-R,-R];
+p3=p3&#39;;
+a=AddPoint(a,p3(:,1),p3(:,2));
+b=AddLine(b,a,4+3*(i-1));
+end
+for i=1:num
+b=CreateRadius(b,1+6*(i-1),radius);
+b=CreateRadius(b,5+6*(i-1),radius);
+end
+h1=Line2D(&#39;Hole Group1&#39;);
+h1=AddCircle(h1,IR,a,1);
+a1=Point2D(&#39;Point Ass2&#39;);
+a1=AddPoint(a1,Rp,0);
+h2=Line2D(&#39;Hole Group2&#39;);
+h2=AddCircle(h2,hd/2,a1,1);
+inputplate1.Outline= b;
+inputplate1.Hole = [h1;h2];
+inputplate1.Thickness = t;
+paramsplate1 = struct();
+obj1=plate.Commonplate(paramsplate1, inputplate1);
+obj1 = obj1.solve();
+obj1=MoveFace(obj1,3,[0,0,60],&#39;num&#39;,6);
+Plot2D(obj1);
+Plot3D(obj1);
+</code></pre>
+<p>由平面拉伸为平板。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Commonplate.assets/Fig2.png" style="zoom: 100%;"></td><td><img src="/./img/Commonplate.assets/Fig3.png" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
 
-<p>Baffalo (<a target="_blank" rel="noopener" href="https://github.com/FE-Berserker/Baffalo">https://github.com/FE-Berserker/Baffalo</a>) 是开源的Matlab工具箱来建立系统分析的工具，他可将文件导出到ANSYS或者Simpack</p>
-<p>Baffalo本身不是求解器，他可以提供网格、画图和工程计算的功能.</p>
-<ol>
-<li>首先打开<strong>setBaffaloPath</strong>函数设置对应路径</li>
-</ol>
-<p>如果你拥有ANSYS,将ANSYS路径设置如下,ANSYS是优秀的有限元分析软件。</p>
-<pre><code class="language-matlab">% Set ANSYS Path
-ANSYS_Path=&#39;C:\Program Files\ANSYS Inc\v201\ansys\bin\winx64\ANSYS201.exe&#39;;
+<h3 id="Plate-Outline-subdivision，with-order-2-elements-Flag-2"><a href="#Plate-Outline-subdivision，with-order-2-elements-Flag-2" class="headerlink" title="Plate Outline subdivision，with order 2 elements (Flag&#x3D;2)"></a>Plate Outline subdivision，with order 2 elements (Flag&#x3D;2)</h3><pre><code class="language-matlab">% Plate 1
+IR=640/2;
+OR=768/2;
+par=442;
+radius=70;
+R=116/2;
+num=6;
+Rp=460;
+t=30;
+hd=17.5;
+sang=asin(R/OR)/pi*180;
+ang=360/num-2*sang;
+a=Point2D(&#39;Point Ass1&#39;);
+b=Line2D(&#39;Line Ass1&#39;,&#39;Dtol&#39;,1);
+a=AddPoint(a,0,0);
+for i=1:num
+b=AddCircle(b,OR,a,1,&#39;sang&#39;,sang+ang-360/num*(i-1),&#39;ang&#39;,-ang);
+theta=-360/num/180*pi*(i-1);
+mat=[cos(theta),-sin(theta);sin(theta),cos(theta)];
+p1=mat*[sqrt(OR^2-R^2),par;R,R];
+p1=p1&#39;;
+a=AddPoint(a,p1(:,1),p1(:,2));
+b=AddLine(b,a,2+3*(i-1));
+p2=mat*[par;0];
+p2=p2&#39;;
+a=AddPoint(a,p2(1,1),p2(1,2));
+b=AddCircle(b,R,a,3+3*(i-1),&#39;sang&#39;,90+theta/pi*180,&#39;ang&#39;,-180);
+p3=mat*[par,sqrt(OR^2-R^2);-R,-R];
+p3=p3&#39;;
+a=AddPoint(a,p3(:,1),p3(:,2));
+b=AddLine(b,a,4+3*(i-1));
+end
+for i=1:num
+b=CreateRadius(b,1+6*(i-1),radius);
+b=CreateRadius(b,5+6*(i-1),radius);
+end
+h1=Line2D(&#39;Hole Group1&#39;);
+h1=AddCircle(h1,IR,a,1);
+a1=Point2D(&#39;Point Ass2&#39;);
+a1=AddPoint(a1,Rp,0);
+h2=Line2D(&#39;Hole Group2&#39;);
+h2=AddCircle(h2,hd/2,a1,1);
+inputplate1.Outline= b;
+inputplate1.Hole = [h1;h2];
+inputplate1.Thickness = t;
+paramsplate1.Order = 2;
+obj1=plate.Commonplate(paramsplate1, inputplate1);
+obj1 = obj1.solve();
+obj1=MoveFace(obj1,3,[0,0,60],&#39;num&#39;,6);
+Plot2D(obj1);
+obj1=OutputSolidModel(obj1,&#39;SubOutline&#39;,1);
+obj1=OutputSolidModel(obj1,&#39;SubOutline&#39;,1);
+Plot3D(obj1,&#39;faceno&#39;,201);
+Plot3D(obj1)
 </code></pre>
-<p>如果你拥有Simpack, 将Simpack路径设置如下，Simapck可提供系统的多体动力学分析。</p>
-<pre><code class="language-matlab">% SetSimpackPath
-Simpack_Path=&#39;D:\SimPack\run\bin\win64&#39;;
-</code></pre>
-<p>Paraview (<a target="_blank" rel="noopener" href="https://www.paraview.org/">https://www.paraview.org</a>) 是一款开源的可视化软件，Baffalo可将网格导出为VTK格式文件，Paraview路径设置如下：</p>
-<pre><code class="language-matlab">% SetParaViewPath
-ParaViewDir=&quot;D:\005_Lib\ParaView\bin&quot;;
-</code></pre>
-<ol start="2">
-<li>运行<strong>setBaffaloPath</strong></li>
-</ol>
-<p>Baffalo说明文档存放于Document中，案例文件存放于Tesing文件夹中。</p>
-<p>Baffalo (<a target="_blank" rel="noopener" href="https://github.com/FE-Berserker/Baffalo">https://github.com/FE-Berserker/Baffalo</a>) is open source Matlab tool to do the system simulation, it can output file to ANSYS or Simpack.</p>
-<p>Baffalo itself is not a solver, can provide the mesh 、figure 、engineer calculation functions</p>
-<ol>
-<li>First open the <strong>setBaffaloPath</strong> function to set the corresponding path</li>
-</ol>
-<p>If you own ANSYS, set the ANSYS path as follows. ANSYS is an excellent finite element analysis software.</p>
-<pre><code class="language-matlab">% Set ANSYS Path
-ANSYS_Path=&#39;C:\Program Files\ANSYS Inc\v201\ansys\bin\winx64\ANSYS201.exe&#39;;
-</code></pre>
-<p>If you have Simpack, set the Simpack path as follows. Simapck can provide multi-body dynamics analysis of the system.</p>
-<pre><code class="language-matlab">% SetSimpackPath
-Simpack_Path=&#39;D:\SimPack\run\bin\win64&#39;;
-</code></pre>
-<p>Paraview (<a target="_blank" rel="noopener" href="https://www.paraview.org/">https://www.paraview.org</a>) is an open source visualization software. Baffalo can export grids to VTK format files. The Paraview path is set as follows:</p>
-<pre><code class="language-matlab">% SetParaViewPath
-ParaViewDir=&quot;D:\005_Lib\ParaView\bin&quot;;
-</code></pre>
-<ol start="2">
-<li>Run <strong>setBaffaloPath</strong></li>
-</ol>
-<p>Baffalo documentation is stored in Document, and case files are stored in the Tesing folder.</p>
+<p>细分平板编号，更改为2阶单元。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Commonplate.assets/Fig4.png" style="zoom: 100%;"></td><td><img src="/./img/Commonplate.assets/Fig5.png" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
 
-        </article>
-        
-        
+<h3 id="Output-shell-elements-Flag-3"><a href="#Output-shell-elements-Flag-3" class="headerlink" title="Output shell elements (Flag&#x3D;3)"></a>Output shell elements (Flag&#x3D;3)</h3><pre><code class="language-matlab">b=Line2D(&#39;Round Polygon&#39;);
+b=AddRoundPolygon(b,10*sqrt(2),4,2,&#39;sang&#39;,45);
+inputplate1.Outline= b;
+inputplate1.Thickness = 2;
+paramsplate1= struct();
+obj1=plate.Commonplate(paramsplate1, inputplate1);
+obj1 = obj1.solve();
+Ass=obj1.output.Assembly1;
+Plot(Ass);
+</code></pre>
+<p>导出壳单元网格。</p>
+<img src="/./img/Commonplate.assets/Fig6.png" alt="Fig6" style="zoom:33%;" />
+
+<h3 id="Oupput-STL-file-Flag-4"><a href="#Oupput-STL-file-Flag-4" class="headerlink" title="Oupput STL file (Flag&#x3D;4)"></a>Oupput STL file (Flag&#x3D;4)</h3><pre><code class="language-matlab">b=Line2D(&#39;Round Polygon&#39;);
+b=AddRoundPolygon(b,10*sqrt(2),6,2);
+inputplate1.Outline= b;
+inputplate1.Thickness = 2;
+paramsplate1= struct();
+obj1=plate.Commonplate(paramsplate1, inputplate1);
+obj1 = obj1.solve();
+OutputSTL(obj1)
+% Load stl file
+L=Layer(&#39;test&#39;);
+Name=strcat(obj1.params.Name,&#39;.stl&#39;);
+L=STLRead(L,Name);
+Plot(L);
+</code></pre>
+<p>导出STL格式文件。</p>
+<img src="/./img/Commonplate.assets/Fig7.png" alt="Fig7" style="zoom:33%;" />
+
+<h3 id="Deform-face-Flag-5"><a href="#Deform-face-Flag-5" class="headerlink" title="Deform face (Flag&#x3D;5)"></a>Deform face (Flag&#x3D;5)</h3><pre><code class="language-matlab">a=Point2D(&#39;Points assembly&#39;);
+a=AddPoint(a,0,0);
+R1=180;
+r=30;
+a=AddPoint(a,R1,0,&#39;polar&#39;,&#39;deg&#39;);
+Angle1=acos(r/2/R1)*2/pi*180;
+Angle2=(180-Angle1)*2;
+b1=Line2D(&#39;OutLine&#39;);
+Sang1=180-Angle1/2;
+b1=AddCircle(b1,r,a,2,&#39;sang&#39;,Sang1,&#39;ang&#39;,Angle1);
+Sang2=-180+Angle1;
+b1=AddCircle(b1,R1,a,1,&#39;Sang&#39;,Sang2,&#39;ang&#39;,Angle2);
+inputplate1.Outline= b1;
+inputplate1.Thickness = 10;
+inputplate1.Meshsize=5;
+paramsplate1= struct();
+obj1=plate.Commonplate(paramsplate1, inputplate1);
+obj1 = obj1.solve();
+Plot3D(obj1)
+f1=@(r)(sqrt(360^2-r.^2)-360);
+obj1=DeformFace(obj1,f1,1);
+f2=@(r)(sqrt(360^2-r.^2)-360+10);
+obj1=DeformFace(obj1,f2,2);
+Plot3D(obj1)
+</code></pre>
+<p>对目标面按指定方式变换。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Commonplate.assets/Fig8.png" style="zoom: 100%;"></td><td><img src="/./img/Commonplate.assets/Fig9.png" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Commonplate.assets/Fig10.png" style="zoom: 100%;"></td><td><img src="/./img/Commonplate.assets/Fig11.png" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
+      
+       <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -460,11 +722,11 @@ ParaViewDir=&quot;D:\005_Lib\ParaView\bin&quot;;
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>

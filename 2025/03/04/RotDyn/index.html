@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>RotDyn | Baffalo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="RotDyn | Baffalo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="RotDyn介绍RotDyn类主要用于处理单个轴的转子动力学问题，通常需要借助Commonshaft类一块使用。 原理转动动力学方程$^{[1]}$考虑转动效应的动力方程如下：   $$[M]{\ddot{u}}+([G]+[C]){\dot{u}}+([K]-[K_{\mathfrak{c}}]){u}&#x3D;{F}$$ 式中：$[M],[C],[K]$一一分别为结构质量、阻尼和刚度矩阵；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RotDyn">
+<meta property="og:url" content="http://example.com/2025/03/04/RotDyn/index.html">
+<meta property="og:site_name" content="Baffalo">
+<meta property="og:description" content="RotDyn介绍RotDyn类主要用于处理单个轴的转子动力学问题，通常需要借助Commonshaft类一块使用。 原理转动动力学方程$^{[1]}$考虑转动效应的动力方程如下：   $$[M]{\ddot{u}}+([G]+[C]){\dot{u}}+([K]-[K_{\mathfrak{c}}]){u}&#x3D;{F}$$ 式中：$[M],[C],[K]$一一分别为结构质量、阻尼和刚度矩阵；">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/fig2.png">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/fig5.png">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/fig6.png">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig7.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig8.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg60.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig9.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig10.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig11.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig12.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig13.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig14.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig15.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig16.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig17.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig18.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig19.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig20.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig21.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig22.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig23.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig24.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig25.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig26.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig27.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig28.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig29.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig30.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig31.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig32.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig33.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig34.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig35.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg36.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig37.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig38.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig39.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/Fig40.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg41.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg42.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg51.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg43.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg44.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg45.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg46.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg47.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg48.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg49.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg50.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg52.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg53.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg54.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg55.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg56.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg57.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg58.jpg">
+<meta property="og:image" content="http://example.com/img/RotDyn.assets/FIg59.jpg">
+<meta property="article:published_time" content="2025-03-04T10:46:40.247Z">
+<meta property="article:modified_time" content="2025-03-04T12:52:04.718Z">
+<meta property="article:author" content="FE-Beserker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/RotDyn.assets/fig2.png">
+
+
+<link rel="icon" href="/img/Baffalo.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/Baffalo.png"/>
+</a>
+<div class="author">
+    <span>FE-Beserker</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/FE-Berserker"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:392176462@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(15)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo框架">
+            
+            Baffalo框架
+            <small>(10)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo部件">
+            
+            Baffalo部件
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo方法">
+            
+            Baffalo方法
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo求解">
+            
+            Baffalo求解
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="15">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo求解 "
+           href="/2025/03/04/RotDyn/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RotDyn">RotDyn</span>
+            <span class="post-date" title="2025-03-04 18:46:40">2025/03/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/02/25/Commonplate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Commonplate">Commonplate</span>
+            <span class="post-date" title="2025-02-25 23:39:29">2025/02/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/22/Layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Layer">Layer</span>
+            <span class="post-date" title="2025-02-22 16:48:02">2025/02/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/02/22/ISO1940/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ISO1940">ISO1940</span>
+            <span class="post-date" title="2025-02-22 10:21:27">2025/02/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo求解 "
+           href="/2025/02/21/SubStr/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SubStr">SubStr</span>
+            <span class="post-date" title="2025-02-21 12:22:35">2025/02/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/02/20/Commonshaft/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Commonshaft">Commonshaft</span>
+            <span class="post-date" title="2025-02-20 12:07:33">2025/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/19/Mesh/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mesh">Mesh</span>
+            <span class="post-date" title="2025-02-19 18:42:15">2025/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/18/Mesh2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mesh2D">Mesh2D</span>
+            <span class="post-date" title="2025-02-18 17:23:50">2025/02/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/18/Surface2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Surface2D">Surface2D</span>
+            <span class="post-date" title="2025-02-18 17:19:49">2025/02/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/17/Line/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Line">Line</span>
+            <span class="post-date" title="2025-02-17 17:54:26">2025/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/16/Line2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Line2D">Line2D</span>
+            <span class="post-date" title="2025-02-16 17:39:49">2025/02/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Point/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Point">Point</span>
+            <span class="post-date" title="2025-02-15 21:15:50">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Point2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Point2D">Point2D</span>
+            <span class="post-date" title="2025-02-15 21:13:34">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Margin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Margin">Margin</span>
+            <span class="post-date" title="2025-02-15 21:07:31">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/13/Component/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Component">Component</span>
+            <span class="post-date" title="2025-02-13 18:00:56">2025/02/13</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-RotDyn" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">RotDyn</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Baffalo求解">Baffalo求解</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-03-04 20:52:04'>2025-03-04 18:46</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RotDyn"><span class="toc-text">RotDyn</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E5%8A%A8%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%96%B9%E7%A8%8B-1"><span class="toc-text">转动动力学方程$^{[1]}$</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%A8%E9%87%8F%E5%8F%82%E6%95%B0-2"><span class="toc-text">质量参数$^{[2]}$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%BB%E5%B0%BC%E5%8F%82%E6%95%B0"><span class="toc-text">阻尼参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9A%E5%BA%A6%E5%8F%82%E6%95%B0"><span class="toc-text">刚度参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft-modal-analysis-Flag-1"><span class="toc-text">Shaft modal analysis (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Discs-Flag-2"><span class="toc-text">Add Discs (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Userdefined-Disc-output-moment-of-inertia-Flag-3"><span class="toc-text">Add Userdefined Disc, output moment of inertia (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Blade-Flag-4"><span class="toc-text">Add Blade (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Multi-Discs-Calculate-critical-speed-Flag-5"><span class="toc-text">Multi Discs &amp; Calculate critical speed (Flag&#x3D;5)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Elastic-Support-Flag-6"><span class="toc-text">Add Elastic Support (Flag&#x3D;6)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Consider-prestress-Flag-7"><span class="toc-text">Consider prestress (Flag&#x3D;7)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eccentricity-of-shaft-Flag-8"><span class="toc-text">Eccentricity of shaft (Flag&#x3D;8)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-speed-rotor-example-Flag-9"><span class="toc-text">High speed rotor example (Flag&#x3D;9)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-speed-rotor-Harmonic-analysis-Flag-10"><span class="toc-text">High speed rotor Harmonic analysis (Flag&#x3D;10)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-speed-unbalance-Flag-11"><span class="toc-text">High speed unbalance (Flag&#x3D;11)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-6 i,
+    .toc-level-6 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="RotDyn"><a href="#RotDyn" class="headerlink" title="RotDyn"></a>RotDyn</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>RotDyn类主要用于处理单个轴的转子动力学问题，通常需要借助Commonshaft类一块使用。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="转动动力学方程-1"><a href="#转动动力学方程-1" class="headerlink" title="转动动力学方程$^{[1]}$"></a>转动动力学方程$^{[1]}$</h3><p>考虑转动效应的动力方程如下：  </p>
+<p>$$<br>[M]{\ddot{u}}+([G]+[C]){\dot{u}}+([K]-[K_{\mathfrak{c}}]){u}&#x3D;{F}<br>$$</p>
+<p>式中：$[M],[C],[K]$一一分别为结构质量、阻尼和刚度矩阵；  </p>
+<p>$\left[K_{\mathrm{c}}\right]$一结构转动引起的旋转软化矩阵，它使旋转坐标系下的结构刚度降低；$[G]$一结构转动对“阻尼”矩阵的贡献，在旋转坐标系下通常称为科氏矩阵或科氏阻尼矩阵，而在固定坐标系下称为回转矩阵或回转阻尼矩阵；$[F]$一—固定坐标系下的外荷载向量。在旋转坐标系下，为外荷载向量与科氏力向量之和，科氏力向量$\langle F_{\mathrm{c}}\rangle&#x3D;[G]\langle\dot{u}\rangle_{0},,\langle\dot{u}\rangle_{0}$为命令IC定义的节点速度向量。  </p>
+<p>从上式中，不难看出影响一个结构的响应主要影响在于<strong>质量</strong>、<strong>阻尼</strong>、<strong>刚度</strong>，如何获得准确的结构的相关信息，是得到准确计算的关键。</p>
+<p>在旋转坐标系下，转动效应称为科氏效应，即生成科氏矩阵和科氏力。科氏矩阵通过转速和单元形函数求得各单元的科氏矩阵，然后累加形成结构的科氏矩阵。科氏力则为科氏矩阵与节点速度之积。  </p>
+<p>在固定坐标系下，转动效应称为回转效应，即生成回转矩阵，它通过单元回转动能和单元形函数求得。在转子动力学中，将回转效应分为两部分，即与转速相关的回转矩阵和与位移相关的回转矩阵，只是动力学方程表达形式不同而已。  </p>
+<p>在ANSYS中，无论考虑回转效应或是考虑科氏效应均采用命令CORIOLIS定义。 </p>
+<h4 id="质量参数-2"><a href="#质量参数-2" class="headerlink" title="质量参数$^{[2]}$"></a>质量参数$^{[2]}$</h4><p>首先结构的质量参数，应该在网格构建完成后便知晓，下文介绍了如何通过网格来计算结构的质量，转动惯量等参数。</p>
+<p>设有一个旋转对称体，Ox 轴为其旋转对称轴。 图１为通过旋转轴 Ox 的半平面截取此物体得到的截面轮廓图。我们在轮廓线上取 N 个点, 使得连接这些点形成的封闭折线，尽可能地逼近轮廓线。从这些点中任选一点为起点，按顺时针方向绕轮廓线顺次把这些点编号为 1、2，直到 N。</p>
+<img src="/./img/RotDyn.assets/fig2.png" style="zoom:25%;" />
+
+<p>折线中的每一线段，以<em>Ox</em>为轴旋转一周，构成一个截头圆锥台。我们先分别计算每一圆锥台的惯性参量；然后，再按一定的规则，把各个圆锥台的惯性参数综合在一起，就得到整个旋转体的惯性参量。</p>
+<img src="/./img/RotDyn.assets/fig5.png" style="zoom:25%;" />
+
+<p>一个圆锥台是计算惯性参数中的基本单元，设其母线两端点的坐标为<em>x</em>1,<em>y</em>1和<em>x</em>2,<em>y</em>2。由理论力学中知识，不难得到，该圆锥台的惯性参量为：</p>
+<p>质量:<br>$$<br>M&#x3D;\frac{1}{3}\pi\rho Ly_1^2\frac{\alpha^3-1}{\alpha-1}<br>$$<br>质量中心:<br>$$<br>x_c&#x3D;x_2-\frac{L}{4}\frac{\alpha^2+2\alpha+3}{\alpha^2+\alpha+1}<br>$$<br>绕x轴的转动惯量:<br>$$<br>J_x&#x3D;\frac{1}{10}\pi\rho Ly_1^4\frac{\alpha^5-1}{\alpha-1}<br>$$<br>绕中心直径的转动惯量:<br>$$<br>J_{xc}&#x3D;\pi\rho(L+H)y_2^2[\frac{y_2^2}{20}+\frac{(L+H)^2}{80}+\frac{(\frac{L+H}{4}-h)^2}{3}]-\pi\rho Hy_1^2[\frac{y_1^2}{20}+\frac{H^2}{80}+\frac{(L+\frac{H}{4}-h)^2}{3}]<br>$$<br>式中,</p>
+<p> $\rho$ — 密度, </p>
+<p> $\alpha$ — $y_2&#x2F;y_1$,</p>
+<p>  $H$ — $Ly_1&#x2F;(y_1+y_2)$,</p>
+<p>  $h$ — $\frac{L}{4}\frac{\alpha^2+2\alpha+3}{\alpha^2+\alpha+1}$​,</p>
+<p>圆柱是一个特殊的圆锥台，有<em>y</em>1&#x3D;<em>y</em>2，它相应的惯性参量为</p>
+<img src="/./img/RotDyn.assets/fig6.png" style="zoom:25%;" />
+
+<p>质量:<br>$$<br>M&#x3D;\pi\rho Ly_1^2<br>$$<br>质量中心:<br>$$<br>x_c&#x3D;0.5(x_1+x_2)<br>$$<br>绕x轴的转动惯量:<br>$$<br>J_x&#x3D;\frac{1}{2}\pi\rho Ly_1^4<br>$$<br>绕中心直径的转动惯量:<br>$$<br>J_{xc}&#x3D;0.25\pi\rho Ly_1^2(y_1^2+\frac{L^2}{3})<br>$$<br>对于编程，首先，我们可以得到任意形状的截面网格，从而通过上述方法得到结构的转动惯量参数。</p>
+<ul>
+<li>整体的质量和极转动惯量取各个圆锥台的相应量的代数和；</li>
+<li>将各圆锥台质心，平行力系合成规则得到整体的质心；</li>
+<li>用移轴定理求出各个圆锥台对过公共质心的直径转动惯量，然后代数相加得整体的直径转动惯量。</li>
+</ul>
+<p>以一个半径50mm的钢球举例($\rho &#x3D;7850kg&#x2F;m^3$) , 其理论计算的公式如下 :</p>
+<p>质量:<br>$$<br>M&#x3D;\frac{4}{3}\pi\rho R^3&#x3D;4.11kg<br>$$<br>绕x轴的转动惯量:<br>$$<br>J_x&#x3D;\frac{2}{5}MR^2&#x3D;4.11kg·m^2<br>$$<br>绕y轴的转动惯量:<br>$$<br>J_y&#x3D;\frac{2}{5}MR^2&#x3D;4.11kg·m^2<br>$$</p>
+<img src="/./img/RotDyn.assets/Fig7.jpg" style="zoom:33%;" />
+
+<p>理论计算和程序计算对比结果如下：</p>
+<table>
+<thead>
+<tr>
+<th>Items</th>
+<th>Theory</th>
+<th>Program</th>
+<th>Error</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mass</td>
+<td>4.11</td>
+<td>4.06</td>
+<td>1.02%</td>
+</tr>
+<tr>
+<td>$J_x$</td>
+<td>4.11</td>
+<td>4.06</td>
+<td>1.02%</td>
+</tr>
+<tr>
+<td>$J_y$</td>
+<td>4.11</td>
+<td>4.06</td>
+<td>1.02%</td>
+</tr>
+</tbody></table>
+<p>有一个半径50 mm ， 长度200mm的轴体 , 其理论计算公式如下：</p>
+<p>质量:<br>$$<br>M&#x3D;\pi\rho R^2L&#x3D;12.3kg<br>$$<br>绕x轴的转动惯量:<br>$$<br>J_x&#x3D;\frac{1}{2}MR^2&#x3D;15.374t·mm^2<br>$$<br>绕y轴的转动惯量:<br>$$<br>J_y&#x3D;\frac{1}{4}MR^2+\frac{1}{12}ML^2&#x3D;48.685kg·m^2<br>$$</p>
+<img src="/./img/RotDyn.assets/Fig8.jpg" style="zoom:33%;" />
+
+<p>理论计算和程序计算如下，两者基本一致。</p>
+<table>
+<thead>
+<tr>
+<th>Items</th>
+<th>Theory</th>
+<th>Program</th>
+<th>Error</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Mass</td>
+<td>12.3</td>
+<td>12.3</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>J_x</td>
+<td>15.374</td>
+<td>15.374</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>J_y</td>
+<td>48.685</td>
+<td>48.685</td>
+<td>0%</td>
+</tr>
+</tbody></table>
+<h4 id="阻尼参数"><a href="#阻尼参数" class="headerlink" title="阻尼参数"></a>阻尼参数</h4><p>在ANSYS中可使用7种阻尼，即Rayleigh阻尼、材料阻尼、常阻尼比、模态阻尼、单元阻尼、材料常阻尼系数、材料结构阻尼系数。在ANSYS结构动力分析中，仅在VT法谐响应分析中可采用滞变阻尼模型，库仑阻尼模型可用于瞬态动力分析，其他均采用黏性阻尼模型。在ANSYS中可同时指定多种阻尼，程序自动形成阻尼矩阵，但不是所有阻尼均可用于各种动力分析。各种分析类型可用阻尼见下表。从表中可知，动力分析类型不同，其所能够定义的阻尼类型也不同，而不同的阻尼类型在ANSYS中的输人命令亦不相同，因此在定义阻尼时应引起足够的重视。  </p>
+<p><img src="/./img/RotDyn.assets/Fig1.jpg"></p>
+<p>注：1.表中“&#x2F;”表示不需要，“”不考虑，“$\sqrt{}$”可考虑。2.$①$仅可用$\beta$阻尼，$,\alpha$阻尼不可用；$②$包括超单元阻尼矩阵；$③$“MP，DAMP”定义等效材料阻尼比，用于后续的谱分析或模态叠加法分析；$④$在模态叠加法中，必须采用QRDAMP法提取模态才可考虑$\alpha$阻尼$\mathcal{S}$阻尼和材料阻尼（MP，MADP）；$⑤$在谐响应分析中，命令DMPRAT和“MP，DMPR”定义的是结构阻尼比，而非模态阻尼比；$⑥$必须用命令“TB，ELAS”定义材料性质。  </p>
+<ul>
+<li><p>在 Baffalo RotDyn中设置params.Damping为常阻尼比。</p>
+<p>常阻尼比（ConstantDampingRatio）是定义结构阻尼的最简单方法，也就是通常简称的阻尼比$\xi$一一实际阻尼与临界阻尼之比，采用命令DMPRAT定义。常阻尼比仅适用于谐响应分析、谱分析和模态叠加法瞬态动力分析。</p>
+</li>
+<li><p>对于材料阻尼DAMP、材料常阻尼系数DMPR和材料结构阻尼系数SDAMP可在对应的材料里设置。</p>
+<p>材料常阻尼系数（ConstantMaterialDampingCoefficient）仅适用于谐响应分析的完全法和QRDAMP模态叠加法，采用命令“MP，DMPR”定义。  </p>
+<p>材料结构阻尼系数是频变阻尼，采用命令“TB，SDAMP”和TBFIELD定义，仅用于变分法谐响应分析，并可选择黏性阻尼模型或滞变阻尼模型。  </p>
+</li>
+<li><p>针对单元阻尼，可以在Support中设置，RotDyn会将其转换为combin14单元和combin214单元来计算。</p>
+<p>Support’% Spring connected to ground</p>
+<p>% Node number,kx,K11,K22,K12,K21,Cx,C11,C22,C12,C21</p>
+</li>
+</ul>
+<h4 id="刚度参数"><a href="#刚度参数" class="headerlink" title="刚度参数"></a>刚度参数</h4><p>部件的刚度比如齿轮、轴承、联轴器均有相关的规范和计算方法，可以参考其他部件Baffalo说明。</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/RotDyn.assets/FIg60.jpg"></p>
+<p>输入 input：</p>
+<ul>
+<li>BalanceQuality : 动平衡质量</li>
+<li>UnBalanceForce : 不平衡量me</li>
+<li>KeyNode : 关键点</li>
+<li>BCNode : 边界点</li>
+<li>PointMass : 附加的节点质量</li>
+<li>Springs : 弹簧包含刚度和阻尼等参数</li>
+<li>Discs : 附加转盘</li>
+<li>Speed : 计算转速</li>
+<li>MaterialNum : 材料编号</li>
+<li>Shaft : 轴</li>
+</ul>
+<p>参数 params:</p>
+<ul>
+<li>ez ：z向偏心</li>
+<li>ey :  y向偏心</li>
+<li>Type : 求解类型 Type&#x3D;2 为模态计算 Type&#x3D;3为谐响应分析</li>
+<li>PrintORB ：输出质心轨迹</li>
+<li>PrintCampbell : 输出坎贝尔图 </li>
+<li>Position : 轴位置</li>
+<li>PStress : 考虑预应力</li>
+<li>Name : 名称</li>
+<li>NStep ：计算步数</li>
+<li>NMode : 模态数</li>
+<li>Modopt : 模态计算方法</li>
+<li>HRopt: 谐响应计算方法</li>
+<li>Material : 材料</li>
+<li>Freq : 频率计算范围</li>
+<li>Damping : 阻尼比</li>
+<li>Coriols : 科式力</li>
+</ul>
+<p>输出 output :</p>
+<ul>
+<li>Xc : 轴重心位置</li>
+<li>Mass : 轴质量</li>
+<li>SpeedUp : 加速曲线</li>
+<li>TotalElement : 总的单元数</li>
+<li>TotalNode ：总的节点数</li>
+<li>CriticalSpeed : 临界转速</li>
+<li>Shape : 轴形状</li>
+<li>Campbell : 坎贝尔图数据</li>
+<li>Assembly : 轴装配</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Shaft-modal-analysis-Flag-1"><a href="#Shaft-modal-analysis-Flag-1" class="headerlink" title="Shaft modal analysis (Flag&#x3D;1)"></a>Shaft modal analysis (Flag&#x3D;1)</h3><p>下图为一个等截面转子，长 l 为 1m，圆形截面的直径 d&#x3D;0.04m，两端为简支支承。转子材料的质量密度 为 7800kg&#x2F;m 3 ，弹性模量 E 为 2.0×10 11 N&#x2F;m 2 。求此转子在静止状态下的固有频率。</p>
+<p>此转子的各阶固有圆频率 $\omega i$ 有理论解如下：</p>
+<p>$$<br>\omega_i&#x3D;i^2\pi^2\sqrt{\frac{EJ}{\gamma Al^4}}<br>$$<br>以截面惯性矩 $J＝πd^4 &#x2F;64$，截面积 $A＝πd^2 &#x2F;4$，固有频率 $f＝ \omega&#x2F;2π$ 代入，得到转子的各阶固有频率 $f_i$为<br>$$<br>f_i&#x3D;\frac{i^2\pi}{8}\frac{d}{l^2}\sqrt{\frac{E}{\gamma}}<br>$$<br>代入具体数据，得到前 3 阶固有频率为 79.5403、318.1612、715.8627Hz，相应的振型为半个周期、一个周期和一个半周期的正弦曲线。</p>
+<pre><code class="language-matlab">% Shaft 1
+inputshaft1.Length = 1000;
+inputshaft1.ID = [0,0];
+inputshaft1.OD = [40,40];
+paramsshaft1 = struct();
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+mat&#123;1,1&#125;=obj1.params.Material;
+inputRotDyn.Shaft=obj1.output.BeamMesh;
+inputRotDyn.Speed=[0,15000,30000];
+inputRotDyn.MaterialNum=1;
+inputRotDyn.BCNode=[1,1,1,1,0,0,0;size(obj1.output.Node,1),1,1,1,0,0,0];
+paramsRotDyn.Material=mat;
+paramsRotDyn.PrintCampbell=1;
+paramsRotDyn.PrintORB=1;
+obj2 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+Plot(obj2);
+obj2 = obj2.solve();
+ANSYSSolve(obj2.output.Assembly)
+PlotCampbell(obj2,&#39;NMode&#39;,8);
+for i=1:10
+    PlotORB(obj2,2,i,&#39;scale&#39;,10)
+end
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/Fig9.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/Fig10.jpg" style="zoom: 150%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/Fig11.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/Fig12.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/Fig13.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/Fig14.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/Fig15.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/Fig16.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/Fig17.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/Fig18.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/Fig19.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/Fig20.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+
+<h3 id="Add-Discs-Flag-2"><a href="#Add-Discs-Flag-2" class="headerlink" title="Add Discs (Flag&#x3D;2)"></a>Add Discs (Flag&#x3D;2)</h3><p>如图所示的刚性支承单圆盘转子，圆盘的质量$m&#x3D;$$20,\mathrm{kg}$，半径$R&#x3D;120\mathrm{mm}$,转轴的跨度$l,&#x3D;750\mathrm$，直径$d&#x3D;$$30\mathrm{mm}$。圆盘到左支点的距离$a&#x3D;l\mathrm{~}&#x2F;3!&#x3D;!250\mathrm{mm}$。  </p>
+<img src="/./img/RotDyn.assets/Fig21.jpg" style="zoom:33%;" />
+
+<p>仅考虑轴的弯曲但不计轴的质量，考虑回转效应时的频 率方程为：  </p>
+<p>$$<br>\omega^{4}-2\Omega\omega^{3}-2.<del>1340661\times10^{6}\omega^{2}+1.</del>7674781\times10^{6}\Omega\omega+1.~2052387\times10^{11}&#x3D;0<br>$$<br>其中，$\varOmega$为转速（即激励），$\omega$为待求涡动频率，两者单位均为rad&#x2F;s。</p>
+<pre><code class="language-matlab">ID=30;
+inputshaft1.Length =750;
+inputshaft1.ID = [0,0];
+inputshaft1.OD = [ID,ID];
+paramsshaft1.Beam_N = 30;
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+mat&#123;1,1&#125;=obj1.params.Material;
+inputRotDyn.Shaft=obj1.output.BeamMesh;
+inputRotDyn.Speed=[0,1500,3000];% Unit: RPM
+inputRotDyn.MaterialNum=1;
+inputRotDyn.BCNode=[1,1,1,1,0,0,0;size(obj1.output.Node,1),1,1,1,0,0,0];
+paramsRotDyn.Material=mat;
+paramsRotDyn.PrintCampbell=1;
+paramsRotDyn.Position=[0,0,0,0,0,0];
+Dyn = solve.RotDyn(paramsRotDyn,inputRotDyn);
+[Dyn,Num1]= AddCnode(Dyn,250);
+DiscMass=20*10^-3;
+rou=obj1.params.Material.Dens;
+OD=240;
+L=DiscMass/((OD^2-ID^2)*pi/4*rou);
+Dyn= AddDisc(Dyn,Num1,OD,ID,L,1);
+Plot(Dyn);
+Dyn = Dyn.solve();
+ANSYSSolve(Dyn.output.Assembly)
+PlotCampbell(Dyn,&#39;NMode&#39;,6);
+</code></pre>
+<img src="/./img/RotDyn.assets/Fig22.jpg" style="zoom:50%;" />
+
+<h3 id="Add-Userdefined-Disc-output-moment-of-inertia-Flag-3"><a href="#Add-Userdefined-Disc-output-moment-of-inertia-Flag-3" class="headerlink" title="Add Userdefined Disc, output moment of inertia (Flag&#x3D;3)"></a>Add Userdefined Disc, output moment of inertia (Flag&#x3D;3)</h3><pre><code class="language-matlab">OD=30;
+inputshaft1.Length =750;
+inputshaft1.ID = [0,0];
+inputshaft1.OD = [OD,OD];
+paramsshaft1.Beam_N = 30;
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+mat&#123;1,1&#125;=obj1.params.Material;
+inputRotDyn.Shaft=obj1.output.BeamMesh;
+inputRotDyn.Speed=[0,1500,3000];% Unit: RPM
+inputRotDyn.MaterialNum=1;
+inputRotDyn.BCNode=[1,1,1,1,0,0,0;size(obj1.output.Node,1),1,1,1,0,0,0];
+paramsRotDyn.Material=mat;
+paramsRotDyn.PrintCampbell=1;
+paramsRotDyn.Position=[0,0,0,0,0,0];
+Dyn = solve.RotDyn(paramsRotDyn,inputRotDyn);
+[Dyn,Num1]= AddCnode(Dyn,250);
+[Dyn,Num2]= AddCnode(Dyn,500);
+a1=Point2D(&#39;Circle center&#39;);
+a1=AddPoint(a1,0,0);
+a1=AddPoint(a1,[-50;50],[0;0]);
+b1=Line2D(&#39;Semi circle&#39;);
+b1=AddCircle(b1,50,a1,1,&#39;ang&#39;,180);
+b1=AddLine(b1,a1,2);
+S1=Surface2D(b1);
+a2=Point2D(&#39;Square corner&#39;);
+a2=AddPoint(a2,[-100;-100;100;100],[0;50;50;0]);
+b2=Line2D(&#39;Square&#39;);
+b2=AddCurve(b2,a2,1);
+S2=Surface2D(b2);
+Dyn= AddUserdefinedDisc(Dyn,Num1,S1,1);
+Dyn= AddUserdefinedDisc(Dyn,Num2,S2,1);
+Plot(Dyn);
+disp(Dyn.input.PointMass)
+</code></pre>
+<p>加入自定义的截面并计算其质量、转动惯量和弯曲惯量。</p>
+<p>Successfully revolve to solid mesh .<br>   35.0000    0.0041    4.0578    4.0580<br>   69.0000    0.0123   15.3742   48.6848</p>
+<p><img src="/./img/RotDyn.assets/Fig23.jpg"></p>
+<h3 id="Add-Blade-Flag-4"><a href="#Add-Blade-Flag-4" class="headerlink" title="Add Blade (Flag&#x3D;4)"></a>Add Blade (Flag&#x3D;4)</h3><pre><code class="language-matlab">OD=425;
+inputshaft1.Length =1000;
+inputshaft1.ID = [0,0];
+inputshaft1.OD = [OD,OD];
+paramsshaft1.Beam_N = 30;
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+mat&#123;1,1&#125;=obj1.params.Material;
+inputRotDyn.Shaft=obj1.output.BeamMesh;
+inputRotDyn.Speed=[0,1500,3000];% Unit: RPM
+inputRotDyn.MaterialNum=1;
+inputRotDyn.BCNode=[1,1,1,1,0,0,0;size(obj1.output.Node,1),1,1,1,0,0,0];
+paramsRotDyn.Material=mat;
+paramsRotDyn.NMode=15;
+paramsRotDyn.Freq=[0,3000];
+paramsRotDyn.PrintCampbell=1;
+paramsRotDyn.PrintORB=1;
+paramsRotDyn.Position=[0,0,0,0,0,0];
+Dyn = solve.RotDyn(paramsRotDyn,inputRotDyn);
+[Dyn,Num1]= AddCnode(Dyn,500);
+a=Point2D(&#39;Circle center&#39;);
+a=AddPoint(a,[-160;-160;-155;-155;-95;-55;55;90;155;155;160;160;-160],...
+[212.5;350;350;380;390;595;595;385;355;320;320;212.5;212.5]);
+a=AddPoint(a,[-45;-20;18;45],...
+[595;1050;1050;595]);
+b1=Line2D(&#39;Section1&#39;);
+b1=AddCurve(b1,a,1);
+S1=Surface2D(b1);
+b2=Line2D(&#39;Section2&#39;);
+b2=AddCurve(b2,a,2);
+S2=Surface2D(b2);
+Dyn= AddUserdefinedDisc(Dyn,Num1,S1,1);
+Dyn= AddBlade(Dyn,Num1,S2,1,30,3);
+Plot(Dyn);
+Dyn = Dyn.solve();
+ANSYSSolve(Dyn.output.Assembly);
+PlotCampbell(Dyn,&#39;NMode&#39;,8);
+for i=1:8
+PlotORB(Dyn,2,i,&#39;scale&#39;,100)
+end
+</code></pre>
+<p>增加叶片，RotDyn会换算叶片的质量的转动惯量到轴中心。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/Fig24.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/Fig25.jpg" style="zoom: 150%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/Fig26.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/Fig27.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/Fig28.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/Fig29.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/Fig30.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/Fig31.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/Fig32.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/Fig33.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Multi-Discs-Calculate-critical-speed-Flag-5"><a href="#Multi-Discs-Calculate-critical-speed-Flag-5" class="headerlink" title="Multi Discs &amp; Calculate critical speed (Flag&#x3D;5)"></a>Multi Discs &amp; Calculate critical speed (Flag&#x3D;5)</h3><pre><code class="language-matlab">m1=0.102;% unit:ton
+JT1=6377*2;% unit: ton/mm2
+JD1=6377;% unit: ton/mm2
+% Shaft1
+OD=50;% Unit: mm
+inputshaft1.Length =1200;
+inputshaft1.ID = [0,0];
+inputshaft1.OD = [OD,OD];
+paramsshaft1.Beam_N = 30;
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+mat&#123;1,1&#125;=obj1.params.Material;
+inputRotDyn.Shaft=obj1.output.BeamMesh;
+inputRotDyn.Speed=[0,1000,2000,3000];% Unit: RPM
+inputRotDyn.MaterialNum=1;
+inputRotDyn.BCNode=[1,1,1,1,0,0,0];
+paramsRotDyn.Material=mat;
+paramsRotDyn.PrintCampbell=1;
+Dyn = solve.RotDyn(paramsRotDyn,inputRotDyn);
+[Dyn,Num1]= AddCnode(Dyn,400);
+Dyn=AddPointMass(Dyn,Num1,m1,JT1,JD1);
+[Dyn,Num2]= AddCnode(Dyn,800);
+Bound=[1,1,1,0,0,0];
+Dyn= AddBCNode(Dyn,Num2,Bound);
+[Dyn,Num3]= AddCnode(Dyn,1200);
+Dyn=AddPointMass(Dyn,Num3,m1,JT1,JD1);
+Plot(Dyn);
+Dyn = Dyn.solve();
+ANSYSSolve(Dyn.output.Assembly);
+PlotCampbell(Dyn,&#39;NMode&#39;,12);
+Dyn=CalculateCriticalSpeed(Dyn);
+disp(Dyn.output.CriticalSpeed);
+</code></pre>
+<p>计算临界转速</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/Fig34.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/Fig35.jpg" style="zoom: 150%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p> 1.0e+03 *</p>
+<pre><code>0.5661
+1.1379
+2.2070
+2.1237
+</code></pre>
+<h3 id="Add-Elastic-Support-Flag-6"><a href="#Add-Elastic-Support-Flag-6" class="headerlink" title="Add Elastic Support (Flag&#x3D;6)"></a>Add Elastic Support (Flag&#x3D;6)</h3><p>如下图所示钢质圆盘转子结构，材料的弹性模量为$200\mathrm{GPa}$，密度$7830,\mathrm{kg&#x2F;m^{3}}$，泊松系数为0.3，长度分别为$L_{1}&#x3D;0.\ 2\mathrm{m}$，$L_{2}&#x3D;\mathrm{0.<del>3m}$，$L_{3}&#x3D;0.\ 5\mathrm{m}$，$L_{4}&#x3D;0.\ 3\mathrm{m}$，轴径$d&#x3D;!0.</del>05\mathrm{m}$，圆盘半径分别为 $R_{1}&#x3D;0.12\mathrm{m}$ ， $R_{2}&#x3D;\mathrm{0.<del>2m}$ ， $R_{3}&#x3D;!0.{\mathrm{</del>2m}}$ ,厚 度分别为 $t_{1}&#x3D;0,,05\mathrm{m}$ ， $t_{2}&#x3D;0.~05\mathrm{m}$ ， $t_{3}&#x3D;\ 0.{\ }06,\mathrm{m}$ 。轴两端为简支边界条件，图中支承仅为示意。  </p>
+<img src="/./img/RotDyn.assets/FIg36.jpg" alt="FIg36" style="zoom: 67%;" />
+
+<pre><code class="language-matlab">L1=200;
+L2=300;
+L3=500;
+L4=300;
+t1=50;t2=50;t3=60;
+R1=120;
+R2=200;
+R3=200;
+d=50;
+% Shaft1
+inputshaft1.Length = [L1-t1/2;L1+t1/2;L1+L2-t2/2;L1+L2+t2/2;L1+L2+L3-t3/2;L1+L2+L3+t3/2;L1+L2+L3+L4];
+inputshaft1.ID = [[0,0];[0,0];[0,0];[0,0];[0,0];[0,0];[0,0]];
+inputshaft1.OD = [[d,d];[R1*2,R1*2];[d,d];[R2*2,R2*2];[d,d];[R3*2,R3*2];[d,d]];
+paramsshaft1.Beam_N = 16;
+paramsshaft1.N_Slice=201;
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot3D(obj1)
+% Rigid Boundary
+mat&#123;1,1&#125;=obj1.params.Material;
+inputRotDyn.Shaft=obj1.output.BeamMesh;
+inputRotDyn.Speed=[0,1000,2000,3000,4000,5000,6000];
+inputRotDyn.MaterialNum=1;
+inputRotDyn.BCNode=[1,1,1,1,1,0,0;size(obj1.output.Node,1),0,1,1,1,0,0];
+paramsRotDyn.Material=mat;
+paramsRotDyn.PrintCampbel=1;
+paramsRotDyn.ShaftTorsion=1;
+paramsRotDyn.PrintORB=1;
+Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+Dyn1 = Dyn1.solve();
+Plot(Dyn1);
+ANSYSSolve(Dyn1.output.Assembly);
+PlotCampbell(Dyn1,&#39;NMode&#39;,12);
+% Elastic support
+mat&#123;1,1&#125;=obj1.params.Material;
+inputRotDyn.Shaft=obj1.output.BeamMesh;
+inputRotDyn.Speed=[0,1000,2000,3000,4000,5000,6000];
+inputRotDyn.MaterialNum=1;
+inputRotDyn.Support=[1,1e8,8e3,3e3,0,0,0,1e-3,2e-4,0,0;size(obj1.output.Node,1),0,8e3,3e3,0,0,0,1e-3,2e-4,0,0];
+paramsRotDyn.Material=mat;
+paramsRotDyn.PrintCampbell=1;
+paramsRotDyn.ShaftTorsion=1;
+paramsRotDyn.PrintORB=1;
+inputRotDyn.BCNode=[];
+Dyn2 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+Dyn2 = Dyn2.solve();
+Plot(Dyn2);
+ANSYSSolve(Dyn2.output.Assembly);
+PlotCampbell(Dyn2,&#39;NMode&#39;,12);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/Fig37.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/Fig38.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/Fig39.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/Fig40.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+
+<p>Num      Status        rpm1      rpm2      rpm3      rpm4      rpm5      rpm6      rpm7 </p>
+<hr>
+<p> 1     BW             22.406    21.884    21.362    20.842    20.325    19.813    19.306<br> 2     FW             22.406    22.927    23.447    23.963    24.476    24.983    25.484<br> 3     <undefined>    59.648    59.648    59.648    59.648    59.648    59.648    59.648<br> 4     BW             83.198    82.229    81.192    80.086    78.909    77.662    76.348<br> 5     FW             83.198    84.104     84.95    85.739    86.477    87.167    87.812<br> 6     <undefined>    94.803    94.803    94.803    94.803    94.803    94.803    94.803<br> 7     BW             192.02    182.11    172.88    164.33    156.47     149.3     142.8<br> 8     FW             192.02    202.57    213.71    225.39    237.56    250.16    263.13<br> 9     BW             276.11    263.73    252.17    241.41    231.38    222.05    213.37<br>10     FW             276.11    289.36     303.5    318.57    334.58    351.53     369.4<br>11     <undefined>    343.94    343.94    343.94    343.94    343.94    343.94    343.94<br>12     <undefined>    374.18    374.18    374.18    374.18    374.18    374.18    374.18</p>
+<p>Num      Status        rpm1      rpm2      rpm3      rpm4      rpm5      rpm6      rpm7 </p>
+<hr>
+<p> 1     <undefined>         0         0         0         0         0         0         0<br> 2     BW             18.664    18.619    18.493    18.303    18.068      17.8    17.509<br> 3     FW             20.791    20.826    20.923    21.064    21.232    21.415    21.604<br> 4     BW             52.486    52.442    52.309    52.091    51.792    51.417    50.975<br> 5     FW               67.5     67.53    67.619    67.765    67.962    68.203    68.474<br> 6     <undefined>    71.896    71.896    71.896    71.896    71.896    71.896    71.896<br> 7     BW             111.47    110.32    107.02    102.22    96.835    91.461    86.372<br> 8     FW             139.56    140.57    143.51    147.72    151.88    153.96    154.25<br> 9     FW             189.93    189.95    188.82    183.53    177.41    174.04    172.86<br>10     FW              209.4    210.66    215.61    227.17    242.31    258.84    276.84<br>11     <undefined>    231.75    231.75    231.75    231.75    231.75    231.75    231.75<br>12     BW             291.24    291.46    292.14    293.25    294.77    296.63    298.55</p>
+<h3 id="Consider-prestress-Flag-7"><a href="#Consider-prestress-Flag-7" class="headerlink" title="Consider prestress (Flag&#x3D;7)"></a>Consider prestress (Flag&#x3D;7)</h3><pre><code class="language-matlab">L1=200;
+L2=300;
+L3=500;
+L4=300;
+t1=50;t2=50;t3=60;
+R1=120;
+R2=200;
+R3=200;
+d=50;
+% Shaft1
+inputshaft1.Length = [L1-t1/2;L1+t1/2;L1+L2-t2/2;L1+L2+t2/2;L1+L2+L3-t3/2;L1+L2+L3+t3/2;L1+L2+L3+L4];
+inputshaft1.ID = [[0,0];[0,0];[0,0];[0,0];[0,0];[0,0];[0,0]];
+inputshaft1.OD = [[d,d];[R1*2,R1*2];[d,d];[R2*2,R2*2];[d,d];[R3*2,R3*2];[d,d]];
+paramsshaft1.Beam_N = 16;
+paramsshaft1.N_Slice=201;
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot3D(obj1)
+% Elastic support
+mat&#123;1,1&#125;=obj1.params.Material;
+inputRotDyn.Shaft=obj1.output.BeamMesh;
+inputRotDyn.Speed=[0,1000,2000,3000,4000,5000,6000];
+inputRotDyn.MaterialNum=1;
+inputRotDyn.Support=[1,1e8,8e3,3e3,0,0,0,1e-3,2e-4,0,0;size(obj1.output.Node,1),0,8e3,3e3,0,0,0,1e-3,2e-4,0,0];
+paramsRotDyn.Material=mat;
+paramsRotDyn.PrintCampbell=1;
+paramsRotDyn.ShaftTorsion=1;
+paramsRotDyn.Material=mat;
+paramsRotDyn.PStress=1;
+Dyn2 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+Dyn2 = Dyn2.solve();
+Plot(Dyn2);
+ANSYSSolve(Dyn2.output.Assembly);
+Dyn2=PlotCampbell(Dyn2,&#39;NMode&#39;,12);
+disp(Dyn2.output.Campbell);
+</code></pre>
+<p>Num      Status        rpm1      rpm2      rpm3      rpm4      rpm5      rpm6      rpm7 </p>
+<hr>
+<p> 1     <undefined>         0         0         0         0         0         0         0<br> 2     BW             18.664    18.619    18.493    18.303    18.068      17.8    17.509<br> 3     FW             20.791    20.826    20.923    21.064    21.232    21.415    21.604<br> 4     BW             52.486    52.442    52.309    52.091    51.792    51.417    50.975<br> 5     FW               67.5     67.53    67.619    67.765    67.962    68.203    68.474<br> 6     <undefined>    71.896    71.896    71.896    71.896    71.896    71.896    71.896<br> 7     BW             111.47    110.32    107.02    102.22    96.835    91.461    86.372<br> 8     FW             139.56    140.57    143.51    147.72    151.88    153.96    154.25<br> 9     FW             189.93    189.95    188.82    183.53    177.41    174.04    172.86<br>10     FW              209.4    210.66    215.61    227.17    242.31    258.84    276.84<br>11     <undefined>    231.75    231.75    231.75    231.75    231.75    231.75    231.75<br>12     BW             291.24    291.46    292.14    293.25    294.77    296.63    298.55</p>
+<img src="/./img/RotDyn.assets/FIg41.jpg" style="zoom:50%;" />
+
+<h3 id="Eccentricity-of-shaft-Flag-8"><a href="#Eccentricity-of-shaft-Flag-8" class="headerlink" title="Eccentricity of shaft (Flag&#x3D;8)"></a>Eccentricity of shaft (Flag&#x3D;8)</h3><pre><code class="language-matlab">L1=200;
+L2=300;
+L3=500;
+L4=300;
+t1=50;t2=50;t3=60;
+R1=120;
+R2=200;
+R3=200;
+d=50;
+% Shaft1
+inputshaft1.Length = [L1-t1/2;L1+t1/2;L1+L2-t2/2;L1+L2+t2/2;L1+L2+L3-t3/2;L1+L2+L3+t3/2;L1+L2+L3+L4];
+inputshaft1.ID = [[0,0];[0,0];[0,0];[0,0];[0,0];[0,0];[0,0]];
+inputshaft1.OD = [[d,d];[R1*2,R1*2];[d,d];[R2*2,R2*2];[d,d];[R3*2,R3*2];[d,d]];
+paramsshaft1.Beam_N = 16;
+paramsshaft1.N_Slice=201;
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+% Rigid Boundary
+mat&#123;1,1&#125;=obj1.params.Material;
+inputRotDyn.Shaft=obj1.output.BeamMesh;
+inputRotDyn.Speed=[0,1000,2000,3000,4000,5000,6000];
+inputRotDyn.MaterialNum=1;
+inputRotDyn.BCNode=[1,1,1,1,1,0,0;size(obj1.output.Node,1),0,1,1,1,0,0];
+paramsRotDyn.Material=mat;
+paramsRotDyn.PrintCampbell=1;
+paramsRotDyn.ShaftTorsion=1;
+paramsRotDyn.PrintORB=1;
+paramsRotDyn.ey=[5,-5];
+Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+Dyn1 = Dyn1.solve();
+Plot(Dyn1);
+ANSYSSolve(Dyn1.output.Assembly);
+Dyn1=PlotCampbell(Dyn1,&#39;NMode&#39;,12);
+disp(Dyn1.output.Campbell);
+</code></pre>
+<p>Num    Status     rpm1      rpm2      rpm3      rpm4      rpm5      rpm6      rpm7 </p>
+<hr>
+<p> 1       BW      22.405    21.883    21.362    20.842    20.325    19.812    19.305<br> 2       FW      22.406    22.927    23.446    23.963    24.475    24.982    25.483<br> 3       BW      59.647    59.647    59.647    59.647    59.647    59.647    59.647<br> 4       BW      83.165    82.211    81.173    80.064    78.884    77.632    76.311<br> 5       FW      83.198    84.087    84.931    85.719    86.455    87.142    87.785<br> 6       BW      94.803    94.803    94.803    94.803    94.803    94.803    94.803<br> 7       BW      191.83    182.03     172.8    164.26     156.4    149.23    142.72<br> 8       FW      192.02    202.43    213.49    225.03    236.96    249.19     261.6<br> 9       BW      275.76    263.58    252.03    241.24    231.17    221.79    213.07<br>10       FW       276.1     289.1    303.09    317.86    333.25    348.56    360.66<br>11       FW      343.94    343.94    343.94    343.94    343.94    343.93    343.94<br>12       FW      366.24    366.34    366.65    367.25    368.33    370.62    377.31</p>
+<img src="/./img/RotDyn.assets/FIg42.jpg" style="zoom:50%;" />
+
+<h3 id="High-speed-rotor-example-Flag-9"><a href="#High-speed-rotor-example-Flag-9" class="headerlink" title="High speed rotor example (Flag&#x3D;9)"></a>High speed rotor example (Flag&#x3D;9)</h3><p>下图为一个工业用的高速机械的转子，工作转速为50000 r&#x2F;min，转子尺寸如图中所示（单位毫<br>米）。转子由两个滑动轴承B1、B2支承。两端有两个铝制叶轮D1、D2。<br>已知有关参数为：<br>轴的材质为钢，其弹性模量为2.0E11N&#x2F;m 2 ，质量密度为7800kg&#x2F;m 3 ，泊桑比为0.3；<br>B1的油膜刚度系数为 K xx &#x3D;8E7N&#x2F;m，K xy &#x3D;1E7N&#x2F;m，K yx &#x3D;6E7N&#x2F;m，K yy &#x3D;1E8N&#x2F;m；<br>B1的油膜阻尼系数为 C xx &#x3D;8E3N s&#x2F;m，C xy &#x3D;3E3N s&#x2F;m，C yx &#x3D;3E3N s&#x2F;m，C yy &#x3D;1.2E4N s&#x2F;m；<br>B2的油膜刚度系数为 K xx &#x3D;5E7N&#x2F;m，K xy &#x3D;2E7N&#x2F;m，K yx &#x3D;4E7N&#x2F;m，K yy &#x3D;7E7N&#x2F;m；<br>B2的油膜阻尼系数为 C xx &#x3D;6E3N s&#x2F;m，C xy &#x3D;1.5E3N s&#x2F;m，C yx &#x3D;1.5E3N s&#x2F;m，C yy &#x3D;8E3N s&#x2F;m；<br>D1的质量为1.2kg，极转动惯量为2.4 E-3kg m 2 ，直径转动惯量为1.2E-3kg m 2 ；<br>D2的质量为1.0kg，极转动惯量为2.0E-3kg m 2 ，直径转动惯量为1.0E-3kg m 2 。</p>
+<p><img src="/./img/RotDyn.assets/FIg51.jpg"></p>
+<pre><code class="language-matlab">% Shaft
+inputshaft1.Length = [35;45;70;200;250;300];
+inputshaft1.ID = [[0,0];[10,10];[10,10];[10,10];[10,10];[10,10]];
+inputshaft1.OD = [[40,40];[70,70];[40,40];[40,40];[40,40];[70,70]];
+paramsshaft1.Beam_N = 16;
+paramsshaft1.N_Slice=201;
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot3D(obj1)
+mat&#123;1,1&#125;=obj1.params.Material;
+inputRotDyn.Shaft=obj1.output.BeamMesh;
+inputRotDyn.Speed=[0,10000,20000,30000,40000,50000,60000];
+inputRotDyn.PointMass=[1,1.2e-3,2.4,1.2;size(obj1.output.Node,1),1e-3,2,1];
+inputRotDyn.MaterialNum=1;
+paramsRotDyn.Material=mat;
+paramsRotDyn.PrintCampbell=1;
+paramsRotDyn.PrintORB=1;
+Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+[Dyn1,Num1]= AddCnode(Dyn1,70);
+Dyn1=AddSupport(Dyn1,Num1,[1e10,8e4,1e5,1e4,6e4,0,8,12,3,3]);
+[Dyn1,Num2]= AddCnode(Dyn1,200);
+Dyn1=AddSupport(Dyn1,Num2,[0,5e4,7e4,2e4,4e4,0,6,8,1.5,1.5]);
+Dyn1 = Dyn1.solve();
+ANSYSSolve(Dyn1.output.Assembly);
+Dyn1=PlotCampbell(Dyn1,&#39;NMode&#39;,6);
+disp(Dyn1.output.Campbell);
+for i=1:6
+PlotORB(Dyn1,2,i,&#39;scale&#39;,1)
+end
+Dyn1=CalculateCriticalSpeed(Dyn1);
+disp(Dyn1.output.CriticalSpeed);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/FIg43.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/FIg44.jpg" style="zoom: 150%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/FIg45.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/FIg46.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/FIg47.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/FIg48.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/FIg49.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/FIg50.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="High-speed-rotor-Harmonic-analysis-Flag-10"><a href="#High-speed-rotor-Harmonic-analysis-Flag-10" class="headerlink" title="High speed rotor Harmonic analysis (Flag&#x3D;10)"></a>High speed rotor Harmonic analysis (Flag&#x3D;10)</h3><p>在高速轴上施加me&#x3D;0.5e-6 Nmm的不平衡量，进行谐响应分析，可以观察此时轴节点的谐响应。</p>
+<pre><code class="language-matlab">% Shaft
+inputshaft1.Length = [35;45;70;200;250;300];
+inputshaft1.ID = [[0,0];[10,10];[10,10];[10,10];[10,10];[10,10]];
+inputshaft1.OD = [[40,40];[70,70];[40,40];[40,40];[40,40];[70,70]];
+paramsshaft1.Beam_N = 16;
+paramsshaft1.N_Slice=201;
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot3D(obj1)
+mat&#123;1,1&#125;=obj1.params.Material;
+inputRotDyn.Shaft=obj1.output.BeamMesh;
+inputRotDyn.Speed=[0,10000,20000,30000,40000,50000,60000];
+inputRotDyn.PointMass=[1,1.2e-3,2.4,1.2;size(obj1.output.Node,1),1e-3,2,1];
+inputRotDyn.UnBalanceForce=[1,0.5e-6;size(obj1.output.Node,1),0.5e-6];
+inputRotDyn.MaterialNum=1;
+paramsRotDyn.Material=mat;
+paramsRotDyn.Type=3;
+Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+[Dyn1,Num1]= AddCnode(Dyn1,70);
+Dyn1=AddSupport(Dyn1,Num1,[1e10,8e4,1e5,1e4,6e4,0,8,12,3,3]);
+[Dyn1,Num2]= AddCnode(Dyn1,200);
+Dyn1=AddSupport(Dyn1,Num2,[0,5e4,7e4,2e4,4e4,0,6,8,1.5,1.5]);
+Dyn1 = Dyn1.solve();
+ANSYSSolve(Dyn1.output.Assembly);
+Dyn1=PlotSpeedup(Dyn1);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/FIg52.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/FIg53.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/FIg54.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/FIg55.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<h3 id="High-speed-unbalance-Flag-11"><a href="#High-speed-unbalance-Flag-11" class="headerlink" title="High speed unbalance (Flag&#x3D;11)"></a>High speed unbalance (Flag&#x3D;11)</h3><p>如果输入平衡质量，RotDyn会计算轴的重心，根据ISO1940标准计算平衡盘上的不平衡载荷，如下所示，设置平衡质量G&#x3D;2.5,平衡转速为3000RPM,得到的谐响应如下。</p>
+<pre><code class="language-matlab">% Shaft
+inputshaft1.Length = [35;45;70;200;250;300];
+inputshaft1.ID = [[0,0];[10,10];[10,10];[10,10];[10,10];[10,10]];
+inputshaft1.OD = [[40,40];[70,70];[40,40];[40,40];[40,40];[70,70]];
+paramsshaft1.Beam_N = 16;
+paramsshaft1.N_Slice=201;
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot3D(obj1)
+mat&#123;1,1&#125;=obj1.params.Material;
+inputRotDyn.Shaft=obj1.output.BeamMesh;
+inputRotDyn.Speed=[0,10000,20000,30000,40000,50000,60000];
+inputRotDyn.PointMass=[1,1.2e-3,2.4,1.2;size(obj1.output.Node,1),1e-3,2,1];
+inputRotDyn.MaterialNum=1;
+inputRotDyn.BalanceQuality=[2.5,3000,0,300,0];
+paramsRotDyn.Material=mat;
+paramsRotDyn.Type=3;
+Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+[Dyn1,Num1]= AddCnode(Dyn1,70);
+Dyn1=AddSupport(Dyn1,Num1,[1e10,8e4,1e5,1e4,6e4,0,8,12,3,3]);
+[Dyn1,Num2]= AddCnode(Dyn1,200);
+Dyn1=AddSupport(Dyn1,Num2,[0,5e4,7e4,2e4,4e4,0,6,8,1.5,1.5]);
+Dyn1 = Dyn1.solve();
+ANSYSSolve(Dyn1.output.Assembly);
+PlotSpeedup(Dyn1);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/FIg56.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/FIg57.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/FIg58.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/FIg59.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] ANSYS结构动力分析与应用</p>
+<p>[2] 转动机械的转子动力学设计</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2025 FE-Berserker
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

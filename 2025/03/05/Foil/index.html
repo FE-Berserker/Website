@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Baffalo</title>
+  <title>Foil | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Baffalo">
+  <meta name="description" content="Foil | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Foil介绍Foil用来生成翼型，其主要调用开源软件XFoil来生成翼型。Matlab程序在Xfoil Interface$^[1]$ 改进下实现。 类结构 输入 input：  FoilName : 翼型名称 Alpha : 攻角  参数 params:  Re ：雷诺数，默认为1e6 Name : 名称 N : 节点数 Mach : 马赫数， 默认为0.2 Iter : 迭代数  输出 out">
 <meta property="og:type" content="article">
@@ -60,7 +60,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -396,12 +396,40 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-Foil" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Baffalo"><span class="toc-text">Baffalo</span></a></li></ol>
+        <h1 class="article-title">Foil</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Baffalo部件">Baffalo部件</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-03-05 14:34:47'>2025-03-05 14:33</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Foil"><span class="toc-text">Foil</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-foil-NACA-0010-Flag-1"><span class="toc-text">Create foil NACA 0010 (Flag&#x3D;1)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -414,55 +442,108 @@
     }
 </style>
 </div>
-            <h1 id="Baffalo"><a href="#Baffalo" class="headerlink" title="Baffalo"></a>Baffalo</h1><img src="./img/Baffalo.png" style="zoom: 25%;" />
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Foil"><a href="#Foil" class="headerlink" title="Foil"></a>Foil</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Foil用来生成翼型，其主要调用开源软件XFoil来生成翼型。Matlab程序在Xfoil Interface$^[1]$ 改进下实现。</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/Foil.assets/Fig3.jpg"></p>
+<p>输入 input：</p>
+<ul>
+<li>FoilName : 翼型名称</li>
+<li>Alpha : 攻角</li>
+</ul>
+<p>参数 params:</p>
+<ul>
+<li>Re ：雷诺数，默认为1e6</li>
+<li>Name : 名称</li>
+<li>N : 节点数</li>
+<li>Mach : 马赫数， 默认为0.2</li>
+<li>Iter : 迭代数</li>
+</ul>
+<p>输出 output :</p>
+<ul>
+<li>Data : 气动参数</li>
+<li>Coor : 坐标点</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-foil-NACA-0010-Flag-1"><a href="#Create-foil-NACA-0010-Flag-1" class="headerlink" title="Create foil NACA 0010 (Flag&#x3D;1)"></a>Create foil NACA 0010 (Flag&#x3D;1)</h3><pre><code class="language-matlab">inputStruct1.Alpha=0:1:10;
+inputStruct1.FoilName=&#39;NACA 0010&#39;;
+paramsStruct1=struct();
+obj=foil.Foil(paramsStruct1, inputStruct1);
+obj=obj.solve();
+Plot2D(obj);
+PlotData(obj);
+</code></pre>
+<p>设置翼型名称为 NACA 0010, 攻角为0~10°:</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Foil.assets/Fig1.jpg" style="zoom: 100%;"></td><td><img src="/./img/Foil.assets/Fig2.jpg" style="zoom: 120%;"></td>
+		</tr>
+	</tbody>
+</table>
 
-<p>Baffalo (<a target="_blank" rel="noopener" href="https://github.com/FE-Berserker/Baffalo">https://github.com/FE-Berserker/Baffalo</a>) 是开源的Matlab工具箱来建立机械系统分析的工具，提供网格、画图和工程计算的功能，可直接进行网格层级的部件装配，并直接将文件导出到ANSYS和Simpack中进行分析。</p>
-<img src="./img/Fig1.jpg" style="zoom: 50%;" />
 
-<ol>
-<li>首先打开<strong>setBaffaloPath</strong>函数设置对应路径</li>
-</ol>
-<p>如果你拥有ANSYS,将ANSYS路径设置如下,ANSYS是优秀的有限元分析软件。</p>
-<pre><code class="language-matlab">% Set ANSYS Path
-ANSYS_Path=&#39;C:\Program Files\ANSYS Inc\v201\ansys\bin\winx64\ANSYS201.exe&#39;;
-</code></pre>
-<p>如果你拥有Simpack, 将Simpack路径设置如下，Simapck可提供系统的多体动力学分析。</p>
-<pre><code class="language-matlab">% SetSimpackPath
-Simpack_Path=&#39;D:\SimPack\run\bin\win64&#39;;
-</code></pre>
-<p>Paraview (<a target="_blank" rel="noopener" href="https://www.paraview.org/">https://www.paraview.org</a>) 是一款开源的可视化软件，Baffalo可将网格导出为VTK格式文件，Paraview路径设置如下：</p>
-<pre><code class="language-matlab">% SetParaViewPath
-ParaViewDir=&quot;D:\005_Lib\ParaView\bin&quot;;
-</code></pre>
-<ol start="2">
-<li>运行<strong>setBaffaloPath</strong></li>
-</ol>
-<p>Baffalo说明文档存放于Document中，案例文件存放于Tesing文件夹中。</p>
-<p>Baffalo (<a target="_blank" rel="noopener" href="https://github.com/FE-Berserker/Baffalo">https://github.com/FE-Berserker/Baffalo</a>) is open source Matlab tool to do the system simulation, it can output file to ANSYS or Simpack.</p>
-<p>Baffalo itself is not a solver, can provide the mesh 、figure 、engineer calculation functions</p>
-<ol>
-<li>First open the <strong>setBaffaloPath</strong> function to set the corresponding path</li>
-</ol>
-<p>If you own ANSYS, set the ANSYS path as follows. ANSYS is an excellent finite element analysis software.</p>
-<pre><code class="language-matlab">% Set ANSYS Path
-ANSYS_Path=&#39;C:\Program Files\ANSYS Inc\v201\ansys\bin\winx64\ANSYS201.exe&#39;;
-</code></pre>
-<p>If you have Simpack, set the Simpack path as follows. Simapck can provide multi-body dynamics analysis of the system.</p>
-<pre><code class="language-matlab">% SetSimpackPath
-Simpack_Path=&#39;D:\SimPack\run\bin\win64&#39;;
-</code></pre>
-<p>Paraview (<a target="_blank" rel="noopener" href="https://www.paraview.org/">https://www.paraview.org</a>) is an open source visualization software. Baffalo can export grids to VTK format files. The Paraview path is set as follows:</p>
-<pre><code class="language-matlab">% SetParaViewPath
-ParaViewDir=&quot;D:\005_Lib\ParaView\bin&quot;;
-</code></pre>
-<ol start="2">
-<li>Run <strong>setBaffaloPath</strong></li>
-</ol>
-<p>Baffalo documentation is stored in Document, and case files are stored in the Tesing folder.</p>
 
-        </article>
-        
-        
+
+
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] <a target="_blank" rel="noopener" href="https://www.mathworks.com/matlabcentral/fileexchange/30446-xfoil-interface?s_tid=srchtitle">https://www.mathworks.com/matlabcentral/fileexchange/30446-xfoil-interface?s_tid=srchtitle</a></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -471,11 +552,11 @@ ParaViewDir=&quot;D:\005_Lib\ParaView\bin&quot;;
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>

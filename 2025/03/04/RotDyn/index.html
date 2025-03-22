@@ -442,7 +442,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-03-09 22:09:37'>2025-03-04 18:46</time>
+            发布时间 : <time class="date" title='最后更新: 2025-03-22 23:27:03'>2025-03-04 18:46</time>
         
     </div>
     <div class="article-meta">
@@ -453,7 +453,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RotDyn"><span class="toc-text">RotDyn</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E5%8A%A8%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%96%B9%E7%A8%8B-1"><span class="toc-text">转动动力学方程$^{[1]}$</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%A8%E9%87%8F%E5%8F%82%E6%95%B0-2"><span class="toc-text">质量参数$^{[2]}$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%BB%E5%B0%BC%E5%8F%82%E6%95%B0"><span class="toc-text">阻尼参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9A%E5%BA%A6%E5%8F%82%E6%95%B0"><span class="toc-text">刚度参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft-modal-analysis-Flag-1"><span class="toc-text">Shaft modal analysis (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Discs-Flag-2"><span class="toc-text">Add Discs (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Userdefined-Disc-output-moment-of-inertia-Flag-3"><span class="toc-text">Add Userdefined Disc, output moment of inertia (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Blade-Flag-4"><span class="toc-text">Add Blade (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Multi-Discs-Calculate-critical-speed-Flag-5"><span class="toc-text">Multi Discs &amp; Calculate critical speed (Flag&#x3D;5)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Elastic-Support-Flag-6"><span class="toc-text">Add Elastic Support (Flag&#x3D;6)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Consider-prestress-Flag-7"><span class="toc-text">Consider prestress (Flag&#x3D;7)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eccentricity-of-shaft-Flag-8"><span class="toc-text">Eccentricity of shaft (Flag&#x3D;8)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-speed-rotor-example-Flag-9"><span class="toc-text">High speed rotor example (Flag&#x3D;9)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-speed-rotor-Harmonic-analysis-Flag-10"><span class="toc-text">High speed rotor Harmonic analysis (Flag&#x3D;10)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-speed-unbalance-Flag-11"><span class="toc-text">High speed unbalance (Flag&#x3D;11)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DotDyn"><span class="toc-text">DotDyn</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E5%8A%A8%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%96%B9%E7%A8%8B-1"><span class="toc-text">转动动力学方程$^{[1]}$</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%A8%E9%87%8F%E5%8F%82%E6%95%B0-2"><span class="toc-text">质量参数$^{[2]}$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%BB%E5%B0%BC%E5%8F%82%E6%95%B0"><span class="toc-text">阻尼参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9A%E5%BA%A6%E5%8F%82%E6%95%B0"><span class="toc-text">刚度参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%91%E5%93%8D%E5%87%BD%E6%95%B0"><span class="toc-text">频响函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E8%87%AA%E7%94%B1%E5%BA%A6%E9%A2%91%E5%93%8D%E5%87%BD%E6%95%B0"><span class="toc-text">单自由度频响函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMRotor"><span class="toc-text">AMRotor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft-modal-analysis-Flag-1"><span class="toc-text">Shaft modal analysis (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Discs-Flag-2"><span class="toc-text">Add Discs (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Userdefined-Disc-output-moment-of-inertia-Flag-3"><span class="toc-text">Add Userdefined Disc, output moment of inertia (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Blade-Flag-4"><span class="toc-text">Add Blade (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Bearing-Flag-6"><span class="toc-text">Add Bearing (Flag&#x3D;6)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-LUT-Bearing-Flag-7"><span class="toc-text">Add LUT Bearing (Flag&#x3D;7)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Consider-prestress-Flag-8"><span class="toc-text">Consider prestress (Flag&#x3D;8)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eccentricity-of-shaft-Flag-9"><span class="toc-text">Eccentricity of shaft (Flag&#x3D;9)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-speed-rotor-example-Flag-10"><span class="toc-text">High speed rotor example (Flag&#x3D;10)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-speed-unbalance-Flag-12"><span class="toc-text">High speed unbalance (Flag&#x3D;12)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotor-modal-analysis-with-loacl-solver-%EF%BC%88Flag-14%EF%BC%89"><span class="toc-text">Rotor modal analysis with loacl solver （Flag&#x3D;14）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotor-campbell-analysis-with-loacl-solver-%EF%BC%88Flag-15%EF%BC%89"><span class="toc-text">Rotor campbell analysis with loacl solver （Flag&#x3D;15）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotor-stationary-analysis-with-constant-speed-Flag-16"><span class="toc-text">Rotor stationary analysis with constant speed (Flag&#x3D;16)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotor-with-disc-campbell-analysis-with-local-solver-Flag-17"><span class="toc-text">Rotor with disc campbell analysis with local solver (Flag&#x3D;17)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Disc-rotor-stationary-analysis-with-PID-controller-Flag-18"><span class="toc-text">Disc rotor stationary analysis with PID controller (Flag&#x3D;18)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Disc-rotor-speedup-analysis-with-PID-controller-Flag-19"><span class="toc-text">Disc rotor speedup analysis with PID controller (Flag&#x3D;19)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotor-speedup-analysis-with-AMB-Flag-20"><span class="toc-text">Rotor speedup analysis with AMB (Flag&#x3D;20)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -469,7 +469,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="RotDyn"><a href="#RotDyn" class="headerlink" title="RotDyn"></a>RotDyn</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>RotDyn类主要用于处理单个轴的转子动力学问题，通常需要借助Commonshaft类一块使用。</p>
+        <h1 id="DotDyn"><a href="#DotDyn" class="headerlink" title="DotDyn"></a>DotDyn</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>RotDyn类主要用于处理单个轴的转子动力学问题，通常需要借助Commonshaft类一块使用。</p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="转动动力学方程-1"><a href="#转动动力学方程-1" class="headerlink" title="转动动力学方程$^{[1]}$"></a>转动动力学方程$^{[1]}$</h3><p>考虑转动效应的动力方程如下：  </p>
 <p>$$<br>[M]{\ddot{u}}+([G]+[C]){\dot{u}}+([K]-[K_{\mathfrak{c}}]){u}&#x3D;{F}<br>$$</p>
 <p>式中：$[M],[C],[K]$一一分别为结构质量、阻尼和刚度矩阵；  </p>
@@ -578,11 +578,28 @@
 <p>材料结构阻尼系数是频变阻尼，采用命令“TB，SDAMP”和TBFIELD定义，仅用于变分法谐响应分析，并可选择黏性阻尼模型或滞变阻尼模型。  </p>
 </li>
 <li><p>针对单元阻尼，可以在Support中设置，RotDyn会将其转换为combin14单元和combin214单元来计算。</p>
-<p>Support’% Spring connected to ground</p>
+<p> Support’% Spring connected to ground</p>
 <p>% Node number,kx,K11,K22,K12,K21,Cx,C11,C22,C12,C21</p>
 </li>
 </ul>
 <h4 id="刚度参数"><a href="#刚度参数" class="headerlink" title="刚度参数"></a>刚度参数</h4><p>部件的刚度比如齿轮、轴承、联轴器均有相关的规范和计算方法，可以参考其他部件Baffalo说明。</p>
+<h3 id="频响函数"><a href="#频响函数" class="headerlink" title="频响函数"></a>频响函数</h3><p>频响函数 ( Frequency Response Function, FRF) , 它是结构的输出响应和 输入激励力之比，频响函数 FRF 具有以下性质: </p>
+<ol>
+<li><p>频响函数定义为输入位置单位激励力引起的输出位置的响应。 </p>
+</li>
+<li><p>频响函数是系统的固有特性, 与系统本身有关, 与激励、 响应等外界因素没有关系。</p>
+</li>
+<li><p>频响函数具有互易性, 即 Hij &#x3D; Hji, 也就是说, j 点单位激励力在 i 点引起的响应等于 i 点单位激励力在 j 点引起的响应, 这也表明频响函数矩阵是对称的。</p>
+</li>
+<li><p>频响函数是复值函数, 因而其可以用幅值与相位或者实部与虚部表示, 故而频响函数 具有幅频、 相频和实频、 虚频等多种表现形式。”</p>
+</li>
+</ol>
+<p>在RotDyn中设置params.Type&#x3D;1可设置频响函数分析。</p>
+<h4 id="单自由度频响函数"><a href="#单自由度频响函数" class="headerlink" title="单自由度频响函数"></a>单自由度频响函数</h4><p>以单自由度的频响函数为例，</p>
+<p>“在 低 频 段, FRF 的 幅 值 是 1 &#x2F; k( k &gt;&gt; ω2 m + jωc) , 相 位 为 0, 表明共振频率以下的频率段主要 用占主导地位的刚度项来描述。<br>在 高 频 段, FRF 的 幅 值 为 - 1 &#x2F; ω2 m( ω2 m &gt;&gt; jωc + k) , 相 位 为 - 180°, 表明共振频率以上的 频率段主要用占主导地位的质量 项来描述。<br>理论上, 无阻尼固有频率处 的 FRF 幅值应是无穷大, 但是由 于阻尼的存在, 导致共振频率处 的幅 值 不 会 无 穷 大, 其 幅 值 为 1 &#x2F; ωc, 相位突变 180°, 表明在共振频率处主要受阻尼控制。</p>
+<img src="/./img/RotDyn.assets/8c8151d7b882236e23f1a19c8b0a7d8c_MD5.jpeg" alt="8c8151d7b882236e23f1a19c8b0a7d8c_MD5" style="zoom: 50%;" />
+
+<h3 id="AMRotor"><a href="#AMRotor" class="headerlink" title="AMRotor"></a>AMRotor</h3><p>RotDyn的时序分析和PID控制，主要基于开源转子动力学分析软件AMrotor</p>
 <h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/RotDyn.assets/FIg60.jpg"></p>
 <p>输入 input：</p>
 <ul>
@@ -591,18 +608,25 @@
 <li>KeyNode : 关键点</li>
 <li>BCNode : 边界点</li>
 <li>PointMass : 附加的节点质量</li>
-<li>Springs : 弹簧包含刚度和阻尼等参数</li>
 <li>Discs : 附加转盘</li>
 <li>Speed : 计算转速</li>
 <li>MaterialNum : 材料编号</li>
 <li>Shaft : 轴</li>
+<li>PIDController : PID控制器</li>
+<li>TimeSeries  : 时序</li>
+<li>LUTBearing : 刚度随转速变化轴承</li>
+<li>Table : 轴承刚度和阻尼map</li>
+<li>TorBearing: 转动方向的轴承</li>
+<li>Bearing : 轴承包含刚度和阻尼参数</li>
+<li>SpeedRange : 升速分析的转速范围</li>
 </ul>
 <p>参数 params:</p>
 <ul>
 <li>ez ：z向偏心</li>
 <li>ey :  y向偏心</li>
-<li>Type : 求解类型 Type&#x3D;2 为模态计算 Type&#x3D;3为谐响应分析</li>
-<li>PrintORB ：输出质心轨迹</li>
+<li>Type : 求解类型 Type&#x3D;1 FRF分析；Type&#x3D;2 模态计算；Type&#x3D;3为谐响应分析；Type&#x3D;4 定转速时序分析；Type&#x3D;5 s升速或降速时序分析</li>
+<li>Rayleigh : 瑞利阻尼</li>
+<li>PrintMode ：输出模态图</li>
 <li>PrintCampbell : 输出坎贝尔图 </li>
 <li>Position : 轴位置</li>
 <li>PStress : 考虑预应力</li>
@@ -619,6 +643,14 @@
 <p>输出 output :</p>
 <ul>
 <li>Xc : 轴重心位置</li>
+<li>TimeSeriesResult : 时序分析结果</li>
+<li>Time : 时间序列</li>
+<li>Ewb : 负进动</li>
+<li>Ewf : 正进动</li>
+<li>eigenValue : 模态分析幅值</li>
+<li>eigenVector ：模态分析方向</li>
+<li>ModeResult : 模态分析结果</li>
+<li>FRFResult ：FRF分析结果</li>
 <li>Mass : 轴质量</li>
 <li>SpeedUp : 加速曲线</li>
 <li>TotalElement : 总的单元数</li>
@@ -638,21 +670,24 @@ inputshaft1.OD = [40,40];
 paramsshaft1 = struct();
 obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
 obj1 = obj1.solve();
+
 mat&#123;1,1&#125;=obj1.params.Material;
 inputRotDyn.Shaft=obj1.output.BeamMesh;
 inputRotDyn.Speed=[0,15000,30000];
 inputRotDyn.MaterialNum=1;
-inputRotDyn.BCNode=[1,1,1,1,0,0,0;size(obj1.output.Node,1),1,1,1,0,0,0];
+inputRotDyn.BCNode=[1,1,1,1,0,0,0;size(obj1.output.Node,1),0,1,1,0,0,0];
 paramsRotDyn.Material=mat;
 paramsRotDyn.PrintCampbell=1;
-paramsRotDyn.PrintORB=1;
+paramsRotDyn.PrintMode=1;
+paramsRotDyn.Freq=[0,3000];
 obj2 = solve.RotDyn(paramsRotDyn,inputRotDyn);
 Plot(obj2);
 obj2 = obj2.solve();
 ANSYSSolve(obj2.output.Assembly)
-PlotCampbell(obj2,&#39;NMode&#39;,8);
+    
+obj2=PlotCampbell(obj2,&#39;NMode&#39;,8);
 for i=1:10
-    PlotORB(obj2,2,i,&#39;scale&#39;,10)
+  PlotMode(obj2,2,i,&#39;scale&#39;,10)
 end
 </code></pre>
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
@@ -663,7 +698,6 @@ end
 	</tbody>
 </table>
 
-
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
 		<tr>
@@ -671,7 +705,6 @@ end
 		</tr>
 	</tbody>
 </table>
-
 
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
@@ -681,7 +714,6 @@ end
 	</tbody>
 </table>
 
-
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
 		<tr>
@@ -689,7 +721,6 @@ end
 		</tr>
 	</tbody>
 </table>
-
 
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
@@ -699,7 +730,6 @@ end
 	</tbody>
 </table>
 
-
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
 		<tr>
@@ -707,7 +737,6 @@ end
 		</tr>
 	</tbody>
 </table>
-
 
 
 
@@ -720,12 +749,13 @@ end
 inputshaft1.Length =750;
 inputshaft1.ID = [0,0];
 inputshaft1.OD = [ID,ID];
-paramsshaft1.Beam_N = 30;
+paramsshaft1.Beam_N = 16;
 obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
 obj1 = obj1.solve();
+
 mat&#123;1,1&#125;=obj1.params.Material;
 inputRotDyn.Shaft=obj1.output.BeamMesh;
-inputRotDyn.Speed=[0,1500,3000];% Unit: RPM
+inputRotDyn.Speed=[0,400,800,1200,1600,2000];% Unit: RPM
 inputRotDyn.MaterialNum=1;
 inputRotDyn.BCNode=[1,1,1,1,0,0,0;size(obj1.output.Node,1),1,1,1,0,0,0];
 paramsRotDyn.Material=mat;
@@ -741,7 +771,7 @@ Dyn= AddDisc(Dyn,Num1,OD,ID,L,1);
 Plot(Dyn);
 Dyn = Dyn.solve();
 ANSYSSolve(Dyn.output.Assembly)
-PlotCampbell(Dyn,&#39;NMode&#39;,6);
+PlotCampbell(Dyn,&#39;NMode&#39;,4);
 </code></pre>
 <img src="/./img/RotDyn.assets/Fig22.jpg" style="zoom:50%;" />
 
@@ -782,7 +812,10 @@ disp(Dyn.input.PointMass)
 </code></pre>
 <p>加入自定义的截面并计算其质量、转动惯量和弯曲惯量。</p>
 <p>Successfully revolve to solid mesh .<br>   35.0000    0.0041    4.0578    4.0580<br>   69.0000    0.0123   15.3742   48.6848</p>
-<p><img src="/./img/RotDyn.assets/Fig23.jpg"></p>
+<img src="/./img/RotDyn.assets/Fig23.jpg" style="zoom:80%;" />
+
+
+
 <h3 id="Add-Blade-Flag-4"><a href="#Add-Blade-Flag-4" class="headerlink" title="Add Blade (Flag&#x3D;4)"></a>Add Blade (Flag&#x3D;4)</h3><pre><code class="language-matlab">OD=425;
 inputshaft1.Length =1000;
 inputshaft1.ID = [0,0];
@@ -799,7 +832,7 @@ paramsRotDyn.Material=mat;
 paramsRotDyn.NMode=15;
 paramsRotDyn.Freq=[0,3000];
 paramsRotDyn.PrintCampbell=1;
-paramsRotDyn.PrintORB=1;
+paramsRotDyn.PrintMode=1;
 paramsRotDyn.Position=[0,0,0,0,0,0];
 Dyn = solve.RotDyn(paramsRotDyn,inputRotDyn);
 [Dyn,Num1]= AddCnode(Dyn,500);
@@ -833,7 +866,6 @@ end
 	</tbody>
 </table>
 
-
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
 		<tr>
@@ -841,7 +873,6 @@ end
 		</tr>
 	</tbody>
 </table>
-
 
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
@@ -851,7 +882,6 @@ end
 	</tbody>
 </table>
 
-
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
 		<tr>
@@ -860,7 +890,6 @@ end
 	</tbody>
 </table>
 
-
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
 		<tr>
@@ -868,8 +897,9 @@ end
 		</tr>
 	</tbody>
 </table>
+### Multi Discs & Calculate critical speed (Flag=5)
 
-<h3 id="Multi-Discs-Calculate-critical-speed-Flag-5"><a href="#Multi-Discs-Calculate-critical-speed-Flag-5" class="headerlink" title="Multi Discs &amp; Calculate critical speed (Flag&#x3D;5)"></a>Multi Discs &amp; Calculate critical speed (Flag&#x3D;5)</h3><pre><code class="language-matlab">m1=0.102;% unit:ton
+<pre><code class="language-matlab">m1=0.102;% unit:ton
 JT1=6377*2;% unit: ton/mm2
 JD1=6377;% unit: ton/mm2
 % Shaft1
@@ -911,15 +941,14 @@ disp(Dyn.output.CriticalSpeed);
 	</tbody>
 </table>
 
-
 <p> 1.0e+03 *</p>
 <pre><code>0.5661
 1.1379
 2.2070
 2.1237
 </code></pre>
-<h3 id="Add-Elastic-Support-Flag-6"><a href="#Add-Elastic-Support-Flag-6" class="headerlink" title="Add Elastic Support (Flag&#x3D;6)"></a>Add Elastic Support (Flag&#x3D;6)</h3><p>如下图所示钢质圆盘转子结构，材料的弹性模量为$200\mathrm{GPa}$，密度$7830,\mathrm{kg&#x2F;m^{3}}$，泊松系数为0.3，长度分别为$L_{1}&#x3D;0.\ 2\mathrm{m}$，$L_{2}&#x3D;\mathrm{0.<del>3m}$，$L_{3}&#x3D;0.\ 5\mathrm{m}$，$L_{4}&#x3D;0.\ 3\mathrm{m}$，轴径$d&#x3D;!0.</del>05\mathrm{m}$，圆盘半径分别为 $R_{1}&#x3D;0.12\mathrm{m}$ ， $R_{2}&#x3D;\mathrm{0.<del>2m}$ ， $R_{3}&#x3D;!0.{\mathrm{</del>2m}}$ ,厚 度分别为 $t_{1}&#x3D;0,,05\mathrm{m}$ ， $t_{2}&#x3D;0.~05\mathrm{m}$ ， $t_{3}&#x3D;\ 0.{\ }06,\mathrm{m}$ 。轴两端为简支边界条件，图中支承仅为示意。  </p>
-<img src="/./img/RotDyn.assets/FIg36.jpg" style="zoom: 67%;" />
+<h3 id="Add-Bearing-Flag-6"><a href="#Add-Bearing-Flag-6" class="headerlink" title="Add Bearing (Flag&#x3D;6)"></a>Add Bearing (Flag&#x3D;6)</h3><p>如下图所示钢质圆盘转子结构，材料的弹性模量为$200\mathrm{GPa}$，密度$7830,\mathrm{kg&#x2F;m^{3}}$，泊松系数为0.3，长度分别为$L_{1}&#x3D;0.\ 2\mathrm{m}$，$L_{2}&#x3D;\mathrm{0.<del>3m}$，$L_{3}&#x3D;0.\ 5\mathrm{m}$，$L_{4}&#x3D;0.\ 3\mathrm{m}$，轴径$d&#x3D;!0.</del>05\mathrm{m}$，圆盘半径分别为 $R_{1}&#x3D;0.12\mathrm{m}$ ， $R_{2}&#x3D;\mathrm{0.<del>2m}$ ， $R_{3}&#x3D;!0.{\mathrm{</del>2m}}$ ,厚 度分别为 $t_{1}&#x3D;0,,05\mathrm{m}$ ， $t_{2}&#x3D;0.~05\mathrm{m}$ ， $t_{3}&#x3D;\ 0.{\ }06,\mathrm{m}$ 。轴两端为简支边界条件，图中支承仅为示意。  </p>
+<img src="/./img/RotDyn.assets/FIg36.jpg" alt="FIg36" style="zoom: 67%;" />
 
 <pre><code class="language-matlab">L1=200;
 L2=300;
@@ -946,48 +975,48 @@ inputRotDyn.Speed=[0,1000,2000,3000,4000,5000,6000];
 inputRotDyn.MaterialNum=1;
 inputRotDyn.BCNode=[1,1,1,1,1,0,0;size(obj1.output.Node,1),0,1,1,1,0,0];
 paramsRotDyn.Material=mat;
-paramsRotDyn.PrintCampbel=1;
+paramsRotDyn.PrintCampbell=1;
 paramsRotDyn.ShaftTorsion=1;
-paramsRotDyn.PrintORB=1;
+paramsRotDyn.PrintMode=1;
 Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
 Dyn1 = Dyn1.solve();
 Plot(Dyn1);
 ANSYSSolve(Dyn1.output.Assembly);
-PlotCampbell(Dyn1,&#39;NMode&#39;,12);
-% Elastic support
+Dyn1=PlotCampbell(Dyn1,&#39;NMode&#39;,12);
+% Bearing
 mat&#123;1,1&#125;=obj1.params.Material;
 inputRotDyn.Shaft=obj1.output.BeamMesh;
 inputRotDyn.Speed=[0,1000,2000,3000,4000,5000,6000];
 inputRotDyn.MaterialNum=1;
-inputRotDyn.Support=[1,1e8,8e3,3e3,0,0,0,1e-3,2e-4,0,0;size(obj1.output.Node,1),0,8e3,3e3,0,0,0,1e-3,2e-4,0,0];
+inputRotDyn.Bearing=[1,1e8,8e3,3e3,0,0,0,1e-3*8e3,2e-4*3e3,0,0;size(obj1.output.Node,1),0,8e3,3e3,0,0,0,1e-3*8e3,2e-4*3e3,0,0];
 paramsRotDyn.Material=mat;
 paramsRotDyn.PrintCampbell=1;
 paramsRotDyn.ShaftTorsion=1;
-paramsRotDyn.PrintORB=1;
+paramsRotDyn.PrintMode=1;
 inputRotDyn.BCNode=[];
 Dyn2 = solve.RotDyn(paramsRotDyn,inputRotDyn);
 Dyn2 = Dyn2.solve();
 Plot(Dyn2);
 ANSYSSolve(Dyn2.output.Assembly);
-PlotCampbell(Dyn2,&#39;NMode&#39;,12);
+Dyn2=PlotCampbell(Dyn2,&#39;NMode&#39;,12);
+disp(Dyn1.output.Campbell);
+disp(Dyn2.output.Campbell);
 </code></pre>
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
 		<tr>
-			<td style="padding: 6px"><img src="/./img/RotDyn.assets/FIg37.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/FIg38.jpg" style="zoom: 100%;"></td>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/Fig37.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/Fig38.jpg" style="zoom: 100%;"></td>
 		</tr>
 	</tbody>
 </table>
-
 
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
 		<tr>
-			<td style="padding: 6px"><img src="/./img/RotDyn.assets/FIg39.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/FIg40.jpg" style="zoom: 100%;"></td>
+			<td style="padding: 6px"><img src="/./img/RotDyn.assets/Fig39.jpg" style="zoom: 100%;"></td><td><img src="/./img/RotDyn.assets/Fig40.jpg" style="zoom: 100%;"></td>
 		</tr>
 	</tbody>
 </table>
-
 
 
 
@@ -997,7 +1026,64 @@ PlotCampbell(Dyn2,&#39;NMode&#39;,12);
 <p>Num      Status        rpm1      rpm2      rpm3      rpm4      rpm5      rpm6      rpm7 </p>
 <hr>
 <p> 1     <undefined>         0         0         0         0         0         0         0<br> 2     BW             18.664    18.619    18.493    18.303    18.068      17.8    17.509<br> 3     FW             20.791    20.826    20.923    21.064    21.232    21.415    21.604<br> 4     BW             52.486    52.442    52.309    52.091    51.792    51.417    50.975<br> 5     FW               67.5     67.53    67.619    67.765    67.962    68.203    68.474<br> 6     <undefined>    71.896    71.896    71.896    71.896    71.896    71.896    71.896<br> 7     BW             111.47    110.32    107.02    102.22    96.835    91.461    86.372<br> 8     FW             139.56    140.57    143.51    147.72    151.88    153.96    154.25<br> 9     FW             189.93    189.95    188.82    183.53    177.41    174.04    172.86<br>10     FW              209.4    210.66    215.61    227.17    242.31    258.84    276.84<br>11     <undefined>    231.75    231.75    231.75    231.75    231.75    231.75    231.75<br>12     BW             291.24    291.46    292.14    293.25    294.77    296.63    298.55</p>
-<h3 id="Consider-prestress-Flag-7"><a href="#Consider-prestress-Flag-7" class="headerlink" title="Consider prestress (Flag&#x3D;7)"></a>Consider prestress (Flag&#x3D;7)</h3><pre><code class="language-matlab">L1=200;
+<h3 id="Add-LUT-Bearing-Flag-7"><a href="#Add-LUT-Bearing-Flag-7" class="headerlink" title="Add LUT Bearing (Flag&#x3D;7)"></a>Add LUT Bearing (Flag&#x3D;7)</h3><p>当轴承刚度随转速变化时，可以采用LUTBearing (Look up table bearing)模拟。</p>
+<pre><code class="language-matlab">L1=200;
+L2=300;
+L3=500;
+L4=300;
+t1=50;t2=50;t3=60;
+R1=120;
+R2=200;
+R3=200;
+d=50;
+
+% Shaft1
+inputshaft1.Length = [L1-t1/2;L1+t1/2;L1+L2-t2/2;L1+L2+t2/2;L1+L2+L3-t3/2;L1+L2+L3+t3/2;L1+L2+L3+L4];
+inputshaft1.ID = [[0,0];[0,0];[0,0];[0,0];[0,0];[0,0];[0,0]];
+inputshaft1.OD = [[d,d];[R1*2,R1*2];[d,d];[R2*2,R2*2];[d,d];[R3*2,R3*2];[d,d]];
+paramsshaft1.Beam_N = 16;
+paramsshaft1.N_Slice=201;
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot3D(obj1)
+
+% LUTBearing
+RPM=[0,2000,4000,6000,8000,10000,12000]&#39;;
+K11=[1.6e3,2e3,4.8e3,8.8e3,1.3e4,1.8e4,2.3e4]&#39;;
+K22=[2e3,3e3,6e3,1.1e4,1.7e4,2.3e4,3e4]&#39;;
+K12=[-2e1,-2.4e1,-6.8e1,-1.2e2,-1.9e2,-2.6e2,-3.6e2]&#39;;
+K21=[6,4e1,1e2,1.7e2,2.5e2,3.4e2,4.3e2]&#39;;
+C11=[2,2,2,2,2,2,2]&#39;;
+C22=[5,5,5,5,5,5,5]&#39;;
+C12=[-4,-4,-4,-4,-4,-4,-4]&#39;;
+C21=[3,3,3,3,3,3,3]&#39;;
+LUTBearing=table(RPM,K11,K22,K12,K21,C11,C22,C12,C21);
+mat&#123;1,1&#125;=obj1.params.Material;
+inputRotDyn.Shaft=obj1.output.BeamMesh;
+inputRotDyn.Speed=[0,1000,2000,3000,4000,5000,6000];
+inputRotDyn.MaterialNum=1;
+inputRotDyn.Bearing=[1,1e8,0,0,0,0,0,0,0,0,0];
+paramsRotDyn.Material=mat;
+paramsRotDyn.PrintCampbell=1;
+paramsRotDyn.ShaftTorsion=1;
+paramsRotDyn.PrintMode=1;
+inputRotDyn.BCNode=[];
+Dyn2 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+Dyn2=AddTable(Dyn2,LUTBearing);
+Dyn2=AddLUTBearing(Dyn2,1,1);% Node 1, Table 1
+Dyn2=AddLUTBearing(Dyn2,size(obj1.output.Node,1),1);
+Dyn2 = Dyn2.solve();
+Plot(Dyn2);
+ANSYSSolve(Dyn2.output.Assembly);
+Dyn2=PlotCampbell(Dyn2,&#39;NMode&#39;,12);
+disp(Dyn2.output.Campbell);
+</code></pre>
+<img src="/./img/RotDyn.assets/Fig61.jpg" style="zoom:50%;" />
+
+<p>Num      Status        rpm1      rpm2      rpm3      rpm4      rpm5      rpm6      rpm7 </p>
+<hr>
+<p> 1     <undefined>     0.001     0.001     0.001     0.001     0.001     0.001     0.001<br> 2     BW             16.089    16.794    17.278    18.588    18.787     18.79    18.578<br> 3     FW             17.774    18.189    18.562     19.94    21.134    22.342    23.243<br> 4     BW             35.277    39.528    43.083    53.953    60.107     64.07    65.661<br> 5     FW             52.696    53.937    55.088    59.522    62.923    68.139    72.199<br> 6     <undefined>    71.896    71.896    71.896    71.896    71.896    71.896    71.896<br> 7     FW             72.781    82.061    91.141    113.93    129.56    152.39    170.57<br> 8     BW             123.47    118.04    112.17    112.02    113.58    112.34    110.29<br> 9     FW              152.9    164.59    177.68    199.74     220.7    253.04    281.26<br>10     BW             209.09    202.74    197.64    201.45    205.16    202.52    199.84<br>11     <undefined>    231.75    231.75    231.75    231.75    231.75    231.75    231.75<br>12     BW             288.39    289.92    291.88    299.02    307.07    318.93    331.93</p>
+<h3 id="Consider-prestress-Flag-8"><a href="#Consider-prestress-Flag-8" class="headerlink" title="Consider prestress (Flag&#x3D;8)"></a>Consider prestress (Flag&#x3D;8)</h3><pre><code class="language-matlab">L1=200;
 L2=300;
 L3=500;
 L4=300;
@@ -1038,7 +1124,8 @@ disp(Dyn2.output.Campbell);
 <p> 1     <undefined>         0         0         0         0         0         0         0<br> 2     BW             18.664    18.619    18.493    18.303    18.068      17.8    17.509<br> 3     FW             20.791    20.826    20.923    21.064    21.232    21.415    21.604<br> 4     BW             52.486    52.442    52.309    52.091    51.792    51.417    50.975<br> 5     FW               67.5     67.53    67.619    67.765    67.962    68.203    68.474<br> 6     <undefined>    71.896    71.896    71.896    71.896    71.896    71.896    71.896<br> 7     BW             111.47    110.32    107.02    102.22    96.835    91.461    86.372<br> 8     FW             139.56    140.57    143.51    147.72    151.88    153.96    154.25<br> 9     FW             189.93    189.95    188.82    183.53    177.41    174.04    172.86<br>10     FW              209.4    210.66    215.61    227.17    242.31    258.84    276.84<br>11     <undefined>    231.75    231.75    231.75    231.75    231.75    231.75    231.75<br>12     BW             291.24    291.46    292.14    293.25    294.77    296.63    298.55</p>
 <img src="/./img/RotDyn.assets/FIg41.jpg" style="zoom:50%;" />
 
-<h3 id="Eccentricity-of-shaft-Flag-8"><a href="#Eccentricity-of-shaft-Flag-8" class="headerlink" title="Eccentricity of shaft (Flag&#x3D;8)"></a>Eccentricity of shaft (Flag&#x3D;8)</h3><pre><code class="language-matlab">L1=200;
+<h3 id="Eccentricity-of-shaft-Flag-9"><a href="#Eccentricity-of-shaft-Flag-9" class="headerlink" title="Eccentricity of shaft (Flag&#x3D;9)"></a>Eccentricity of shaft (Flag&#x3D;9)</h3><p>考虑轴偏心对模拟影响，设置ex和ey(轴两端偏心量)对模拟的影响。</p>
+<pre><code class="language-matlab">L1=200;
 L2=300;
 L3=500;
 L4=300;
@@ -1064,7 +1151,7 @@ inputRotDyn.BCNode=[1,1,1,1,1,0,0;size(obj1.output.Node,1),0,1,1,1,0,0];
 paramsRotDyn.Material=mat;
 paramsRotDyn.PrintCampbell=1;
 paramsRotDyn.ShaftTorsion=1;
-paramsRotDyn.PrintORB=1;
+paramsRotDyn.PrintMode=1;
 paramsRotDyn.ey=[5,-5];
 Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
 Dyn1 = Dyn1.solve();
@@ -1078,7 +1165,7 @@ disp(Dyn1.output.Campbell);
 <p> 1       BW      22.405    21.883    21.362    20.842    20.325    19.812    19.305<br> 2       FW      22.406    22.927    23.446    23.963    24.475    24.982    25.483<br> 3       BW      59.647    59.647    59.647    59.647    59.647    59.647    59.647<br> 4       BW      83.165    82.211    81.173    80.064    78.884    77.632    76.311<br> 5       FW      83.198    84.087    84.931    85.719    86.455    87.142    87.785<br> 6       BW      94.803    94.803    94.803    94.803    94.803    94.803    94.803<br> 7       BW      191.83    182.03     172.8    164.26     156.4    149.23    142.72<br> 8       FW      192.02    202.43    213.49    225.03    236.96    249.19     261.6<br> 9       BW      275.76    263.58    252.03    241.24    231.17    221.79    213.07<br>10       FW       276.1     289.1    303.09    317.86    333.25    348.56    360.66<br>11       FW      343.94    343.94    343.94    343.94    343.94    343.93    343.94<br>12       FW      366.24    366.34    366.65    367.25    368.33    370.62    377.31</p>
 <img src="/./img/RotDyn.assets/FIg42.jpg" style="zoom:50%;" />
 
-<h3 id="High-speed-rotor-example-Flag-9"><a href="#High-speed-rotor-example-Flag-9" class="headerlink" title="High speed rotor example (Flag&#x3D;9)"></a>High speed rotor example (Flag&#x3D;9)</h3><p>下图为一个工业用的高速机械的转子，工作转速为50000 r&#x2F;min，转子尺寸如图中所示（单位毫<br>米）。转子由两个滑动轴承B1、B2支承。两端有两个铝制叶轮D1、D2。<br>已知有关参数为：<br>轴的材质为钢，其弹性模量为2.0E11N&#x2F;m 2 ，质量密度为7800kg&#x2F;m 3 ，泊桑比为0.3；<br>B1的油膜刚度系数为 K xx &#x3D;8E7N&#x2F;m，K xy &#x3D;1E7N&#x2F;m，K yx &#x3D;6E7N&#x2F;m，K yy &#x3D;1E8N&#x2F;m；<br>B1的油膜阻尼系数为 C xx &#x3D;8E3N s&#x2F;m，C xy &#x3D;3E3N s&#x2F;m，C yx &#x3D;3E3N s&#x2F;m，C yy &#x3D;1.2E4N s&#x2F;m；<br>B2的油膜刚度系数为 K xx &#x3D;5E7N&#x2F;m，K xy &#x3D;2E7N&#x2F;m，K yx &#x3D;4E7N&#x2F;m，K yy &#x3D;7E7N&#x2F;m；<br>B2的油膜阻尼系数为 C xx &#x3D;6E3N s&#x2F;m，C xy &#x3D;1.5E3N s&#x2F;m，C yx &#x3D;1.5E3N s&#x2F;m，C yy &#x3D;8E3N s&#x2F;m；<br>D1的质量为1.2kg，极转动惯量为2.4 E-3kg m 2 ，直径转动惯量为1.2E-3kg m 2 ；<br>D2的质量为1.0kg，极转动惯量为2.0E-3kg m 2 ，直径转动惯量为1.0E-3kg m 2 。</p>
+<h3 id="High-speed-rotor-example-Flag-10"><a href="#High-speed-rotor-example-Flag-10" class="headerlink" title="High speed rotor example (Flag&#x3D;10)"></a>High speed rotor example (Flag&#x3D;10)</h3><p>下图为一个工业用的高速机械的转子，工作转速为50000 r&#x2F;min，转子尺寸如图中所示（单位毫<br>米）。转子由两个滑动轴承B1、B2支承。两端有两个铝制叶轮D1、D2。<br>已知有关参数为：<br>轴的材质为钢，其弹性模量为2.0E11N&#x2F;m 2 ，质量密度为7800kg&#x2F;m 3 ，泊桑比为0.3；<br>B1的油膜刚度系数为 K xx &#x3D;8E7N&#x2F;m，K xy &#x3D;1E7N&#x2F;m，K yx &#x3D;6E7N&#x2F;m，K yy &#x3D;1E8N&#x2F;m；<br>B1的油膜阻尼系数为 C xx &#x3D;8E3N s&#x2F;m，C xy &#x3D;3E3N s&#x2F;m，C yx &#x3D;3E3N s&#x2F;m，C yy &#x3D;1.2E4N s&#x2F;m；<br>B2的油膜刚度系数为 K xx &#x3D;5E7N&#x2F;m，K xy &#x3D;2E7N&#x2F;m，K yx &#x3D;4E7N&#x2F;m，K yy &#x3D;7E7N&#x2F;m；<br>B2的油膜阻尼系数为 C xx &#x3D;6E3N s&#x2F;m，C xy &#x3D;1.5E3N s&#x2F;m，C yx &#x3D;1.5E3N s&#x2F;m，C yy &#x3D;8E3N s&#x2F;m；<br>D1的质量为1.2kg，极转动惯量为2.4 E-3kg m 2 ，直径转动惯量为1.2E-3kg m 2 ；<br>D2的质量为1.0kg，极转动惯量为2.0E-3kg m 2 ，直径转动惯量为1.0E-3kg m 2 。</p>
 <p><img src="/./img/RotDyn.assets/FIg51.jpg"></p>
 <pre><code class="language-matlab">% Shaft
 inputshaft1.Length = [35;45;70;200;250;300];
@@ -1096,18 +1183,22 @@ inputRotDyn.PointMass=[1,1.2e-3,2.4,1.2;size(obj1.output.Node,1),1e-3,2,1];
 inputRotDyn.MaterialNum=1;
 paramsRotDyn.Material=mat;
 paramsRotDyn.PrintCampbell=1;
-paramsRotDyn.PrintORB=1;
+paramsRotDyn.PrintMode=1;
 Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+
 [Dyn1,Num1]= AddCnode(Dyn1,70);
-Dyn1=AddSupport(Dyn1,Num1,[1e10,8e4,1e5,1e4,6e4,0,8,12,3,3]);
+Dyn1=AddBearing(Dyn1,Num1,[1e10,8e4,1e5,1e4,6e4,0,8,12,3,3]);
+
 [Dyn1,Num2]= AddCnode(Dyn1,200);
-Dyn1=AddSupport(Dyn1,Num2,[0,5e4,7e4,2e4,4e4,0,6,8,1.5,1.5]);
+Dyn1=AddBearing(Dyn1,Num2,[0,5e4,7e4,2e4,4e4,0,6,8,1.5,1.5]);
 Dyn1 = Dyn1.solve();
+
 ANSYSSolve(Dyn1.output.Assembly);
 Dyn1=PlotCampbell(Dyn1,&#39;NMode&#39;,6);
 disp(Dyn1.output.Campbell);
+
 for i=1:6
-PlotORB(Dyn1,2,i,&#39;scale&#39;,1)
+  PlotMode(Dyn1,2,i,&#39;scale&#39;,1)
 end
 Dyn1=CalculateCriticalSpeed(Dyn1);
 disp(Dyn1.output.CriticalSpeed);
@@ -1120,7 +1211,6 @@ disp(Dyn1.output.CriticalSpeed);
 	</tbody>
 </table>
 
-
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
 		<tr>
@@ -1128,7 +1218,6 @@ disp(Dyn1.output.CriticalSpeed);
 		</tr>
 	</tbody>
 </table>
-
 
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
@@ -1138,7 +1227,6 @@ disp(Dyn1.output.CriticalSpeed);
 	</tbody>
 </table>
 
-
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
 		<tr>
@@ -1146,8 +1234,9 @@ disp(Dyn1.output.CriticalSpeed);
 		</tr>
 	</tbody>
 </table>
+### High speed rotor Harmonic analysis (Flag=11)
 
-<h3 id="High-speed-rotor-Harmonic-analysis-Flag-10"><a href="#High-speed-rotor-Harmonic-analysis-Flag-10" class="headerlink" title="High speed rotor Harmonic analysis (Flag&#x3D;10)"></a>High speed rotor Harmonic analysis (Flag&#x3D;10)</h3><p>在高速轴上施加me&#x3D;0.5e-6 Nmm的不平衡量，进行谐响应分析，可以观察此时轴节点的谐响应。</p>
+<p>在高速轴上施加me&#x3D;0.5e-6 Nmm的不平衡量，进行谐响应分析，可以观察此时轴节点的谐响应。</p>
 <pre><code class="language-matlab">% Shaft
 inputshaft1.Length = [35;45;70;200;250;300];
 inputshaft1.ID = [[0,0];[10,10];[10,10];[10,10];[10,10];[10,10]];
@@ -1157,6 +1246,7 @@ paramsshaft1.N_Slice=201;
 obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
 obj1 = obj1.solve();
 Plot3D(obj1)
+
 mat&#123;1,1&#125;=obj1.params.Material;
 inputRotDyn.Shaft=obj1.output.BeamMesh;
 inputRotDyn.Speed=[0,10000,20000,30000,40000,50000,60000];
@@ -1165,14 +1255,18 @@ inputRotDyn.UnBalanceForce=[1,0.5e-6;size(obj1.output.Node,1),0.5e-6];
 inputRotDyn.MaterialNum=1;
 paramsRotDyn.Material=mat;
 paramsRotDyn.Type=3;
+
 Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+
 [Dyn1,Num1]= AddCnode(Dyn1,70);
-Dyn1=AddSupport(Dyn1,Num1,[1e10,8e4,1e5,1e4,6e4,0,8,12,3,3]);
+Dyn1=AddBearing(Dyn1,Num1,[1e10,8e4,1e5,1e4,6e4,0,8,12,3,3]);
+
 [Dyn1,Num2]= AddCnode(Dyn1,200);
-Dyn1=AddSupport(Dyn1,Num2,[0,5e4,7e4,2e4,4e4,0,6,8,1.5,1.5]);
+Dyn1=AddBearing(Dyn1,Num2,[0,5e4,7e4,2e4,4e4,0,6,8,1.5,1.5]);
 Dyn1 = Dyn1.solve();
+
 ANSYSSolve(Dyn1.output.Assembly);
-Dyn1=PlotSpeedup(Dyn1);
+PlotSpeedup(Dyn1);
 </code></pre>
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
@@ -1181,7 +1275,6 @@ Dyn1=PlotSpeedup(Dyn1);
 		</tr>
 	</tbody>
 </table>
-
 
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
@@ -1192,8 +1285,7 @@ Dyn1=PlotSpeedup(Dyn1);
 </table>
 
 
-
-<h3 id="High-speed-unbalance-Flag-11"><a href="#High-speed-unbalance-Flag-11" class="headerlink" title="High speed unbalance (Flag&#x3D;11)"></a>High speed unbalance (Flag&#x3D;11)</h3><p>如果输入平衡质量，RotDyn会计算轴的重心，根据ISO1940标准计算平衡盘上的不平衡载荷，如下所示，设置平衡质量G&#x3D;2.5,平衡转速为3000RPM,得到的谐响应如下。</p>
+<h3 id="High-speed-unbalance-Flag-12"><a href="#High-speed-unbalance-Flag-12" class="headerlink" title="High speed unbalance (Flag&#x3D;12)"></a>High speed unbalance (Flag&#x3D;12)</h3><p>如果输入平衡质量，RotDyn会计算轴的重心，根据ISO1940标准计算平衡盘上的不平衡载荷，如下所示，设置平衡质量G&#x3D;2.5,平衡转速为3000RPM,得到的谐响应如下。</p>
 <pre><code class="language-matlab">% Shaft
 inputshaft1.Length = [35;45;70;200;250;300];
 inputshaft1.ID = [[0,0];[10,10];[10,10];[10,10];[10,10];[10,10]];
@@ -1203,6 +1295,7 @@ paramsshaft1.N_Slice=201;
 obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
 obj1 = obj1.solve();
 Plot3D(obj1)
+
 mat&#123;1,1&#125;=obj1.params.Material;
 inputRotDyn.Shaft=obj1.output.BeamMesh;
 inputRotDyn.Speed=[0,10000,20000,30000,40000,50000,60000];
@@ -1211,12 +1304,16 @@ inputRotDyn.MaterialNum=1;
 inputRotDyn.BalanceQuality=[2.5,3000,0,300,0];
 paramsRotDyn.Material=mat;
 paramsRotDyn.Type=3;
+
 Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+
 [Dyn1,Num1]= AddCnode(Dyn1,70);
-Dyn1=AddSupport(Dyn1,Num1,[1e10,8e4,1e5,1e4,6e4,0,8,12,3,3]);
+Dyn1=AddBearing(Dyn1,Num1,[1e10,8e4,1e5,1e4,6e4,0,8,12,3,3]);
+
 [Dyn1,Num2]= AddCnode(Dyn1,200);
-Dyn1=AddSupport(Dyn1,Num2,[0,5e4,7e4,2e4,4e4,0,6,8,1.5,1.5]);
+Dyn1=AddBearing(Dyn1,Num2,[0,5e4,7e4,2e4,4e4,0,6,8,1.5,1.5]);
 Dyn1 = Dyn1.solve();
+
 ANSYSSolve(Dyn1.output.Assembly);
 PlotSpeedup(Dyn1);
 </code></pre>
@@ -1228,7 +1325,6 @@ PlotSpeedup(Dyn1);
 	</tbody>
 </table>
 
-
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
 		<tr>
@@ -1236,10 +1332,412 @@ PlotSpeedup(Dyn1);
 		</tr>
 	</tbody>
 </table>
+### Rotor FRF analysis (Flag=13)
 
+<pre><code class="language-matlab">% Shaft
+inputshaft1.Length = 500;
+inputshaft1.ID = [0,0];
+inputshaft1.OD = [8,8];
+paramsshaft1.Beam_N = 16;
+paramsshaft1.N_Slice=10;
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot3D(obj1)
+
+mat&#123;1,1&#125;=obj1.params.Material;
+inputRotDyn.Shaft=obj1.output.BeamMesh;
+inputRotDyn.Speed=0;
+inputRotDyn.MaterialNum=1;
+paramsRotDyn.Material=mat;
+paramsRotDyn.Type=1;
+
+paramsRotDyn.Solver=&#39;Local&#39;;
+paramsRotDyn.Rayleigh=[1e-5,10];
+Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+Dyn1 = AddBCNode(Dyn1,1,[1,1,1,1,1,1]);
+[Dyn1,Num1]= AddCnode(Dyn1,500);
+[Dyn1,Num2]= AddCnode(Dyn1,250);
+Dyn1 = AddBearing(Dyn1,Num1,[0,1e2,1e2,0,0,0,0,0,0,0]);
+
+Dyn1 = AddInNode(Dyn1,Num1);
+Dyn1 = AddOutNode(Dyn1,[Num1;Num2]);
+Dyn1 = Dyn1.solve();
+PlotBode(Dyn1)
+</code></pre>
+<img src="/./img/RotDyn.assets/Fig62.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig63.jpg" style="zoom:50%;" />
+
+<h3 id="Rotor-modal-analysis-with-loacl-solver-（Flag-14）"><a href="#Rotor-modal-analysis-with-loacl-solver-（Flag-14）" class="headerlink" title="Rotor modal analysis with loacl solver （Flag&#x3D;14）"></a>Rotor modal analysis with loacl solver （Flag&#x3D;14）</h3><pre><code class="language-matlab">% Shaft
+inputshaft1.Length = 500;
+inputshaft1.ID = [0,0];
+inputshaft1.OD = [8,8];
+paramsshaft1.Beam_N = 16;
+paramsshaft1.N_Slice=10;
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot3D(obj1)
+mat&#123;1,1&#125;=obj1.params.Material;
+inputRotDyn.Shaft=obj1.output.BeamMesh;
+inputRotDyn.Speed=0;
+inputRotDyn.MaterialNum=1;
+paramsRotDyn.Material=mat;
+paramsRotDyn.Type=2;
+paramsRotDyn.PrintMode=1;
+paramsRotDyn.PrintCampbell=1;
+paramsRotDyn.Solver=&#39;Local&#39;;
+
+% paramsRotDyn.Rayleigh=[0,0];
+paramsRotDyn.Rayleigh=[1e-5,10];
+Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+Dyn1 = AddBCNode(Dyn1,1,[1,1,1,1,1,1]);
+[Dyn1,Num1]= AddCnode(Dyn1,500);
+Dyn1 = AddBearing(Dyn1,Num1,[0,1e2,1e2,0,0,0,0,0,0,0]);
+Dyn1 = Dyn1.solve(); 
+for i=1:10
+  PlotMode(Dyn1,1,i,&#39;scale&#39;,5)
+end
+</code></pre>
+<img src="/./img/RotDyn.assets/Fig64.jpg" style="zoom:50%;" />
+
+<h3 id="Rotor-campbell-analysis-with-loacl-solver-（Flag-15）"><a href="#Rotor-campbell-analysis-with-loacl-solver-（Flag-15）" class="headerlink" title="Rotor campbell analysis with loacl solver （Flag&#x3D;15）"></a>Rotor campbell analysis with loacl solver （Flag&#x3D;15）</h3><pre><code class="language-matlab">% Shaft
+inputshaft1.Length = 500;
+inputshaft1.ID = [0,0];
+inputshaft1.OD = [8,8];
+paramsshaft1.Beam_N = 16;
+paramsshaft1.N_Slice=10;
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
+obj1 = obj1.solve();
+Plot3D(obj1)
+mat&#123;1,1&#125;=obj1.params.Material;
+inputRotDyn.Shaft=obj1.output.BeamMesh;
+inputRotDyn.Speed=(0:1000:10000);
+inputRotDyn.MaterialNum=1;
+paramsRotDyn.Material=mat;
+paramsRotDyn.Type=2;
+paramsRotDyn.PrintMode=1;
+paramsRotDyn.PrintCampbell=1;
+paramsRotDyn.Solver=&#39;Local&#39;;
+% paramsRotDyn.Rayleigh=[0,0];
+paramsRotDyn.Rayleigh=[1e-5,10];
+Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+Dyn1 = AddBCNode(Dyn1,1,[1,1,1,1,1,1]);
+[Dyn1,Num1]= AddCnode(Dyn1,500);
+Dyn1 = AddBearing(Dyn1,Num1,[0,1e2,1e2,0,0,0,0,0,0,0]);
+Dyn1 = Dyn1.solve();
+Dyn1=PlotCampbell(Dyn1,&#39;NMode&#39;,8);
+disp(Dyn1.output.Campbell);
+</code></pre>
+<img src="/./img/RotDyn.assets/Fig65.jpg" style="zoom:50%;" />
+
+
+
+<p>Num    Status     rpm1      rpm2      rpm3      rpm4      rpm5      rpm6      rpm7      rpm8      rpm9     rpm10     rpm11 </p>
+<hr>
+<p> 1      “FW”     95.744    95.747    95.749    95.751    95.754    95.756    95.758    95.761    95.763    95.766    95.768<br> 2      “BW”     95.744    95.742    95.739    95.737    95.735    95.732     95.73    95.728    95.725    95.723     95.72<br> 3      “FW”     267.82    267.82    267.83    267.84    267.84    267.85    267.86    267.86    267.87    267.87    267.88<br> 4      “BW”     267.82    267.81    267.81     267.8    267.79    267.79    267.78    267.77    267.77    267.76    267.76<br> 5      “FW”     481.07    481.08     481.1    481.12    481.14    481.16    481.18    481.19    481.21    481.23    481.25<br> 6      “BW”     481.07    481.05    481.03    481.01    480.99    480.97    480.96    480.94    480.92     480.9    480.88<br> 7      “FW”     824.32    824.36     824.4    824.43    824.47    824.51    824.55    824.58    824.62    824.66     824.7<br> 8      “BW”     824.32    824.28    824.24    824.21    824.17    824.13    824.09    824.06    824.02    823.98    823.94<br> 9      “FW”     1318.9      1319      1319    1319.1    1319.2    1319.2    1319.3    1319.3    1319.4    1319.5    1319.5<br>10      “BW”     1318.9    1318.9    1318.8    1318.7    1318.7    1318.6    1318.6    1318.5    1318.4    1318.4    1318.3<br>11      “FW”     1949.5    1949.6    1949.7    1949.8    1949.9      1950      1950    1950.1    1950.2    1950.3    1950.4<br>12      “BW”     1949.5    1949.4    1949.3    1949.3    1949.2    1949.1      1949    1948.9    1948.8    1948.7    1948.7</p>
+<h3 id="Rotor-stationary-analysis-with-constant-speed-Flag-16"><a href="#Rotor-stationary-analysis-with-constant-speed-Flag-16" class="headerlink" title="Rotor stationary analysis with constant speed (Flag&#x3D;16)"></a>Rotor stationary analysis with constant speed (Flag&#x3D;16)</h3><p>转子在给定转速下的时序分析。</p>
+<pre><code class="language-matlab">% Shaft
+inputshaft1.Length = 500;
+inputshaft1.ID = [0,0];
+inputshaft1.OD = [8,8];
+paramsshaft1.Beam_N = 16;
+paramsshaft1.N_Slice=10;
+Shaft = shaft.Commonshaft(paramsshaft1, inputshaft1);
+Shaft = Shaft.solve();
+Plot3D(Shaft)
+
+% Load 
+inputStruct2.Time=0:1e-3:1;
+inputStruct2.Fy=rand(1,length(inputStruct2.Time));
+paramsStruct2=struct();
+Load=signal.ForceLoad(paramsStruct2, inputStruct2);
+Load=Load.solve();
+Plot(Load);
+mat&#123;1,1&#125;=Shaft.params.Material;
+inputRotDyn.Shaft=Shaft.output.BeamMesh;
+inputRotDyn.Speed=(0:1000:2000);
+inputRotDyn.MaterialNum=1;
+paramsRotDyn.Material=mat;
+paramsRotDyn.Type=4;
+paramsRotDyn.PrintMode=1;
+paramsRotDyn.PrintCampbell=1;
+paramsRotDyn.Solver=&#39;Local&#39;;
+% paramsRotDyn.Rayleigh=[0,0];
+paramsRotDyn.Rayleigh=[1e-5,10];
+Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+Dyn1 = AddBCNode(Dyn1,1,[1,1,1,1,1,1]);
+[Dyn1,Num1]= AddCnode(Dyn1,500);
+[Dyn1,Num2]= AddCnode(Dyn1,250);
+Dyn1 = AddBearing(Dyn1,Num1,[0,1e2,1e2,0,0,0,0,0,0,0]);
+Dyn1 = AddTimeSeries(Dyn1,Num2,Load.output.Load);
+Dyn1 = Dyn1.solve();
+PlotTimeSeriesResult(Dyn1,&#39;Node&#39;,Dyn1.input.KeyNode,&#39;Component&#39;,[1;2],&#39;Load&#39;,1);
+</code></pre>
+<p>不同点的位移、速度和加速度如下所示：</p>
+<img src="/./img/RotDyn.assets/Fig66.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig67.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig68.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig69.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig70.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig71.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig72.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig73.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig74.jpg" style="zoom:50%;" />
+
+<h3 id="Rotor-with-disc-campbell-analysis-with-local-solver-Flag-17"><a href="#Rotor-with-disc-campbell-analysis-with-local-solver-Flag-17" class="headerlink" title="Rotor with disc campbell analysis with local solver (Flag&#x3D;17)"></a>Rotor with disc campbell analysis with local solver (Flag&#x3D;17)</h3><pre><code class="language-matlab">% Shaft
+inputshaft1.Length = [118;158;215;345;402;442;580];
+inputshaft1.ID = [[0,0];[0,0];[0,0];[0,0];[0,0];[0,0];[0,0]];
+inputshaft1.OD = [[16,16];[17.6,17.6];[16,16];[17.6,17.6];[16,16];[17.6,17.6];[16,16]];
+paramsshaft1.Beam_N = 16;
+paramsshaft1.N_Slice=118;
+Shaft = shaft.Commonshaft(paramsshaft1, inputshaft1);
+Shaft = Shaft.solve();
+Plot3D(Shaft)
+mat&#123;1,1&#125;=Shaft.params.Material;
+inputRotDyn.Shaft=Shaft.output.BeamMesh;
+inputRotDyn.Speed=(1000:1000:8000);
+inputRotDyn.MaterialNum=1;
+paramsRotDyn.Material=mat;
+paramsRotDyn.Type=2;
+paramsRotDyn.PrintMode=1;
+paramsRotDyn.PrintCampbell=1;
+paramsRotDyn.Solver=&#39;Local&#39;;
+% paramsRotDyn.Rayleigh=[0,0];
+paramsRotDyn.Rayleigh=[1.69e-5,16.04];% 0.001
+Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+[Dyn1,Num1]= AddCnode(Dyn1,9);
+[Dyn1,Num2]= AddCnode(Dyn1,138);
+[Dyn1,Num3]= AddCnode(Dyn1,422);
+[Dyn1,Num4]= AddCnode(Dyn1,551);
+Dyn1=AddPointMass(Dyn1,Num1,1.056e-4,2.4649e-2,1.6004e-2);
+Dyn1=AddPointMass(Dyn1,Num2,4.207e-4,1.3102e-2,1.2324e-2);
+Dyn1=AddPointMass(Dyn1,Num3,4.207e-4,1.3102e-2,1.2324e-2);
+Dyn1=AddPointMass(Dyn1,Num4,1.056e-4,2.4649e-2,1.6004e-2);
+nEle=28;
+Step=(345-215)/(nEle-1);
+[Dyn1,Num]= AddCnode(Dyn1,215);
+Dyn1=AddPointMass(Dyn1,Num,2.01e-5,7.0059e-3,3.3452e-3);
+for i=2:nEle-1
+  [Dyn1,Num]= AddCnode(Dyn1,215+(i-1)*Step);
+  Dyn1=AddPointMass(Dyn1,Num,2.01e-5,7.0059e-3,3.3452e-3);
+  [Dyn1,Num]= AddCnode(Dyn1,215+(i-1)*Step);
+  Dyn1=AddPointMass(Dyn1,Num,2.01e-5,7.0059e-3,3.3452e-3);
+end
+[Dyn1,Num]= AddCnode(Dyn1,345);
+Dyn1=AddPointMass(Dyn1,Num,2.01e-5,7.0059e-3,3.3452e-3);
+Dyn1=AddBearing(Dyn1,1,[1e7,0,0,0,0,0,0,0,0,0]); % Axial bearing
+[Dyn1,Num1]= AddCnode(Dyn1,9);
+Dyn1=AddTorBearing(Dyn1,Num1,[1e13,0]);% Torsional bearing
+Dyn1=AddBearing(Dyn1,Num1,[0,2e5,2e5,0,0,0,0,0,0,0]);% Simple bearing
+[Dyn1,Num4]= AddCnode(Dyn1,551);
+Dyn1=AddBearing(Dyn1,Num4,[0,2e5,2e5,0,0,0,0,0,0,0]);% Simple bearing
+% LUTBearing
+load TestRigLam1Ecc0.mat %#ok&lt;LOAD&gt;
+RPM=rpm&#39;;
+K11=stiffness_matrix&#123;1,1&#125;/1000; %#ok&lt;USENS&gt;
+K22=stiffness_matrix&#123;2,2&#125;/1000;
+K12=stiffness_matrix&#123;1,2&#125;/1000;
+K21=stiffness_matrix&#123;2,1&#125;/1000;
+C11=damping_matrix&#123;1, 1&#125;/1000; %#ok&lt;USENS&gt;
+C22=damping_matrix&#123;2, 2&#125;/1000;
+C12=damping_matrix&#123;1, 2&#125;/1000;
+C21=damping_matrix&#123;2, 1&#125;/1000;
+LUTBearing1=table(RPM,K11,K22,K12,K21,C11,C22,C12,C21);
+Dyn1=AddTable(Dyn1,LUTBearing1);
+% LUTBearing
+load TestRigLam2Ecc0.mat %#ok&lt;LOAD&gt;
+RPM=rpm&#39;;
+K11=stiffness_matrix&#123;1,1&#125;/1000;
+K22=stiffness_matrix&#123;2,2&#125;/1000;
+K12=stiffness_matrix&#123;1,2&#125;/1000;
+K21=stiffness_matrix&#123;2,1&#125;/1000;
+C11=damping_matrix&#123;1, 1&#125;/1000;
+C22=damping_matrix&#123;2, 2&#125;/1000;
+C12=damping_matrix&#123;1, 2&#125;/1000;
+C21=damping_matrix&#123;2, 1&#125;/1000;
+LUTBearing2=table(RPM,K11,K22,K12,K21,C11,C22,C12,C21);
+Dyn1=AddTable(Dyn1,LUTBearing2);
+[Dyn1,Num]= AddCnode(Dyn1,250);
+Dyn1=AddLUTBearing(Dyn1,Num,1);
+[Dyn1,Num]= AddCnode(Dyn1,310);
+Dyn1=AddLUTBearing(Dyn1,Num,2);
+Dyn1 = Dyn1.solve();
+PlotCampbell(Dyn1,&#39;NMode&#39;,9);
+% PlotMode(Dyn1,1,1)
+</code></pre>
+<img src="/./img/RotDyn.assets/Fig75.jpg" style="zoom:50%;" />
+
+<h3 id="Disc-rotor-stationary-analysis-with-PID-controller-Flag-18"><a href="#Disc-rotor-stationary-analysis-with-PID-controller-Flag-18" class="headerlink" title="Disc rotor stationary analysis with PID controller (Flag&#x3D;18)"></a>Disc rotor stationary analysis with PID controller (Flag&#x3D;18)</h3><p>对一个转子施加PID控制。</p>
+<img src="/./img/RotDyn.assets/Fig76.jpg" style="zoom:50%;" />
+
+<pre><code class="language-matlab">% Disc rotor
+inputshaft1.Length = [220;280;500];
+inputshaft1.ID = [[0,0];[0,0];[0,0]];
+inputshaft1.OD = [[20,20];[100,100];[20,20]];
+paramsshaft1.Beam_N = 16;
+paramsshaft1.N_Slice=20;
+Shaft = shaft.Commonshaft(paramsshaft1, inputshaft1);
+Shaft = Shaft.solve();
+Plot3D(Shaft)
+% Load
+inputLoad.Time=0:1e-4:0.5;
+inputLoad.Fy=ones(1,length(inputLoad.Time));
+paramsLoad=struct();
+Load=signal.ForceLoad(paramsLoad, inputLoad);
+Load=Load.solve();
+Plot(Load);
+mat&#123;1,1&#125;=Shaft.params.Material;
+inputRotDyn.Shaft=Shaft.output.BeamMesh;
+inputRotDyn.Speed=0;
+inputRotDyn.MaterialNum=1;
+paramsRotDyn.Material=mat;
+paramsRotDyn.Type=4;
+paramsRotDyn.Solver=&#39;Local&#39;;
+paramsRotDyn.Rayleigh=[1e-5,10];
+Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+Dyn1 = AddBearing(Dyn1,1,[1e-3,1e3,1e3,0,0,0,0,0,0,0]);
+[Dyn1,Num1]= AddCnode(Dyn1,500);
+Dyn1 = AddBearing(Dyn1,Num1,[0,1e3,1e3,0,0,0,0,0,0,0]);
+[Dyn1,Num2]= AddCnode(Dyn1,250);
+Dyn1 = AddTimeSeries(Dyn1,Num2,Load.output.Load);
+load pidTestLUT %#ok&lt;LOAD&gt;
+% Dyn1 = AddPIDController(Dyn1,Num2,2e2/70,2e2/70,1/70,&#39;Type&#39;,3,&#39;Table&#39;,pidTestLUT,&#39;Direction&#39;,&#39;Uy&#39;);
+% Dyn1 = AddPIDController(Dyn1,Num2,2e2/70,2e2/70,1/70,&#39;Type&#39;,3,&#39;Table&#39;,pidTestLUT,&#39;Direction&#39;,&#39;Uz&#39;);
+Dyn1 = AddKeyNode(Dyn1,Num2);
+Dyn1 = Dyn1.solve();
+% PlotTimeSeriesResult(Dyn1,&#39;Node&#39;,Dyn1.input.KeyNode,&#39;Component&#39;,[1;2],&#39;Load&#39;,1,&#39;PIDController&#39;,1);
+PlotTimeSeriesResult(Dyn1,&#39;Node&#39;,Dyn1.input.KeyNode,&#39;Component&#39;,[1;2],&#39;Load&#39;,1);
+</code></pre>
+<p>无控制下转子中心位移。</p>
+<img src="/./img/RotDyn.assets/Fig77.jpg" style="zoom:50%;" />
+
+<p>施加PID控制后，可以看到控制器给了转子一个反作用力，使得转子中心位移趋近于0mm.</p>
+<img src="/./img/RotDyn.assets/Fig79.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig78.jpg" style="zoom:50%;" />
+
+<h3 id="Disc-rotor-speedup-analysis-with-PID-controller-Flag-19"><a href="#Disc-rotor-speedup-analysis-with-PID-controller-Flag-19" class="headerlink" title="Disc rotor speedup analysis with PID controller (Flag&#x3D;19)"></a>Disc rotor speedup analysis with PID controller (Flag&#x3D;19)</h3><p>计算PID控制下转子的升速曲线</p>
+<pre><code class="language-matlab">% Disc rotor
+inputshaft1.Length = [220;280;500];
+inputshaft1.ID = [[0,0];[0,0];[0,0]];
+inputshaft1.OD = [[20,20];[100,100];[20,20]];
+paramsshaft1.Beam_N = 16;
+paramsshaft1.N_Slice=20;
+Shaft = shaft.Commonshaft(paramsshaft1, inputshaft1);
+Shaft = Shaft.solve();
+Plot3D(Shaft)
+% Load
+inputLoad.Time=0:1e-4:0.5;
+inputLoad.Fy=ones(1,length(inputLoad.Time));
+paramsLoad=struct();
+Load=signal.ForceLoad(paramsLoad, inputLoad);
+Load=Load.solve();
+Plot(Load);
+mat&#123;1,1&#125;=Shaft.params.Material;
+inputRotDyn.Shaft=Shaft.output.BeamMesh;
+inputRotDyn.SpeedRange=[0,1000];
+inputRotDyn.MaterialNum=1;
+paramsRotDyn.Material=mat;
+paramsRotDyn.Type=5;
+paramsRotDyn.Solver=&#39;Local&#39;;
+paramsRotDyn.Rayleigh=[1e-5,10];
+Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+Dyn1 = AddBearing(Dyn1,1,[1e-3,1e3,1e3,0,0,0,0,0,0,0]);
+[Dyn1,Num1]= AddCnode(Dyn1,500);
+Dyn1 = AddBearing(Dyn1,Num1,[0,1e3,1e3,0,0,0,0,0,0,0]);
+[Dyn1,Num2]= AddCnode(Dyn1,250);
+Dyn1 = AddTimeSeries(Dyn1,Num2,Load.output.Load);
+load pidTestLUT %#ok&lt;LOAD&gt;
+Dyn1 = AddPIDController(Dyn1,Num2,2e2/70,2e2/70,1/70,&#39;Type&#39;,3,&#39;Table&#39;,pidTestLUT,&#39;Direction&#39;,&#39;Uy&#39;);
+Dyn1 = AddPIDController(Dyn1,Num2,2e2/70,2e2/70,1/70,&#39;Type&#39;,3,&#39;Table&#39;,pidTestLUT,&#39;Direction&#39;,&#39;Uz&#39;);
+Dyn1 = AddKeyNode(Dyn1,Num2);
+Dyn1 = Dyn1.solve();
+PlotTimeSeriesResult(Dyn1,&#39;Node&#39;,Dyn1.input.KeyNode,&#39;Component&#39;,[1;2],&#39;Load&#39;,1,&#39;PIDController&#39;,1);
+</code></pre>
+<img src="/./img/RotDyn.assets/Fig80.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig81.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig82.jpg" style="zoom:50%;" />
+
+<h3 id="Rotor-speedup-analysis-with-AMB-Flag-20"><a href="#Rotor-speedup-analysis-with-AMB-Flag-20" class="headerlink" title="Rotor speedup analysis with AMB (Flag&#x3D;20)"></a>Rotor speedup analysis with AMB (Flag&#x3D;20)</h3><p>带主动磁力轴承的转子动力学分析。</p>
+<img src="/./img/RotDyn.assets/Fig83.jpg" style="zoom:50%;" />
+
+<pre><code class="language-matlab">% Shaft
+inputshaft1.Length = [94;132;350;376;700];
+inputshaft1.ID = [[0,0];[0,0];[0,0];[0,0];[0,0]];
+inputshaft1.OD = [[8,8];[9.6,9.6];[8,8];[9.6,9.6];[8,8]];
+paramsshaft1.Beam_N = 16;
+paramsshaft1.N_Slice=50;
+Shaft = shaft.Commonshaft(paramsshaft1, inputshaft1);
+Shaft = Shaft.solve();
+Plot3D(Shaft)
+% Load
+inputStruct2.Time=0:1e-3:0.2;
+inputStruct2.Fy=rand(1,length(inputStruct2.Time));
+paramsStruct2=struct();
+Load1=signal.ForceLoad(paramsStruct2, inputStruct2);
+Load1=Load1.solve();
+Plot(Load1);
+Load2=signal.ForceLoad(paramsStruct2, inputStruct2);
+Load2=Load2.solve();
+Plot(Load2);
+mat&#123;1,1&#125;=Shaft.params.Material;
+inputRotDyn.Shaft=Shaft.output.BeamMesh;
+inputRotDyn.SpeedRange=[0,1000];
+inputRotDyn.MaterialNum=1;
+paramsRotDyn.Material=mat;
+paramsRotDyn.Type=5;
+paramsRotDyn.Solver=&#39;Local&#39;;
+paramsRotDyn.Rayleigh=[1e-5,10];
+% Add disc
+Dyn1 = solve.RotDyn(paramsRotDyn,inputRotDyn);
+[Dyn1,Num1]= AddCnode(Dyn1,113);
+Dyn1=AddPointMass(Dyn1,Num1,0.85074e-3,4.036839e-1,4.840066e-1);
+[Dyn1,Num2]= AddCnode(Dyn1,363);
+Dyn1=AddPointMass(Dyn1,Num2,1.276499e-3,2.83275,1.487212);
+[Dyn1,Num3]= AddCnode(Dyn1,623);
+Dyn1=AddPointMass(Dyn1,Num3,0.8574e-3,4.036839e-1,4.840066e-1);
+% Add Bearing
+Dyn1 = AddBearing(Dyn1,Num1,[1e7,1e7,1e7,0,0,0,0,0,0,0]);
+Dyn1 = AddBearing(Dyn1,Num1,[0,-1e2,-1e2,0,0,0,0,0,0,0]);
+Dyn1 = AddBearing(Dyn1,Num3,[0,-1e2,-1e2,0,0,0,0,0,0,0]);
+% Add PIDController
+Dyn1 = AddPIDController(Dyn1,Num1,5,1.5,5e-3,&#39;Type&#39;,1,&#39;Ki&#39;,50,&#39;Direction&#39;,&#39;Uy&#39;);
+Dyn1 = AddPIDController(Dyn1,Num1,5,1.5,5e-3,&#39;Type&#39;,1,&#39;Ki&#39;,50,&#39;Direction&#39;,&#39;Uz&#39;);
+Dyn1 = AddPIDController(Dyn1,Num3,5,1.5,5e-3,&#39;Type&#39;,1,&#39;Ki&#39;,50,&#39;Direction&#39;,&#39;Uy&#39;);
+Dyn1 = AddPIDController(Dyn1,Num3,5,1.5,5e-3,&#39;Type&#39;,1,&#39;Ki&#39;,50,&#39;Direction&#39;,&#39;Uz&#39;);
+% Add Timeseries
+Dyn1 = AddTimeSeries(Dyn1,Num1,Load1.output.Load);
+Dyn1 = AddTimeSeries(Dyn1,Num3,Load2.output.Load);
+Dyn1 = Dyn1.solve();
+PlotTimeSeriesResult(Dyn1,&#39;Node&#39;,Dyn1.input.KeyNode,&#39;Component&#39;,[1;2;3],&#39;Load&#39;,[1;2],&#39;PIDController&#39;,[1;3]);
+</code></pre>
+<img src="/./img/RotDyn.assets/Fig84.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig85.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig86.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig87.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig88.jpg" style="zoom:50%;" />
+
+<img src="/./img/RotDyn.assets/Fig89.jpg" style="zoom:50%;" />
 
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] ANSYS结构动力分析与应用</p>
 <p>[2] 转动机械的转子动力学设计</p>
+<p>[3] <a target="_blank" rel="noopener" href="https://github.com/AppliedMechanics/AMrotor">https://github.com/AppliedMechanics/AMrotor</a></p>
+<p>[4] AMrotor – A MATLAB Toolbox for the Simulation of Rotating Machinery, Johannes Maierhofer, M.Kreutz, T.Mulser, T. Thümmel, D. Rixen. DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.1201/9781003132639">10.1201&#x2F;9781003132639</a></p>
+<p>[5] Comparison of different time integration schemes and application to a rotor system with magnetic bearings in Matlab, Michael Kreutz, J. Maierhofer, T. Thümmel, D. Rixen. DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.1201/9781003132639">10.1201&#x2F;9781003132639</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>

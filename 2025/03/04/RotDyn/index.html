@@ -6,27 +6,21 @@
   <meta name="keywords" content="">
   <meta name="description" content="RotDyn | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="CouplingMembrane介绍CouplingMembrane类时联轴器膜片类，用来生成膜片网格。 类结构  输入 input：  Meshsize : 单元尺寸 Thickness : 膜片厚度 HoleNum : 圆孔数量 GeomData : 几何参数  参数 params:  Order ：单元阶数 Type : 膜片类型 Offset: 壳单元偏移基础面 Name : 名称 N_S">
+<meta name="description" content="ForceLoad介绍ForceLoad用来生成力的时间序列 类结构  输入 input：  Mx : x方向弯矩 My : y方向弯矩 Mz : z方向弯矩 Fx : x方向力 Fy : y方向力 Fz : z方向力  Time : 时间序列  参数 params:  Name : 名称  输出 output :  Load : 力的时间序列  案例Create random forceload">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CouplingMembrane">
-<meta property="og:url" content="http://example.com/2025/03/09/CouplingMembrane/index.html">
+<meta property="og:title" content="ForceLoad">
+<meta property="og:url" content="http://example.com/2025/03/23/ForceLoad/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="CouplingMembrane介绍CouplingMembrane类时联轴器膜片类，用来生成膜片网格。 类结构  输入 input：  Meshsize : 单元尺寸 Thickness : 膜片厚度 HoleNum : 圆孔数量 GeomData : 几何参数  参数 params:  Order ：单元阶数 Type : 膜片类型 Offset: 壳单元偏移基础面 Name : 名称 N_S">
+<meta property="og:description" content="ForceLoad介绍ForceLoad用来生成力的时间序列 类结构  输入 input：  Mx : x方向弯矩 My : y方向弯矩 Mz : z方向弯矩 Fx : x方向力 Fy : y方向力 Fz : z方向力  Time : 时间序列  参数 params:  Name : 名称  输出 output :  Load : 力的时间序列  案例Create random forceload">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/CouplingMembrane.assets/Fig9.jpg">
-<meta property="og:image" content="http://example.com/img/CouplingMembrane.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/CouplingMembrane.assets/Fig2.jpg">
-<meta property="og:image" content="http://example.com/img/CouplingMembrane.assets/Fig3.jpg">
-<meta property="og:image" content="http://example.com/img/CouplingMembrane.assets/Fig4.jpg">
-<meta property="og:image" content="http://example.com/img/CouplingMembrane.assets/Fig5.jpg">
-<meta property="og:image" content="http://example.com/img/CouplingMembrane.assets/Fig6.jpg">
-<meta property="og:image" content="http://example.com/img/CouplingMembrane.assets/Fig7.jpg">
-<meta property="og:image" content="http://example.com/img/CouplingMembrane.assets/Fig8.jpg">
-<meta property="article:published_time" content="2025-03-09T14:03:45.043Z">
-<meta property="article:modified_time" content="2025-03-09T14:08:07.207Z">
+<meta property="og:image" content="http://example.com/img/ForceLoad.assets/Fig3.jpg">
+<meta property="og:image" content="http://example.com/img/ForceLoad.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/ForceLoad.assets/Fig2.jpg">
+<meta property="article:published_time" content="2025-03-23T01:37:04.054Z">
+<meta property="article:modified_time" content="2025-03-23T01:38:18.252Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/CouplingMembrane.assets/Fig9.jpg">
+<meta name="twitter:image" content="http://example.com/img/ForceLoad.assets/Fig3.jpg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -451,7 +445,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-03-22 23:27:03'>2025-03-04 18:46</time>
+            发布时间 : <time class="date" title='最后更新: 2025-03-23 09:55:09'>2025-03-04 18:46</time>
         
     </div>
     <div class="article-meta">
@@ -462,7 +456,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DotDyn"><span class="toc-text">DotDyn</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E5%8A%A8%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%96%B9%E7%A8%8B-1"><span class="toc-text">转动动力学方程$^{[1]}$</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%A8%E9%87%8F%E5%8F%82%E6%95%B0-2"><span class="toc-text">质量参数$^{[2]}$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%BB%E5%B0%BC%E5%8F%82%E6%95%B0"><span class="toc-text">阻尼参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9A%E5%BA%A6%E5%8F%82%E6%95%B0"><span class="toc-text">刚度参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%91%E5%93%8D%E5%87%BD%E6%95%B0"><span class="toc-text">频响函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E8%87%AA%E7%94%B1%E5%BA%A6%E9%A2%91%E5%93%8D%E5%87%BD%E6%95%B0"><span class="toc-text">单自由度频响函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMRotor"><span class="toc-text">AMRotor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft-modal-analysis-Flag-1"><span class="toc-text">Shaft modal analysis (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Discs-Flag-2"><span class="toc-text">Add Discs (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Userdefined-Disc-output-moment-of-inertia-Flag-3"><span class="toc-text">Add Userdefined Disc, output moment of inertia (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Blade-Flag-4"><span class="toc-text">Add Blade (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Bearing-Flag-6"><span class="toc-text">Add Bearing (Flag&#x3D;6)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-LUT-Bearing-Flag-7"><span class="toc-text">Add LUT Bearing (Flag&#x3D;7)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Consider-prestress-Flag-8"><span class="toc-text">Consider prestress (Flag&#x3D;8)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eccentricity-of-shaft-Flag-9"><span class="toc-text">Eccentricity of shaft (Flag&#x3D;9)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-speed-rotor-example-Flag-10"><span class="toc-text">High speed rotor example (Flag&#x3D;10)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-speed-unbalance-Flag-12"><span class="toc-text">High speed unbalance (Flag&#x3D;12)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotor-modal-analysis-with-loacl-solver-%EF%BC%88Flag-14%EF%BC%89"><span class="toc-text">Rotor modal analysis with loacl solver （Flag&#x3D;14）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotor-campbell-analysis-with-loacl-solver-%EF%BC%88Flag-15%EF%BC%89"><span class="toc-text">Rotor campbell analysis with loacl solver （Flag&#x3D;15）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotor-stationary-analysis-with-constant-speed-Flag-16"><span class="toc-text">Rotor stationary analysis with constant speed (Flag&#x3D;16)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotor-with-disc-campbell-analysis-with-local-solver-Flag-17"><span class="toc-text">Rotor with disc campbell analysis with local solver (Flag&#x3D;17)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Disc-rotor-stationary-analysis-with-PID-controller-Flag-18"><span class="toc-text">Disc rotor stationary analysis with PID controller (Flag&#x3D;18)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Disc-rotor-speedup-analysis-with-PID-controller-Flag-19"><span class="toc-text">Disc rotor speedup analysis with PID controller (Flag&#x3D;19)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotor-speedup-analysis-with-AMB-Flag-20"><span class="toc-text">Rotor speedup analysis with AMB (Flag&#x3D;20)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#DotDyn"><span class="toc-text">DotDyn</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AC%E5%8A%A8%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%96%B9%E7%A8%8B-1"><span class="toc-text">转动动力学方程$^{[1]}$</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B4%A8%E9%87%8F%E5%8F%82%E6%95%B0-2"><span class="toc-text">质量参数$^{[2]}$</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%BB%E5%B0%BC%E5%8F%82%E6%95%B0"><span class="toc-text">阻尼参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9A%E5%BA%A6%E5%8F%82%E6%95%B0"><span class="toc-text">刚度参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%91%E5%93%8D%E5%87%BD%E6%95%B0"><span class="toc-text">频响函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E8%87%AA%E7%94%B1%E5%BA%A6%E9%A2%91%E5%93%8D%E5%87%BD%E6%95%B0"><span class="toc-text">单自由度频响函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMRotor"><span class="toc-text">AMRotor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft-modal-analysis-Flag-1"><span class="toc-text">Shaft modal analysis (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Discs-Flag-2"><span class="toc-text">Add Discs (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Userdefined-Disc-output-moment-of-inertia-Flag-3"><span class="toc-text">Add Userdefined Disc, output moment of inertia (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Blade-Flag-4"><span class="toc-text">Add Blade (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Multi-Discs-Calculate-critical-speed-Flag-5"><span class="toc-text">Multi Discs &amp; Calculate critical speed (Flag&#x3D;5)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Bearing-Flag-6"><span class="toc-text">Add Bearing (Flag&#x3D;6)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-LUT-Bearing-Flag-7"><span class="toc-text">Add LUT Bearing (Flag&#x3D;7)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Consider-prestress-Flag-8"><span class="toc-text">Consider prestress (Flag&#x3D;8)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eccentricity-of-shaft-Flag-9"><span class="toc-text">Eccentricity of shaft (Flag&#x3D;9)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-speed-rotor-example-Flag-10"><span class="toc-text">High speed rotor example (Flag&#x3D;10)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-speed-rotor-Harmonic-analysis-Flag-11"><span class="toc-text">High speed rotor Harmonic analysis (Flag&#x3D;11)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#High-speed-unbalance-Flag-12"><span class="toc-text">High speed unbalance (Flag&#x3D;12)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotor-FRF-analysis-Flag-13"><span class="toc-text">Rotor FRF analysis (Flag&#x3D;13)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotor-modal-analysis-with-loacl-solver-%EF%BC%88Flag-14%EF%BC%89"><span class="toc-text">Rotor modal analysis with loacl solver （Flag&#x3D;14）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotor-campbell-analysis-with-loacl-solver-%EF%BC%88Flag-15%EF%BC%89"><span class="toc-text">Rotor campbell analysis with loacl solver （Flag&#x3D;15）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotor-stationary-analysis-with-constant-speed-Flag-16"><span class="toc-text">Rotor stationary analysis with constant speed (Flag&#x3D;16)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotor-with-disc-campbell-analysis-with-local-solver-Flag-17"><span class="toc-text">Rotor with disc campbell analysis with local solver (Flag&#x3D;17)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Disc-rotor-stationary-analysis-with-PID-controller-Flag-18"><span class="toc-text">Disc rotor stationary analysis with PID controller (Flag&#x3D;18)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Disc-rotor-speedup-analysis-with-PID-controller-Flag-19"><span class="toc-text">Disc rotor speedup analysis with PID controller (Flag&#x3D;19)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotor-speedup-analysis-with-AMB-Flag-20"><span class="toc-text">Rotor speedup analysis with AMB (Flag&#x3D;20)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -606,7 +600,7 @@
 <p>在RotDyn中设置params.Type&#x3D;1可设置频响函数分析。</p>
 <h4 id="单自由度频响函数"><a href="#单自由度频响函数" class="headerlink" title="单自由度频响函数"></a>单自由度频响函数</h4><p>以单自由度的频响函数为例，</p>
 <p>“在 低 频 段, FRF 的 幅 值 是 1 &#x2F; k( k &gt;&gt; ω2 m + jωc) , 相 位 为 0, 表明共振频率以下的频率段主要 用占主导地位的刚度项来描述。<br>在 高 频 段, FRF 的 幅 值 为 - 1 &#x2F; ω2 m( ω2 m &gt;&gt; jωc + k) , 相 位 为 - 180°, 表明共振频率以上的 频率段主要用占主导地位的质量 项来描述。<br>理论上, 无阻尼固有频率处 的 FRF 幅值应是无穷大, 但是由 于阻尼的存在, 导致共振频率处 的幅 值 不 会 无 穷 大, 其 幅 值 为 1 &#x2F; ωc, 相位突变 180°, 表明在共振频率处主要受阻尼控制。</p>
-<img src="/./img/RotDyn.assets/8c8151d7b882236e23f1a19c8b0a7d8c_MD5.jpeg" alt="8c8151d7b882236e23f1a19c8b0a7d8c_MD5" style="zoom: 50%;" />
+<img src="/./img/RotDyn.assets/8c8151d7b882236e23f1a19c8b0a7d8c_MD5.jpeg" style="zoom: 50%;" />
 
 <h3 id="AMRotor"><a href="#AMRotor" class="headerlink" title="AMRotor"></a>AMRotor</h3><p>RotDyn的时序分析和PID控制，主要基于开源转子动力学分析软件AMrotor</p>
 <h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/RotDyn.assets/FIg60.jpg"></p>
@@ -749,11 +743,11 @@ end
 
 
 
-<h3 id="Add-Discs-Flag-2"><a href="#Add-Discs-Flag-2" class="headerlink" title="Add Discs (Flag&#x3D;2)"></a>Add Discs (Flag&#x3D;2)</h3><p>如图所示的刚性支承单圆盘转子，圆盘的质量$m&#x3D;$$20,\mathrm{kg}$，半径$R&#x3D;120\mathrm{mm}$,转轴的跨度$l,&#x3D;750\mathrm$，直径$d&#x3D;$$30\mathrm{mm}$。圆盘到左支点的距离$a&#x3D;l\mathrm{~}&#x2F;3!&#x3D;!250\mathrm{mm}$。  </p>
+<h3 id="Add-Discs-Flag-2"><a href="#Add-Discs-Flag-2" class="headerlink" title="Add Discs (Flag&#x3D;2)"></a>Add Discs (Flag&#x3D;2)</h3><p>如图所示的刚性支承单圆盘转子，圆盘的质量$m&#x3D;20kg$，半径$R&#x3D;120mm$,转轴的跨度$l&#x3D;750mm$，直径$d&#x3D;30mm$。圆盘到左支点的距离$a&#x3D;l&#x2F;3&#x3D;250mm$。  </p>
 <img src="/./img/RotDyn.assets/Fig21.jpg" style="zoom:33%;" />
 
 <p>仅考虑轴的弯曲但不计轴的质量，考虑回转效应时的频 率方程为：  </p>
-<p>$$<br>\omega^{4}-2\Omega\omega^{3}-2.<del>1340661\times10^{6}\omega^{2}+1.</del>7674781\times10^{6}\Omega\omega+1.~2052387\times10^{11}&#x3D;0<br>$$<br>其中，$\varOmega$为转速（即激励），$\omega$为待求涡动频率，两者单位均为rad&#x2F;s。</p>
+<p>$$<br>\omega^{4}-2\Omega\omega^{3}-2<del>1340661 \times 10^{6}\omega^{2}+1</del>7674781\times10^{6}\Omega\omega+1~2052387 \times 10^{11}&#x3D;0<br>$$<br>其中，$\varOmega$为转速（即激励），$\omega$为待求涡动频率，两者单位均为rad&#x2F;s。</p>
 <pre><code class="language-matlab">ID=30;
 inputshaft1.Length =750;
 inputshaft1.ID = [0,0];
@@ -906,9 +900,8 @@ end
 		</tr>
 	</tbody>
 </table>
-### Multi Discs & Calculate critical speed (Flag=5)
 
-<pre><code class="language-matlab">m1=0.102;% unit:ton
+<h3 id="Multi-Discs-Calculate-critical-speed-Flag-5"><a href="#Multi-Discs-Calculate-critical-speed-Flag-5" class="headerlink" title="Multi Discs &amp; Calculate critical speed (Flag&#x3D;5)"></a>Multi Discs &amp; Calculate critical speed (Flag&#x3D;5)</h3><pre><code class="language-matlab">m1=0.102;% unit:ton
 JT1=6377*2;% unit: ton/mm2
 JD1=6377;% unit: ton/mm2
 % Shaft1
@@ -956,8 +949,8 @@ disp(Dyn.output.CriticalSpeed);
 2.2070
 2.1237
 </code></pre>
-<h3 id="Add-Bearing-Flag-6"><a href="#Add-Bearing-Flag-6" class="headerlink" title="Add Bearing (Flag&#x3D;6)"></a>Add Bearing (Flag&#x3D;6)</h3><p>如下图所示钢质圆盘转子结构，材料的弹性模量为$200\mathrm{GPa}$，密度$7830,\mathrm{kg&#x2F;m^{3}}$，泊松系数为0.3，长度分别为$L_{1}&#x3D;0.\ 2\mathrm{m}$，$L_{2}&#x3D;\mathrm{0.<del>3m}$，$L_{3}&#x3D;0.\ 5\mathrm{m}$，$L_{4}&#x3D;0.\ 3\mathrm{m}$，轴径$d&#x3D;!0.</del>05\mathrm{m}$，圆盘半径分别为 $R_{1}&#x3D;0.12\mathrm{m}$ ， $R_{2}&#x3D;\mathrm{0.<del>2m}$ ， $R_{3}&#x3D;!0.{\mathrm{</del>2m}}$ ,厚 度分别为 $t_{1}&#x3D;0,,05\mathrm{m}$ ， $t_{2}&#x3D;0.~05\mathrm{m}$ ， $t_{3}&#x3D;\ 0.{\ }06,\mathrm{m}$ 。轴两端为简支边界条件，图中支承仅为示意。  </p>
-<img src="/./img/RotDyn.assets/FIg36.jpg" alt="FIg36" style="zoom: 67%;" />
+<h3 id="Add-Bearing-Flag-6"><a href="#Add-Bearing-Flag-6" class="headerlink" title="Add Bearing (Flag&#x3D;6)"></a>Add Bearing (Flag&#x3D;6)</h3><p>如下图所示钢质圆盘转子结构，材料的弹性模量为$200\mathrm{GPa}$，密度$7830kg&#x2F;m^{3}$，泊松系数为0.3，长度分别为$L_{1}&#x3D;0.2m，L_{2}&#x3D;0<del>3m$，$L_{3}&#x3D;0.5m$，$L_{4}&#x3D;0.3m$，轴径$d&#x3D;0</del>05m$，圆盘半径分别为 $R_{1}&#x3D;0.12m$ ， $R_{2}&#x3D;0~2m$ ， $R_{3}&#x3D;0.2m$ ,厚度分别为 $t_{1}&#x3D;0.05m$ ， $t_{2}&#x3D;0.05m$ ， $t_{3}&#x3D;0.06m$ 。轴两端为简支边界条件，图中支承仅为示意。  </p>
+<img src="/./img/RotDyn.assets/FIg36.jpg" style="zoom: 67%;" />
 
 <pre><code class="language-matlab">L1=200;
 L2=300;
@@ -1243,9 +1236,8 @@ disp(Dyn1.output.CriticalSpeed);
 		</tr>
 	</tbody>
 </table>
-### High speed rotor Harmonic analysis (Flag=11)
 
-<p>在高速轴上施加me&#x3D;0.5e-6 Nmm的不平衡量，进行谐响应分析，可以观察此时轴节点的谐响应。</p>
+<h3 id="High-speed-rotor-Harmonic-analysis-Flag-11"><a href="#High-speed-rotor-Harmonic-analysis-Flag-11" class="headerlink" title="High speed rotor Harmonic analysis (Flag&#x3D;11)"></a>High speed rotor Harmonic analysis (Flag&#x3D;11)</h3><p>在高速轴上施加me&#x3D;0.5e-6 Nmm的不平衡量，进行谐响应分析，可以观察此时轴节点的谐响应。</p>
 <pre><code class="language-matlab">% Shaft
 inputshaft1.Length = [35;45;70;200;250;300];
 inputshaft1.ID = [[0,0];[10,10];[10,10];[10,10];[10,10];[10,10]];
@@ -1341,9 +1333,8 @@ PlotSpeedup(Dyn1);
 		</tr>
 	</tbody>
 </table>
-### Rotor FRF analysis (Flag=13)
 
-<pre><code class="language-matlab">% Shaft
+<h3 id="Rotor-FRF-analysis-Flag-13"><a href="#Rotor-FRF-analysis-Flag-13" class="headerlink" title="Rotor FRF analysis (Flag&#x3D;13)"></a>Rotor FRF analysis (Flag&#x3D;13)</h3><pre><code class="language-matlab">% Shaft
 inputshaft1.Length = 500;
 inputshaft1.ID = [0,0];
 inputshaft1.OD = [8,8];

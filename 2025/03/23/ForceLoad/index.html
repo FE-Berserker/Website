@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Margin | Baffalo</title>
+  <title>ForceLoad | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Margin | Baffalo">
+  <meta name="description" content="ForceLoad | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="CouplingMembrane介绍CouplingMembrane类时联轴器膜片类，用来生成膜片网格。 类结构  输入 input：  Meshsize : 单元尺寸 Thickness : 膜片厚度 HoleNum : 圆孔数量 GeomData : 几何参数  参数 params:  Order ：单元阶数 Type : 膜片类型 Offset: 壳单元偏移基础面 Name : 名称 N_S">
 <meta property="og:type" content="article">
@@ -431,9 +431,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Margin" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-ForceLoad" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Margin</h1>
+        <h1 class="article-title">ForceLoad</h1>
     
     <div class="article-meta">
         
@@ -443,7 +443,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo框架">Baffalo框架</a>
+            <a  data-rel="Baffalo部件">Baffalo部件</a>
             
         </span>
         
@@ -451,7 +451,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-02-15 21:09:44'>2025-02-15 21:07</time>
+            发布时间 : <time class="date" title='最后更新: 2025-03-23 09:38:18'>2025-03-23 09:37</time>
         
     </div>
     <div class="article-meta">
@@ -462,7 +462,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Margin"><span class="toc-text">Margin</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ForceLoad"><span class="toc-text">ForceLoad</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-random-forceload-Flag-1"><span class="toc-text">Create random forceload (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Crete-constant-forceload-Flag-2"><span class="toc-text">Crete constant forceload (Flag&#x3D;2)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -478,38 +478,49 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Margin"><a href="#Margin" class="headerlink" title="Margin"></a>Margin</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Margin用来探索整个系统的设计边界，它的输入为Component$^{[1]}$,输出为各个部件的安全系数。</p>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>取两个部件Component1和Component2,作为Margin的输入</p>
-<pre><code class="language-matlab">inputStruct.a=1;
-inputStruct.b=2;
-paramsStruct=struct();
-baselineStruct.S1=2;
-T1=Component1(paramsStruct, inputStruct,baselineStruct);
-T1 = T1.solve();
+        <h1 id="ForceLoad"><a href="#ForceLoad" class="headerlink" title="ForceLoad"></a>ForceLoad</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>ForceLoad用来生成力的时间序列</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/ForceLoad.assets/Fig3.jpg" style="zoom:100%;" />
 
-inputStruct.a=2;
-inputStruct.b=1;
-paramsStruct=struct();
-baselineStruct.S1=2;
-T2=Component2(paramsStruct, inputStruct,baselineStruct);
-T2 = T2.solve();
-
-inputStruct1.Component=&#123;T1,T2&#125;;
+<p>输入 input：</p>
+<ul>
+<li>Mx : x方向弯矩</li>
+<li>My : y方向弯矩</li>
+<li>Mz : z方向弯矩</li>
+<li>Fx : x方向力</li>
+<li>Fy : y方向力</li>
+<li>Fz : z方向力 </li>
+<li>Time : 时间序列</li>
+</ul>
+<p>参数 params:</p>
+<ul>
+<li>Name : 名称</li>
+</ul>
+<p>输出 output :</p>
+<ul>
+<li>Load : 力的时间序列</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-random-forceload-Flag-1"><a href="#Create-random-forceload-Flag-1" class="headerlink" title="Create random forceload (Flag&#x3D;1)"></a>Create random forceload (Flag&#x3D;1)</h3><p>生成随机的时间序列。</p>
+<pre><code class="language-matlab">inputStruct1.Time=0:1e-3:5;
+inputStruct1.Fx=rand(1,length(inputStruct1.Time));
 paramsStruct1=struct();
-T=method.Margin(paramsStruct1, inputStruct1);
-T = T.solve();
-
-disp(T.capacity)
-PlotStruct(T);
-% Help(T)
-PlotCapacity(T);
+obj=signal.ForceLoad(paramsStruct1, inputStruct1);
+obj=obj.solve();
+Plot(obj);
 </code></pre>
-<p>利用PlotStruct()函数查看系统的结构，可以看到各个部件的安全系数已经导入到结构中：</p>
-<p><img src="/./img/Margin.assets/Fig1.jpg"></p>
-<p>利用PlotCapacity()函数来检查部件的安全余量，可以看到整个部件2的设计余量较低，需要提高。</p>
-<p><img src="/./img/Margin.assets/Fig2.jpg"></p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] Component</p>
+<img src="/./img/ForceLoad.assets/Fig1.jpg" alt="Fig11" style="zoom:33%;" />
 
+
+<h3 id="Crete-constant-forceload-Flag-2"><a href="#Crete-constant-forceload-Flag-2" class="headerlink" title="Crete constant forceload (Flag&#x3D;2)"></a>Crete constant forceload (Flag&#x3D;2)</h3><pre><code class="language-matlab">inputStruct1.Time=0:1e-3:5;
+inputStruct1.Fx=ones(1,length(inputStruct1.Time));
+paramsStruct1=struct();
+obj=signal.ForceLoad(paramsStruct1, inputStruct1);
+obj=obj.solve();
+Plot(obj);
+</code></pre>
+<img src="/./img/ForceLoad.assets/Fig2.jpg" alt="Fig11" style="zoom:33%;" />
+
+
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
     </div>

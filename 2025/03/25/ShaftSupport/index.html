@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Component | Baffalo</title>
+  <title>ShaftSupport | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Component | Baffalo">
+  <meta name="description" content="ShaftSupport | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="ShaftSupportShaftSuport类为导向轴支座类，这几个导向轴支座来自于米思米$^{[1]}$、怡合达$^{[2]}$的选型手册里。   类结构  输入 input：  F : 尺寸参数 W : 尺寸参数 K : 尺寸参数 NH : 孔数量 P: 尺寸参数 d1 : 尺寸参数 T : 尺寸参数 H : 尺寸参数 D : 尺寸参数 L : 尺寸参数 N : 尺寸参数  参数 param">
 <meta property="og:type" content="article">
@@ -455,9 +455,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Component" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-ShaftSupport" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Component</h1>
+        <h1 class="article-title">ShaftSupport</h1>
     
     <div class="article-meta">
         
@@ -467,7 +467,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo框架">Baffalo框架</a>
+            <a  data-rel="Baffalo部件">Baffalo部件</a>
             
         </span>
         
@@ -475,7 +475,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-02-15 21:26:47'>2025-02-13 18:00</time>
+            发布时间 : <time class="date" title='最后更新: 2025-03-25 12:13:26'>2025-03-25 12:11</time>
         
     </div>
     <div class="article-meta">
@@ -486,7 +486,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Component"><span class="toc-text">Component</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ShaftSupport"><span class="toc-text">ShaftSupport</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-ShaftSupport-Type-1-Flag-1"><span class="toc-text">Create ShaftSupport Type 1 (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-ShaftSupport-Type-2-Flag-2"><span class="toc-text">Create ShaftSupport Type 2 (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-ShaftSupport-Type-3-Flag-3"><span class="toc-text">Create ShaftSupport Type 3 (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-ShaftSupport-Type-4-Flag-4"><span class="toc-text">Create ShaftSupport Type 4 (Flag&#x3D;4)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -502,94 +502,107 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Component是一个部件抽象类，他提供了输入输出以及安全系数的接口，现有的机械结构计算都基于概率理论基础上的可靠度设计方法$^{[1][2][3][4]}$。</p>
-<p>任何工程结构，不管其用途如何，总应考虑各种荷载在结构中产生的荷载效应S和结构本身的抗力R两个基本变量。当R＞S时，结构处于安全状态；R&#x3D;S时，结构处于极限状态；R＜S时，结构处于失效状态。</p>
-<p>针对载荷本身，我们可以将结构载荷分为几类：</p>
-<ul>
-<li>永久荷载</li>
-<li>可变荷载</li>
-<li>偶然荷载</li>
-</ul>
-<p>根据不同的载荷类型，考虑自身特点，以及空间、时间相关性等构建对应的可靠度参数，构建载荷效应S的方程。</p>
-<p>对于材料，应基于不同的尺度予以考虑：</p>
-<img src="/./img/Component.assets/Fig1.JPG" style="zoom: 25%;" />
+        <h1 id="ShaftSupport"><a href="#ShaftSupport" class="headerlink" title="ShaftSupport"></a>ShaftSupport</h1><p>ShaftSuport类为导向轴支座类，这几个导向轴支座来自于米思米$^{[1]}$、怡合达$^{[2]}$的选型手册里。</p>
+<img src="/./img/ShaftSupport.assets/Fig1.jpg" style="zoom:75%;" />
 
-<p>从微观到宏观，观测手段、测试方法不同，同时不同的破坏形式（脆性、延性、疲劳和冲击），对材料抗力的构建方式均不相同。</p>
-<p>其他的因素例如结构重要性，心理因素等也应考虑到结构设计中。</p>
-<p>为此在Baffalo中设计了抽象的部件类：</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/ShaftSupport.assets/Fig6.jpg" style="zoom:100%;" />
+
+<p>输入 input：</p>
 <ul>
-<li>input : 输入，可以是载荷，几何尺寸</li>
-<li>params : 参数， 默认的设置，材料等</li>
-<li>output : 输出，网格模型，关键设计参数</li>
-<li>baseline : 基准，部件须达到的设计基准</li>
-<li>capacity : 能力，部件的安全系数</li>
+<li>F : 尺寸参数</li>
+<li>W : 尺寸参数</li>
+<li>K : 尺寸参数</li>
+<li>NH : 孔数量</li>
+<li>P: 尺寸参数</li>
+<li>d1 : 尺寸参数</li>
+<li>T : 尺寸参数</li>
+<li>H : 尺寸参数</li>
+<li>D : 尺寸参数</li>
+<li>L : 尺寸参数</li>
+<li>N : 尺寸参数</li>
 </ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>我们设计一个工程算法，输入a和b,定义比例系数p</p>
-<p>输出安全系数S1:<br>$$<br>S1&#x3D;(a+b)×p<br>$$<br>输出安全系数S2:<br>$$<br>S2&#x3D;S1&#x2F;1.2<br>$$<br>默认定义S1和S2的基础均为1，也就是说当S1和S2均大于1，我们认为结构安全。</p>
-<pre><code class="language-matlab">classdef TestComponent &lt; Component
-% Class TestComponent
-% Author: Xie Yu
-properties(Hidden, Constant)
-    paramsExpectedFields = &#123;
-        &#39;p&#39;
-        &#125;;
-    inputExpectedFields = &#123;
-        &#39;a&#39; 
-        &#39;b&#39;
-        &#125;;
-    outputExpectedFields = &#123;
-        &#39;c&#39;
-        &#125;;
-    baselineExpectedFields = &#123;
-        &#39;S1&#39;
-        &#39;S2&#39;
-        &#125;;
-    statesExpectedFields = &#123;&#125;;
-    default_p=1;
-    base_S1=1;
-    base_S2=1;
-end
-methods
-    function obj = TestComponent(paramsStruct,inputStruct,varargin)
-        obj = obj@Component(paramsStruct,inputStruct,varargin);
-        obj.documentname=&#39;Test Component.html&#39;;
-    end
-    function obj = solve(obj)
-        a=obj.input.a;
-        b=obj.input.b;
-        p=obj.params.p;
-        c=(a+b)*p;
-        obj.output.c=c;
-        obj.capacity.S1=c;
-        obj.capacity.S2=c/1.2;
-    end
-end
-end
+<p>参数 params:</p>
+<ul>
+<li>Order ：单元阶数</li>
+<li>Type : 导向轴支座类型</li>
+<li>Name : 名称</li>
+<li>E_Revolve: 实体单元旋转方向网格划分数量</li>
+<li>Material : 导向轴支座材料</li>
+</ul>
+<p>输出 output :</p>
+<ul>
+<li>Assembly : 实体网格装配</li>
+<li>SolidMesh : 实体网格</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-ShaftSupport-Type-1-Flag-1"><a href="#Create-ShaftSupport-Type-1-Flag-1" class="headerlink" title="Create ShaftSupport Type 1 (Flag&#x3D;1)"></a>Create ShaftSupport Type 1 (Flag&#x3D;1)</h3><pre><code class="language-matlab">inputShaftSupport.N= 3;
+inputShaftSupport.L = 15;
+inputShaftSupport.D=6;
+inputShaftSupport.H=28;
+inputShaftSupport.T=3.5;
+inputShaftSupport.d1=3.5;
+inputShaftSupport.P=20;
+inputShaftSupport.NH=4;
+paramsShaftSupport = struct();
+obj1=shaft.ShaftSupport(paramsShaftSupport, inputShaftSupport);
+obj1=obj1.solve();
+Plot3D(obj1);
+ANSYS_Output(obj1.output.Assembly);
 </code></pre>
-<p>输入a&#x3D;1,b&#x3D;2，将S1的基准改为2</p>
-<pre><code class="language-matlab">inputStruct.a=1;
-inputStruct.b=2;
-paramsStruct=struct();
-baselineStruct.S1=2;
-T= TestComponent(paramsStruct, inputStruct,baselineStruct);
-T = T.solve();
-disp(T.capacity.S1)
-PlotStruct(T);
-Help(T)
-PlotCapacity(T);
+<img src="/./img/ShaftSupport.assets/Fig2.jpg" style="zoom:33%;" />
+
+
+
+
+<h3 id="Create-ShaftSupport-Type-2-Flag-2"><a href="#Create-ShaftSupport-Type-2-Flag-2" class="headerlink" title="Create ShaftSupport Type 2 (Flag&#x3D;2)"></a>Create ShaftSupport Type 2 (Flag&#x3D;2)</h3><pre><code class="language-matlab">inputShaftSupport.N= 3;
+inputShaftSupport.L = 15;
+inputShaftSupport.D=6;
+inputShaftSupport.H=28;
+inputShaftSupport.T=3.5;
+inputShaftSupport.d1=3.5;
+inputShaftSupport.P=20;
+inputShaftSupport.NH=4;
+inputShaftSupport.K=22;
+paramsShaftSupport.Type = 2;
+obj1=shaft.ShaftSupport(paramsShaftSupport, inputShaftSupport);
+obj1=obj1.solve();
+Plot3D(obj1);
+ANSYS_Output(obj1.output.Assembly);
 </code></pre>
-<p>利用PlotStruct()函数查看部件结构：</p>
-<p><img src="/./img/Component.assets/Fig2.JPG"></p>
-<p>利用PlotCapacity()函数来检查部件的安全余量，此时我们看到S1的余量为1.5，表示该部件安全。</p>
-<p><img src="/./img/Component.assets/Fig3.JPG"></p>
-<p>如果将S1的基准调整为4，此时S1的安全余量为0.75，该部件不安全。</p>
-<pre><code class="language-matlab">baselineStruct.S1=2;
+<img src="/./img/ShaftSupport.assets/Fig3.jpg" style="zoom:33%;" />
+
+
+
+
+<h3 id="Create-ShaftSupport-Type-3-Flag-3"><a href="#Create-ShaftSupport-Type-3-Flag-3" class="headerlink" title="Create ShaftSupport Type 3 (Flag&#x3D;3)"></a>Create ShaftSupport Type 3 (Flag&#x3D;3)</h3><pre><code class="language-matlab">b=Line2D(&#39;Round Polygon&#39;);
+b=AddRoundPolygon(b,10*sqrt(2),4,2,&#39;sang&#39;,45);
+inputplate1.Outline= b;
+inputplate1.Thickness = 2;
+paramsplate1= struct();
+obj1=plate.Commonplate(paramsplate1, inputplate1);
+obj1 = obj1.solve();
+Ass=obj1.output.Assembly1;
+Plot(Ass);
 </code></pre>
-<p>在Component下设置documentname，并将对应的文件放在Baffalo中的Document下，即可用Help函数打开对应的帮助文件。</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] JCSS PMC PART_I</p>
-<p>[2] JCSS PMC PART_II</p>
-<p>[3] JCSS PMC PART_III</p>
-<p>[4] <a target="_blank" rel="noopener" href="https://www.jcss-lc.org/jcss-probabilistic-model-code/">https://www.jcss-lc.org/jcss-probabilistic-model-code/</a></p>
+<img src="/./img/ShaftSupport.assets/Fig4.jpg" style="zoom:33%;" />
+
+<h3 id="Create-ShaftSupport-Type-4-Flag-4"><a href="#Create-ShaftSupport-Type-4-Flag-4" class="headerlink" title="Create ShaftSupport Type 4 (Flag&#x3D;4)"></a>Create ShaftSupport Type 4 (Flag&#x3D;4)</h3><pre><code class="language-matlab">b=Line2D(&#39;Round Polygon&#39;);
+b=AddRoundPolygon(b,10*sqrt(2),6,2);
+inputplate1.Outline= b;
+inputplate1.Thickness = 2;
+paramsplate1= struct();
+obj1=plate.Commonplate(paramsplate1, inputplate1);
+obj1 = obj1.solve();
+OutputSTL(obj1)
+% Load stl file
+L=Layer(&#39;test&#39;);
+Name=strcat(obj1.params.Name,&#39;.stl&#39;);
+L=STLRead(L,Name);
+Plot(L);
+</code></pre>
+<img src="/./img/ShaftSupport.assets/Fig5.jpg" style="zoom:33%;" />
+
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] <a target="_blank" rel="noopener" href="https://www.misumi.com.cn/">https://www.misumi.com.cn/</a></p>
+<p>[2] <a target="_blank" rel="noopener" href="https://www.yiheda.com/">https://www.yiheda.com/</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>

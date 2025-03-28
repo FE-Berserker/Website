@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Margin | Baffalo</title>
+  <title>WindturbineTower | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Margin | Baffalo">
+  <meta name="description" content="WindturbineTower | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="介绍Dome类用于绘制薄壁穹顶结构，它可以根据曲线旋转生成穹顶。 类结构  输入 input：  Meshsize : 单元尺寸 Thickness : 厚度 Curve : 曲线  参数 params:  Order ：单元阶数 Name : 名称 E_Revolve: 壳单元旋转方向网格划分数量 Offset : 偏移位置 Material : 材料  输出 output :  Assembl">
 <meta property="og:type" content="article">
@@ -481,9 +481,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Margin" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-WindturbineTower" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Margin</h1>
+        <h1 class="article-title">WindturbineTower</h1>
     
     <div class="article-meta">
         
@@ -493,7 +493,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo框架">Baffalo框架</a>
+            <a  data-rel="Baffalo部件">Baffalo部件</a>
             
         </span>
         
@@ -501,7 +501,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-02-15 21:09:44'>2025-02-15 21:07</time>
+            发布时间 : <time class="date" title='最后更新: 2025-03-28 09:45:18'>2025-03-28 09:43</time>
         
     </div>
     <div class="article-meta">
@@ -512,7 +512,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Margin"><span class="toc-text">Margin</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#WindturbineTower"><span class="toc-text">WindturbineTower</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-WindturbineTower-Flag-1"><span class="toc-text">Create WindturbineTower (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deform-the-plate-face-Flag-2"><span class="toc-text">Deform the plate face (Flag&#x3D;2)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -528,38 +528,80 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Margin"><a href="#Margin" class="headerlink" title="Margin"></a>Margin</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Margin用来探索整个系统的设计边界，它的输入为Component$^{[1]}$,输出为各个部件的安全系数。</p>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>取两个部件Component1和Component2,作为Margin的输入</p>
-<pre><code class="language-matlab">inputStruct.a=1;
-inputStruct.b=2;
-paramsStruct=struct();
-baselineStruct.S1=2;
-T1=Component1(paramsStruct, inputStruct,baselineStruct);
-T1 = T1.solve();
+        <h1 id="WindturbineTower"><a href="#WindturbineTower" class="headerlink" title="WindturbineTower"></a>WindturbineTower</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>WindturbineTower可用于创建风力发电机塔筒。</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/WindturbineTower.assets/Fig3.jpg" style="zoom:100%;" />
 
-inputStruct.a=2;
-inputStruct.b=1;
-paramsStruct=struct();
-baselineStruct.S1=2;
-T2=Component2(paramsStruct, inputStruct,baselineStruct);
-T2 = T2.solve();
-
-inputStruct1.Component=&#123;T1,T2&#125;;
-paramsStruct1=struct();
-T=method.Margin(paramsStruct1, inputStruct1);
-T = T.solve();
-
-disp(T.capacity)
-PlotStruct(T);
-% Help(T)
-PlotCapacity(T);
+<p>输入 input：</p>
+<ul>
+<li>Meshsize : 单元尺寸</li>
+<li>Thickness : 钢板厚度</li>
+<li>Diameter : 直径</li>
+<li>Length : 钢板长度</li>
+</ul>
+<p>参数 params:</p>
+<ul>
+<li>Order ：单元阶数</li>
+<li>Name : 名称</li>
+<li>N_Slice : 壳单元旋转方向网格划分数量</li>
+<li>Degree : 旋转角度</li>
+<li>Offset : 偏移位置</li>
+<li>Material : 材料</li>
+</ul>
+<p>输出 output :</p>
+<ul>
+<li>Assembly : 壳网格装配</li>
+<li>Assembly1 : 梁网格装配</li>
+<li>ShellMesh : 壳网格</li>
+<li>Surface : 钢板截面</li>
+<li>BeamMesh : 梁网格</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-WindturbineTower-Flag-1"><a href="#Create-WindturbineTower-Flag-1" class="headerlink" title="Create WindturbineTower (Flag&#x3D;1)"></a>Create WindturbineTower (Flag&#x3D;1)</h3><pre><code class="language-matlab">inputTower.Length= [1000;3800;1500;1720;1720;2900;2900;2900;2900;2900];
+inputTower.Thickness = [26;26;25;25;22;22;20;19;18;18];
+inputTower.Diameter=repmat([4300,4300],10,1);
+paramsTower = struct();
+obj1=housing.WindturbineTower(paramsTower, inputTower);
+obj1=obj1.solve();
+Plot2D(obj1);
+Plot3D(obj1);
+ANSYS_Output(obj1.output.Assembly1);
 </code></pre>
-<p>利用PlotStruct()函数查看系统的结构，可以看到各个部件的安全系数已经导入到结构中：</p>
-<p><img src="/./img/Margin.assets/Fig1.jpg"></p>
-<p>利用PlotCapacity()函数来检查部件的安全余量，可以看到整个部件2的设计余量较低，需要提高。</p>
-<p><img src="/./img/Margin.assets/Fig2.jpg"></p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] Component</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/WindturbineTower.assets/Fig1.jpg" style="zoom: 100%;"></td><td><img src="/./img/WindturbineTower.assets/Fig2.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
 
+
+
+<h3 id="Deform-the-plate-face-Flag-2"><a href="#Deform-the-plate-face-Flag-2" class="headerlink" title="Deform the plate face (Flag&#x3D;2)"></a>Deform the plate face (Flag&#x3D;2)</h3><pre><code class="language-matlab">inputTower.Length= [1000;3800;1500;1720;1720;2900;2900;2900;2900;2900];
+inputTower.Thickness = [26;26;25;25;22;22;20;19;18;18];
+inputTower.Diameter=repmat([4300,4300],10,1);
+paramsTower1.Offset = &quot;BOT&quot;;
+obj1=housing.WindturbineTower(paramsTower1, inputTower);
+obj1=obj1.solve();
+Plot2D(obj1);
+Plot3D(obj1);
+ANSYS_Output(obj1.output.Assembly1);
+paramsTower2.Offset = &quot;TOP&quot;;
+obj2=housing.WindturbineTower(paramsTower2, inputTower);
+obj2=obj2.solve();
+Plot2D(obj2);
+Plot3D(obj2);
+ANSYS_Output(obj2.output.Assembly1);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/WindturbineTower.assets/Fig4.jpg" style="zoom: 100%;"></td><td><img src="/./img/WindturbineTower.assets/Fig5.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
     </div>

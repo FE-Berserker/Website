@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>ISO1940 | Baffalo</title>
+  <title>IBeam | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="ISO1940 | Baffalo">
+  <meta name="description" content="IBeam | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="介绍IBeam类用于生成工字梁的实体网格。工字梁在钢结构中使用比较多，在工厂一些工装中也有较多的应用。在设计时，应尽量使用标准通用的型号，如规范 GB&#x2F;T 706 热轧型钢 $^{[1]}$。 类结构 输入 input：  Meshsize : 网格尺寸 Stiffner : 加筋肋位置 l: 长度 b: 腿宽度 d : 腰厚度 r: 内圆弧倒角 h : 高度 t : 平均腿厚度  参数">
 <meta property="og:type" content="article">
@@ -499,9 +499,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-ISO1940" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-IBeam" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">ISO1940</h1>
+        <h1 class="article-title">IBeam</h1>
     
     <div class="article-meta">
         
@@ -511,7 +511,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo方法">Baffalo方法</a>
+            <a  data-rel="Baffalo部件">Baffalo部件</a>
             
         </span>
         
@@ -519,7 +519,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-02-22 10:23:26'>2025-02-22 10:21</time>
+            发布时间 : <time class="date" title='最后更新: 2025-04-04 22:03:08'>2025-04-04 22:01</time>
         
     </div>
     <div class="article-meta">
@@ -530,7 +530,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ISO1940"><span class="toc-text">ISO1940</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-IBeam-Flag-1"><span class="toc-text">Create IBeam (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-IBeam-with-stiffner-Flag-2"><span class="toc-text">Create IBeam with stiffner (Flag&#x3D;2)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -546,54 +546,79 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="ISO1940"><a href="#ISO1940" class="headerlink" title="ISO1940"></a>ISO1940</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>ISO1940用于计算动平衡的不平衡量。</p>
-<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/ISO1940.assets/Fig1.jpg"></p>
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>IBeam类用于生成工字梁的实体网格。工字梁在钢结构中使用比较多，在工厂一些工装中也有较多的应用。在设计时，应尽量使用标准通用的型号，如规范 GB&#x2F;T 706 热轧型钢 $^{[1]}$。</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/IBeam.assets/Fig146.jpg"></p>
 <p>输入 input：</p>
 <ul>
-<li>Mass : 转子质量 单位ton</li>
-<li>n: 转速 RPM</li>
-<li>LA : 跨距A</li>
-<li>LB : 跨距B</li>
+<li>Meshsize : 网格尺寸</li>
+<li>Stiffner : 加筋肋位置</li>
+<li>l: 长度</li>
+<li>b: 腿宽度</li>
+<li>d : 腰厚度</li>
+<li>r: 内圆弧倒角</li>
+<li>h : 高度</li>
+<li>t : 平均腿厚度</li>
 </ul>
 <p>参数 params:</p>
 <ul>
-<li>Ratio ：估算不平衡质量比例</li>
 <li>Name : 名称</li>
-<li>G: 平衡品质等级</li>
+<li>Material: 材料</li>
+<li>Order: 阶数</li>
 </ul>
 <p>输出 output :</p>
 <ul>
-<li>DisA : A端不平衡质量离中心距离</li>
-<li>DisB : B端不平衡质量离中心距离</li>
-<li>MA: A端不平衡质量</li>
-<li>MB : B端不平衡质量</li>
-<li>UperA : A端不平衡量</li>
-<li>UperB : B端不平衡量</li>
-<li>Uper : 总不平衡量</li>
+<li>Assembly : 装配体</li>
+<li>SolidMesh : 实体网格</li>
+<li>Stiffner_Surface : 加筋肋截面</li>
+<li>Surface : 工字梁截面</li>
 </ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>转子数据</p>
-<p>转子质量: $m &#x3D; 3600 kg$<br>转子转速: $n &#x3D; 3000 r&#x2F;min$<br>跨距:$L_A &#x3D; 1500 mm$<br>$L_B &#x3D; 900 mm$<br>$L &#x3D; 2400 mm$</p>
-<img src="/./img/ISO1940.assets/fig8.png" style="zoom:25%;" />
-
-<p>选择G2.5作为平衡标准</p>
-<p>$$<br>\omega&#x3D;\frac{\pi n}{30}&#x3D;314.2rad&#x2F;s<br>$$</p>
-<p>总许用不平衡量$U_{per}$<br>$$<br>U_{per}&#x3D;1000\frac{Gm}{\omega}&#x3D;1000\frac{2.5×3600}{314.2}&#x3D;28600g·mm<br>$$</p>
-<p>两端许用不平衡量<br>$$<br>U_{perA}&#x3D;\frac{U_{per}L_B}{L}&#x3D;\frac{28600×900}{2400}&#x3D;10700g·mm<br>$$</p>
-<p>$$<br>U_{perB}&#x3D;\frac{U_{per}L_A}{L}&#x3D;\frac{28600×1500}{2400}&#x3D;17900g·mm<br>$$</p>
-<pre><code class="language-matlab">inputUnbalance.LA=1500;
-inputUnbalance.LB=900;
-inputUnbalance.Mass=3.6;
-inputUnbalance.n=3000;
-paramsUnbalance.G=2.5;
-obj = method.ISO1940( paramsUnbalance,inputUnbalance);
-obj = obj.solve();
-disp(obj.output.UperA)
-disp(obj.output.UperB)
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-IBeam-Flag-1"><a href="#Create-IBeam-Flag-1" class="headerlink" title="Create IBeam (Flag&#x3D;1)"></a>Create IBeam (Flag&#x3D;1)</h3><pre><code class="language-matlab">inputStruct.t=[12,12];
+inputStruct.r=[4,4];
+inputStruct.b=[120,120];
+inputStruct.d=8;
+inputStruct.h=200;
+inputStruct.l=400;
+paramsStruct=struct();
+obj= beam.IBeam(paramsStruct, inputStruct);
+obj= obj.solve();
+Plot2D(obj);
+Plot3D(obj);
 </code></pre>
-<p>计算得到A、B端的需用不平衡量：</p>
-<p>Successfully calculate unbalacnce .<br>   1.0743e+04</p>
-<p>   1.7905e+04</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] ISO 1940</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/IBeam.assets/Fig144.jpg" style="zoom: 100%;"></td><td><img src="/./img/IBeam.assets/Fig145.jpg" style="zoom: 100%;"></td>
+		</tr>
+    <tr><td><strong>工字梁截面</strong></td><td><strong>工字梁实体网格</strong></td></tr>
+	</tbody>
+</table>
+
+
+
+
+<h3 id="Create-IBeam-with-stiffner-Flag-2"><a href="#Create-IBeam-with-stiffner-Flag-2" class="headerlink" title="Create IBeam with stiffner (Flag&#x3D;2)"></a>Create IBeam with stiffner (Flag&#x3D;2)</h3><pre><code class="language-matlab">inputStruct.t=[16,16];
+inputStruct.r=[5,5];
+inputStruct.b=[180,180];
+inputStruct.d=12;
+inputStruct.h=240;
+inputStruct.l=480;
+inputStruct.Stiffner=[120+6,12;360-6,12];
+paramsStruct=struct();
+obj= beam.IBeam(paramsStruct, inputStruct);
+obj= obj.solve();
+Plot2D(obj);
+Plot3D(obj);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/IBeam.assets/Fig147.jpg" style="zoom: 100%;"></td><td><img src="/./img/IBeam.assets/Fig148.jpg" style="zoom: 100%;"></td>
+		</tr>
+    <tr><td><strong>工字梁截面</strong></td><td><strong>加筋肋工字梁实体网格</strong></td></tr>
+	</tbody>
+</table>
+
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1]  GB&#x2F;T 706</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>

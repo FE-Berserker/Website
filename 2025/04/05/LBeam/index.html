@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>SubStr | Baffalo</title>
+  <title>LBeam | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="SubStr | Baffalo">
+  <meta name="description" content="LBeam | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="介绍LBeam类用于生成角钢的实体网格。 类结构 输入 input：  Meshsize : 网格尺寸 Stiffner : 加筋肋位置 l: 长度 b: 腿宽度 d : 腰厚度 r: 内圆弧倒角  参数 params:  Name : 名称 Material: 材料 Order: 阶数  输出 output :  Assembly : 装配体 SolidMesh : 实体网格 Stiffner_">
 <meta property="og:type" content="article">
@@ -517,9 +517,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-SubStr" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-LBeam" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">SubStr</h1>
+        <h1 class="article-title">LBeam</h1>
     
     <div class="article-meta">
         
@@ -529,7 +529,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo求解">Baffalo求解</a>
+            <a  data-rel="Baffalo部件">Baffalo部件</a>
             
         </span>
         
@@ -537,7 +537,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-02-21 12:28:49'>2025-02-21 12:22</time>
+            发布时间 : <time class="date" title='最后更新: 2025-04-05 10:21:58'>2025-04-05 10:20</time>
         
     </div>
     <div class="article-meta">
@@ -548,7 +548,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Commonshaft"><span class="toc-text">Commonshaft</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft1-compare-Rigid-connection-Flag-1"><span class="toc-text">Shaft1 compare (Rigid connection) (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shaft1-compare-Flexible-connection-Flag-2"><span class="toc-text">Shaft1 compare (Flexible connection) (Flag&#x3D;2)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-LBeam-Flag-1"><span class="toc-text">Create LBeam (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-LBeam-with-stiffner-Flag-2"><span class="toc-text">Create LBeam with stiffner (Flag&#x3D;2)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -564,178 +564,76 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Commonshaft"><a href="#Commonshaft" class="headerlink" title="Commonshaft"></a>Commonshaft</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>SubStr类用于生成子结构(在ANSYS中称为子结构或者超单元，在simpack中称为柔体)，它可以导出ANSYS的.sup文件和simpack的.fbi文件。子结构就是将一组单元用矩阵凝聚为一个单元的过程。这个单一的矩阵单元称为超单元。在ANSYS分析中，超单元可以象其他单元类型一样使用。</p>
-<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/SubStr.assets/Fig1.jpg"></p>
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>LBeam类用于生成角钢的实体网格。</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/LBeam.assets/Fig157.jpg"></p>
 <p>输入 input：</p>
 <ul>
-<li>Master: 主节点</li>
-<li>SubStr : 子结构的网格模型</li>
+<li>Meshsize : 网格尺寸</li>
+<li>Stiffner : 加筋肋位置</li>
+<li>l: 长度</li>
+<li>b: 腿宽度</li>
+<li>d : 腰厚度</li>
+<li>r: 内圆弧倒角</li>
 </ul>
 <p>参数 params:</p>
 <ul>
-<li><p>Name : 名称</p>
-</li>
-<li><p>NMode : 模态数量，默认数量50</p>
-</li>
-<li><p>Freq: 频率范围，默认0~2000Hz</p>
-</li>
-<li><p>CMSMehod: CMS方法</p>
-<p>参照ANSYS帮助文件，主要有以下三种方法，默认为‘FIX’。</p>
-<table>
-<thead>
-<tr>
-<th>CMSMethod</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>FIX</strong></td>
-<td>Fixed-interface method.</td>
-</tr>
-<tr>
-<td><strong>FREE</strong></td>
-<td>Free-interface method.</td>
-</tr>
-<tr>
-<td><strong>RFFB</strong></td>
-<td>Residual-flexible free-interface method</td>
-</tr>
-</tbody></table>
-</li>
+<li>Name : 名称</li>
+<li>Material: 材料</li>
+<li>Order: 阶数</li>
 </ul>
 <p>输出 output :</p>
 <ul>
-<li>Path : 子结构存储路径</li>
-<li>Geom : 几何信息</li>
-<li>Nodes : 连接节点</li>
+<li>Assembly : 装配体</li>
+<li>SolidMesh : 实体网格</li>
+<li>Stiffner_Surface : 加筋肋截面</li>
+<li>Surface : 角钢截面</li>
 </ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Shaft1-compare-Rigid-connection-Flag-1"><a href="#Shaft1-compare-Rigid-connection-Flag-1" class="headerlink" title="Shaft1 compare (Rigid connection) (Flag&#x3D;1)"></a>Shaft1 compare (Rigid connection) (Flag&#x3D;1)</h3><pre><code class="language-matlab">% Shaft 1
-inputshaft1.Length = 500;
-inputshaft1.ID = [0,0];
-inputshaft1.OD = [50,50];
-paramsshaft1 = struct();
-obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
-obj1 = obj1.solve();
-SubAss=obj1.output.Assembly;
-%% Define Element Types
-ET1.name=&#39;21&#39;;ET1.opt=[3,0];ET1.R=[0,0,0,0,0,0];
-SubAss=AddET(SubAss,ET1);
-Acc_ET=GetNET(SubAss);
-%% Define Connections
-SubAss=AddCnode(SubAss,-0.001,0,0);
-SubAss=AddMaster(SubAss,0,1);
-SubAss=AddSlaver(SubAss,1,&#39;face&#39;,301);
-SubAss=SetCnode(SubAss,1,Acc_ET);
-SubAss=SetRbe2(SubAss,1,1);
-
-SubAss=AddCnode(SubAss,500.001,0,0);
-SubAss=AddMaster(SubAss,0,2);
-SubAss=AddSlaver(SubAss,1,&#39;face&#39;,302);
-SubAss=SetCnode(SubAss,2,Acc_ET);
-SubAss=SetRbe2(SubAss,2,2);
-
-NodeNum=[1;2];
-Type=&#123;&#39;All&#39;;&#39;All&#39;&#125;;
-PartNum=[0;0];
-Master=table(PartNum,NodeNum,Type);
-inputSubStr.SubStr=SubAss;
-inputSubStr.Master=Master;
-paramsSubStr.Name=&quot;Shaft1&quot;;
-Sub = solve.SubStr(paramsSubStr,inputSubStr);
-Sub = Sub.solve();
-Plot3D(Sub)
-FbiGenerate(Sub)
-
-Multi=MultiBody(&#39;Shaft1 Test&#39;);
-Multi=AddBody(Multi,Sub);
-Simpack_Output(Multi);
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-LBeam-Flag-1"><a href="#Create-LBeam-Flag-1" class="headerlink" title="Create LBeam (Flag&#x3D;1)"></a>Create LBeam (Flag&#x3D;1)</h3><pre><code class="language-matlab">inputStruct.r=7;
+inputStruct.b=[63,63];
+inputStruct.d=[8,8];
+inputStruct.l=400;
+paramsStruct=struct();
+obj= beam.LBeam(paramsStruct, inputStruct);
+obj= obj.solve();
+Plot2D(obj);
+Plot3D(obj);
 </code></pre>
-<p>当采用刚性连接时，使用SetRbe2建立刚性区域，设置完成后，使用Baffalo SubStr模块导出超单元，并生成fbi文件。对比ANSYS和Simpac导入模态的结果，可以发现二者基本一致。</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>ANSYS模态计算</th>
-<th>Simpack模态</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1阶弯曲</td>
-<td><img src="/./img/SubStr.assets/Fig159.jpg" style="zoom:50%;" /></td>
-<td><img src="/./img/SubStr.assets/Fig162.jpg"></td>
-</tr>
-<tr>
-<td>2阶弯曲</td>
-<td><img src="/./img/SubStr.assets/Fig160.jpg" style="zoom:50%;" /></td>
-<td><img src="/./img/SubStr.assets/Fig163.jpg"></td>
-</tr>
-<tr>
-<td>1阶扭转</td>
-<td><img src="/./img/SubStr.assets/Fig161.jpg" style="zoom:50%;" /></td>
-<td><img src="/./img/SubStr.assets/Fig164.jpg"></td>
-</tr>
-</tbody></table>
-<p>以下分别为ANSYS和Simpack的计算结果，两者的误差非常小。</p>
-<img src="/./img/SubStr.assets/Fig166.jpg" style="zoom:50%;" />
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/LBeam.assets/Fig153.jpg" style="zoom: 100%;"></td><td><img src="/./img/LBeam.assets/Fig154.jpg" style="zoom: 100%;"></td>
+		</tr>
+    <tr><td><strong>角钢截面</strong></td><td><strong>角钢实体网格</strong></td></tr>
+	</tbody>
+</table>
 
-<p><img src="/./img/SubStr.assets/Fig165.jpg"></p>
-<h3 id="Shaft1-compare-Flexible-connection-Flag-2"><a href="#Shaft1-compare-Flexible-connection-Flag-2" class="headerlink" title="Shaft1 compare (Flexible connection) (Flag&#x3D;2)"></a>Shaft1 compare (Flexible connection) (Flag&#x3D;2)</h3><pre><code class="language-matlab">% Shaft 1
-inputshaft1.Length = 500;
-inputshaft1.ID = [0,0];
-inputshaft1.OD = [50,50];
-paramsshaft1 = struct();
-obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1);
-obj1 = obj1.solve();
-SubAss=obj1.output.Assembly;
 
-mat1.table=[&quot;MU&quot;,0.15];
-SubAss=AddMaterial(SubAss,mat1);
-Acc_Mat=GetNMaterial(SubAss);
 
-%% Define Element Types
-ET1.name=&#39;173&#39;;ET1.opt=[2,2;4,1;12,5];ET1.R=[];
-SubAss=AddET(SubAss,ET1);
-ET2.name=&#39;170&#39;;ET2.opt=[2,1;4,111111];ET2.R=[];
-SubAss=AddET(SubAss,ET2);
-ET3.name=&#39;21&#39;;ET3.opt=[3,0];ET3.R=[0,0,0,0,0,0];
-SubAss=AddET(SubAss,ET3);
-Acc_ET=GetNET(SubAss);
-%% Define Contacts
-SubAss=AddCnode(SubAss,0,0,0);
-SubAss=AddCnode(SubAss,500,0,0);
-SubAss=SetCnode(SubAss,1,Acc_ET);
-SubAss=SetCnode(SubAss,2,Acc_ET);
 
-SubAss=AddCon(SubAss,1,301);
-SubAss=AddTar(SubAss,1,0,1);
-SubAss=SetConMaterial(SubAss,1,Acc_Mat);
-SubAss=SetConET(SubAss,1,Acc_ET-2);
-SubAss=SetTarET(SubAss,1,Acc_ET-1);
 
-SubAss=AddCon(SubAss,1,302);
-SubAss=AddTar(SubAss,2,0,2);
-SubAss=SetConMaterial(SubAss,2,Acc_Mat);
-SubAss=SetConET(SubAss,2,Acc_ET-2);
-SubAss=SetTarET(SubAss,2,Acc_ET-1);
 
-NodeNum=[1;2];
-Type=&#123;&#39;All&#39;;&#39;All&#39;&#125;;
-PartNum=[0;0];
-Master=table(PartNum,NodeNum,Type);
-inputSubStr.SubStr=SubAss;
-inputSubStr.Master=Master;
-paramsSubStr.Name=&quot;Shaft1&quot;;
-Sub = solve.SubStr(paramsSubStr,inputSubStr);
-Sub = Sub.solve();
-Plot3D(Sub)
-FbiGenerate(Sub)
-
-Multi=MultiBody(&#39;Shaft1 Test&#39;);
-Multi=AddBody(Multi,Sub);
-Simpack_Output(Multi);
+<h3 id="Create-LBeam-with-stiffner-Flag-2"><a href="#Create-LBeam-with-stiffner-Flag-2" class="headerlink" title="Create LBeam with stiffner (Flag&#x3D;2)"></a>Create LBeam with stiffner (Flag&#x3D;2)</h3><pre><code class="language-matlab">inputStruct.r=7;
+inputStruct.b=[63,63];
+inputStruct.d=[8,8];
+inputStruct.l=480;
+inputStruct.Stiffner=[120+4,8;360-4,8];
+paramsStruct=struct();
+obj= beam.LBeam(paramsStruct, inputStruct);
+obj= obj.solve();
+Plot2D(obj);
+Plot3D(obj);
 </code></pre>
-<p>采用柔性连接时，不能直接采用SetRbe3建立连接，Simpack不识别ANSYS中此连接。需采用建立接触对的方式建立柔性连接，设置Contact属性为ET1.opt&#x3D;[2,2;4,1;12,5]，接着设置Target属性ET2.opt&#x3D;[2,1;4,111111]，此时的Marker点为ANSYS中的从节点。</p>
-<p>在实际工程中需要依据经验和测试的结果来决定连接采用柔性还是刚性，比如螺栓连接，相对较刚，可采用刚性连接，再比如轴承，如果直径较大，建议采用柔性连接。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/LBeam.assets/Fig155.jpg" style="zoom: 100%;"></td><td><img src="/./img/LBeam.assets/Fig156.jpg" style="zoom: 100%;"></td>
+		</tr>
+    <tr><td><strong>角钢截面</strong></td><td><strong>加筋肋角钢实体网格</strong></td></tr>
+	</tbody>
+</table>
+
+
+
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>

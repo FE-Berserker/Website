@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Point2D | Baffalo</title>
+  <title>CBeam | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Point2D | Baffalo">
+  <meta name="description" content="CBeam | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="介绍CBeam类用于生成槽钢的实体网格。 类结构 输入 input：  Meshsize : 网格尺寸 Stiffner : 加筋肋位置 l: 长度 b: 腿宽度 d : 腰厚度 r: 内圆弧倒角 h : 高度 t : 平均腿厚度  参数 params:  Name : 名称 Material: 材料 Order: 阶数  输出 output :  Assembly : 装配体 SolidMesh">
 <meta property="og:type" content="article">
@@ -508,9 +508,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Point2D" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-CBeam" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Point2D</h1>
+        <h1 class="article-title">CBeam</h1>
     
     <div class="article-meta">
         
@@ -520,7 +520,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo框架">Baffalo框架</a>
+            <a  data-rel="Baffalo部件">Baffalo部件</a>
             
         </span>
         
@@ -528,7 +528,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-02-15 21:27:15'>2025-02-15 21:13</time>
+            发布时间 : <time class="date" title='最后更新: 2025-04-05 09:58:15'>2025-04-05 09:56</time>
         
     </div>
     <div class="article-meta">
@@ -539,7 +539,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Point2D"><span class="toc-text">Point2D</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AddPoint-Flag-1"><span class="toc-text">AddPoint (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Calculate-the-distance-Flag-2"><span class="toc-text">Calculate the distance (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Delete-Points-Flag-3"><span class="toc-text">Delete Points (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plot-Point2D-in-paraview-Flag-4"><span class="toc-text">Plot Point2D in paraview (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-PointData-Flag-5"><span class="toc-text">Add PointData (Flag&#x3D;5)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-PointVector-Flag-6"><span class="toc-text">Add PointVector (Flag&#x3D;6)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CheatTable"><span class="toc-text">CheatTable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-CBeam-Flag-1"><span class="toc-text">Create CBeam (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-CBeam-with-stiffner-Flag-2"><span class="toc-text">Create CBeam with stiffner (Flag&#x3D;2)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -555,206 +555,81 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Point2D"><a href="#Point2D" class="headerlink" title="Point2D"></a>Point2D</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Point2D类是用来生成2D的点。</p>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="AddPoint-Flag-1"><a href="#AddPoint-Flag-1" class="headerlink" title="AddPoint (Flag&#x3D;1)"></a>AddPoint (Flag&#x3D;1)</h3><p>AddPoint为添加点。</p>
-<pre><code class="language-matlab">x=[1;2];
-y=[1;5];
-a=Point2D(&#39;Point Ass1&#39;);
-a=AddPoint(a,x,y);
-Plot(a,&#39;grid&#39;,1,&#39;plabel&#39;,1);
-x1=-5 + (5+5)*rand(10,1);
-y1=-5 + (5+5)*rand(10,1);
-a=AddPoint(a,x1,y1);
-Plot(a,&#39;grid&#39;,1,&#39;plabel&#39;,1,&#39;group&#39;,[1;2]);
-x2=[1;2;3;4;2];
-y2=[2;5;3;4;5];
-a=AddPoint(a,x2,y2);
-Plot(a,&#39;grid&#39;,1,&#39;plabel&#39;,1);
-a=CompressNpts(a,&#39;all&#39;,1);
-Plot(a,&#39;grid&#39;,1,&#39;plabel&#39;,1);
-x1=ones(10,1);
-y1=[0;10;20;30;40;50;60;70;80;90];
-a1=Point2D(&#39;Point Ass2&#39;);
-% 按角度增加点
-a1=AddPoint(a1,x1,y1,&#39;polar&#39;,&#39;deg&#39;);
-Plot(a1,&#39;grid&#39;,1,&#39;plabel&#39;,1);
-x2=ones(10,1);
-y2=ones(10,1);
-a2=Point2D(&#39;Point Ass3&#39;);
-% 以增量的方式增加点
-a2=AddPoint(a2,x2,y2,&#39;delta&#39;,1);
-Plot(a2,&#39;grid&#39;,1,&#39;plabel&#39;,1);
-</code></pre>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/Point2D.assets/Fig1.jpg" style="zoom: 100%;"></td><td><img src="/./img/Point2D.assets/Fig2.jpg" style="zoom: 100%;"></td>
-		</tr>
-	</tbody>
-</table>
-
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/Point2D.assets/Fig3.jpg" style="zoom: 100%;"></td><td><img src="/./img/Point2D.assets/Fig4.jpg" style="zoom: 100%;"></td>
-		</tr>
-	</tbody>
-</table>
-
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/Point2D.assets/Fig5.jpg" style="zoom: 100%;"></td><td><img src="/./img/Point2D.assets/Fig6.jpg" style="zoom: 100%;"></td>
-		</tr>
-	</tbody>
-</table>
-
-<h3 id="Calculate-the-distance-Flag-2"><a href="#Calculate-the-distance-Flag-2" class="headerlink" title="Calculate the distance (Flag&#x3D;2)"></a>Calculate the distance (Flag&#x3D;2)</h3><p>Dist用来计算输入的坐标与点之间的距离。</p>
-<pre><code class="language-matlab">a=Point2D(&#39;Point Ass1&#39;);
-x1=-5 + (5+5)*rand(10,1);
-y1=-5 + (5+5)*rand(10,1);
-x2=-5 + (5+5)*rand(10,1);
-y2=-5 + (5+5)*rand(10,1);
-a=AddPoint(a,x1,y1);
-a=AddPoint(a,x2,y2);
-dist=Dist(2,1,a,&#39;group&#39;,1);
-disp(dist)
-</code></pre>
-<h3 id="Delete-Points-Flag-3"><a href="#Delete-Points-Flag-3" class="headerlink" title="Delete Points (Flag&#x3D;3)"></a>Delete Points (Flag&#x3D;3)</h3><p>DelePoint可以删除对应编号或者对应规则下的坐标点。</p>
-<pre><code class="language-matlab">[X,Y]=meshgrid(0:0.1:1);
-points1=[X(:),Y(:)];
-a=Point2D(&#39;Point Ass1&#39;);
-a=AddPoint(a, points1(:,1), points1(:,2));
-Plot(a);
-f=@(x,y)(x&gt;0.5 &amp;y&gt;0.2 &amp; y&lt;0.8);
-a=DeletePoint(a,1,&#39;fun&#39;,f);
-Plot(a);
-</code></pre>
-<img src="/./img/Point2D.assets/Fig7.jpg" style="zoom:33%;" />
-
-<h3 id="Plot-Point2D-in-paraview-Flag-4"><a href="#Plot-Point2D-in-paraview-Flag-4" class="headerlink" title="Plot Point2D in paraview (Flag&#x3D;4)"></a>Plot Point2D in paraview (Flag&#x3D;4)</h3><p>Plot2函数将类导出为VTK格式，并调用Paraview显示</p>
-<pre><code class="language-matlab">[X,Y]=meshgrid(0:0.1:1);
-points1=[X(:),Y(:)];
-a=Point2D(&#39;Point Ass1&#39;);
-a=AddPoint(a, points1(:,1), points1(:,2));
-f=@(x,y)(x&gt;0.5 &amp;y&gt;0.2 &amp; y&lt;0.8);
-a=DeletePoint(a,1,&#39;fun&#39;,f);
-Plot(a);
-Plot2(a);
-</code></pre>
-<img src="/./img/Point2D.assets/Fig8.jpg" style="zoom:33%;" />
-
-<h3 id="Add-PointData-Flag-5"><a href="#Add-PointData-Flag-5" class="headerlink" title="Add PointData (Flag&#x3D;5)"></a>Add PointData (Flag&#x3D;5)</h3><p>Add PointData给每个点赋值，对于一个坐标点，他有三个属性：</p>
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>CBeam类用于生成槽钢的实体网格。</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/CBeam.assets/Fig146.jpg"></p>
+<p>输入 input：</p>
 <ul>
-<li>点的位置 AddPoint， 人为输入；</li>
-<li>点的值 AddPointData，通常是后处理计算的结果，比如位移、应力、应变等；</li>
-<li>点的向量 AddPointVector，通常为后处理的结果，代表位移、应力、应变的方向。</li>
+<li>Meshsize : 网格尺寸</li>
+<li>Stiffner : 加筋肋位置</li>
+<li>l: 长度</li>
+<li>b: 腿宽度</li>
+<li>d : 腰厚度</li>
+<li>r: 内圆弧倒角</li>
+<li>h : 高度</li>
+<li>t : 平均腿厚度</li>
 </ul>
-<pre><code class="language-matlab">[X,Y]=meshgrid(0:0.1:1);
-points1=[X(:),Y(:)];
-a=Point2D(&#39;Point Ass1&#39;);
-a=AddPoint(a, points1(:,1), points1(:,2));
-f=@(x,y)(x&gt;0.5 &amp;y&gt;0.2 &amp; y&lt;0.8);
-a=DeletePoint(a,1,&#39;fun&#39;,f);
-a=AddPointData(a,a.P(:,2));
-Plot(a);
-</code></pre>
-<img src="/./img/Point2D.assets/Fig9.jpg" style="zoom:33%;" />
-
-<h3 id="Add-PointVector-Flag-6"><a href="#Add-PointVector-Flag-6" class="headerlink" title="Add PointVector (Flag&#x3D;6)"></a>Add PointVector (Flag&#x3D;6)</h3><pre><code class="language-matlab">a=Point2D(&#39;Point Ass1&#39;);
-x1=-5 + (5+5)*rand(10,1);
-y1=-5 + (5+5)*rand(10,1);
-u=-1 + 2*rand(10,1);
-v=-1 + 2*rand(10,1);
-a=AddPoint(a,x1,y1);
-a=AddPointVector(a,[u,v]);
-a=AddPointData(a,a.P(:,2));
-Plot(a,&#39;Vector&#39;,1,&#39;grid&#39;,1,&#39;equal&#39;,1)
-Plot2(a)
+<p>参数 params:</p>
+<ul>
+<li>Name : 名称</li>
+<li>Material: 材料</li>
+<li>Order: 阶数</li>
+</ul>
+<p>输出 output :</p>
+<ul>
+<li>Assembly : 装配体</li>
+<li>SolidMesh : 实体网格</li>
+<li>Stiffner_Surface : 加筋肋截面</li>
+<li>Surface : 槽钢截面</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-CBeam-Flag-1"><a href="#Create-CBeam-Flag-1" class="headerlink" title="Create CBeam (Flag&#x3D;1)"></a>Create CBeam (Flag&#x3D;1)</h3><pre><code class="language-matlab">inputStruct.t=[8.5,8.5];
+inputStruct.r=[8.5,8.5];
+inputStruct.b=[48,48];
+inputStruct.d=5.4;
+inputStruct.h=100;
+inputStruct.l=400;
+paramsStruct=struct();
+obj= beam.CBeam(paramsStruct, inputStruct);
+obj= obj.solve();
+Plot2D(obj);
+Plot3D(obj);
 </code></pre>
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
 		<tr>
-			<td style="padding: 6px"><img src="/./img/Point2D.assets/Fig10.jpg" style="zoom: 100%;"></td><td><img src="/./img/Point2D.assets/Fig11.jpg" style="zoom: 80%;"></td>
+			<td style="padding: 6px"><img src="/./img/CBeam.assets/Fig149.jpg" style="zoom: 100%;"></td><td><img src="/./img/CBeam.assets/Fig150.jpg" style="zoom: 100%;"></td>
 		</tr>
+    <tr><td><strong>槽钢截面</strong></td><td><strong>槽钢实体网格</strong></td></tr>
 	</tbody>
 </table>
 
-<h2 id="CheatTable"><a href="#CheatTable" class="headerlink" title="CheatTable"></a>CheatTable</h2><table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Varargin</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>AddPoint(obj,x,y)</td>
-<td>‘polar’,’delta’</td>
-<td>Add points</td>
-</tr>
-<tr>
-<td>AddPointData(obj,Data)</td>
-<td></td>
-<td>Add point data</td>
-</tr>
-<tr>
-<td>AddPointVector(obj,Vec)</td>
-<td></td>
-<td>Add point vector</td>
-</tr>
-<tr>
-<td>CompressNpts(obj)</td>
-<td>‘all’</td>
-<td>Compress point number</td>
-</tr>
-<tr>
-<td>DeletePoint(obj)</td>
-<td>‘fun’</td>
-<td>Delete point</td>
-</tr>
-<tr>
-<td>Dist(x,y,obj)</td>
-<td>‘group’</td>
-<td>Calculate distance</td>
-</tr>
-<tr>
-<td>GetNgpts(obj)</td>
-<td></td>
-<td>Get total number of point group</td>
-</tr>
-<tr>
-<td>GetNpts(obj)</td>
-<td></td>
-<td>Get total number of points</td>
-</tr>
-<tr>
-<td>GetPoint(obj,id,t)</td>
-<td></td>
-<td>Get point coordinate</td>
-</tr>
-<tr>
-<td>Help(obj)</td>
-<td></td>
-<td>Open help file</td>
-</tr>
-<tr>
-<td>Plot(obj)</td>
-<td>‘Plabel’,Grid’,’Group’,’Equal’,<br>‘Vector’,’VectorScale’,</td>
-<td>Plot Point2D object</td>
-</tr>
-<tr>
-<td>Plot2(obj)</td>
-<td></td>
-<td>Plot Point2D object in Paraview</td>
-</tr>
-<tr>
-<td>VTKWrite(obj)</td>
-<td>‘Echo’</td>
-<td>Write VTK file of Point2D</td>
-</tr>
-</tbody></table>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2>
+
+
+
+
+<h3 id="Create-CBeam-with-stiffner-Flag-2"><a href="#Create-CBeam-with-stiffner-Flag-2" class="headerlink" title="Create CBeam with stiffner (Flag&#x3D;2)"></a>Create CBeam with stiffner (Flag&#x3D;2)</h3><pre><code class="language-matlab">inputStruct.t=[8.5,8.5];
+inputStruct.r=[8.5,8.5];
+inputStruct.b=[48,48];
+inputStruct.d=5.4;
+inputStruct.h=100;
+inputStruct.l=480;
+inputStruct.Stiffner=[120+4,8;360-4,8];
+paramsStruct=struct();
+obj= beam.CBeam(paramsStruct, inputStruct);
+obj= obj.solve();
+Plot2D(obj);
+Plot3D(obj);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/CBeam.assets/Fig151.jpg" style="zoom: 100%;"></td><td><img src="/./img/CBeam.assets/Fig152.jpg" style="zoom: 100%;"></td>
+		</tr>
+    <tr><td><strong>槽钢截面</strong></td><td><strong>加筋肋槽钢实体网格</strong></td></tr>
+	</tbody>
+</table>
+
+
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
     </div>

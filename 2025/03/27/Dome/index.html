@@ -6,22 +6,42 @@
   <meta name="keywords" content="">
   <meta name="description" content="Dome | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="介绍CompositeRing是复合材料环，它依据铺层的厚度、角度来生成相应的实体模型。 类结构  输入 input：  Height : 高度 MatNum : 材料编号 Angle : 铺层或缠绕角度 Thickness : 厚度 Di : 圆环内径  参数 params:  Order ：单元阶数 NRot : 旋转次数 Name : 名称 NHeight: 高度方向网格数量 Materia">
+<meta name="description" content="FEMM Solver Test介绍本文档用于在Baffalo环境下，对FEMM求解器的验证。FEMM是开源的2D有限元方法的电磁仿真软件，其提供了友好的Matlab接口。 FEMM非常容易上手，其主要问题在于2D几何绘制非常不方便，导致其处理实际问题非常吃力，结合Bafflo的几何模块Point2D、Line2D和Surface2D可以更加方便的绘制几何，从而能在一定程度上弥补FEMM的不足。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CompositeRing">
-<meta property="og:url" content="http://example.com/2025/05/06/CompositeRing/index.html">
+<meta property="og:title" content="FEMM Solver Test">
+<meta property="og:url" content="http://example.com/2025/05/06/FEMM%20Solver%20Test/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="介绍CompositeRing是复合材料环，它依据铺层的厚度、角度来生成相应的实体模型。 类结构  输入 input：  Height : 高度 MatNum : 材料编号 Angle : 铺层或缠绕角度 Thickness : 厚度 Di : 圆环内径  参数 params:  Order ：单元阶数 NRot : 旋转次数 Name : 名称 NHeight: 高度方向网格数量 Materia">
+<meta property="og:description" content="FEMM Solver Test介绍本文档用于在Baffalo环境下，对FEMM求解器的验证。FEMM是开源的2D有限元方法的电磁仿真软件，其提供了友好的Matlab接口。 FEMM非常容易上手，其主要问题在于2D几何绘制非常不方便，导致其处理实际问题非常吃力，结合Bafflo的几何模块Point2D、Line2D和Surface2D可以更加方便的绘制几何，从而能在一定程度上弥补FEMM的不足。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/CompositeRing.assets/Fig4.jpg">
-<meta property="og:image" content="http://example.com/img/CompositeRing.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/CompositeRing.assets/Fig2.jpg">
-<meta property="og:image" content="http://example.com/img/CompositeRing.assets/Fig3.jpg">
-<meta property="article:published_time" content="2025-05-06T06:46:53.698Z">
-<meta property="article:modified_time" content="2025-05-06T06:48:35.125Z">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig2.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/image-20250506153002057.png">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig3.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig4.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/image-20250506153641618.png">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig5.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig6.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/image-20250506154154109.png">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig7.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig8.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/image-20250506160515233.png">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig9.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig10.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/image-20250506161421142.png">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig11.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig12.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig13.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig14.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig15.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig16.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig17.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig18.jpg">
+<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/image-20250506164548140.png">
+<meta property="article:published_time" content="2025-05-06T08:50:17.382Z">
+<meta property="article:modified_time" content="2025-05-06T08:59:49.060Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/CompositeRing.assets/Fig4.jpg">
+<meta name="twitter:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig1.jpg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -108,7 +128,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(32)</small>
+                <small>(33)</small>
             
         </div>
     </li>
@@ -120,7 +140,7 @@
         <div data-rel="Baffalo框架">
             
             Baffalo框架
-            <small>(11)</small>
+            <small>(12)</small>
         </div>
         
     </li>
@@ -186,7 +206,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="32">
+<input type="hidden" id="yelog_site_posts_number" value="33">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -236,6 +256,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/05/06/FEMM%20Solver%20Test/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="FEMM Solver Test">FEMM Solver Test</span>
+            <span class="post-date" title="2025-05-06 16:50:17">2025/05/06</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo部件 "

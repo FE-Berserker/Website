@@ -6,104 +6,22 @@
   <meta name="keywords" content="">
   <meta name="description" content="Commonshaft | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="ANSYS Element Test案例Link1 Static analysis of plane trusses (Flag&#x3D;1)% Create geometry a&#x3D;Point2D(&#39;Point&#39;); a&#x3D;AddPoint(a,[-4;-2],[0;0]); a&#x3D;AddPoint(a,[-2;0],[0;0]); a&#x3D;AddPoint(a,[0;2],[0;0])">
+<meta name="description" content="介绍CompositeRing是复合材料环，它依据铺层的厚度、角度来生成相应的实体模型。 类结构  输入 input：  Height : 高度 MatNum : 材料编号 Angle : 铺层或缠绕角度 Thickness : 厚度 Di : 圆环内径  参数 params:  Order ：单元阶数 NRot : 旋转次数 Name : 名称 NHeight: 高度方向网格数量 Materia">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ANSYS Element Test">
-<meta property="og:url" content="http://example.com/2025/04/22/ANSYS%20Element%20Test/index.html">
+<meta property="og:title" content="CompositeRing">
+<meta property="og:url" content="http://example.com/2025/05/06/CompositeRing/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="ANSYS Element Test案例Link1 Static analysis of plane trusses (Flag&#x3D;1)% Create geometry a&#x3D;Point2D(&#39;Point&#39;); a&#x3D;AddPoint(a,[-4;-2],[0;0]); a&#x3D;AddPoint(a,[-2;0],[0;0]); a&#x3D;AddPoint(a,[0;2],[0;0])">
+<meta property="og:description" content="介绍CompositeRing是复合材料环，它依据铺层的厚度、角度来生成相应的实体模型。 类结构  输入 input：  Height : 高度 MatNum : 材料编号 Angle : 铺层或缠绕角度 Thickness : 厚度 Di : 圆环内径  参数 params:  Order ：单元阶数 NRot : 旋转次数 Name : 名称 NHeight: 高度方向网格数量 Materia">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig2.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig3.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig4.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig5.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig6.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig7.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig8.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig9.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig10.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig11.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig12.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig13.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig14.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig15.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig16.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig17.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig18.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig19.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig21.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig22.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig20.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig24.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig25.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig25.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig26.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig27.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig29.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig28.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig31.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig30.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig32.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig33.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig34.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig35.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig37.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig36.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig38.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig39.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig40.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig41.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig42.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig43.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig44.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig45.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig46.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig47.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig50.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig48.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig49.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig53.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig51.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig52.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig54.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig55.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig58.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig56.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig57.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig59.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig60.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig63.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig61.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig62.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig64.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig65.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig66.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig67.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig68.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig69.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig70.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig71.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig72.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig73.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig75.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig76.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig74.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig78.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig79.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig77.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig81.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig82.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig80.JPG">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig83.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig84.jpg">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig85.png">
-<meta property="og:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig86.png">
-<meta property="article:published_time" content="2025-04-22T10:24:31.769Z">
-<meta property="article:modified_time" content="2025-04-23T13:54:30.956Z">
+<meta property="og:image" content="http://example.com/img/CompositeRing.assets/Fig4.jpg">
+<meta property="og:image" content="http://example.com/img/CompositeRing.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/CompositeRing.assets/Fig2.jpg">
+<meta property="og:image" content="http://example.com/img/CompositeRing.assets/Fig3.jpg">
+<meta property="article:published_time" content="2025-05-06T06:46:53.698Z">
+<meta property="article:modified_time" content="2025-05-06T06:48:35.125Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/ANSYS%20Element%20Test.assets/Fig1.jpg">
+<meta name="twitter:image" content="http://example.com/img/CompositeRing.assets/Fig4.jpg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -190,7 +108,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(31)</small>
+                <small>(32)</small>
             
         </div>
     </li>
@@ -217,7 +135,7 @@
         <div data-rel="Baffalo部件">
             
             Baffalo部件
-            <small>(15)</small>
+            <small>(16)</small>
         </div>
         
     </li>
@@ -268,7 +186,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="31">
+<input type="hidden" id="yelog_site_posts_number" value="32">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -318,6 +236,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/06/CompositeRing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CompositeRing">CompositeRing</span>
+            <span class="post-date" title="2025-05-06 14:46:53">2025/05/06</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo方法 "

@@ -6,42 +6,33 @@
   <meta name="keywords" content="">
   <meta name="description" content="ForceLoad | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="FEMM Solver Test介绍本文档用于在Baffalo环境下，对FEMM求解器的验证。FEMM是开源的2D有限元方法的电磁仿真软件，其提供了友好的Matlab接口。 FEMM非常容易上手，其主要问题在于2D几何绘制非常不方便，导致其处理实际问题非常吃力，结合Bafflo的几何模块Point2D、Line2D和Surface2D可以更加方便的绘制几何，从而能在一定程度上弥补FEMM的不足。">
+<meta name="description" content="Laminate介绍Laminate类用于层合板校核分析，集成了Practical Micromechanics of Composite Materials一书中部分的开源代码$^{[1]}$。该类用经典的复合材料层合板理论进行校核，可以初步对层合板进行选型计算，但在实际工程中还是要考虑将实际几何和边界考虑进仿真中。 类结构  输入 input：  Load : 载荷 Tply : 铺层厚度 P">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FEMM Solver Test">
-<meta property="og:url" content="http://example.com/2025/05/06/FEMM%20Solver%20Test/index.html">
+<meta property="og:title" content="Laminate">
+<meta property="og:url" content="http://example.com/2025/05/08/Laminate/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="FEMM Solver Test介绍本文档用于在Baffalo环境下，对FEMM求解器的验证。FEMM是开源的2D有限元方法的电磁仿真软件，其提供了友好的Matlab接口。 FEMM非常容易上手，其主要问题在于2D几何绘制非常不方便，导致其处理实际问题非常吃力，结合Bafflo的几何模块Point2D、Line2D和Surface2D可以更加方便的绘制几何，从而能在一定程度上弥补FEMM的不足。">
+<meta property="og:description" content="Laminate介绍Laminate类用于层合板校核分析，集成了Practical Micromechanics of Composite Materials一书中部分的开源代码$^{[1]}$。该类用经典的复合材料层合板理论进行校核，可以初步对层合板进行选型计算，但在实际工程中还是要考虑将实际几何和边界考虑进仿真中。 类结构  输入 input：  Load : 载荷 Tply : 铺层厚度 P">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig2.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/image-20250506153002057.png">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig3.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig4.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/image-20250506153641618.png">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig5.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig6.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/image-20250506154154109.png">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig7.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig8.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/image-20250506160515233.png">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig9.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig10.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/image-20250506161421142.png">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig11.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig12.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig13.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig14.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig15.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig16.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig17.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig18.jpg">
-<meta property="og:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/image-20250506164548140.png">
-<meta property="article:published_time" content="2025-05-06T08:50:17.382Z">
-<meta property="article:modified_time" content="2025-05-06T08:59:49.060Z">
+<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig5.jpg">
+<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig99.PNG">
+<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig103.jpg">
+<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig100.PNG">
+<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig104.jpg">
+<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig101.PNG">
+<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig105.jpg">
+<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig102.PNG">
+<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig106.jpg">
+<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig107.jpg">
+<meta property="og:image" content="http://example.com/2025/05/08/Laminate//img/Laminate.assets/Fig2.jpg">
+<meta property="og:image" content="http://example.com/2025/05/08/Laminate//img/Laminate.assets/Fig3.jpg">
+<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig4.jpg">
+<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig109.jpg">
+<meta property="article:published_time" content="2025-05-08T09:37:48.501Z">
+<meta property="article:modified_time" content="2025-05-08T09:40:31.715Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/FEMM%20Solver%20Test.assets/Fig1.jpg">
+<meta name="twitter:image" content="http://example.com/img/Laminate.assets/Fig5.jpg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -128,7 +119,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(34)</small>
+                <small>(35)</small>
             
         </div>
     </li>
@@ -155,7 +146,7 @@
         <div data-rel="Baffalo部件">
             
             Baffalo部件
-            <small>(16)</small>
+            <small>(17)</small>
         </div>
         
     </li>
@@ -206,7 +197,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="34">
+<input type="hidden" id="yelog_site_posts_number" value="35">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -256,6 +247,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/08/Laminate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Laminate">Laminate</span>
+            <span class="post-date" title="2025-05-08 17:37:48">2025/05/08</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo方法 "

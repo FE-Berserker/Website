@@ -2,37 +2,30 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Composite_ElasticConstant | Baffalo</title>
+  <title>InterferenceFit | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Composite_ElasticConstant | Baffalo">
+  <meta name="description" content="InterferenceFit | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Laminate介绍Laminate类用于层合板校核分析，集成了Practical Micromechanics of Composite Materials一书中部分的开源代码$^{[1]}$。该类用经典的复合材料层合板理论进行校核，可以初步对层合板进行选型计算，但在实际工程中还是要考虑将实际几何和边界考虑进仿真中。 类结构  输入 input：  Load : 载荷 Tply : 铺层厚度 P">
+<meta name="description" content="InterferenceFit介绍InterferenceFit用于校核过盈连接，参照DIN 7190$^{[1]}$编写。过盈配合是一种常见零部件组装方式，在机械工程中普遍采用过盈配合做周向定位和传递扭矩。采用过盈联接必须精确确定孔轴表面的接触压力，以确定许用传递扭矩；同时由于过盈配合引起的变形会导致装配处轴肩的应力集中和疲劳开裂，需要对采用过盈联接的零件的应力分布有全面了解。 原理过盈连接的理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Laminate">
-<meta property="og:url" content="http://example.com/2025/05/08/Laminate/index.html">
+<meta property="og:title" content="InterferenceFit">
+<meta property="og:url" content="http://example.com/2025/05/11/InterferenceFit/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="Laminate介绍Laminate类用于层合板校核分析，集成了Practical Micromechanics of Composite Materials一书中部分的开源代码$^{[1]}$。该类用经典的复合材料层合板理论进行校核，可以初步对层合板进行选型计算，但在实际工程中还是要考虑将实际几何和边界考虑进仿真中。 类结构  输入 input：  Load : 载荷 Tply : 铺层厚度 P">
+<meta property="og:description" content="InterferenceFit介绍InterferenceFit用于校核过盈连接，参照DIN 7190$^{[1]}$编写。过盈配合是一种常见零部件组装方式，在机械工程中普遍采用过盈配合做周向定位和传递扭矩。采用过盈联接必须精确确定孔轴表面的接触压力，以确定许用传递扭矩；同时由于过盈配合引起的变形会导致装配处轴肩的应力集中和疲劳开裂，需要对采用过盈联接的零件的应力分布有全面了解。 原理过盈连接的理">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig5.jpg">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig99.PNG">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig103.jpg">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig100.PNG">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig104.jpg">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig101.PNG">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig105.jpg">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig102.PNG">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig106.jpg">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig107.jpg">
-<meta property="og:image" content="http://example.com/2025/05/08/Laminate//img/Laminate.assets/Fig2.jpg">
-<meta property="og:image" content="http://example.com/2025/05/08/Laminate//img/Laminate.assets/Fig3.jpg">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig4.jpg">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig109.jpg">
-<meta property="article:published_time" content="2025-05-08T09:37:48.501Z">
-<meta property="article:modified_time" content="2025-05-08T09:40:31.715Z">
+<meta property="og:image" content="http://example.com/img/InterferenceFit.assets/Fig110.jpg">
+<meta property="og:image" content="http://example.com/img/InterferenceFit.assets/Fig111.jpg">
+<meta property="og:image" content="http://example.com/img/InterferenceFit.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/InterferenceFit.assets/Fig113.png">
+<meta property="og:image" content="http://example.com/img/InterferenceFit.assets/Fig114.jpg">
+<meta property="og:image" content="http://example.com/img/InterferenceFit.assets/Fig115.jpg">
+<meta property="og:image" content="http://example.com/img/InterferenceFit.assets/Fig116.jpg">
+<meta property="og:image" content="http://example.com/img/InterferenceFit.assets/Fig117.jpg">
+<meta property="article:published_time" content="2025-05-11T15:27:10.424Z">
+<meta property="article:modified_time" content="2025-05-11T15:29:20.768Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/Laminate.assets/Fig5.jpg">
+<meta name="twitter:image" content="http://example.com/img/InterferenceFit.assets/Fig110.jpg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -119,7 +112,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(35)</small>
+                <small>(36)</small>
             
         </div>
     </li>
@@ -161,7 +154,7 @@
         <div data-rel="Baffalo方法">
             
             Baffalo方法
-            <small>(4)</small>
+            <small>(5)</small>
         </div>
         
     </li>
@@ -197,7 +190,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="35">
+<input type="hidden" id="yelog_site_posts_number" value="36">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -249,6 +242,15 @@
     <nav id="title-list-nav">
         
         
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/11/InterferenceFit/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="InterferenceFit">InterferenceFit</span>
+            <span class="post-date" title="2025-05-11 23:27:10">2025/05/11</span>
+        </a>
+        
+        
         <a  class="全部文章 Baffalo部件 "
            href="/2025/05/08/Laminate/"
            data-tag=""
@@ -259,7 +261,7 @@
         
         
         <a  class="全部文章 Baffalo方法 "
-           href="/2025/05/07/ISO1940%20copy/"
+           href="/2025/05/07/Composite_ElasticConstant/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="Composite_ElasticConstant">Composite_ElasticConstant</span>
@@ -581,9 +583,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-ISO1940 copy" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-InterferenceFit" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Composite_ElasticConstant</h1>
+        <h1 class="article-title">InterferenceFit</h1>
     
     <div class="article-meta">
         
@@ -601,7 +603,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-05-07 16:38:33'>2025-05-07 16:33</time>
+            发布时间 : <time class="date" title='最后更新: 2025-05-11 23:29:20'>2025-05-11 23:27</time>
         
     </div>
     <div class="article-meta">
@@ -612,7 +614,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Composite-ElasticConstant"><span class="toc-text">Composite_ElasticConstant</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#InterferenceFit"><span class="toc-text">InterferenceFit</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#InterferenceFit-Calculation-and-output-to-ANSYS-Flag-1"><span class="toc-text">InterferenceFit Calculation and output to ANSYS (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Consider-temperature-influence-in-ANSYS-Flag-2"><span class="toc-text">Consider temperature influence in ANSYS (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Safety-factor-Flag-3"><span class="toc-text">Safety factor (Flag&#x3D;3)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -628,36 +630,153 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Composite-ElasticConstant"><a href="#Composite-ElasticConstant" class="headerlink" title="Composite_ElasticConstant"></a>Composite_ElasticConstant</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Composite_ElasticConstant类用来计算不同角度下复合材料的属性。</p>
-<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/Composite_ElasticConstant.assets/Fig2.jpg" style="zoom:100%;" />
+        <h1 id="InterferenceFit"><a href="#InterferenceFit" class="headerlink" title="InterferenceFit"></a>InterferenceFit</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>InterferenceFit用于校核过盈连接，参照DIN 7190$^{[1]}$编写。过盈配合是一种常见零部件组装方式，在机械工程中普遍采用过盈配合做周向定位和传递扭矩。采用过盈联接必须精确确定孔轴表面的接触压力，以确定许用传递扭矩；同时由于过盈配合引起的变形会导致装配处轴肩的应力集中和疲劳开裂，需要对采用过盈联接的零件的应力分布有全面了解。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>过盈连接的理论计算基于左图的简化模型计算，采用弹性力学中的拉梅方程计算。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/InterferenceFit.assets/Fig110.jpg" style="zoom: 100%;"></td><td><img src="/./img/InterferenceFit.assets/Fig111.jpg" style="zoom: 100%;"></td>
+		</tr>
+    <tr><td><strong>计算模型</strong></td><td><strong>实际过盈连接节点</strong></td></tr>
+	</tbody>
+</table>
+
+<p>由于轴与轴套表面是粗糙的，我们首先计算节点的有效过盈量，这点经常被忽略，公式如下：<br>$$<br>U_w&#x3D;U-0.4(R_{ZA}+R_{zl})<br>$$<br>式中0.4为考虑粗糙度后的光滑系数。</p>
+<p>那么过盈压力可由下式计算：<br>$$<br>p&#x3D;\frac{\xi_wE_A}{K}<br>$$<br>式中：<br>$$<br>K&#x3D;\frac{E_A}{El}(\frac{1+Q_l^2}{1-Q_l^2}-\mu_1)+\frac{1+Q_A^2}{1-Q_A^2}+\mu_A<br>$$<br>$Q_l$和$Q_A$为无量纲几何参数<br>$$<br>Q_A&#x3D;\frac{D_F}{D_{aA}}<br>$$</p>
+<p>$$<br>Q_l&#x3D;\frac{D_{il}}{D_F}<br>$$</p>
+<p>$$<br>\xi_w&#x3D;\frac{U_w}{D_F}<br>$$</p>
+<p>DIN 7190中也介绍了过盈节点弹塑性的设计方法，但实际应用中还是尽量保证节点在弹性的工作范围内运行。在Baffalo中，写入了弹性状态下过盈工程计算方法，同时也可直接输出过盈连接的有限元装配模型，因此也可以更轻松的考虑离心力、温度和倒角等对过盈的影响。</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/InterferenceFit.assets/Fig1.jpg" style="zoom:100%;" />
 
 <p>输入 input：</p>
 <ul>
-<li>Ply : 材料属性</li>
-<li>theta: 角度</li>
+<li>Umax : 最大过盈量</li>
+<li>Umin : 最小过盈量</li>
+<li>LF: 过盈连接节点的有效长度</li>
+<li>Dil : 轴内径</li>
+<li>DF : 接触面直径</li>
+<li>DaA: 轴套外径</li>
+<li>Shaft_Mat : 轴材料</li>
+<li>Hub_Mat : 轴套材料</li>
+<li>Hub_Rp : 轴套抗拉强度</li>
+<li>Hub_Rm : 轴套屈服强度</li>
+<li>Shaft_Rp : 轴抗拉强度</li>
+<li>Shaft_Pm : 轴屈服强度</li>
 </ul>
 <p>参数 params:</p>
 <ul>
-<li>Slice ：散点图点数</li>
 <li>Name : 名称</li>
+<li>uf: 摩擦系数</li>
+<li>RzA : 轴套表面粗糙度</li>
+<li>Rzl : 轴表面粗糙度</li>
+<li>T_Ref : 参考温度</li>
+<li>Temperature : 温度</li>
+<li>KA : 应用系数</li>
 </ul>
 <p>输出 output :</p>
 <ul>
-<li>E_eq ：等效材料属性</li>
+<li><p>Assembly : 过盈连接节点装配体</p>
+</li>
+<li><p>Shaft_Outer_Stress : 轴外表面应力</p>
+</li>
+<li><p>Shaft_Inner_Stress : 轴内表面应力</p>
+</li>
+<li><p>Hub_Stress : 轴套应力</p>
+</li>
+<li><p>Torque : 节点可承受的扭矩</p>
+</li>
+<li><p>F : 拔出力</p>
+</li>
+<li><p>P : 过盈压力</p>
+</li>
+<li><p>Uwmax : 有效最大过盈量</p>
+</li>
+<li><p>Uwmin : 有效最小过盈量</p>
+</li>
 </ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>绘制复合材料属性随角度的变化曲线。</p>
-<pre><code class="language-matlab">S=RMaterial(&#39;Composite&#39;);
-mat=GetMat(S,5);
-inputStruct.Ply=mat&#123;1,1&#125;;
-inputStruct.theta =45;
-paramsStruct=struct();
-obj = method.Composite.ElasticConstants(paramsStruct, inputStruct);
-obj = obj.solve();
-Plot(obj);
-</code></pre>
-<img src="/./img/Composite_ElasticConstant.assets/Fig1.jpg" style="zoom:100%;" />
+<p>能力 capacity</p>
+<ul>
+<li>S_sRp : 轴断裂安全系数</li>
+<li>S_sRm ：轴屈服安全系数</li>
+<li>S_hRp ：轴套断裂安全系数</li>
+<li>S_hRm : 轴套屈服安全系数</li>
+<li>Sr : 打滑安全系数</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="InterferenceFit-Calculation-and-output-to-ANSYS-Flag-1"><a href="#InterferenceFit-Calculation-and-output-to-ANSYS-Flag-1" class="headerlink" title="InterferenceFit Calculation and output to ANSYS (Flag&#x3D;1)"></a>InterferenceFit Calculation and output to ANSYS (Flag&#x3D;1)</h3><p>此处以Kisssoft软件计算结果作为对比，尺寸参数如下所示：</p>
+<img src="/./img/InterferenceFit.assets/Fig113.png" style="zoom:100%;" />
 
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
+<pre><code class="language-matlab">S=RMaterial(&#39;Basic&#39;);
+Mat=GetMat(S,22);
+inputStruct.Hub_Mat=Mat&#123;1,1&#125;;
+inputStruct.Shaft_Mat=Mat&#123;1,1&#125;;
+inputStruct.DaA=440;
+inputStruct.DF=240;
+inputStruct.Dil=0;
+inputStruct.LF=280;
+inputStruct.Umin=0.094;
+inputStruct.Umax=0.169;
+paramsStruct.RzA=32;
+paramsStruct.Rzl=32;
+Con1=connection.InterferenceFit(paramsStruct, inputStruct);
+Con1=Con1.solve;
+Con1=OutputAss(Con1);
+disp(Con1.output.P);
+disp(Con1.output.Torque);  
+</code></pre>
+<p>计算得到的过盈压力</p>
+<p>43.2323   20.6213   31.9268</p>
+<img src="/./img/InterferenceFit.assets/Fig114.jpg" style="zoom:100%;" />
+
+<center><b>Kisssoft过盈压力计算</strong></center>
+
+<p>可以发现两者计算结果是一致的。</p>
+<p>同时Baffalo已经生成对应的有限元模型，可直接导入ANSYS计算。</p>
+<img src="/./img/InterferenceFit.assets/Fig115.jpg" style="zoom:100%;" />
+
+<h3 id="Consider-temperature-influence-in-ANSYS-Flag-2"><a href="#Consider-temperature-influence-in-ANSYS-Flag-2" class="headerlink" title="Consider temperature influence in ANSYS (Flag&#x3D;2)"></a>Consider temperature influence in ANSYS (Flag&#x3D;2)</h3><p>其他参数不变，将轴的温度设置为40℃，轴套温度设为20℃。</p>
+<pre><code class="language-matlab">paramsStruct.Temperature=[40,20];
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/InterferenceFit.assets/Fig116.jpg" style="zoom: 100%;"></td><td><img src="/./img/InterferenceFit.assets/Fig117.jpg" style="zoom: 100%;"></td>
+		</tr>
+    <tr><td><strong>[20,20]</strong></td><td><strong>[40,20]</strong></td></tr>
+	</tbody>
+</table>
+
+<h3 id="Safety-factor-Flag-3"><a href="#Safety-factor-Flag-3" class="headerlink" title="Safety factor (Flag&#x3D;3)"></a>Safety factor (Flag&#x3D;3)</h3><p>计算过盈的安全系数：</p>
+<pre><code class="language-matlab">S=RMaterial(&#39;Basic&#39;);
+Mat=GetMat(S,22);
+inputStruct.Hub_Mat=Mat&#123;1,1&#125;;
+inputStruct.Shaft_Mat=Mat&#123;1,1&#125;;
+inputStruct.DaA=440;
+inputStruct.DF=240;
+inputStruct.Dil=0;
+inputStruct.LF=280;
+inputStruct.Umin=0.094;
+inputStruct.Umax=0.169;
+inputStruct.Tn=400000;
+inputStruct.Shaft_Rm=590;
+inputStruct.Shaft_Rp=345;
+inputStruct.Hub_Rm=590;
+inputStruct.Hub_Rp=325;
+paramsStruct.RzA=32;
+paramsStruct.Rzl=32;
+baselineStruct=struct();
+Con1=connection.InterferenceFit(paramsStruct, inputStruct,baselineStruct);
+Con1=Con1.solve;
+Con1=OutputAss(Con1);
+disp(Con1.capacity);
+</code></pre>
+<pre><code>S_sRm: 13.6472
+   Sr: 195.9058
+S_hRm: 7.3886
+S_hRp: 3.0049
+S_sRp: 7.9801
+</code></pre>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] DIN7190</p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
     </div>

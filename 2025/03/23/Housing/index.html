@@ -6,33 +6,26 @@
   <meta name="keywords" content="">
   <meta name="description" content="Housing | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="Laminate介绍Laminate类用于层合板校核分析，集成了Practical Micromechanics of Composite Materials一书中部分的开源代码$^{[1]}$。该类用经典的复合材料层合板理论进行校核，可以初步对层合板进行选型计算，但在实际工程中还是要考虑将实际几何和边界考虑进仿真中。 类结构  输入 input：  Load : 载荷 Tply : 铺层厚度 P">
+<meta name="description" content="InterferenceFit介绍InterferenceFit用于校核过盈连接，参照DIN 7190$^{[1]}$编写。过盈配合是一种常见零部件组装方式，在机械工程中普遍采用过盈配合做周向定位和传递扭矩。采用过盈联接必须精确确定孔轴表面的接触压力，以确定许用传递扭矩；同时由于过盈配合引起的变形会导致装配处轴肩的应力集中和疲劳开裂，需要对采用过盈联接的零件的应力分布有全面了解。 原理过盈连接的理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Laminate">
-<meta property="og:url" content="http://example.com/2025/05/08/Laminate/index.html">
+<meta property="og:title" content="InterferenceFit">
+<meta property="og:url" content="http://example.com/2025/05/11/InterferenceFit/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="Laminate介绍Laminate类用于层合板校核分析，集成了Practical Micromechanics of Composite Materials一书中部分的开源代码$^{[1]}$。该类用经典的复合材料层合板理论进行校核，可以初步对层合板进行选型计算，但在实际工程中还是要考虑将实际几何和边界考虑进仿真中。 类结构  输入 input：  Load : 载荷 Tply : 铺层厚度 P">
+<meta property="og:description" content="InterferenceFit介绍InterferenceFit用于校核过盈连接，参照DIN 7190$^{[1]}$编写。过盈配合是一种常见零部件组装方式，在机械工程中普遍采用过盈配合做周向定位和传递扭矩。采用过盈联接必须精确确定孔轴表面的接触压力，以确定许用传递扭矩；同时由于过盈配合引起的变形会导致装配处轴肩的应力集中和疲劳开裂，需要对采用过盈联接的零件的应力分布有全面了解。 原理过盈连接的理">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig5.jpg">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig99.PNG">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig103.jpg">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig100.PNG">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig104.jpg">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig101.PNG">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig105.jpg">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig102.PNG">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig106.jpg">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig107.jpg">
-<meta property="og:image" content="http://example.com/2025/05/08/Laminate//img/Laminate.assets/Fig2.jpg">
-<meta property="og:image" content="http://example.com/2025/05/08/Laminate//img/Laminate.assets/Fig3.jpg">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig4.jpg">
-<meta property="og:image" content="http://example.com/img/Laminate.assets/Fig109.jpg">
-<meta property="article:published_time" content="2025-05-08T09:37:48.501Z">
-<meta property="article:modified_time" content="2025-05-08T09:40:31.715Z">
+<meta property="og:image" content="http://example.com/img/InterferenceFit.assets/Fig110.jpg">
+<meta property="og:image" content="http://example.com/img/InterferenceFit.assets/Fig111.jpg">
+<meta property="og:image" content="http://example.com/img/InterferenceFit.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/InterferenceFit.assets/Fig113.png">
+<meta property="og:image" content="http://example.com/img/InterferenceFit.assets/Fig114.jpg">
+<meta property="og:image" content="http://example.com/img/InterferenceFit.assets/Fig115.jpg">
+<meta property="og:image" content="http://example.com/img/InterferenceFit.assets/Fig116.jpg">
+<meta property="og:image" content="http://example.com/img/InterferenceFit.assets/Fig117.jpg">
+<meta property="article:published_time" content="2025-05-11T15:27:10.424Z">
+<meta property="article:modified_time" content="2025-05-11T15:29:20.768Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/Laminate.assets/Fig5.jpg">
+<meta name="twitter:image" content="http://example.com/img/InterferenceFit.assets/Fig110.jpg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -119,7 +112,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(35)</small>
+                <small>(36)</small>
             
         </div>
     </li>
@@ -161,7 +154,7 @@
         <div data-rel="Baffalo方法">
             
             Baffalo方法
-            <small>(4)</small>
+            <small>(5)</small>
         </div>
         
     </li>
@@ -197,7 +190,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="35">
+<input type="hidden" id="yelog_site_posts_number" value="36">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -249,6 +242,15 @@
     <nav id="title-list-nav">
         
         
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/11/InterferenceFit/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="InterferenceFit">InterferenceFit</span>
+            <span class="post-date" title="2025-05-11 23:27:10">2025/05/11</span>
+        </a>
+        
+        
         <a  class="全部文章 Baffalo部件 "
            href="/2025/05/08/Laminate/"
            data-tag=""
@@ -259,7 +261,7 @@
         
         
         <a  class="全部文章 Baffalo方法 "
-           href="/2025/05/07/ISO1940%20copy/"
+           href="/2025/05/07/Composite_ElasticConstant/"
            data-tag=""
            data-author="" >
             <span class="post-title" title="Composite_ElasticConstant">Composite_ElasticConstant</span>

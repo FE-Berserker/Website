@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Foil | Baffalo</title>
+  <title>Composite_ElasticConstant | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Foil | Baffalo">
+  <meta name="description" content="Composite_ElasticConstant | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="InterferenceFit介绍InterferenceFit用于校核过盈连接，参照DIN 7190$^{[1]}$编写。过盈配合是一种常见零部件组装方式，在机械工程中普遍采用过盈配合做周向定位和传递扭矩。采用过盈联接必须精确确定孔轴表面的接触压力，以确定许用传递扭矩；同时由于过盈配合引起的变形会导致装配处轴肩的应力集中和疲劳开裂，需要对采用过盈联接的零件的应力分布有全面了解。 原理过盈连接的理">
 <meta property="og:type" content="article">
@@ -583,9 +583,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Foil" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Composite_ElasticConstant" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Foil</h1>
+        <h1 class="article-title">Composite_ElasticConstant</h1>
     
     <div class="article-meta">
         
@@ -595,7 +595,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo部件">Baffalo部件</a>
+            <a  data-rel="Baffalo方法">Baffalo方法</a>
             
         </span>
         
@@ -603,7 +603,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-03-05 14:34:47'>2025-03-05 14:33</time>
+            发布时间 : <time class="date" title='最后更新: 2025-05-07 16:38:33'>2025-05-07 16:33</time>
         
     </div>
     <div class="article-meta">
@@ -614,7 +614,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Foil"><span class="toc-text">Foil</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-foil-NACA-0010-Flag-1"><span class="toc-text">Create foil NACA 0010 (Flag&#x3D;1)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Composite-ElasticConstant"><span class="toc-text">Composite_ElasticConstant</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -630,49 +630,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Foil"><a href="#Foil" class="headerlink" title="Foil"></a>Foil</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Foil用来生成翼型，其主要调用开源软件XFoil来生成翼型。Matlab程序在Xfoil Interface$^[1]$ 改进下实现。</p>
-<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/Foil.assets/Fig3.jpg"></p>
+        <h1 id="Composite-ElasticConstant"><a href="#Composite-ElasticConstant" class="headerlink" title="Composite_ElasticConstant"></a>Composite_ElasticConstant</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Composite_ElasticConstant类用来计算不同角度下复合材料的属性。</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/Composite_ElasticConstant.assets/Fig2.jpg" style="zoom:100%;" />
+
 <p>输入 input：</p>
 <ul>
-<li>FoilName : 翼型名称</li>
-<li>Alpha : 攻角</li>
+<li>Ply : 材料属性</li>
+<li>theta: 角度</li>
 </ul>
 <p>参数 params:</p>
 <ul>
-<li>Re ：雷诺数，默认为1e6</li>
+<li>Slice ：散点图点数</li>
 <li>Name : 名称</li>
-<li>N : 节点数</li>
-<li>Mach : 马赫数， 默认为0.2</li>
-<li>Iter : 迭代数</li>
 </ul>
 <p>输出 output :</p>
 <ul>
-<li>Data : 气动参数</li>
-<li>Coor : 坐标点</li>
+<li>E_eq ：等效材料属性</li>
 </ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-foil-NACA-0010-Flag-1"><a href="#Create-foil-NACA-0010-Flag-1" class="headerlink" title="Create foil NACA 0010 (Flag&#x3D;1)"></a>Create foil NACA 0010 (Flag&#x3D;1)</h3><pre><code class="language-matlab">inputStruct1.Alpha=0:1:10;
-inputStruct1.FoilName=&#39;NACA 0010&#39;;
-paramsStruct1=struct();
-obj=foil.Foil(paramsStruct1, inputStruct1);
-obj=obj.solve();
-Plot2D(obj);
-PlotData(obj);
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>绘制复合材料属性随角度的变化曲线。</p>
+<pre><code class="language-matlab">S=RMaterial(&#39;Composite&#39;);
+mat=GetMat(S,5);
+inputStruct.Ply=mat&#123;1,1&#125;;
+inputStruct.theta =45;
+paramsStruct=struct();
+obj = method.Composite.ElasticConstants(paramsStruct, inputStruct);
+obj = obj.solve();
+Plot(obj);
 </code></pre>
-<p>设置翼型名称为 NACA 0010, 攻角为0~10°:</p>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/Foil.assets/Fig1.jpg" style="zoom: 100%;"></td><td><img src="/./img/Foil.assets/Fig2.jpg" style="zoom: 120%;"></td>
-		</tr>
-	</tbody>
-</table>
+<img src="/./img/Composite_ElasticConstant.assets/Fig1.jpg" style="zoom:100%;" />
 
-
-
-
-
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] <a target="_blank" rel="noopener" href="https://www.mathworks.com/matlabcentral/fileexchange/30446-xfoil-interface?s_tid=srchtitle">https://www.mathworks.com/matlabcentral/fileexchange/30446-xfoil-interface?s_tid=srchtitle</a></p>
-
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
     </div>

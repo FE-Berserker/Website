@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>PuckCriterion3D | Baffalo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="PuckCriterion3D | Baffalo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="PuckCriterion3D介绍Composite_PuckCriterion3D为3D状态下复合材料Puck失效准则。 原理纤维失效准则Puck 在 1969 年即提 出采用这个公式 [ Puck 1969, Puck 和 Schneider 1969] , 其物理意义就是 UD 层在多向应力作用下, 当平行于纤维方向的应力 σ1 等于或大于单轴应力作用下纤 维失效所需应力时, 纤维就发生了失">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PuckCriterion3D">
+<meta property="og:url" content="http://example.com/2025/06/12/PuckCriterion3D/index.html">
+<meta property="og:site_name" content="Baffalo">
+<meta property="og:description" content="PuckCriterion3D介绍Composite_PuckCriterion3D为3D状态下复合材料Puck失效准则。 原理纤维失效准则Puck 在 1969 年即提 出采用这个公式 [ Puck 1969, Puck 和 Schneider 1969] , 其物理意义就是 UD 层在多向应力作用下, 当平行于纤维方向的应力 σ1 等于或大于单轴应力作用下纤 维失效所需应力时, 纤维就发生了失">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/image-20250612104122994.png">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/image-20250612105447017.png">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/image-20250612105203460.png">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/image-20250612110432103.png">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/image-20250612110924702.png">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/image-20250612111534962.png">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/image-20250612112520588.png">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/image-20250612112621003.png">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/image-20250612112724244.png">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/Fig11.jpg">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/Fig2.jpg">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/Fig7.jpg">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/Fig3.jpg">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/Fig8.jpg">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/Fig4.jpg">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/Fig9.jpg">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/Fig5.jpg">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/Fig10.jpg">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/Fig6.jpg">
+<meta property="article:published_time" content="2025-06-12T04:06:06.000Z">
+<meta property="article:modified_time" content="2025-06-12T04:10:51.854Z">
+<meta property="article:author" content="FE-Beserker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/PuckCriterion3D.assets/image-20250612104122994.png">
+
+
+<link rel="icon" href="/img/Baffalo.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/Baffalo.png"/>
+</a>
+<div class="author">
+    <span>FE-Beserker</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/FE-Berserker"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:392176462@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(42)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo框架">
+            
+            Baffalo框架
+            <small>(12)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo部件">
+            
+            Baffalo部件
+            <small>(20)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo方法">
+            
+            Baffalo方法
+            <small>(8)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo求解">
+            
+            Baffalo求解
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="42">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/06/12/PuckCriterion3D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PuckCriterion3D">PuckCriterion3D</span>
+            <span class="post-date" title="2025-06-12 12:06:06">2025/06/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/31/FlangeBolt/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="FlangeBolt">FlangeBolt</span>
+            <span class="post-date" title="2025-05-31 19:24:58">2025/05/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/29/BoltJoint/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="BoltJoint">BoltJoint</span>
+            <span class="post-date" title="2025-05-29 12:21:15">2025/05/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/19/RotatingDisc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RotatingDisc">RotatingDisc</span>
+            <span class="post-date" title="2025-05-19 22:09:07">2025/05/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/15/Bolt/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Bolt">Bolt</span>
+            <span class="post-date" title="2025-05-15 14:36:42">2025/05/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/13/ThickWallCylinder/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ThickWallCylinder">ThickWallCylinder</span>
+            <span class="post-date" title="2025-05-13 17:08:54">2025/05/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/11/InterferenceFit/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="InterferenceFit">InterferenceFit</span>
+            <span class="post-date" title="2025-05-11 23:27:10">2025/05/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/08/Laminate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Laminate">Laminate</span>
+            <span class="post-date" title="2025-05-08 17:37:48">2025/05/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/07/Composite_ElasticConstant/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Composite_ElasticConstant">Composite_ElasticConstant</span>
+            <span class="post-date" title="2025-05-07 16:33:33">2025/05/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/05/06/FEMM%20Solver%20Test/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="FEMM Solver Test">FEMM Solver Test</span>
+            <span class="post-date" title="2025-05-06 16:50:17">2025/05/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/06/CompositeRing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CompositeRing">CompositeRing</span>
+            <span class="post-date" title="2025-05-06 14:46:53">2025/05/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/06/Composite_Micromechanics/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Composite_Micromechanics">Composite_Micromechanics</span>
+            <span class="post-date" title="2025-05-06 13:45:30">2025/05/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/04/22/ANSYS%20Element%20Test/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ANSYS Element Test">ANSYS Element Test</span>
+            <span class="post-date" title="2025-04-22 18:24:31">2025/04/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/04/05/LBeam/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="LBeam">LBeam</span>
+            <span class="post-date" title="2025-04-05 10:20:52">2025/04/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/04/05/CBeam/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CBeam">CBeam</span>
+            <span class="post-date" title="2025-04-05 09:56:42">2025/04/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/04/04/IBeam/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IBeam">IBeam</span>
+            <span class="post-date" title="2025-04-04 22:01:48">2025/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/04/02/RayleighEstimate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RayleighEstimate">RayleighEstimate</span>
+            <span class="post-date" title="2025-04-02 17:34:16">2025/04/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/28/WindturbineTower/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="WindturbineTower">WindturbineTower</span>
+            <span class="post-date" title="2025-03-28 09:43:11">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/27/Dome/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Dome">Dome</span>
+            <span class="post-date" title="2025-03-27 11:39:48">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/26/Body/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Body">Body</span>
+            <span class="post-date" title="2025-03-26 12:25:49">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/25/ShaftSupport/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ShaftSupport">ShaftSupport</span>
+            <span class="post-date" title="2025-03-25 12:11:46">2025/03/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/24/FoilGen/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="FoilGen">FoilGen</span>
+            <span class="post-date" title="2025-03-24 23:00:24">2025/03/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/23/Housing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Housing">Housing</span>
+            <span class="post-date" title="2025-03-23 13:14:08">2025/03/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/23/ForceLoad/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ForceLoad">ForceLoad</span>
+            <span class="post-date" title="2025-03-23 09:37:04">2025/03/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/09/CouplingMembrane/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CouplingMembrane">CouplingMembrane</span>
+            <span class="post-date" title="2025-03-09 22:03:45">2025/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/08/BossPlate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="BossPlate">BossPlate</span>
+            <span class="post-date" title="2025-03-08 23:08:23">2025/03/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/05/Foil/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Foil">Foil</span>
+            <span class="post-date" title="2025-03-05 14:33:16">2025/03/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo求解 "
+           href="/2025/03/04/RotDyn/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RotDyn">RotDyn</span>
+            <span class="post-date" title="2025-03-04 18:46:40">2025/03/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/02/25/Commonplate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Commonplate">Commonplate</span>
+            <span class="post-date" title="2025-02-25 23:39:29">2025/02/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/22/Layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Layer">Layer</span>
+            <span class="post-date" title="2025-02-22 16:48:02">2025/02/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/02/22/ISO1940/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ISO1940">ISO1940</span>
+            <span class="post-date" title="2025-02-22 10:21:27">2025/02/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo求解 "
+           href="/2025/02/21/SubStr/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SubStr">SubStr</span>
+            <span class="post-date" title="2025-02-21 12:22:35">2025/02/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/02/20/Commonshaft/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Commonshaft">Commonshaft</span>
+            <span class="post-date" title="2025-02-20 12:07:33">2025/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/19/Mesh/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mesh">Mesh</span>
+            <span class="post-date" title="2025-02-19 18:42:15">2025/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/18/Mesh2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mesh2D">Mesh2D</span>
+            <span class="post-date" title="2025-02-18 17:23:50">2025/02/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/18/Surface2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Surface2D">Surface2D</span>
+            <span class="post-date" title="2025-02-18 17:19:49">2025/02/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/17/Line/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Line">Line</span>
+            <span class="post-date" title="2025-02-17 17:54:26">2025/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/16/Line2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Line2D">Line2D</span>
+            <span class="post-date" title="2025-02-16 17:39:49">2025/02/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Point/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Point">Point</span>
+            <span class="post-date" title="2025-02-15 21:15:50">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Point2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Point2D">Point2D</span>
+            <span class="post-date" title="2025-02-15 21:13:34">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Margin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Margin">Margin</span>
+            <span class="post-date" title="2025-02-15 21:07:31">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/13/Component/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Component">Component</span>
+            <span class="post-date" title="2025-02-13 18:00:56">2025/02/13</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-PuckCriterion3D" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">PuckCriterion3D</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Baffalo方法">Baffalo方法</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-06-12 12:10:51'>2025-06-12 12:06</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PuckCriterion3D"><span class="toc-text">PuckCriterion3D</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A4%E7%BB%B4%E5%A4%B1%E6%95%88%E5%87%86%E5%88%99"><span class="toc-text">纤维失效准则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A4%E7%BB%B4%E9%97%B4%E5%A4%B1%E6%95%88%E5%87%86%E5%88%99"><span class="toc-text">纤维间失效准则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%90%E8%BF%9B%E6%8D%9F%E4%BC%A4"><span class="toc-text">渐进损伤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-6 i,
+    .toc-level-6 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="PuckCriterion3D"><a href="#PuckCriterion3D" class="headerlink" title="PuckCriterion3D"></a>PuckCriterion3D</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Composite_PuckCriterion3D为3D状态下复合材料Puck失效准则。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="纤维失效准则"><a href="#纤维失效准则" class="headerlink" title="纤维失效准则"></a>纤维失效准则</h3><p>Puck 在 1969 年即提 出采用这个公式 [ Puck 1969, Puck 和 Schneider 1969] , 其物理意义就是 UD 层在多向应力作用下, 当平行于纤维方向的应力 σ1 等于或大于单轴应力作用下纤 维失效所需应力时, 纤维就发生了失效。 基于这种假设, 简单的纤维失效的条件为：<br>$$<br>\frac{\sigma_1}{R_∥^t}&#x3D;1\quad\sigma_1&gt;0<br>$$</p>
+<p>$$<br>\frac{\sigma_1}{-R_∥^c}&#x3D;1\quad\sigma_1&lt;0<br>$$</p>
+<p>当$\sigma_1$是拉伸应力，上式中$R_∥^t$为纤维失效拉伸强度。</p>
+<p>当$\sigma_1$是压缩应力，上式中$R_∥^c$为纤维失效压缩强度。</p>
+<p>Mannigel [ Mannigel 2007] 通过大量的试验研究来量化这  种影响。 他发现相对较小的剪切应力 $\tau_{21}$ 对纤维失效几乎没有影响。 如果剪切应力超过了临界值并导致微损伤, 压缩失效强度则会明显降低。 Mannigel 发现在临  界值以上剪切应力和压缩失效强度存在一个线性递减的关系。 这个关系通过发表在 [ Mannigel 2007] 上的大量试验结果来确定。</p>
+<p>更新后的纤维压缩失效准则如下：<br>$$<br>f_{E,FF}^{(-)}&#x3D;\frac{\sigma_1}{-R_∥^c}\quad\sigma_1&lt;0\ and\ \abs {\frac{\tau_{w1}}{\sigma_1}}\le\frac{\tau_{21,thr}}{R_∥^{(-)}}<br>$$</p>
+<p>$$<br>f_{E,FF}^{(-)}&#x3D;\frac{(1-k)\sigma_1}{-R_∥^c}+\frac{\tau_{w1}}{R_{⊥∥}^A}\quad\sigma_1&lt;0\ and\ \abs {\frac{\tau_{w1}}{\sigma_1}}&gt;\frac{\tau_{21,thr}}{R_∥^{(-)}}<br>$$</p>
+<p>式中：</p>
+<p>$\tau_{21.thr}&#x3D;kR_{⊥∥}^A$，一般可取k&#x3D;0.5,该值在0~1之间，</p>
+<p>$\tau_{w1}&#x3D;\sqrt{\tau_{21}^2+\tau_{31}^2}$</p>
+<h3 id="纤维间失效准则"><a href="#纤维间失效准则" class="headerlink" title="纤维间失效准则"></a>纤维间失效准则</h3><p><img src="/./img/PuckCriterion3D.assets/image-20250612104122994.png"></p>
+<p>针对不同IFF断裂模式，主要有三种失效模式：</p>
+<ul>
+<li><p>模式 A: 由横向拉伸应力 $σ_⊥^t$ 或纵向剪切应力 $\tau_{⊥‖}$ 单独作用或共同作用所 引起的失效。 在二维应力状态 σ1 、 σ2 、 $\tau_{12}$ 下, 裂纹沿着厚度方向扩展, 因此在  由 σ2 和 $\tau_{12}$ 共同作用面上扩展。 由于拉伸应力作用, 断裂面彼此分离。 从宏观上 分析, 这会导致弹性模量 $E_⊥$和剪切模量 $G_{⊥‖}$的下降。  </p>
+</li>
+<li><p>模式 B: 失效由纵向剪切应力 $\tau_{⊥‖}$引起的。 这种失效发生在外部剪切应力$\tau_{12}$ 作用的平面上。 与模式 A 相比, 和 $\tau_{⊥‖}$共同作用在失效面上的横向正应力 $σ_⊥^c$  是压缩应力。 其裂口不会张开并且断裂面会相互挤压在一起。 因此 IFF 模式 B 引  起的刚度下降明显低于 IFF 模式 A 引起的刚度下降。 因此, 只有断裂面的压缩应 力与横向压缩强度比值 $\abs{σ_{⊥fr}^c &#x2F; R_⊥^c}$ 小于 0. 4 时, IFF 模式 B 才会发生。</p>
+</li>
+<li><p>模式 C: 如果失效处的压缩应力与横向压缩强度比值$\abs{σ_{⊥fr}^c &#x2F; R_⊥^c}$大于 0. 4  时, 外部剪切应力 $\tau_{12}$ 作用面就不再是断裂面。 事实上, 失效发生在与 σ2 和 $\tau_{21}$ 作  用面成角度为 θfp &#x3D;̸0° 的斜面上。 在平面应力状态下, 失效角的增加从模式 B  到模式 C 的临界值 0°到大致 54° 再到纯粹横向压缩应力 ( $\tau_{21}$ &#x3D; 0) 。 IFF 模式 C  意味着在破坏层和相邻层之间存在着分层的危险。</p>
+</li>
+</ul>
+<p><img src="/./img/PuckCriterion3D.assets/image-20250612105447017.png"></p>
+<p>当计算IFF失效时，首先需要在-90°~90°之间建立关键平面，将计算所得的平面投影到该平面，通常以1°为步长，进行180次计算，在由如下公式计算该角度平面的系数，最终汇总180个结果，取其最大值。</p>
+<p><img src="/./img/PuckCriterion3D.assets/image-20250612105203460.png"></p>
+<p>这里还涉及一个倾角参数的选取，针对GFRP和CFRP可以选用如下参数：</p>
+<p><img src="/./img/PuckCriterion3D.assets/image-20250612110432103.png"></p>
+<p>DNV$^{[2]}$规范则给了一个相对折中的值，个人感觉该值在GFRP材料中还是有一定的参考意义</p>
+<img src="/./img/PuckCriterion3D.assets/image-20250612110924702.png" style="zoom: 33%;" />
+
+<p>根据莫尔假设, 平行于纤维方向的应力σ1 对 IFF 都没有任何影响, 由于σ1  的作用面垂直于应力σn 、 n1 和 nt 的作用面, 应力σn 、 n1 和 nt 对于 IFF 具有决定  性意义。 但是, 一系列影响的出现使得有必要在 IFF 准则中包含σ1 项, 这将稍微  降低 IFF 强度 [ Puck 1996] 。</p>
+<img src="/./img/PuckCriterion3D.assets/image-20250612111534962.png" style="zoom:50%;" />
+
+<p>为了在 IFF 分析中以适合于实际情况的方式包含来自σ1 的弱化效应, 通过一 作用面的抗断裂性$R_⊥^t$、 $R_{⊥⊥}^t$ 和$R_{⊥‖}$ 乘以一个折减系数$η_{w1}$:<br>$$<br>f_{E1}&#x3D;\frac{f_{E0}}{\eta_{w1}}<br>$$<br>在给定的假设下，推导折减系数$\eta_{w1}$的公式：<br>$$<br>\eta_{w1}&#x3D;\frac{c[a\sqrt{c^2(a^2-s^2)+1}+s]}{(ca)^2+1}<br>$$<br>其中,$c&#x3D;\frac{f_{E0}}{f_E(FF)}$,$a&#x3D;\frac{1-s}{\sqrt{1-m^2}}$</p>
+<h3 id="渐进损伤"><a href="#渐进损伤" class="headerlink" title="渐进损伤"></a>渐进损伤</h3><p>Puck准则同样也适用于渐进损伤分析，其通过大量的试验确定了$E_⊥$和$G_{⊥∥}$与危险系数之间的关系：</p>
+<img src="/./img/PuckCriterion3D.assets/image-20250612112520588.png" style="zoom: 33%;" />
+
+<p>Knops 为了验证后失效分析模型做了大量的工作以提供实验数据 [ Knops  2003] 。可参考以下参数取值。</p>
+<p><img src="/./img/PuckCriterion3D.assets/image-20250612112621003.png"></p>
+<img src="/./img/PuckCriterion3D.assets/image-20250612112724244.png" style="zoom: 33%;" />
+
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/PuckCriterion3D.assets/Fig11.jpg" style="zoom:100%;" />
+
+<p>输入 input：</p>
+<ul>
+<li>Sigma : 应力</li>
+</ul>
+<p>参数 params:</p>
+<ul>
+<li>s ：σ1折减系数参数</li>
+<li>ptyz : 倾角参数</li>
+<li>ptxy : 倾角参数</li>
+<li>pcyz : 倾角参数</li>
+<li>pcxy : 倾角参数</li>
+<li>m : σ1折减系数参数</li>
+<li>Type : 材料类型</li>
+<li>Name : 名称</li>
+<li>Material : 材料属性</li>
+<li>DAngle : 角度步长</li>
+<li>ConWeak : 考虑σ1折减</li>
+</ul>
+<p>输出 output :</p>
+<ul>
+<li><p>Eta ：折减系数</p>
+</li>
+<li><p>Theta : 失效平面角度</p>
+</li>
+<li><p>IFFModemax ： IFF失效模式</p>
+</li>
+<li><p>IFFMode ：IFF失效模式</p>
+</li>
+<li><p>fmax : 危险系数最大值</p>
+</li>
+<li><p>feIFFmax: IFF失效危险系数</p>
+</li>
+<li><p>feIFF: IFF失效危险系数</p>
+</li>
+<li><p>FFMode :FF失效模式</p>
+</li>
+</ul>
+<p>能力 capacity :</p>
+<ul>
+<li>f : 安全系数</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><pre><code class="language-matlab">S=RMaterial(&#39;Composite&#39;);
+Mat=GetMat(S,34);
+inputStruct1.Sigma=[-36.2315,160.745,-3.07,0,0,0;...
+    2099.75,38.757,-2.3,0,0,0;...
+    -36.559,158.08,-1.6742,0,0,0;...
+    2057.85,38.3085,-1.29,0,0,0];
+paramsStruct1.Material=Mat&#123;1,1&#125;;
+paramsStruct1.DAngle=1;
+paramsStruct1.ConWeak=0;
+ paramsStruct1.Type=&#39;CFRP&#39;;
+% paramsStruct1.Type=&#39;GFRP&#39;;
+paramsStruct1.s=0.5;
+paramsStruct1.m=0.5;
+
+C= method.Composite.PuckCriterion3D(paramsStruct1, inputStruct1);
+C= C.solve();
+PlotEtaCurve(C);
+PlotfeIFF(C);
+PlotfeFF(C);
+PlotfeIFFmax(C);
+PlotfeIFFTheta(C);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/PuckCriterion3D.assets/Fig2.jpg" style="zoom: 100%;"></td><td><img src="/./img/PuckCriterion3D.assets/Fig7.jpg" style="zoom: 100%;"></td>
+		</tr>
+    <tr><td><strong>不考虑σ1折减</strong></td><td><strong>考虑σ1折减</strong></td></tr>
+	</tbody>
+</table>
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/PuckCriterion3D.assets/Fig3.jpg" style="zoom: 100%;"></td><td><img src="/./img/PuckCriterion3D.assets/Fig8.jpg" style="zoom: 100%;"></td>
+		</tr>
+    <tr><td><strong>不考虑σ1折减</strong></td><td><strong>考虑σ1折减</strong></td></tr>
+	</tbody>
+</table>
+
+
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/PuckCriterion3D.assets/Fig4.jpg" style="zoom: 100%;"></td><td><img src="/./img/PuckCriterion3D.assets/Fig9.jpg" style="zoom: 100%;"></td>
+		</tr>
+    <tr><td><strong>不考虑σ1折减</strong></td><td><strong>考虑σ1折减</strong></td></tr>
+	</tbody>
+</table>
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/PuckCriterion3D.assets/Fig5.jpg" style="zoom: 100%;"></td><td><img src="/./img/PuckCriterion3D.assets/Fig10.jpg" style="zoom: 100%;"></td>
+		</tr>
+    <tr><td><strong>不考虑σ1折减</strong></td><td><strong>考虑σ1折减</strong></td></tr>
+	</tbody>
+</table>
+
+<p>同时在材料强度不变的情况下，变更材料类型由CFRP为GFRP，可观察两者折减系数取值的区别</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/PuckCriterion3D.assets/Fig1.jpg" style="zoom: 100%;"></td><td><img src="/./img/PuckCriterion3D.assets/Fig6.jpg" style="zoom: 100%;"></td>
+		</tr>
+    <tr><td><strong>CFRP</strong></td><td><strong>GFRP</strong></td></tr>
+	</tbody>
+</table>
+
+<p>CFRP计算得到的折减系数：</p>
+<p>0.0799778409034907	0.755288692029387<br>1	1<br>0.0814442969222847	0.757023702971999<br>1	1</p>
+<p>GFRP计算得到的折减系数：</p>
+<p>0.0807882284717462	0.442922535823326<br>1	1<br>0.0822655919265399	0.447971787610760<br>1	1</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 复合材料层合板失效分析</p>
+<p>[2] DNV-OS-C501</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2025 FE-Berserker
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

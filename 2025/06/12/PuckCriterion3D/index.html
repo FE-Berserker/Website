@@ -6,12 +6,12 @@
   <meta name="keywords" content="">
   <meta name="description" content="PuckCriterion3D | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="PuckCriterion3D介绍Composite_PuckCriterion3D为3D状态下复合材料Puck失效准则。 原理纤维失效准则Puck 在 1969 年即提 出采用这个公式 [ Puck 1969, Puck 和 Schneider 1969] , 其物理意义就是 UD 层在多向应力作用下, 当平行于纤维方向的应力 σ1 等于或大于单轴应力作用下纤 维失效所需应力时, 纤维就发生了失">
+<meta name="description" content="PuckCriterion3D介绍Composite_PuckCriterion3D为3D状态下复合材料Puck失效准则。 原理Puck准则被VDI和DNV规范引用，在过去50多年的发展中不断完善，由于目前大多数的工程软件只支持最早版本的puck准则，后续比如纤维失效中压缩效应的折减，纤维间失效系数的σ1削弱系数的引用都未提及，本文利用Matlab粗浅完善了后续Puck准则的相关进展，在本文编写的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PuckCriterion3D">
 <meta property="og:url" content="http://example.com/2025/06/12/PuckCriterion3D/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="PuckCriterion3D介绍Composite_PuckCriterion3D为3D状态下复合材料Puck失效准则。 原理纤维失效准则Puck 在 1969 年即提 出采用这个公式 [ Puck 1969, Puck 和 Schneider 1969] , 其物理意义就是 UD 层在多向应力作用下, 当平行于纤维方向的应力 σ1 等于或大于单轴应力作用下纤 维失效所需应力时, 纤维就发生了失">
+<meta property="og:description" content="PuckCriterion3D介绍Composite_PuckCriterion3D为3D状态下复合材料Puck失效准则。 原理Puck准则被VDI和DNV规范引用，在过去50多年的发展中不断完善，由于目前大多数的工程软件只支持最早版本的puck准则，后续比如纤维失效中压缩效应的折减，纤维间失效系数的σ1削弱系数的引用都未提及，本文利用Matlab粗浅完善了后续Puck准则的相关进展，在本文编写的">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/image-20250612104122994.png">
 <meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/image-20250612105447017.png">
@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/Fig1.jpg">
 <meta property="og:image" content="http://example.com/img/PuckCriterion3D.assets/Fig6.jpg">
 <meta property="article:published_time" content="2025-06-12T04:06:06.000Z">
-<meta property="article:modified_time" content="2025-06-12T04:10:51.854Z">
+<meta property="article:modified_time" content="2025-06-16T02:15:09.567Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/img/PuckCriterion3D.assets/image-20250612104122994.png">
@@ -669,7 +669,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-06-12 12:10:51'>2025-06-12 12:06</time>
+            发布时间 : <time class="date" title='最后更新: 2025-06-16 10:15:09'>2025-06-12 12:06</time>
         
     </div>
     <div class="article-meta">
@@ -697,7 +697,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="PuckCriterion3D"><a href="#PuckCriterion3D" class="headerlink" title="PuckCriterion3D"></a>PuckCriterion3D</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Composite_PuckCriterion3D为3D状态下复合材料Puck失效准则。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="纤维失效准则"><a href="#纤维失效准则" class="headerlink" title="纤维失效准则"></a>纤维失效准则</h3><p>Puck 在 1969 年即提 出采用这个公式 [ Puck 1969, Puck 和 Schneider 1969] , 其物理意义就是 UD 层在多向应力作用下, 当平行于纤维方向的应力 σ1 等于或大于单轴应力作用下纤 维失效所需应力时, 纤维就发生了失效。 基于这种假设, 简单的纤维失效的条件为：<br>$$<br>\frac{\sigma_1}{R_∥^t}&#x3D;1\quad\sigma_1&gt;0<br>$$</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>Puck准则被VDI和DNV规范引用，在过去50多年的发展中不断完善，由于目前大多数的工程软件只支持最早版本的puck准则，后续比如纤维失效中压缩效应的折减，纤维间失效系数的σ1削弱系数的引用都未提及，本文利用Matlab粗浅完善了后续Puck准则的相关进展，在本文编写的过程中得到了<br>Oliver博士(<a target="_blank" rel="noopener" href="https://ofcconsulting.de)的帮助,在此表示感谢./">https://ofcconsulting.de)的帮助，在此表示感谢。</a></p>
+<h3 id="纤维失效准则"><a href="#纤维失效准则" class="headerlink" title="纤维失效准则"></a>纤维失效准则</h3><p>Puck 在 1969 年即提 出采用这个公式 [ Puck 1969, Puck 和 Schneider 1969] , 其物理意义就是 UD 层在多向应力作用下, 当平行于纤维方向的应力 σ1 等于或大于单轴应力作用下纤 维失效所需应力时, 纤维就发生了失效。 基于这种假设, 简单的纤维失效的条件为：<br>$$<br>\frac{\sigma_1}{R_∥^t}&#x3D;1\quad\sigma_1&gt;0<br>$$</p>
 <p>$$<br>\frac{\sigma_1}{-R_∥^c}&#x3D;1\quad\sigma_1&lt;0<br>$$</p>
 <p>当$\sigma_1$是拉伸应力，上式中$R_∥^t$为纤维失效拉伸强度。</p>
 <p>当$\sigma_1$是压缩应力，上式中$R_∥^c$为纤维失效压缩强度。</p>
@@ -855,6 +856,7 @@ PlotfeIFFTheta(C);
 <p>0.0807882284717462	0.442922535823326<br>1	1<br>0.0822655919265399	0.447971787610760<br>1	1</p>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 复合材料层合板失效分析</p>
 <p>[2] DNV-OS-C501</p>
+<p>[3] <a target="_blank" rel="noopener" href="https://ofcconsulting.de/">https://ofcconsulting.de</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>

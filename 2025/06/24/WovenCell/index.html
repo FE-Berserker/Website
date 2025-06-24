@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>PuckCriterion3D | Baffalo</title>
+  <title>WovenCell | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="PuckCriterion3D | Baffalo">
+  <meta name="description" content="WovenCell | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="PuckCriterion3D介绍Composite_PuckCriterion3D为3D状态下复合材料Puck失效准则。 原理Puck准则被VDI和DNV规范引用，在过去50多年的发展中不断完善，由于目前大多数的工程软件只支持最早版本的puck准则，后续比如纤维失效中压缩效应的折减，纤维间失效系数的σ1削弱系数的引用都未提及，本文利用Matlab粗浅完善了后续Puck准则的相关进展，在本文编写的">
 <meta property="og:type" content="article">
@@ -658,9 +658,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-PuckCriterion3D" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-WovenCell" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">PuckCriterion3D</h1>
+        <h1 class="article-title">WovenCell</h1>
     
     <div class="article-meta">
         
@@ -678,7 +678,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-06-16 10:17:21'>2025-06-12 12:06</time>
+            发布时间 : <time class="date" title='最后更新: 2025-06-24 12:42:16'>2025-06-24 12:40</time>
         
     </div>
     <div class="article-meta">
@@ -689,7 +689,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PuckCriterion3D"><span class="toc-text">PuckCriterion3D</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A4%E7%BB%B4%E5%A4%B1%E6%95%88%E5%87%86%E5%88%99"><span class="toc-text">纤维失效准则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A4%E7%BB%B4%E9%97%B4%E5%A4%B1%E6%95%88%E5%87%86%E5%88%99"><span class="toc-text">纤维间失效准则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%90%E8%BF%9B%E6%8D%9F%E4%BC%A4"><span class="toc-text">渐进损伤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#WovenCell"><span class="toc-text">WovenCell</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WovenCell-demo1-Flag-1"><span class="toc-text">WovenCell demo1 (Flag&#x3D;1)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -705,167 +705,90 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="PuckCriterion3D"><a href="#PuckCriterion3D" class="headerlink" title="PuckCriterion3D"></a>PuckCriterion3D</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Composite_PuckCriterion3D为3D状态下复合材料Puck失效准则。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>Puck准则被VDI和DNV规范引用，在过去50多年的发展中不断完善，由于目前大多数的工程软件只支持最早版本的puck准则，后续比如纤维失效中压缩效应的折减，纤维间失效系数的σ1削弱系数的引用都未提及，本文利用Matlab粗浅完善了后续Puck准则的相关进展，在本文编写的过程中得到了<br>Oliver博士 (<a target="_blank" rel="noopener" href="https://ofcconsulting.de/">https://ofcconsulting.de</a>) 的帮助，在此表示感谢。</p>
-<h3 id="纤维失效准则"><a href="#纤维失效准则" class="headerlink" title="纤维失效准则"></a>纤维失效准则</h3><p>Puck 在 1969 年即提 出采用这个公式 [ Puck 1969, Puck 和 Schneider 1969] , 其物理意义就是 UD 层在多向应力作用下, 当平行于纤维方向的应力 σ1 等于或大于单轴应力作用下纤 维失效所需应力时, 纤维就发生了失效。 基于这种假设, 简单的纤维失效的条件为：<br>$$<br>\frac{\sigma_1}{R_∥^t}&#x3D;1\quad\sigma_1&gt;0<br>$$</p>
-<p>$$<br>\frac{\sigma_1}{-R_∥^c}&#x3D;1\quad\sigma_1&lt;0<br>$$</p>
-<p>当$\sigma_1$是拉伸应力，上式中$R_∥^t$为纤维失效拉伸强度。</p>
-<p>当$\sigma_1$是压缩应力，上式中$R_∥^c$为纤维失效压缩强度。</p>
-<p>Mannigel [ Mannigel 2007] 通过大量的试验研究来量化这  种影响。 他发现相对较小的剪切应力 $\tau_{21}$ 对纤维失效几乎没有影响。 如果剪切应力超过了临界值并导致微损伤, 压缩失效强度则会明显降低。 Mannigel 发现在临  界值以上剪切应力和压缩失效强度存在一个线性递减的关系。 这个关系通过发表在 [ Mannigel 2007] 上的大量试验结果来确定。</p>
-<p>更新后的纤维压缩失效准则如下：<br>$$<br>f_{E,FF}^{(-)}&#x3D;\frac{\sigma_1}{-R_∥^c}\quad\sigma_1&lt;0\ and\ \abs {\frac{\tau_{w1}}{\sigma_1}}\le\frac{\tau_{21,thr}}{R_∥^{(-)}}<br>$$</p>
-<p>$$<br>f_{E,FF}^{(-)}&#x3D;\frac{(1-k)\sigma_1}{-R_∥^c}+\frac{\tau_{w1}}{R_{⊥∥}^A}\quad\sigma_1&lt;0\ and\ \abs {\frac{\tau_{w1}}{\sigma_1}}&gt;\frac{\tau_{21,thr}}{R_∥^{(-)}}<br>$$</p>
-<p>式中：</p>
-<p>$\tau_{21.thr}&#x3D;kR_{⊥∥}^A$，一般可取k&#x3D;0.5,该值在0~1之间，</p>
-<p>$\tau_{w1}&#x3D;\sqrt{\tau_{21}^2+\tau_{31}^2}$</p>
-<h3 id="纤维间失效准则"><a href="#纤维间失效准则" class="headerlink" title="纤维间失效准则"></a>纤维间失效准则</h3><p><img src="/./img/PuckCriterion3D.assets/image-20250612104122994.png"></p>
-<p>针对不同IFF断裂模式，主要有三种失效模式：</p>
-<ul>
-<li><p>模式 A: 由横向拉伸应力 $σ_⊥^t$ 或纵向剪切应力 $\tau_{⊥‖}$ 单独作用或共同作用所 引起的失效。 在二维应力状态 σ1 、 σ2 、 $\tau_{12}$ 下, 裂纹沿着厚度方向扩展, 因此在  由 σ2 和 $\tau_{12}$ 共同作用面上扩展。 由于拉伸应力作用, 断裂面彼此分离。 从宏观上 分析, 这会导致弹性模量 $E_⊥$和剪切模量 $G_{⊥‖}$的下降。  </p>
-</li>
-<li><p>模式 B: 失效由纵向剪切应力 $\tau_{⊥‖}$引起的。 这种失效发生在外部剪切应力$\tau_{12}$ 作用的平面上。 与模式 A 相比, 和 $\tau_{⊥‖}$共同作用在失效面上的横向正应力 $σ_⊥^c$  是压缩应力。 其裂口不会张开并且断裂面会相互挤压在一起。 因此 IFF 模式 B 引  起的刚度下降明显低于 IFF 模式 A 引起的刚度下降。 因此, 只有断裂面的压缩应 力与横向压缩强度比值 $\abs{σ_{⊥fr}^c &#x2F; R_⊥^c}$ 小于 0. 4 时, IFF 模式 B 才会发生。</p>
-</li>
-<li><p>模式 C: 如果失效处的压缩应力与横向压缩强度比值$\abs{σ_{⊥fr}^c &#x2F; R_⊥^c}$大于 0. 4  时, 外部剪切应力 $\tau_{12}$ 作用面就不再是断裂面。 事实上, 失效发生在与 σ2 和 $\tau_{21}$ 作  用面成角度为 θfp &#x3D;̸0° 的斜面上。 在平面应力状态下, 失效角的增加从模式 B  到模式 C 的临界值 0°到大致 54° 再到纯粹横向压缩应力 ( $\tau_{21}$ &#x3D; 0) 。 IFF 模式 C  意味着在破坏层和相邻层之间存在着分层的危险。</p>
-</li>
-</ul>
-<p><img src="/./img/PuckCriterion3D.assets/image-20250612105447017.png"></p>
-<p>当计算IFF失效时，首先需要在-90°~90°之间建立关键平面，将计算所得的平面投影到该平面，通常以1°为步长，进行180次计算，在由如下公式计算该角度平面的系数，最终汇总180个结果，取其最大值。</p>
-<p><img src="/./img/PuckCriterion3D.assets/image-20250612105203460.png"></p>
-<p>这里还涉及一个倾角参数的选取，针对GFRP和CFRP可以选用如下参数：</p>
-<p><img src="/./img/PuckCriterion3D.assets/image-20250612110432103.png"></p>
-<p>DNV$^{[2]}$规范则给了一个相对折中的值，个人感觉该值在GFRP材料中还是有一定的参考意义</p>
-<img src="/./img/PuckCriterion3D.assets/image-20250612110924702.png" style="zoom: 33%;" />
+        <h1 id="WovenCell"><a href="#WovenCell" class="headerlink" title="WovenCell"></a>WovenCell</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Composite_WovenCell用来计算复合材料编织元胞的等效材料力学性能。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>首先需要在TexGen$^{[1]}$中生成对应编织结构的几何元胞。</p>
+<img src="/./img/WovenCell.assets/image-20250624115715039.png" style="zoom:50%;" />
 
-<p>根据莫尔假设, 平行于纤维方向的应力σ1 对 IFF 都没有任何影响, 由于σ1  的作用面垂直于应力σn 、 n1 和 nt 的作用面, 应力σn 、 n1 和 nt 对于 IFF 具有决定  性意义。 但是, 一系列影响的出现使得有必要在 IFF 准则中包含σ1 项, 这将稍微  降低 IFF 强度 [ Puck 1996] 。</p>
-<img src="/./img/PuckCriterion3D.assets/image-20250612111534962.png" style="zoom:50%;" />
-
-<p>为了在 IFF 分析中以适合于实际情况的方式包含来自σ1 的弱化效应, 通过一 作用面的抗断裂性$R_⊥^t$、 $R_{⊥⊥}^t$ 和$R_{⊥‖}$ 乘以一个折减系数$η_{w1}$:<br>$$<br>f_{E1}&#x3D;\frac{f_{E0}}{\eta_{w1}}<br>$$<br>在给定的假设下，推导折减系数$\eta_{w1}$的公式：<br>$$<br>\eta_{w1}&#x3D;\frac{c[a\sqrt{c^2(a^2-s^2)+1}+s]}{(ca)^2+1}<br>$$<br>其中,$c&#x3D;\frac{f_{E0}}{f_E(FF)}$,$a&#x3D;\frac{1-s}{\sqrt{1-m^2}}$</p>
-<h3 id="渐进损伤"><a href="#渐进损伤" class="headerlink" title="渐进损伤"></a>渐进损伤</h3><p>Puck准则同样也适用于渐进损伤分析，其通过大量的试验确定了$E_⊥$和$G_{⊥∥}$与危险系数之间的关系：</p>
-<img src="/./img/PuckCriterion3D.assets/image-20250612112520588.png" style="zoom: 33%;" />
-
-<p>Knops 为了验证后失效分析模型做了大量的工作以提供实验数据 [ Knops  2003] 。可参考以下参数取值。</p>
-<p><img src="/./img/PuckCriterion3D.assets/image-20250612112621003.png"></p>
-<img src="/./img/PuckCriterion3D.assets/image-20250612112724244.png" style="zoom: 33%;" />
-
-<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/PuckCriterion3D.assets/Fig11.jpg" style="zoom:100%;" />
+<p>导出来vtu格式，该文件记录了节点、单元、纱线和树脂属性、纤维方向等信息。利用Composite_WovenCell可读取相关信息，并生成对应的ANSYS网格。</p>
+<p>对不胞施加边界条件如下所示,其中一个边界施加位移边界，其他边界施加对称边界条件，即可求解等效的材料属性。</p>
+<p><img src="/./img/WovenCell.assets/image-20250619100235005.png"></p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/WovenCell.assets/Fig3.jpg" style="zoom:100%;" />
 
 <p>输入 input：</p>
 <ul>
-<li>Sigma : 应力</li>
+<li>Matrix : 基底材料属性</li>
+<li>Fiber : 纤维材料属性</li>
+<li>Dimension: 元胞尺寸</li>
+<li>FileName : 文件名</li>
 </ul>
 <p>参数 params:</p>
 <ul>
-<li>s ：σ1折减系数参数</li>
-<li>ptyz : 倾角参数</li>
-<li>ptxy : 倾角参数</li>
-<li>pcyz : 倾角参数</li>
-<li>pcxy : 倾角参数</li>
-<li>m : σ1折减系数参数</li>
-<li>Type : 材料类型</li>
 <li>Name : 名称</li>
-<li>Material : 材料属性</li>
-<li>DAngle : 角度步长</li>
-<li>ConWeak : 考虑σ1折减</li>
+<li>Vf : 纱线纤维填充率</li>
 </ul>
 <p>输出 output :</p>
 <ul>
-<li><p>Eta ：折减系数</p>
-</li>
-<li><p>Theta : 失效平面角度</p>
-</li>
-<li><p>IFFModemax ： IFF失效模式</p>
-</li>
-<li><p>IFFMode ：IFF失效模式</p>
-</li>
-<li><p>fmax : 危险系数最大值</p>
-</li>
-<li><p>feIFFmax: IFF失效危险系数</p>
-</li>
-<li><p>feIFF: IFF失效危险系数</p>
-</li>
-<li><p>FFMode :FF失效模式</p>
-</li>
+<li>YarnVolumeRatio : 纱线体积率</li>
+<li>Property : 计算得到的材料属性</li>
+<li>Orientation ：纤维方向</li>
+<li>SurfaceDistance : 纱线和表面距离</li>
+<li>Location ：网格位置</li>
+<li>YarnIndex ：纱线标识</li>
+<li>SolidMesh ： 实体网格</li>
+<li>Assembly : 网格装配体</li>
+<li>Yarn : 纱线材料属性 (MT法估算)</li>
 </ul>
-<p>能力 capacity :</p>
-<ul>
-<li>f : 安全系数</li>
-</ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><pre><code class="language-matlab">S=RMaterial(&#39;Composite&#39;);
-Mat=GetMat(S,34);
-inputStruct1.Sigma=[-36.2315,160.745,-3.07,0,0,0;...
-    2099.75,38.757,-2.3,0,0,0;...
-    -36.559,158.08,-1.6742,0,0,0;...
-    2057.85,38.3085,-1.29,0,0,0];
-paramsStruct1.Material=Mat&#123;1,1&#125;;
-paramsStruct1.DAngle=1;
-paramsStruct1.ConWeak=0;
- paramsStruct1.Type=&#39;CFRP&#39;;
-% paramsStruct1.Type=&#39;GFRP&#39;;
-paramsStruct1.s=0.5;
-paramsStruct1.m=0.5;
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="WovenCell-demo1-Flag-1"><a href="#WovenCell-demo1-Flag-1" class="headerlink" title="WovenCell demo1 (Flag&#x3D;1)"></a>WovenCell demo1 (Flag&#x3D;1)</h3><p>对于一个2D编织结构，其元胞如下所示：</p>
+<img src="/./img/WovenCell.assets/image-20250624102858154.png"  style="zoom:33%;" />
 
-C= method.Composite.PuckCriterion3D(paramsStruct1, inputStruct1);
-C= C.solve();
-PlotEtaCurve(C);
-PlotfeIFF(C);
-PlotfeFF(C);
-PlotfeIFFmax(C);
-PlotfeIFFTheta(C);
+<p>在TexGen中生成对应的参数(以下单位均为mm)：</p>
+<table>
+<thead>
+<tr>
+<th>af</th>
+<th>aw</th>
+<th>hf</th>
+<th>hw</th>
+<th>gf</th>
+<th>gw</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1.03</td>
+<td>1.03</td>
+<td>0.08</td>
+<td>0.08</td>
+<td>0.22</td>
+<td>0.22</td>
+</tr>
+</tbody></table>
+<p>材料为T300&#x2F;Epoxy，求解其对应的等效力学参数</p>
+<pre><code class="language-matlab">S=RMaterial(&#39;Composite&#39;);
+mat=GetMat(S,[32,2]&#39;);
+inputStruct.FileName=&#39;Weave1&#39;;
+inputStruct.Dimension=[50,50,20];
+inputStruct.Fiber=mat&#123;1,1&#125;;
+inputStruct.Matrix=mat&#123;2,1&#125;;
+paramsStruct.Vf=0.77;
+W= method.Composite.WovenCell(paramsStruct, inputStruct);
+W=W.solve();
+Plot3D(W,&#39;Matrix&#39;,0,&#39;SurfaceDistance&#39;,1);
+W=CalProperties(W);
+disp(W.output.Property)
 </code></pre>
+<p>建立的网格如下所示：</p>
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
 		<tr>
-			<td style="padding: 6px"><img src="/./img/PuckCriterion3D.assets/Fig2.jpg" style="zoom: 100%;"></td><td><img src="/./img/PuckCriterion3D.assets/Fig7.jpg" style="zoom: 100%;"></td>
+			<td style="padding: 6px"><img src="/./img/WovenCell.assets/Fig1.png" style="zoom: 100%;"></td><td><img src="/./img/WovenCell.assets/Fig2.png" style="zoom: 100%;"></td>
 		</tr>
-    <tr><td><strong>不考虑σ1折减</strong></td><td><strong>考虑σ1折减</strong></td></tr>
 	</tbody>
 </table>
+WovenCell会自动建立局部坐标系并旋转单元方向建立网格，并求解。
+该结构计算得到的材料属性如下：
 
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/PuckCriterion3D.assets/Fig3.jpg" style="zoom: 100%;"></td><td><img src="/./img/PuckCriterion3D.assets/Fig8.jpg" style="zoom: 100%;"></td>
-		</tr>
-    <tr><td><strong>不考虑σ1折减</strong></td><td><strong>考虑σ1折减</strong></td></tr>
-	</tbody>
-</table>
-
-
-
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/PuckCriterion3D.assets/Fig4.jpg" style="zoom: 100%;"></td><td><img src="/./img/PuckCriterion3D.assets/Fig9.jpg" style="zoom: 100%;"></td>
-		</tr>
-    <tr><td><strong>不考虑σ1折减</strong></td><td><strong>考虑σ1折减</strong></td></tr>
-	</tbody>
-</table>
-
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/PuckCriterion3D.assets/Fig5.jpg" style="zoom: 100%;"></td><td><img src="/./img/PuckCriterion3D.assets/Fig10.jpg" style="zoom: 100%;"></td>
-		</tr>
-    <tr><td><strong>不考虑σ1折减</strong></td><td><strong>考虑σ1折减</strong></td></tr>
-	</tbody>
-</table>
-
-<p>同时在材料强度不变的情况下，变更材料类型由CFRP为GFRP，可观察两者折减系数取值的区别</p>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/PuckCriterion3D.assets/Fig1.jpg" style="zoom: 100%;"></td><td><img src="/./img/PuckCriterion3D.assets/Fig6.jpg" style="zoom: 100%;"></td>
-		</tr>
-    <tr><td><strong>CFRP</strong></td><td><strong>GFRP</strong></td></tr>
-	</tbody>
-</table>
-
-<p>CFRP计算得到的折减系数：</p>
-<p>0.0799778409034907	0.755288692029387<br>1	1<br>0.0814442969222847	0.757023702971999<br>1	1</p>
-<p>GFRP计算得到的折减系数：</p>
-<p>0.0807882284717462	0.442922535823326<br>1	1<br>0.0822655919265399	0.447971787610760<br>1	1</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 复合材料层合板失效分析</p>
-<p>[2] DNV-OS-C501</p>
-<p>[3] <a target="_blank" rel="noopener" href="https://ofcconsulting.de/">https://ofcconsulting.de</a></p>
+<p>Name: ‘Weave1’<br>  E1: 5.5151e+04<br>  E2: 5.7207e+04<br>  E3: 1.1172e+04<br>  G12: 4.1842e+03<br>  G13: 2.8477e+03<br>  G23: 2.8498e+03<br>  v12: 0.0974<br>  v13: 0.4571<br>  v23: 0.4596</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] <a target="_blank" rel="noopener" href="https://sourceforge.net/projects/texgen/">https://sourceforge.net/projects/texgen/</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>

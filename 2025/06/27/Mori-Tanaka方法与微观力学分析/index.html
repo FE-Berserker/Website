@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>CBeam | Baffalo</title>
+  <title>Mori-Tanaka方法与微观力学分析 | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="CBeam | Baffalo">
+  <meta name="description" content="Mori-Tanaka方法与微观力学分析 | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="Mori_Tanaka方法1973年，Mori和Tanakal在研究弥散硬化材料的加工硬化时，提出求解材料内部平均应力的背应力方法，即Mori-Tanaka法。由于这个方法运算简单，同时在一定程度上考虑了复合材料中夹杂相之间的相互作用，近年来受到广泛的应用，成为处理各种非均质复合材料性能的有效手段之一。 具体说明可参考文献[1]，本文仅给出最终的公式 纵向弹性模量纵向弹性模量可由下式计算：$$\f">
 <meta property="og:type" content="article">
@@ -684,9 +684,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-CBeam" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Mori-Tanaka方法与微观力学分析" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">CBeam</h1>
+        <h1 class="article-title">Mori-Tanaka方法与微观力学分析</h1>
     
     <div class="article-meta">
         
@@ -696,7 +696,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo部件">Baffalo部件</a>
+            <a  data-rel="Baffalo笔记">Baffalo笔记</a>
             
         </span>
         
@@ -704,7 +704,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-04-05 09:58:15'>2025-04-05 09:56</time>
+            发布时间 : <time class="date" title='最后更新: 2025-06-27 12:58:54'>2025-06-27 12:55</time>
         
     </div>
     <div class="article-meta">
@@ -715,7 +715,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-CBeam-Flag-1"><span class="toc-text">Create CBeam (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-CBeam-with-stiffner-Flag-2"><span class="toc-text">Create CBeam with stiffner (Flag&#x3D;2)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mori-Tanaka%E6%96%B9%E6%B3%95"><span class="toc-text">Mori_Tanaka方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%B5%E5%90%91%E5%BC%B9%E6%80%A7%E6%A8%A1%E9%87%8F"><span class="toc-text">纵向弹性模量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%AA%E5%90%91%E5%BC%B9%E6%80%A7%E6%A8%A1%E9%87%8F"><span class="toc-text">横向弹性模量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%B5%E5%90%91%E5%89%AA%E5%88%87%E6%A8%A1%E9%87%8F"><span class="toc-text">纵向剪切模量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%B5%E5%90%91%E6%B3%8A%E6%9D%BE%E6%AF%94"><span class="toc-text">纵向泊松比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%AA%E5%90%91%E6%B3%8A%E6%9D%BE%E6%AF%94"><span class="toc-text">横向泊松比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E8%A7%82%E5%8A%9B%E5%AD%A6%E5%88%86%E6%9E%90"><span class="toc-text">微观力学分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -731,81 +731,102 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>CBeam类用于生成槽钢的实体网格。</p>
-<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/CBeam.assets/Fig146.jpg"></p>
-<p>输入 input：</p>
-<ul>
-<li>Meshsize : 网格尺寸</li>
-<li>Stiffner : 加筋肋位置</li>
-<li>l: 长度</li>
-<li>b: 腿宽度</li>
-<li>d : 腰厚度</li>
-<li>r: 内圆弧倒角</li>
-<li>h : 高度</li>
-<li>t : 平均腿厚度</li>
-</ul>
-<p>参数 params:</p>
-<ul>
-<li>Name : 名称</li>
-<li>Material: 材料</li>
-<li>Order: 阶数</li>
-</ul>
-<p>输出 output :</p>
-<ul>
-<li>Assembly : 装配体</li>
-<li>SolidMesh : 实体网格</li>
-<li>Stiffner_Surface : 加筋肋截面</li>
-<li>Surface : 槽钢截面</li>
-</ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-CBeam-Flag-1"><a href="#Create-CBeam-Flag-1" class="headerlink" title="Create CBeam (Flag&#x3D;1)"></a>Create CBeam (Flag&#x3D;1)</h3><pre><code class="language-matlab">inputStruct.t=[8.5,8.5];
-inputStruct.r=[8.5,8.5];
-inputStruct.b=[48,48];
-inputStruct.d=5.4;
-inputStruct.h=100;
-inputStruct.l=400;
-paramsStruct=struct();
-obj= beam.CBeam(paramsStruct, inputStruct);
-obj= obj.solve();
-Plot2D(obj);
-Plot3D(obj);
+        <h2 id="Mori-Tanaka方法"><a href="#Mori-Tanaka方法" class="headerlink" title="Mori_Tanaka方法"></a>Mori_Tanaka方法</h2><p>1973年，Mori和Tanakal在研究弥散硬化材料的加工硬化时，提出求解材料内部平均应力的背应力方法，即Mori-Tanaka法。由于这个方法运算简单，同时在一定程度上考虑了复合材料中夹杂相之间的相互作用，近年来受到广泛的应用，成为处理各种非均质复合材料性能的有效手段之一。</p>
+<p>具体说明可参考文献[1]，本文仅给出最终的公式</p>
+<h3 id="纵向弹性模量"><a href="#纵向弹性模量" class="headerlink" title="纵向弹性模量"></a>纵向弹性模量</h3><p>纵向弹性模量可由下式计算：<br>$$<br>\frac{E_{1}}{E_0}&#x3D;\frac{1}{1+V_f[A_1-v_0(A_2+A_3)]&#x2F;A}<br>$$</p>
+<h3 id="横向弹性模量"><a href="#横向弹性模量" class="headerlink" title="横向弹性模量"></a>横向弹性模量</h3><p>$$<br>\frac{E_{2}}{E_0}&#x3D;\frac{1}{1+V_f[A_5-v_0(A_4+A_6)]&#x2F;A}<br>$$</p>
+<h3 id="纵向剪切模量"><a href="#纵向剪切模量" class="headerlink" title="纵向剪切模量"></a>纵向剪切模量</h3><p>$$<br>\frac{G_{12}}{G_0}&#x3D;1+\frac{V_f}{2(1-V_f)S_{1212}+G_0&#x2F;(G_1-G_0)}<br>$$</p>
+<h3 id="纵向泊松比"><a href="#纵向泊松比" class="headerlink" title="纵向泊松比"></a>纵向泊松比</h3><p>$$<br>v_{12}&#x3D;\frac{v_0-V_f[A_4-v_0(A_5+A_6)]&#x2F;A}{1+V_f[A_1-v_0(A_2+A_3)]&#x2F;A}<br>$$</p>
+<h3 id="横向泊松比"><a href="#横向泊松比" class="headerlink" title="横向泊松比"></a>横向泊松比</h3><p>$$<br>v_{23}&#x3D;\frac{v_0-V_f[A_6-v_0(A_4+A_5)]&#x2F;A}{1+V_f[A_9-v_0(A_7+A_8)]&#x2F;A}<br>$$<br>以55%体积率的玻璃钢复合材料为例，采用MT方法预测材料属性随体积率变化如下：<br><img src="/./img/Mori-Tanaka%E6%96%B9%E6%B3%95%E4%B8%8E%E5%BE%AE%E8%A7%82%E5%8A%9B%E5%AD%A6%E5%88%86%E6%9E%90.assets/24a6d88a83e004b068c62797d486ab86_MD5.jpeg"></p>
+<pre><code class="language-matlab">S=RMaterial(&#39;Composite&#39;);
+mat=GetMat(S,[1,2]&#39;);
+inputStruct.Vf=0.55;
+inputStruct.Fiber=mat&#123;1,1&#125;;
+inputStruct.Matrix=mat&#123;2,1&#125;;
+paramsStruct.Theory=&#39;MT&#39;;
+Ply1= method.Composite.Micromechanics(paramsStruct, inputStruct);
+Ply1=Ply1.solve();
+Plot(Ply1);
+PlotAlpha(Ply1);
 </code></pre>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/CBeam.assets/Fig149.jpg" style="zoom: 100%;"></td><td><img src="/./img/CBeam.assets/Fig150.jpg" style="zoom: 100%;"></td>
-		</tr>
-    <tr><td><strong>槽钢截面</strong></td><td><strong>槽钢实体网格</strong></td></tr>
-	</tbody>
-</table>
-
-
-
-
-
-<h3 id="Create-CBeam-with-stiffner-Flag-2"><a href="#Create-CBeam-with-stiffner-Flag-2" class="headerlink" title="Create CBeam with stiffner (Flag&#x3D;2)"></a>Create CBeam with stiffner (Flag&#x3D;2)</h3><pre><code class="language-matlab">inputStruct.t=[8.5,8.5];
-inputStruct.r=[8.5,8.5];
-inputStruct.b=[48,48];
-inputStruct.d=5.4;
-inputStruct.h=100;
-inputStruct.l=480;
-inputStruct.Stiffner=[120+4,8;360-4,8];
-paramsStruct=struct();
-obj= beam.CBeam(paramsStruct, inputStruct);
-obj= obj.solve();
-Plot2D(obj);
-Plot3D(obj);
+<h2 id="微观力学分析"><a href="#微观力学分析" class="headerlink" title="微观力学分析"></a>微观力学分析</h2><p>在微观力学模型中，建立相同体积率的模型，参见<a target="_blank" rel="noopener" href="https://www.feacat.com/2025/05/06/Composite_Micromechanics/">Micromechanics</a>模块，图中蓝色为Eglass, 黄色为环氧树脂Epoxy。<br><img src="/./img/Mori-Tanaka%E6%96%B9%E6%B3%95%E4%B8%8E%E5%BE%AE%E8%A7%82%E5%8A%9B%E5%AD%A6%E5%88%86%E6%9E%90.assets/3abdcad4a461510c406cc3e0cfdc8937_MD5.jpeg"><br>通过分析其应力和应变，也可以计算材料属性：<br><img src="/./img/Mori-Tanaka%E6%96%B9%E6%B3%95%E4%B8%8E%E5%BE%AE%E8%A7%82%E5%8A%9B%E5%AD%A6%E5%88%86%E6%9E%90.assets/d01f1cf6d8e0e1f8e2b81e18bff4d44a_MD5.jpeg"><br><img src="/./img/Mori-Tanaka%E6%96%B9%E6%B3%95%E4%B8%8E%E5%BE%AE%E8%A7%82%E5%8A%9B%E5%AD%A6%E5%88%86%E6%9E%90.assets/2c25f6a4c31f1a53d3b7805f0c4a7de9_MD5.jpeg"></p>
+<pre><code class="language-matlab">S=RMaterial(&#39;Composite&#39;);
+mat=GetMat(S,[1,2]&#39;);
+inputStruct.Vf=0.55;
+inputStruct.Fiber=mat&#123;1,1&#125;;
+inputStruct.Matrix=mat&#123;2,1&#125;;
+inputStruct.Load.Type=[2,2,2,1,2,2];% 2-Stress 1-Strain
+inputStruct.Load.Value=[0,0,0,0.02,0,0];
+inputStruct.Load.NINC=400;
+paramsStruct.RUCid=200;
+paramsStruct.Theory=&#39;HFGMC&#39;;
+paramsStruct.Damage=0;% Progressive damage analysis
+paramsStruct.Criterion=0; % Failure criterion
+Ply2= method.Composite.Micromechanics(paramsStruct, inputStruct);
+Ply2=Ply2.solve();
 </code></pre>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/CBeam.assets/Fig151.jpg" style="zoom: 100%;"></td><td><img src="/./img/CBeam.assets/Fig152.jpg" style="zoom: 100%;"></td>
-		</tr>
-    <tr><td><strong>槽钢截面</strong></td><td><strong>加筋肋槽钢实体网格</strong></td></tr>
-	</tbody>
-</table>
+<p>两者对比，可以发现材料力学属性十分接近。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>MT</th>
+<th>Micro</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>E1</td>
+<td>41.7</td>
+<td>41.5</td>
+</tr>
+<tr>
+<td>E2</td>
+<td>10</td>
+<td>11</td>
+</tr>
+<tr>
+<td>E3</td>
+<td>10</td>
+<td>10.5</td>
+</tr>
+<tr>
+<td>v12</td>
+<td>0.27</td>
+<td>0.27</td>
+</tr>
+<tr>
+<td>v13</td>
+<td>0.27</td>
+<td>0.27</td>
+</tr>
+<tr>
+<td>v23</td>
+<td>0.45</td>
+<td>0.42</td>
+</tr>
+<tr>
+<td>G12</td>
+<td>3.89</td>
+<td>4.03</td>
+</tr>
+<tr>
+<td>G13</td>
+<td>3.89</td>
+<td>3.83</td>
+</tr>
+<tr>
+<td>G23</td>
+<td>3.46</td>
+<td>3.66</td>
+</tr>
+<tr>
+<td>相比较而言，可以采用经验公式的算法，速度更快，采用微观力学的方式除了获得材料的属性外，也可以获得更多的信息，比如应力、应变以及渐进损伤分析等。因此，对于复合材料来说，遇到一些棘手的问题，通常可求助微观力学来寻求答案。</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 三维编织复合材料力学性能分析方法<br>[2] Practical micromechanics of composite materials<br>[3] <a target="_blank" rel="noopener" href="https://www.feacat.com/2025/05/06/Composite_Micromechanics/">https://www.feacat.com/2025/05/06/Composite_Micromechanics/</a></p>
 
-
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
     </div>

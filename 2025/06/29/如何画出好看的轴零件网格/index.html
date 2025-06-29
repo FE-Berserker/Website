@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>CBeam | Baffalo</title>
+  <title>如何画出好看的轴零件网格 | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="CBeam | Baffalo">
+  <meta name="description" content="如何画出好看的轴零件网格 | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="通常画轴的有限元分析时，将3D模型导入workbench中，自动划分网格就会得到如下的结果。这种模型在模态或者不关注该轴应力的场景时可以的，但是很多情况下这种模型无法满足工程需求。比如计算过盈或者标准接触，接触表面会出现麻点，此时需要加密网格或者将表面改为四边形，在workbench中需要设置Facemesh。在比如某些场景下，需要校核管上的焊缝，当采用IIW热点应力法校核时需要在距离焊缝特定长度">
 <meta property="og:type" content="article">
@@ -696,9 +696,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-CBeam" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-如何画出好看的轴零件网格" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">CBeam</h1>
+        <h1 class="article-title">如何画出好看的轴零件网格</h1>
     
     <div class="article-meta">
         
@@ -708,7 +708,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo部件">Baffalo部件</a>
+            <a  data-rel="Baffalo笔记">Baffalo笔记</a>
             
         </span>
         
@@ -716,7 +716,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-04-05 09:58:15'>2025-04-05 09:56</time>
+            发布时间 : <time class="date" title='最后更新: 2025-06-29 21:28:56'>2025-06-29 21:26</time>
         
     </div>
     <div class="article-meta">
@@ -727,7 +727,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-CBeam-Flag-1"><span class="toc-text">Create CBeam (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-CBeam-with-stiffner-Flag-2"><span class="toc-text">Create CBeam with stiffner (Flag&#x3D;2)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Commonshaft"><span class="toc-text">Commonshaft</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8"><span class="toc-text">应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -743,81 +743,37 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>CBeam类用于生成槽钢的实体网格。</p>
-<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/CBeam.assets/Fig146.jpg"></p>
-<p>输入 input：</p>
-<ul>
-<li>Meshsize : 网格尺寸</li>
-<li>Stiffner : 加筋肋位置</li>
-<li>l: 长度</li>
-<li>b: 腿宽度</li>
-<li>d : 腰厚度</li>
-<li>r: 内圆弧倒角</li>
-<li>h : 高度</li>
-<li>t : 平均腿厚度</li>
-</ul>
-<p>参数 params:</p>
-<ul>
-<li>Name : 名称</li>
-<li>Material: 材料</li>
-<li>Order: 阶数</li>
-</ul>
-<p>输出 output :</p>
-<ul>
-<li>Assembly : 装配体</li>
-<li>SolidMesh : 实体网格</li>
-<li>Stiffner_Surface : 加筋肋截面</li>
-<li>Surface : 槽钢截面</li>
-</ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-CBeam-Flag-1"><a href="#Create-CBeam-Flag-1" class="headerlink" title="Create CBeam (Flag&#x3D;1)"></a>Create CBeam (Flag&#x3D;1)</h3><pre><code class="language-matlab">inputStruct.t=[8.5,8.5];
-inputStruct.r=[8.5,8.5];
-inputStruct.b=[48,48];
-inputStruct.d=5.4;
-inputStruct.h=100;
-inputStruct.l=400;
-paramsStruct=struct();
-obj= beam.CBeam(paramsStruct, inputStruct);
-obj= obj.solve();
-Plot2D(obj);
-Plot3D(obj);
+        <p>通常画轴的有限元分析时，将3D模型导入workbench中，自动划分网格就会得到如下的结果。<br><img src="/./img/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC.assets/42c3670cc1e18a72f5d8ad560d339d23_MD5.jpeg"><br>这种模型在模态或者不关注该轴应力的场景时可以的，但是很多情况下这种模型无法满足工程需求。<br>比如计算过盈或者标准接触，接触表面会出现麻点，此时需要加密网格或者将表面改为四边形，在workbench中需要设置Facemesh。<br>在比如某些场景下，需要校核管上的焊缝，当采用IIW热点应力法校核时需要在距离焊缝特定长度建立插值节点，此时用workbench需要切分轴，非常的不方便。</p>
+<p><img src="/./img/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC.assets/3d64fe5ebae621de8c9b9e9a4816e7d5_MD5.jpeg"></p>
+<h2 id="Commonshaft"><a href="#Commonshaft" class="headerlink" title="Commonshaft"></a>Commonshaft</h2><p>在Baffalo的 <a target="_blank" rel="noopener" href="https://www.feacat.com/2025/02/20/Commonshaft/">Commonshaft</a>模块给出了一种解决方案，它靠输入内径、外径和轴段长度，来生成表面规整的网格。</p>
+<pre><code class="language-matlab">% Shaft 4 
+inputshaft1.Length = [29;53;71;77;115]; 
+inputshaft1.ID = [[6.6,6.6];[6.6,6.6];[6.6,6.6];[0,0];[0,0]]; inputshaft1.OD = [[22.5,22.5];[26.5,26.5];[29.5,29.5];[29.5,29.5];[36,36]]; 
+paramsshaft1 = struct(); 
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1); 
+obj1 = obj1.solve(); 
+Plot2D(obj1); 
+Plot3D(obj1);
 </code></pre>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/CBeam.assets/Fig149.jpg" style="zoom: 100%;"></td><td><img src="/./img/CBeam.assets/Fig150.jpg" style="zoom: 100%;"></td>
-		</tr>
-    <tr><td><strong>槽钢截面</strong></td><td><strong>槽钢实体网格</strong></td></tr>
-	</tbody>
-</table>
-
-
-
-
-
-<h3 id="Create-CBeam-with-stiffner-Flag-2"><a href="#Create-CBeam-with-stiffner-Flag-2" class="headerlink" title="Create CBeam with stiffner (Flag&#x3D;2)"></a>Create CBeam with stiffner (Flag&#x3D;2)</h3><pre><code class="language-matlab">inputStruct.t=[8.5,8.5];
-inputStruct.r=[8.5,8.5];
-inputStruct.b=[48,48];
-inputStruct.d=5.4;
-inputStruct.h=100;
-inputStruct.l=480;
-inputStruct.Stiffner=[120+4,8;360-4,8];
-paramsStruct=struct();
-obj= beam.CBeam(paramsStruct, inputStruct);
-obj= obj.solve();
-Plot2D(obj);
-Plot3D(obj);
+<p><img src="/./img/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC.assets/6db8799d8f65e6428fe116eb253b956c_MD5.jpeg"><br>同时该模块也支持生成锥形轴段和内孔,通过设置网格大小来调整网格的密度。</p>
+<pre><code class="language-matlab">% Shaft 7 
+inputshaft1.Length = [7;8;29;53;71;77;107;108;115]; inputshaft1.ID = [[6.6,6.6];[6.6,0];[0,0];[0,0];[0,0];[0,0];[0,0];[0,6.6];[6.6,6.6]]; 
+inputshaft1.OD = [[22.5,22.5];[22.5,22.5];[22.5,22.5];[26.5,26.5];[26.5,29.5];[29.5,29.5];... 
+[36,36];[36,36];[36,36]]; 
+inputshaft1.Meshsize=0.5; 
+paramsshaft1 = struct(); 
+obj1 = shaft.Commonshaft(paramsshaft1, inputshaft1); 
+obj1 = obj1.solve(); 
+Plot2D(obj1);
+Plot3D(obj1);
 </code></pre>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/CBeam.assets/Fig151.jpg" style="zoom: 100%;"></td><td><img src="/./img/CBeam.assets/Fig152.jpg" style="zoom: 100%;"></td>
-		</tr>
-    <tr><td><strong>槽钢截面</strong></td><td><strong>加筋肋槽钢实体网格</strong></td></tr>
-	</tbody>
-</table>
+<p><img src="/./img/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC.assets/00a1dd679beca5da0ea56d391373ca9f_MD5.jpeg"></p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p>在过盈模块<a target="_blank" rel="noopener" href="https://www.feacat.com/2025/05/11/InterferenceFit/">InterferenceFit</a>中，运用表面规整的网格可以得到很好的接触应力。</p>
+<p><img src="/./img/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC.assets/a6d05fe75b5a0c19ebed7a21c0c2b460_MD5.jpeg"></p>
+<p><img src="/./img/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC.assets/d06ea6c8a99a41f67507e1f2ddd30c3f_MD5.jpeg"><br>在SubModel子模型模块中，对圆角台阶进行子模型的分析，也可以快速得到圆角的应力集中系数。</p>
+<p><img src="/./img/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC.assets/82ac59ae6aaadb8b87fa478f574f3f3b_MD5.jpeg"></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] Structural Hot-Spot Stress Approach to Fatigue Analysis of Welded Components</p>
 
-
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
     </div>

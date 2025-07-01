@@ -6,25 +6,21 @@
   <meta name="keywords" content="">
   <meta name="description" content="WindturbineTower | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="通常画轴的有限元分析时，将3D模型导入workbench中，自动划分网格就会得到如下的结果。这种模型在模态或者不关注该轴应力的场景时可以的，但是很多情况下这种模型无法满足工程需求。比如计算过盈或者标准接触，接触表面会出现麻点，此时需要加密网格或者将表面改为四边形，在workbench中需要设置Facemesh。在比如某些场景下，需要校核管上的焊缝，当采用IIW热点应力法校核时需要在距离焊缝特定长度">
+<meta name="description" content="介绍DiscCouplingEstimate用于预测圆环型叠片联轴器的刚度。 原理叠片联轴器具有轴向、角向、径向、不对中的补偿能力，有时轴向补偿可达10mm，角向补偿可达10。其计算模型可简化为具有扭转刚度、轴向刚度、径向刚度及角向刚度的“弹簧”。 在方案设计初始阶段，当无法提供叠片的有关设计数据而文需对转子进行动力特性计算分析时，可以粗略地将叠片联轴器简化为“中间铰”。   1一法兰盘;2—衬套">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何画出好看的轴零件网格">
-<meta property="og:url" content="http://example.com/2025/06/29/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC/index.html">
+<meta property="og:title" content="DiscCouplingEstimate">
+<meta property="og:url" content="http://example.com/2025/07/01/DiscCouplingEstimate/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="通常画轴的有限元分析时，将3D模型导入workbench中，自动划分网格就会得到如下的结果。这种模型在模态或者不关注该轴应力的场景时可以的，但是很多情况下这种模型无法满足工程需求。比如计算过盈或者标准接触，接触表面会出现麻点，此时需要加密网格或者将表面改为四边形，在workbench中需要设置Facemesh。在比如某些场景下，需要校核管上的焊缝，当采用IIW热点应力法校核时需要在距离焊缝特定长度">
+<meta property="og:description" content="介绍DiscCouplingEstimate用于预测圆环型叠片联轴器的刚度。 原理叠片联轴器具有轴向、角向、径向、不对中的补偿能力，有时轴向补偿可达10mm，角向补偿可达10。其计算模型可简化为具有扭转刚度、轴向刚度、径向刚度及角向刚度的“弹簧”。 在方案设计初始阶段，当无法提供叠片的有关设计数据而文需对转子进行动力特性计算分析时，可以粗略地将叠片联轴器简化为“中间铰”。   1一法兰盘;2—衬套">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC.assets/42c3670cc1e18a72f5d8ad560d339d23_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC.assets/3d64fe5ebae621de8c9b9e9a4816e7d5_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC.assets/6db8799d8f65e6428fe116eb253b956c_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC.assets/00a1dd679beca5da0ea56d391373ca9f_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC.assets/a6d05fe75b5a0c19ebed7a21c0c2b460_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC.assets/d06ea6c8a99a41f67507e1f2ddd30c3f_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC.assets/82ac59ae6aaadb8b87fa478f574f3f3b_MD5.jpeg">
-<meta property="article:published_time" content="2025-06-29T13:26:41.921Z">
-<meta property="article:modified_time" content="2025-06-29T13:28:56.069Z">
+<meta property="og:image" content="http://example.com/img//DiscCouplingEstimate.assets/image-20250701104713831.png">
+<meta property="og:image" content="http://example.com/img//DiscCouplingEstimate.assets/image-20250701111808558.png">
+<meta property="og:image" content="http://example.com/img/DiscCouplingEstimate.assets/Fig1.jpg">
+<meta property="article:published_time" content="2025-07-01T06:11:48.214Z">
+<meta property="article:modified_time" content="2025-07-01T06:13:31.894Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC.assets/42c3670cc1e18a72f5d8ad560d339d23_MD5.jpeg">
+<meta name="twitter:image" content="http://example.com/img//DiscCouplingEstimate.assets/image-20250701104713831.png">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -111,7 +107,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(47)</small>
+                <small>(48)</small>
             
         </div>
     </li>
@@ -153,7 +149,7 @@
         <div data-rel="Baffalo方法">
             
             Baffalo方法
-            <small>(9)</small>
+            <small>(10)</small>
         </div>
         
     </li>
@@ -204,7 +200,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="47">
+<input type="hidden" id="yelog_site_posts_number" value="48">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -254,6 +250,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/01/DiscCouplingEstimate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="DiscCouplingEstimate">DiscCouplingEstimate</span>
+            <span class="post-date" title="2025-07-01 14:11:48">2025/07/01</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo笔记 "

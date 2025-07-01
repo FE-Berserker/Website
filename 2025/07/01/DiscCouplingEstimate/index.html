@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Mori-Tanaka方法与微观力学分析 | Baffalo</title>
+  <title>DiscCouplingEstimate | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Mori-Tanaka方法与微观力学分析 | Baffalo">
+  <meta name="description" content="DiscCouplingEstimate | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="介绍DiscCouplingEstimate用于预测圆环型叠片联轴器的刚度。 原理叠片联轴器具有轴向、角向、径向、不对中的补偿能力，有时轴向补偿可达10mm，角向补偿可达10。其计算模型可简化为具有扭转刚度、轴向刚度、径向刚度及角向刚度的“弹簧”。 在方案设计初始阶段，当无法提供叠片的有关设计数据而文需对转子进行动力特性计算分析时，可以粗略地将叠片联轴器简化为“中间铰”。   1一法兰盘;2—衬套">
 <meta property="og:type" content="article">
@@ -701,9 +701,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Mori-Tanaka方法与微观力学分析" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-DiscCouplingEstimate" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Mori-Tanaka方法与微观力学分析</h1>
+        <h1 class="article-title">DiscCouplingEstimate</h1>
     
     <div class="article-meta">
         
@@ -713,7 +713,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo笔记">Baffalo笔记</a>
+            <a  data-rel="Baffalo方法">Baffalo方法</a>
             
         </span>
         
@@ -721,7 +721,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-06-27 13:00:35'>2025-06-27 12:55</time>
+            发布时间 : <time class="date" title='最后更新: 2025-07-01 14:13:31'>2025-07-01 14:11</time>
         
     </div>
     <div class="article-meta">
@@ -732,7 +732,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mori-Tanaka%E6%96%B9%E6%B3%95"><span class="toc-text">Mori_Tanaka方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%B5%E5%90%91%E5%BC%B9%E6%80%A7%E6%A8%A1%E9%87%8F"><span class="toc-text">纵向弹性模量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%AA%E5%90%91%E5%BC%B9%E6%80%A7%E6%A8%A1%E9%87%8F"><span class="toc-text">横向弹性模量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%B5%E5%90%91%E5%89%AA%E5%88%87%E6%A8%A1%E9%87%8F"><span class="toc-text">纵向剪切模量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%B5%E5%90%91%E6%B3%8A%E6%9D%BE%E6%AF%94"><span class="toc-text">纵向泊松比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%AA%E5%90%91%E6%B3%8A%E6%9D%BE%E6%AF%94"><span class="toc-text">横向泊松比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E8%A7%82%E5%8A%9B%E5%AD%A6%E5%88%86%E6%9E%90"><span class="toc-text">微观力学分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -748,97 +748,67 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Mori-Tanaka方法"><a href="#Mori-Tanaka方法" class="headerlink" title="Mori_Tanaka方法"></a>Mori_Tanaka方法</h2><p>1973年，Mori和Tanakal在研究弥散硬化材料的加工硬化时，提出求解材料内部平均应力的背应力方法，即Mori-Tanaka法。由于这个方法运算简单，同时在一定程度上考虑了复合材料中夹杂相之间的相互作用，近年来受到广泛的应用，成为处理各种非均质复合材料性能的有效手段之一。</p>
-<p>具体说明可参考文献[1]，本文仅给出最终的公式</p>
-<h3 id="纵向弹性模量"><a href="#纵向弹性模量" class="headerlink" title="纵向弹性模量"></a>纵向弹性模量</h3><p>纵向弹性模量可由下式计算：<br>$$<br>\frac{E_{1}}{E_0}&#x3D;\frac{1}{1+V_f[A_1-v_0(A_2+A_3)]&#x2F;A}<br>$$</p>
-<h3 id="横向弹性模量"><a href="#横向弹性模量" class="headerlink" title="横向弹性模量"></a>横向弹性模量</h3><p>$$<br>\frac{E_{2}}{E_0}&#x3D;\frac{1}{1+V_f[A_5-v_0(A_4+A_6)]&#x2F;A}<br>$$</p>
-<h3 id="纵向剪切模量"><a href="#纵向剪切模量" class="headerlink" title="纵向剪切模量"></a>纵向剪切模量</h3><p>$$<br>\frac{G_{12}}{G_0}&#x3D;1+\frac{V_f}{2(1-V_f)S_{1212}+G_0&#x2F;(G_1-G_0)}<br>$$</p>
-<h3 id="纵向泊松比"><a href="#纵向泊松比" class="headerlink" title="纵向泊松比"></a>纵向泊松比</h3><p>$$<br>v_{12}&#x3D;\frac{v_0-V_f[A_4-v_0(A_5+A_6)]&#x2F;A}{1+V_f[A_1-v_0(A_2+A_3)]&#x2F;A}<br>$$</p>
-<h3 id="横向泊松比"><a href="#横向泊松比" class="headerlink" title="横向泊松比"></a>横向泊松比</h3><p>$$<br>v_{23}&#x3D;\frac{v_0-V_f[A_6-v_0(A_4+A_5)]&#x2F;A}{1+V_f[A_9-v_0(A_7+A_8)]&#x2F;A}<br>$$<br>以55%体积率的玻璃钢复合材料为例，采用MT方法预测材料属性随体积率变化如下：<br><img src="/./img/Mori-Tanaka%E6%96%B9%E6%B3%95%E4%B8%8E%E5%BE%AE%E8%A7%82%E5%8A%9B%E5%AD%A6%E5%88%86%E6%9E%90.assets/24a6d88a83e004b068c62797d486ab86_MD5.jpeg"></p>
-<pre><code class="language-matlab">S=RMaterial(&#39;Composite&#39;);
-mat=GetMat(S,[1,2]&#39;);
-inputStruct.Vf=0.55;
-inputStruct.Fiber=mat&#123;1,1&#125;;
-inputStruct.Matrix=mat&#123;2,1&#125;;
-paramsStruct.Theory=&#39;MT&#39;;
-Ply1= method.Composite.Micromechanics(paramsStruct, inputStruct);
-Ply1=Ply1.solve();
-Plot(Ply1);
-PlotAlpha(Ply1);
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>DiscCouplingEstimate用于预测圆环型叠片联轴器的刚度。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>叠片联轴器具有轴向、角向、径向、不对中的补偿能力，有时轴向补偿可达10mm，角向补偿可达10。其计算模型可简化为具有扭转刚度、轴向刚度、径向刚度及角向刚度的“弹簧”。</p>
+<p>在方案设计初始阶段，当无法提供叠片的有关设计数据而文需对转子进行动力特性计算分析时，可以粗略地将叠片联轴器简化为“中间铰”。</p>
+<img src="/./img//DiscCouplingEstimate.assets/image-20250701104713831.png" style="zoom:50%;" />
+
+<p>1一法兰盘;2—衬套;3膜片;4—垫圈;5—中间轴;6—法兰盘</p>
+<p>在 航空发动机手册 第19分册$^{[1]}$记录了圆环形叠片联轴器的刚度预估，可以将其作为参考和预估。</p>
+<p>扭转刚度：<br>$$<br>K_T&#x3D;\alpha_cNEtR^2<br>$$<br>径向刚度：<br>$$<br>K_R&#x3D;\frac{\beta_cNEtZ}{12}<br>$$<br>轴向刚度：<br>$$<br>K_a&#x3D;\frac{2.15Ebt^3ZNF(u)}{(R\theta)^3}<br>$$<br>角向刚度：<br>$$<br>K_\alpha&#x3D;\frac{1.15Ebt^3ZN}{R\theta^3}<br>$$<br>N——法兰盘的螺栓数量</p>
+<p>t——膜片厚度</p>
+<p>E——膜片材料的弹性模量</p>
+<p>R——链接螺栓中心圆周半径</p>
+<p>Z——膜片层数</p>
+<p>b——膜片环边径向宽度</p>
+<p>d1——垫圈外径</p>
+<p>$\theta$——相邻连接螺栓间膜片可弹性变形部分夹角，$\theta&#x3D;\frac{\pi}{N}-\frac{0.8d_1}{R}$</p>
+<p>$\alpha_c$和$\beta_c$可以按照下表选取：</p>
+<img src="/./img//DiscCouplingEstimate.assets/image-20250701111808558.png" style="zoom:80%;" />
+
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/DiscCouplingEstimate.assets/Fig1.jpg"></p>
+<p>输入 input：</p>
+<ul>
+<li>d1 : 垫圈外径</li>
+<li>b: 膜片环形径向宽度</li>
+<li>Z: 膜片层数</li>
+<li>R : 螺栓中心圆半径</li>
+<li>E: 膜片弹性模量</li>
+<li>t : 膜片厚度</li>
+<li>N : 螺栓数量</li>
+</ul>
+<p>参数 params:</p>
+<ul>
+<li>Name : 名称</li>
+</ul>
+<p>输出 output :</p>
+<ul>
+<li>Theta : 可变形夹角</li>
+<li>betac : 计算参数</li>
+<li>alphac: 计算参数</li>
+<li>Kalpha : 转角刚度</li>
+<li>Kr : 径向刚度</li>
+<li>KT : 扭转刚度</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><pre><code class="language-matlab">inputStruct.N=4;
+inputStruct.t=0.35;
+inputStruct.E=1.93e5;
+inputStruct.R=77/2;
+inputStruct.Z=9;
+inputStruct.b=16.5;
+inputStruct.d1=13;
+paramsStruct=struct();
+D= method.DiscCouplingEstimate(paramsStruct, inputStruct);
+D=D.solve();
+disp(D.output.KT)
+disp(D.output.Kr)
+disp(D.output.Kalpha)
 </code></pre>
-<h2 id="微观力学分析"><a href="#微观力学分析" class="headerlink" title="微观力学分析"></a>微观力学分析</h2><p>在微观力学模型中，建立相同体积率的模型，参见<a target="_blank" rel="noopener" href="https://www.feacat.com/2025/05/06/Composite_Micromechanics/">Micromechanics</a>模块，图中蓝色为Eglass, 黄色为环氧树脂Epoxy。<br><img src="/./img/Mori-Tanaka%E6%96%B9%E6%B3%95%E4%B8%8E%E5%BE%AE%E8%A7%82%E5%8A%9B%E5%AD%A6%E5%88%86%E6%9E%90.assets/3abdcad4a461510c406cc3e0cfdc8937_MD5.jpeg"><br>通过分析其应力和应变，也可以计算材料属性：<br><img src="/./img/Mori-Tanaka%E6%96%B9%E6%B3%95%E4%B8%8E%E5%BE%AE%E8%A7%82%E5%8A%9B%E5%AD%A6%E5%88%86%E6%9E%90.assets/d01f1cf6d8e0e1f8e2b81e18bff4d44a_MD5.jpeg"><br><img src="/./img/Mori-Tanaka%E6%96%B9%E6%B3%95%E4%B8%8E%E5%BE%AE%E8%A7%82%E5%8A%9B%E5%AD%A6%E5%88%86%E6%9E%90.assets/2c25f6a4c31f1a53d3b7805f0c4a7de9_MD5.jpeg"></p>
-<pre><code class="language-matlab">S=RMaterial(&#39;Composite&#39;);
-mat=GetMat(S,[1,2]&#39;);
-inputStruct.Vf=0.55;
-inputStruct.Fiber=mat&#123;1,1&#125;;
-inputStruct.Matrix=mat&#123;2,1&#125;;
-inputStruct.Load.Type=[2,2,2,1,2,2];% 2-Stress 1-Strain
-inputStruct.Load.Value=[0,0,0,0.02,0,0];
-inputStruct.Load.NINC=400;
-paramsStruct.RUCid=200;
-paramsStruct.Theory=&#39;HFGMC&#39;;
-paramsStruct.Damage=0;% Progressive damage analysis
-paramsStruct.Criterion=0; % Failure criterion
-Ply2= method.Composite.Micromechanics(paramsStruct, inputStruct);
-Ply2=Ply2.solve();
-</code></pre>
-<p>两者对比，可以发现材料力学属性十分接近。</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>MT</th>
-<th>Micro</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>E1</td>
-<td>41.7</td>
-<td>41.5</td>
-</tr>
-<tr>
-<td>E2</td>
-<td>10</td>
-<td>11</td>
-</tr>
-<tr>
-<td>E3</td>
-<td>10</td>
-<td>10.5</td>
-</tr>
-<tr>
-<td>v12</td>
-<td>0.27</td>
-<td>0.27</td>
-</tr>
-<tr>
-<td>v13</td>
-<td>0.27</td>
-<td>0.27</td>
-</tr>
-<tr>
-<td>v23</td>
-<td>0.45</td>
-<td>0.42</td>
-</tr>
-<tr>
-<td>G12</td>
-<td>3.89</td>
-<td>4.03</td>
-</tr>
-<tr>
-<td>G13</td>
-<td>3.89</td>
-<td>3.83</td>
-</tr>
-<tr>
-<td>G23</td>
-<td>3.46</td>
-<td>3.66</td>
-</tr>
-</tbody></table>
-<p>相比较而言，可以采用经验公式的算法，速度更快，采用微观力学的方式除了获得材料的属性外，也可以获得更多的信息，比如应力、应变以及渐进损伤分析等。因此，对于复合材料来说，遇到一些棘手的问题，通常可求助微观力学来寻求答案。</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 三维编织复合材料力学性能分析方法<br>[2] Practical micromechanics of composite materials<br>[3] <a target="_blank" rel="noopener" href="https://www.feacat.com/2025/05/06/Composite_Micromechanics/">https://www.feacat.com/2025/05/06/Composite_Micromechanics/</a></p>
+<p>计算得到的刚度   </p>
+<p>7.0215e+08</p>
+<p>   3.5248e+06</p>
+<p>   1.0732e+06</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 航空发动机手册 第19分册</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>

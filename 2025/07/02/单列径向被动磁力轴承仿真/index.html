@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Commonplate | Baffalo</title>
+  <title>单列径向被动磁力轴承仿真 | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Commonplate | Baffalo">
+  <meta name="description" content="单列径向被动磁力轴承仿真 | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="介绍磁悬浮利用磁场力将运动机械悬浮起来，能解决机械接触摩擦而产生的磨损、振动、噪声、发热及摩擦能耗问题，对改善设备的高速性能、使用寿命及节能有重要意义。 其中被动磁力轴承是通过永磁体或者超导体的磁力实现部分或者全部自由度的悬浮。 径向的被动磁力轴承主要由磁铁来提供径向的刚度，轴向的刚度由其余轴承提供。按照磁极的方向，有各种不同的排列组合：  仿真本文以单列径向永磁轴承为例，对比文献[2]中径向刚度">
 <meta property="og:type" content="article">
@@ -723,9 +723,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Commonplate" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-单列径向被动磁力轴承仿真" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Commonplate</h1>
+        <h1 class="article-title">单列径向被动磁力轴承仿真</h1>
     
     <div class="article-meta">
         
@@ -735,7 +735,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo部件">Baffalo部件</a>
+            <a  data-rel="Baffalo笔记">Baffalo笔记</a>
             
         </span>
         
@@ -743,7 +743,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-02-25 23:41:24'>2025-02-25 23:39</time>
+            发布时间 : <time class="date" title='最后更新: 2025-07-02 11:59:25'>2025-07-02 11:56</time>
         
     </div>
     <div class="article-meta">
@@ -754,7 +754,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Commonplate"><span class="toc-text">Commonplate</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-plate-Flag-1"><span class="toc-text">Create a plate (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plate-Outline-subdivision%EF%BC%8Cwith-order-2-elements-Flag-2"><span class="toc-text">Plate Outline subdivision，with order 2 elements (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output-shell-elements-Flag-3"><span class="toc-text">Output shell elements (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Oupput-STL-file-Flag-4"><span class="toc-text">Oupput STL file (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deform-face-Flag-5"><span class="toc-text">Deform face (Flag&#x3D;5)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%BF%E7%9C%9F"><span class="toc-text">仿真</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -770,229 +770,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Commonplate"><a href="#Commonplate" class="headerlink" title="Commonplate"></a>Commonplate</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Commonplate是平板类，它可以通过拉伸一个平面生成网格。</p>
-<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/Commonplate.assets/Fig1.png"></p>
-<p>输入 input：</p>
-<ul>
-<li>Meshsize : 单元尺寸</li>
-<li>Thickness : 厚度</li>
-<li>Hole : 孔边界Line2D</li>
-<li>Outline : 外轮廓Line2D</li>
-</ul>
-<p>参数 params:</p>
-<ul>
-<li>Order ：单元阶数</li>
-<li>Offset : 壳单元基准面</li>
-<li>Name : 名称</li>
-<li>N_Slice: 厚度方向网格划分数量</li>
-<li>Material : 材料</li>
-</ul>
-<p>输出 output :</p>
-<ul>
-<li>Assembly : 实体单元装配</li>
-<li>Assembly1 : 壳单元装配</li>
-<li>Surface : 截面</li>
-<li>SolidMesh : 实体网格</li>
-<li>ShellMesh : 壳网格</li>
-</ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-a-plate-Flag-1"><a href="#Create-a-plate-Flag-1" class="headerlink" title="Create a plate (Flag&#x3D;1)"></a>Create a plate (Flag&#x3D;1)</h3><pre><code class="language-matlab">% Plate 1
-IR=640/2;
-OR=768/2;
-par=442;
-radius=70;
-R=116/2;
-num=6;
-Rp=460;
-t=30;
-hd=17.5;
-sang=asin(R/OR)/pi*180;
-ang=360/num-2*sang;
-a=Point2D(&#39;Point Ass1&#39;);
-b=Line2D(&#39;Line Ass1&#39;,&#39;Dtol&#39;,1);
-a=AddPoint(a,0,0);
-for i=1:num
-b=AddCircle(b,OR,a,1,&#39;sang&#39;,sang+ang-360/num*(i-1),&#39;ang&#39;,-ang);
-theta=-360/num/180*pi*(i-1);
-mat=[cos(theta),-sin(theta);sin(theta),cos(theta)];
-p1=mat*[sqrt(OR^2-R^2),par;R,R];
-p1=p1&#39;;
-a=AddPoint(a,p1(:,1),p1(:,2));
-b=AddLine(b,a,2+3*(i-1));
-p2=mat*[par;0];
-p2=p2&#39;;
-a=AddPoint(a,p2(1,1),p2(1,2));
-b=AddCircle(b,R,a,3+3*(i-1),&#39;sang&#39;,90+theta/pi*180,&#39;ang&#39;,-180);
-p3=mat*[par,sqrt(OR^2-R^2);-R,-R];
-p3=p3&#39;;
-a=AddPoint(a,p3(:,1),p3(:,2));
-b=AddLine(b,a,4+3*(i-1));
-end
-for i=1:num
-b=CreateRadius(b,1+6*(i-1),radius);
-b=CreateRadius(b,5+6*(i-1),radius);
-end
-h1=Line2D(&#39;Hole Group1&#39;);
-h1=AddCircle(h1,IR,a,1);
-a1=Point2D(&#39;Point Ass2&#39;);
-a1=AddPoint(a1,Rp,0);
-h2=Line2D(&#39;Hole Group2&#39;);
-h2=AddCircle(h2,hd/2,a1,1);
-inputplate1.Outline= b;
-inputplate1.Hole = [h1;h2];
-inputplate1.Thickness = t;
-paramsplate1 = struct();
-obj1=plate.Commonplate(paramsplate1, inputplate1);
-obj1 = obj1.solve();
-obj1=MoveFace(obj1,3,[0,0,60],&#39;num&#39;,6);
-Plot2D(obj1);
-Plot3D(obj1);
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>磁悬浮利用磁场力将运动机械悬浮起来，能解决机械接触摩擦而产生的磨损、振动、噪声、发热及摩擦能耗问题，对改善设备的高速性能、使用寿命及节能有重要意义。</p>
+<p>其中被动磁力轴承是通过永磁体或者超导体的磁力实现部分或者全部自由度的悬浮。</p>
+<p>径向的被动磁力轴承主要由磁铁来提供径向的刚度，轴向的刚度由其余轴承提供。<br><img src="/./img/%E5%8D%95%E5%88%97%E5%BE%84%E5%90%91%E8%A2%AB%E5%8A%A8%E7%A3%81%E5%8A%9B%E8%BD%B4%E6%89%BF%E4%BB%BF%E7%9C%9F.assets/5407cf0d515bbeba2fd91c2d01af2ce4_MD5.jpeg"><br>按照磁极的方向，有各种不同的排列组合：</p>
+<p><img src="/./img/%E5%8D%95%E5%88%97%E5%BE%84%E5%90%91%E8%A2%AB%E5%8A%A8%E7%A3%81%E5%8A%9B%E8%BD%B4%E6%89%BF%E4%BB%BF%E7%9C%9F.assets/678613cf4e704d11668271f1782f085d_MD5.jpeg"></p>
+<h2 id="仿真"><a href="#仿真" class="headerlink" title="仿真"></a>仿真</h2><p>本文以单列径向永磁轴承为例，对比文献[2]中径向刚度试验结果，该功能已集成在Baffalo中的RadialPMB模块中，<br><img src="/./img/%E5%8D%95%E5%88%97%E5%BE%84%E5%90%91%E8%A2%AB%E5%8A%A8%E7%A3%81%E5%8A%9B%E8%BD%B4%E6%89%BF%E4%BB%BF%E7%9C%9F.assets/63f7ab44503feaa2444b2d1eeb562d12_MD5.jpeg"><br>试验用径向磁化的双环嵌套永磁轴承结构如上图所示，<br>R内柱&#x3D;d&#x2F;2，R1&#x3D;d&#x2F;2+L，R2&#x3D;d&#x2F;2+L+Lg，R外柱&#x3D;d&#x2F;2+2L+Lg。<br>其中，d为内磁环内径；L为磁环径向厚度。永磁环材料为NdFeB，其性能为：B&#x3D;1.13T，H&#x3D;800kA&#x2F;m，（BH)m&#x3D;242kJ&#x2F;m，使用场所温度&lt;100℃，磁导率B&#x2F;H&#x3D;1.124uo。<br>试样：d&#x3D;26.0mm，L&#x3D;6.0mm，h&#x3D;12.0mm Lg&#x3D;1.0mm，<br>故有：R内柱&#x3D;13.0mm，Ri&#x3D;19.0mm，R2&#x3D;20mm，R外柱&#x3D;26.0mm。</p>
+<p>文献中提及了该模型的理论刚度计算公式如下<br>$$<br>F_x&#x3D;B_mB_rhR_2ln\frac{R2}{R1}&#x2F;[2ln\frac{(R_1+R_2)L_g}{R_2e}]×10^7<br>$$<br>磁力解析值和试验值对比</p>
+<p><img src="/./img/%E5%8D%95%E5%88%97%E5%BE%84%E5%90%91%E8%A2%AB%E5%8A%A8%E7%A3%81%E5%8A%9B%E8%BD%B4%E6%89%BF%E4%BB%BF%E7%9C%9F.assets/49626d5a3ec77de1b84ad4a092e349da_MD5.jpeg"></p>
+<p><img src="/./img/%E5%8D%95%E5%88%97%E5%BE%84%E5%90%91%E8%A2%AB%E5%8A%A8%E7%A3%81%E5%8A%9B%E8%BD%B4%E6%89%BF%E4%BB%BF%E7%9C%9F.assets/b0be291f53c292e93d1ca1160e27a239_MD5.jpeg"><br>本文给出了仿真值：</p>
+<pre><code class="language-matlab">S=RMaterial(&#39;Magnetic&#39;); 
+Mat=GetMat(S,36); 
+Mat&#123;1,1&#125;.Mux=1.124; 
+Mat&#123;1,1&#125;.Muy=1.124; 
+Mat&#123;1,1&#125;.Hc=800000; 
+inputStruct1.StatorR=[20,26]; 
+inputStruct1.RotorR=[13,19]; 
+inputStruct1.Height=[0,12]; 
+inputStruct1.StatorDir=180; 
+inputStruct1.RotorDir=0; 
+paramsStruct1.Material=Mat&#123;1,1&#125;; 
+Mag= bearing.RadialPMB(paramsStruct1, inputStruct1); 
+Mag= Mag.solve(); 
+Plot2D(Mag); 
+Plot3D(Mag); 
+Mag = CalStiffness(Mag); 
+PlotStiffness(Mag)
 </code></pre>
-<p>由平面拉伸为平板。</p>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/Commonplate.assets/Fig2.png" style="zoom: 100%;"></td><td><img src="/./img/Commonplate.assets/Fig3.png" style="zoom: 100%;"></td>
-		</tr>
-	</tbody>
-</table>
+<p>磁场云图如下：<br><img src="/./img/%E5%8D%95%E5%88%97%E5%BE%84%E5%90%91%E8%A2%AB%E5%8A%A8%E7%A3%81%E5%8A%9B%E8%BD%B4%E6%89%BF%E4%BB%BF%E7%9C%9F.assets/image-20250702095316719.png"><br>轴承刚度如下，可以看出仿真值和试验值是非常接近的。<br><img src="/./img/%E5%8D%95%E5%88%97%E5%BE%84%E5%90%91%E8%A2%AB%E5%8A%A8%E7%A3%81%E5%8A%9B%E8%BD%B4%E6%89%BF%E4%BB%BF%E7%9C%9F.assets/Fig3.jpg"></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] <a target="_blank" rel="noopener" href="https://www.feacat.com/2025/07/02/RadialPMB/">https://www.feacat.com/2025/07/02/RadialPMB/</a><br>[2] 永磁悬浮轴承与轨道及其磁力解析模型</p>
 
-<h3 id="Plate-Outline-subdivision，with-order-2-elements-Flag-2"><a href="#Plate-Outline-subdivision，with-order-2-elements-Flag-2" class="headerlink" title="Plate Outline subdivision，with order 2 elements (Flag&#x3D;2)"></a>Plate Outline subdivision，with order 2 elements (Flag&#x3D;2)</h3><pre><code class="language-matlab">% Plate 1
-IR=640/2;
-OR=768/2;
-par=442;
-radius=70;
-R=116/2;
-num=6;
-Rp=460;
-t=30;
-hd=17.5;
-sang=asin(R/OR)/pi*180;
-ang=360/num-2*sang;
-a=Point2D(&#39;Point Ass1&#39;);
-b=Line2D(&#39;Line Ass1&#39;,&#39;Dtol&#39;,1);
-a=AddPoint(a,0,0);
-for i=1:num
-b=AddCircle(b,OR,a,1,&#39;sang&#39;,sang+ang-360/num*(i-1),&#39;ang&#39;,-ang);
-theta=-360/num/180*pi*(i-1);
-mat=[cos(theta),-sin(theta);sin(theta),cos(theta)];
-p1=mat*[sqrt(OR^2-R^2),par;R,R];
-p1=p1&#39;;
-a=AddPoint(a,p1(:,1),p1(:,2));
-b=AddLine(b,a,2+3*(i-1));
-p2=mat*[par;0];
-p2=p2&#39;;
-a=AddPoint(a,p2(1,1),p2(1,2));
-b=AddCircle(b,R,a,3+3*(i-1),&#39;sang&#39;,90+theta/pi*180,&#39;ang&#39;,-180);
-p3=mat*[par,sqrt(OR^2-R^2);-R,-R];
-p3=p3&#39;;
-a=AddPoint(a,p3(:,1),p3(:,2));
-b=AddLine(b,a,4+3*(i-1));
-end
-for i=1:num
-b=CreateRadius(b,1+6*(i-1),radius);
-b=CreateRadius(b,5+6*(i-1),radius);
-end
-h1=Line2D(&#39;Hole Group1&#39;);
-h1=AddCircle(h1,IR,a,1);
-a1=Point2D(&#39;Point Ass2&#39;);
-a1=AddPoint(a1,Rp,0);
-h2=Line2D(&#39;Hole Group2&#39;);
-h2=AddCircle(h2,hd/2,a1,1);
-inputplate1.Outline= b;
-inputplate1.Hole = [h1;h2];
-inputplate1.Thickness = t;
-paramsplate1.Order = 2;
-obj1=plate.Commonplate(paramsplate1, inputplate1);
-obj1 = obj1.solve();
-obj1=MoveFace(obj1,3,[0,0,60],&#39;num&#39;,6);
-Plot2D(obj1);
-obj1=OutputSolidModel(obj1,&#39;SubOutline&#39;,1);
-obj1=OutputSolidModel(obj1,&#39;SubOutline&#39;,1);
-Plot3D(obj1,&#39;faceno&#39;,201);
-Plot3D(obj1)
-</code></pre>
-<p>细分平板编号，更改为2阶单元。</p>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/Commonplate.assets/Fig4.png" style="zoom: 100%;"></td><td><img src="/./img/Commonplate.assets/Fig5.png" style="zoom: 100%;"></td>
-		</tr>
-	</tbody>
-</table>
-
-<h3 id="Output-shell-elements-Flag-3"><a href="#Output-shell-elements-Flag-3" class="headerlink" title="Output shell elements (Flag&#x3D;3)"></a>Output shell elements (Flag&#x3D;3)</h3><pre><code class="language-matlab">b=Line2D(&#39;Round Polygon&#39;);
-b=AddRoundPolygon(b,10*sqrt(2),4,2,&#39;sang&#39;,45);
-inputplate1.Outline= b;
-inputplate1.Thickness = 2;
-paramsplate1= struct();
-obj1=plate.Commonplate(paramsplate1, inputplate1);
-obj1 = obj1.solve();
-Ass=obj1.output.Assembly1;
-Plot(Ass);
-</code></pre>
-<p>导出壳单元网格。</p>
-<img src="/./img/Commonplate.assets/Fig6.png" alt="Fig6" style="zoom:33%;" />
-
-<h3 id="Oupput-STL-file-Flag-4"><a href="#Oupput-STL-file-Flag-4" class="headerlink" title="Oupput STL file (Flag&#x3D;4)"></a>Oupput STL file (Flag&#x3D;4)</h3><pre><code class="language-matlab">b=Line2D(&#39;Round Polygon&#39;);
-b=AddRoundPolygon(b,10*sqrt(2),6,2);
-inputplate1.Outline= b;
-inputplate1.Thickness = 2;
-paramsplate1= struct();
-obj1=plate.Commonplate(paramsplate1, inputplate1);
-obj1 = obj1.solve();
-OutputSTL(obj1)
-% Load stl file
-L=Layer(&#39;test&#39;);
-Name=strcat(obj1.params.Name,&#39;.stl&#39;);
-L=STLRead(L,Name);
-Plot(L);
-</code></pre>
-<p>导出STL格式文件。</p>
-<img src="/./img/Commonplate.assets/Fig7.png" alt="Fig7" style="zoom:33%;" />
-
-<h3 id="Deform-face-Flag-5"><a href="#Deform-face-Flag-5" class="headerlink" title="Deform face (Flag&#x3D;5)"></a>Deform face (Flag&#x3D;5)</h3><pre><code class="language-matlab">a=Point2D(&#39;Points assembly&#39;);
-a=AddPoint(a,0,0);
-R1=180;
-r=30;
-a=AddPoint(a,R1,0,&#39;polar&#39;,&#39;deg&#39;);
-Angle1=acos(r/2/R1)*2/pi*180;
-Angle2=(180-Angle1)*2;
-b1=Line2D(&#39;OutLine&#39;);
-Sang1=180-Angle1/2;
-b1=AddCircle(b1,r,a,2,&#39;sang&#39;,Sang1,&#39;ang&#39;,Angle1);
-Sang2=-180+Angle1;
-b1=AddCircle(b1,R1,a,1,&#39;Sang&#39;,Sang2,&#39;ang&#39;,Angle2);
-inputplate1.Outline= b1;
-inputplate1.Thickness = 10;
-inputplate1.Meshsize=5;
-paramsplate1= struct();
-obj1=plate.Commonplate(paramsplate1, inputplate1);
-obj1 = obj1.solve();
-Plot3D(obj1)
-f1=@(r)(sqrt(360^2-r.^2)-360);
-obj1=DeformFace(obj1,f1,1);
-f2=@(r)(sqrt(360^2-r.^2)-360+10);
-obj1=DeformFace(obj1,f2,2);
-Plot3D(obj1)
-</code></pre>
-<p>对目标面按指定方式变换。</p>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/Commonplate.assets/Fig8.png" style="zoom: 100%;"></td><td><img src="/./img/Commonplate.assets/Fig9.png" style="zoom: 100%;"></td>
-		</tr>
-	</tbody>
-</table>
-
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/Commonplate.assets/Fig10.png" style="zoom: 100%;"></td><td><img src="/./img/Commonplate.assets/Fig11.png" style="zoom: 100%;"></td>
-		</tr>
-	</tbody>
-</table>
-
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
     </div>

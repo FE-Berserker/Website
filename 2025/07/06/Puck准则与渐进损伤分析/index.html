@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>FlangeBolt | Baffalo</title>
+  <title>Puck准则与渐进损伤分析 | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="FlangeBolt | Baffalo">
+  <meta name="description" content="Puck准则与渐进损伤分析 | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="介绍WovenRing用于生成2D编织材料圆环。   类结构 输入 input：  Rref : 参考半径  Thickness : 厚度 Curve : 截面基准曲线  参数 params:  ThicknessNum ：厚度方向网格划分 Name : 名称 N_Slice: 旋转方向划分数量 Material : 材料 Dir : 加厚度方向 Axial : 旋转轴  输出 output :">
 <meta property="og:type" content="article">
@@ -739,9 +739,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-FlangeBolt" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Puck准则与渐进损伤分析" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">FlangeBolt</h1>
+        <h1 class="article-title">Puck准则与渐进损伤分析</h1>
     
     <div class="article-meta">
         
@@ -751,7 +751,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo部件">Baffalo部件</a>
+            <a  data-rel="Baffalo笔记">Baffalo笔记</a>
             
         </span>
         
@@ -759,7 +759,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-05-31 19:26:29'>2025-05-31 19:24</time>
+            发布时间 : <time class="date" title='最后更新: 2025-07-06 20:12:19'>2025-07-06 20:08</time>
         
     </div>
     <div class="article-meta">
@@ -770,7 +770,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BoltJoint-with-axial-force-VDI2230-example2-Flag-1"><span class="toc-text">BoltJoint with axial force (VDI2230 example2 Flag&#x3D;1)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%AA%E5%8A%9B%E5%BD%B1%E5%93%8D"><span class="toc-text">剪力影响</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%90%E8%BF%9B%E6%8D%9F%E4%BC%A4%E5%88%86%E6%9E%90"><span class="toc-text">渐进损伤分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%94%E7%94%A8Puck%E5%87%86%E5%88%99%E8%BF%9B%E8%A1%8C%E6%B8%90%E8%BF%9B%E6%8D%9F%E4%BC%A4%E5%88%86%E6%9E%90"><span class="toc-text">应用Puck准则进行渐进损伤分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E9%99%90%E5%85%83%E7%BB%93%E6%9E%9C%E7%9A%84%E4%BF%AE%E6%AD%A3"><span class="toc-text">有限元结果的修正</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -786,115 +786,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>FlangeBolt类用来计算法兰螺栓。</p>
-<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/FlangeBolt.assets/Fig6.jpg"></p>
-<p>输入 input：</p>
-<ul>
-<li>Geom : 几何参数</li>
-<li>nB : 螺栓数量</li>
-<li>MT : 扭矩</li>
-<li>FQ :  剪力</li>
-<li>FAmin : 最小轴向力</li>
-<li>FAmax : 最大轴向力</li>
-<li>Nz: 循环次数</li>
-<li>Clamping ：夹持件厚度和材料</li>
-<li>Bolt : 螺栓类</li>
-</ul>
-<p>参数 params:</p>
-<ul>
-<li>Name : 名称</li>
-<li>MuT : 夹持件的摩擦系数</li>
-<li>FlangeType : 法兰类型</li>
-<li>ConShear : 考虑剪力</li>
-</ul>
-<p>输出 output :</p>
-<ul>
-<li><p>Phin: 载荷比</p>
-</li>
-<li><p>n ：载荷导入系数</p>
-</li>
-<li><p>deltas : 法兰回弹量</p>
-</li>
-<li><p>deltapzu : 螺栓回弹量</p>
-</li>
-<li><p>deltap : 螺栓回弹量</p>
-</li>
-</ul>
-<p>能力 capability :</p>
-<ul>
-<li>SG ：滑移安全系数</li>
-<li>SF ：屈服安全系数</li>
-<li>SD ：疲劳安全系数</li>
-<li>SA ：剪切安全系数</li>
-</ul>
-<h3 id="BoltJoint-with-axial-force-VDI2230-example2-Flag-1"><a href="#BoltJoint-with-axial-force-VDI2230-example2-Flag-1" class="headerlink" title="BoltJoint with axial force (VDI2230 example2 Flag&#x3D;1)"></a>BoltJoint with axial force (VDI2230 example2 Flag&#x3D;1)</h3><img src="/./img/FlangeBolt.assets/FlangeJoint.png" style="zoom: 33%;" />
-
-<pre><code class="language-matlab">inputStruct1.d=16;
-inputStruct1.l=80;
-inputStruct1.lk=60;
-inputStruct1.dh=17;
-paramsStruct1.ThreadType=1;
-paramsStruct1.alphaA=1.6;
-paramsStruct1.MuG=0.12;
-paramsStruct1.MuK=0.12;
-paramsStruct1.Nut=1;
-paramsStruct1.NutWasher=0;
-paramsStruct1.Washer=0;
-M16Bolt= bolt.Bolt(paramsStruct1, inputStruct1);
-M16Bolt= M16Bolt.solve();
-Plot2D(M16Bolt);
-Plot3D(M16Bolt);
-
-MT=13000000;%Nmm
-S=RMaterial(&#39;Basic&#39;);
-Mat=GetMat(S,57);
-
-inputStruct2.Bolt=M16Bolt;
-inputStruct2.MT=MT;
-inputStruct2.nB=12;
-inputStruct2.FAmax=0;
-inputStruct2.Geom=[258,338,178];
-inputStruct2.Clamping=[30,1;30,1];
-paramsStruct2.Material=Mat;
-BoltJoint=bolt.FlangeBolt(paramsStruct2, inputStruct2);
-BoltJoint= BoltJoint.solve();
-disp(BoltJoint.capacity.SF);
-disp(BoltJoint.capacity.SG);
-PlotCapacity(BoltJoint)
-</code></pre>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/FlangeBolt.assets/Fig1.jpg" style="zoom: 100%;"></td><td><img src="/./img/FlangeBolt.assets/Fig2.jpg" style="zoom: 100%;"></td>
-		</tr>
-	</tbody>
-</table>
-
-
-<p>计算得到的安全系数如下：</p>
-<p>SF:</p>
-<p>1.1766</p>
-<p>SG:</p>
-<p>1.3277</p>
-<p>在kisssoft中计算时，将嵌入量fz调整为0，得到的结果如下：</p>
-<img src="/./img/FlangeBolt.assets/Fig3.jpg" style="zoom: 33%;" />
-
-<p>可见两者计算结果一致。</p>
-<p>绘制节点安全系数：</p>
-<img src="/./img/FlangeBolt.assets/Fig4.jpg" style="zoom: 33%;" />
-
-<h4 id="剪力影响"><a href="#剪力影响" class="headerlink" title="剪力影响"></a>剪力影响</h4><p>在VDI2230中，螺栓所承受的剪力如下：</p>
-<img src="/./img/FlangeBolt.assets/Shear.png" style="zoom: 33%;" />
-
-<p>在本案例中kisssoft中$\frac{F_{Qmax}}{A_0}$是省略掉的，其认为所有的剪力均由夹持件间的摩擦力提供，可不考虑该项的影响。</p>
-<p>但有些场景下，因为设计理念的不同，我们想要即使螺栓承受所有的剪力，其也不会失效。在程序中设置ConShear选项，其可以在屈服强度计算中考虑剪力的影响。</p>
-<pre><code class="language-matlab">paramsStruct2.ConShear=1;
-</code></pre>
-<p>此时屈服安全系数SF为：<br>    1.1291</p>
-<img src="/./img/FlangeBolt.assets/Fig5.jpg" style="zoom: 33%;" />
-
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] VDI2230_blatt_1_2015</p>
-<p>[2] VDI2230_blatt_2_2014</p>
+        <h2 id="渐进损伤分析"><a href="#渐进损伤分析" class="headerlink" title="渐进损伤分析"></a>渐进损伤分析</h2><p>通常情况下，复合材料纤维的断裂可以认为是结构的破坏。但层间或者树脂基底的破坏，在有些情况下，结构依然能保持完好的功能性，这部分损伤被认为是可允许的损伤。比如一些压力容器内部，虽然有裂纹，但纤维仍然附着其表面，并没有丧失承载力，这些细微的损伤并没有对结构产生破坏。<br>这种效应通常需要通过渐进损伤分析来判断，根据有限元结果，对弹性模量和剪切模量$E_⊥$、  $G_{⊥‖}$进行折减，通过数次迭代来判断损伤是否收敛稳定。</p>
+<h2 id="应用Puck准则进行渐进损伤分析"><a href="#应用Puck准则进行渐进损伤分析" class="headerlink" title="应用Puck准则进行渐进损伤分析"></a>应用Puck准则进行渐进损伤分析</h2><p>根据 Puck 于 1969 年最初设计的退化方法  , 模量$G_{⊥‖}$ 、$E_⊥$ 和$v_{⊥‖}$：<br>$$<br>\eta_E&#x3D;\frac{1-\eta_{rE}}{1+c_E(f_{E,IFF}-1)^{\xi_E}}+\eta_{rE}<br>$$<br>$$<br>\eta_G&#x3D;\frac{1-\eta_{rG}}{1+c_G(f_{E,IFF}-1)^{\xi_G}}+\eta_{rG}<br>$$<br>$$<br>\eta_v&#x3D;\frac{1-\eta_{rv}}{1+c_v(f_{E,IFF}-1)^{\xi_v}}+\eta_{rv}<br>$$<br>式中$\eta_r$、$c$、$\xi$均为试验拟合的参数，$f_{E,IFF}$为计算得到的层间失效的危险系数，大于1为失效。<br>有意思的一点是，这里有一个前提，不管你的失效模式是什么样，只要你的计算得到的危险系数一样，折减因子也一样。这点如果更现代的微观力学角度来说是有待斟酌的。</p>
+<p>Knops于2003年的分析中，具体给定了拟合的参数，其结果表明 断裂力学方法模拟结果和实验数据都显示在给定的裂纹密度 (和给定的应力危险系数)  下, $E_⊥$的退化程度大于 $G_{⊥‖}$, 而泊松比 $ν_{⊥‖}$根本不需要折减 。因此在采用puck准则进行渐进损伤分析中无需对泊松比折减，笔者在测试有限元过程中，也发现即使泊松比发生变化，结果影响也很小。</p>
+<p>对于CFRP和GFRP可按下表选取，可以发现两种材料对弹性模量的折减接近，对剪切模量的折减相差比较大。</p>
+<p><img src="/./img/Puck%E5%87%86%E5%88%99%E4%B8%8E%E6%B8%90%E8%BF%9B%E6%8D%9F%E4%BC%A4%E5%88%86%E6%9E%90.assets/ca4fc2db720f086693a2350cb092c49d_MD5.jpeg"></p>
+<p><img src="/./img/Puck%E5%87%86%E5%88%99%E4%B8%8E%E6%B8%90%E8%BF%9B%E6%8D%9F%E4%BC%A4%E5%88%86%E6%9E%90.assets/96fae119554fa194da8ffadb43b414f4_MD5.jpeg"></p>
+<h2 id="有限元结果的修正"><a href="#有限元结果的修正" class="headerlink" title="有限元结果的修正"></a>有限元结果的修正</h2><p>当对有限元结果进行修正时，给定一个载荷，计算得到的$f_{E,IFF}&#x3D;1.5$,按照1.5去计算折减系数，再带入下一步计算。</p>
+<p>这个时候又会发现一个bug，线弹性分析得到危险系数为1.5的时候，意味着这个结构很早之前就已经发生了变化，按照1.5系数得到的折减系数，并不是真正的折减系数，需要回退到安全系数为1时的情况重新计算。</p>
+<p>一种比较简单的方式，就是缩小载荷步，比如原先10步的计算，改到100步，用微分的方式来近似分析。</p>
+<p>Knops提到了另一种方式，他将计算得到的应力分为两种，一种叫真实应力，一种时虚假应力，当通过第一步计算得到折减系数后，不能直接带入下一步，需要将第一步的应变带入折减后的结构，重新进行计算。如果危险系数小于1，则重新取该步的结果，该单元无需考虑折减。通过循环往复的迭代，可以得到最终的渐进损伤分析的结果。</p>
+<p><img src="/./img/Puck%E5%87%86%E5%88%99%E4%B8%8E%E6%B8%90%E8%BF%9B%E6%8D%9F%E4%BC%A4%E5%88%86%E6%9E%90.assets/0c372501b6fefc9520569b2d9f71807f_MD5.jpeg"><br><img src="/./img/Puck%E5%87%86%E5%88%99%E4%B8%8E%E6%B8%90%E8%BF%9B%E6%8D%9F%E4%BC%A4%E5%88%86%E6%9E%90.assets/image20250706194535.png"></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] <a target="_blank" rel="noopener" href="https://www.feacat.com/2025/06/12/PuckCriterion3D/">https://www.feacat.com/2025/06/12/PuckCriterion3D/</a><br>[2] 复合材料层合板失效分析</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>

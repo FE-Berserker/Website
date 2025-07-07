@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Housing | Baffalo</title>
+  <title>Transform | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Housing | Baffalo">
+  <meta name="description" content="Transform | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="介绍Transform用于坐标的三维变换。 案例Translate (Flag&#x3D;1)P1&#x3D;[-1,1,1;1,1,1;1,-1,1;-1,-1,1;-1,1,-1;1,1,-1;1,-1,-1;-1,-1,-1]; T&#x3D;Transform(P1); T&#x3D;Translate(T,-2,-1,3); P2&#x3D;Solve(T); scatter3(P1(:,1),P1(:,2),P1(:,3),">
 <meta property="og:type" content="article">
@@ -748,9 +748,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Housing" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Transform" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Housing</h1>
+        <h1 class="article-title">Transform</h1>
     
     <div class="article-meta">
         
@@ -760,7 +760,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo部件">Baffalo部件</a>
+            <a  data-rel="Baffalo框架">Baffalo框架</a>
             
         </span>
         
@@ -768,7 +768,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-03-23 13:15:51'>2025-03-23 13:14</time>
+            发布时间 : <time class="date" title='最后更新: 2025-07-07 22:34:27'>2025-07-07 22:32</time>
         
     </div>
     <div class="article-meta">
@@ -779,7 +779,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Housing"><span class="toc-text">Housing</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-Housing-Flag-1"><span class="toc-text">Create Housing (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deform-the-plate-face-Flag-2"><span class="toc-text">Deform the plate face (Flag&#x3D;2)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Translate-Flag-1"><span class="toc-text">Translate (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scale-Flag-2"><span class="toc-text">Scale (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotate-Flag-3"><span class="toc-text">Rotate (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Scale-wirh-origin-point-Flag-4"><span class="toc-text">Scale wirh origin point (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotate-wirh-origin-point-Flag-5"><span class="toc-text">Rotate wirh origin point (Flag&#x3D;5)</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -795,98 +795,91 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Housing"><a href="#Housing" class="headerlink" title="Housing"></a>Housing</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Housing是轴套类，它可以通过旋转一个平面生成网格。</p>
-<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/Housing.assets/Fig5.jpg" style="zoom:100%;" />
-
-<p>输入 input：</p>
-<ul>
-<li>Meshsize : 单元尺寸</li>
-<li>Hole : 孔边界Line2D</li>
-<li>Outline : 外轮廓Line2D</li>
-</ul>
-<p>参数 params:</p>
-<ul>
-<li>Order ：单元阶数</li>
-<li>Name : 名称</li>
-<li>E_Revolve: 实体单元旋转方向网格划分数量</li>
-<li>Material : 材料</li>
-<li>Degree : 旋转角度</li>
-<li>Axis : 旋转轴</li>
-</ul>
-<p>输出 output :</p>
-<ul>
-<li>Assembly : 实体单元装配</li>
-<li>Surface : 截面</li>
-<li>SolidMesh : 实体网格</li>
-</ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-Housing-Flag-1"><a href="#Create-Housing-Flag-1" class="headerlink" title="Create Housing (Flag&#x3D;1)"></a>Create Housing (Flag&#x3D;1)</h3><p>以下是一个带孔的方板旋转成体的例子，3D网格中带有一条环形的圆管。</p>
-<pre><code class="language-matlab">a=Point2D(&#39;Point Ass1&#39;);
-a=AddPoint(a,[-5;-5],[100;110]);
-a=AddPoint(a,[-5;5],[110;110]);
-a=AddPoint(a,[5;5],[110;100]);
-a=AddPoint(a,[5;-5],[100;100]);
-a=AddPoint(a,0,105);
-b=Line2D(&#39;Line Ass1&#39;);
-b=AddCurve(b,a,1);
-b=AddCurve(b,a,2);
-b=AddCurve(b,a,3);
-b=AddCurve(b,a,4);
-h1=Line2D(&#39;Hole Ass1&#39;);
-h1=AddCircle(h1,1,a,5);
-inputHousing.Outline= b;
-inputHousing.Hole = h1;
-paramsHousing.Degree = 360;
-        
-obj1=housing.Housing(paramsHousing, inputHousing);
-obj1=obj1.solve();
-Plot2D(obj1);
-%obj1=OutputSolidModel(obj1,&#39;SubOutline&#39;,0);
-obj1=OutputSolidModel(obj1,&#39;SubOutline&#39;,1);
-Plot3D(obj1,&#39;faceno&#39;,101);
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Transform用于坐标的三维变换。</p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Translate-Flag-1"><a href="#Translate-Flag-1" class="headerlink" title="Translate (Flag&#x3D;1)"></a>Translate (Flag&#x3D;1)</h3><pre><code class="language-matlab">P1=[-1,1,1;1,1,1;1,-1,1;-1,-1,1;-1,1,-1;1,1,-1;1,-1,-1;-1,-1,-1];
+T=Transform(P1);
+T=Translate(T,-2,-1,3);
+P2=Solve(T);
+scatter3(P1(:,1),P1(:,2),P1(:,3), ...
+  &#39;MarkerEdgeColor&#39;,&#39;k&#39;,...
+  &#39;MarkerFaceColor&#39;,[0 .75 .75]);
+hold on
+scatter3(P2(:,1),P2(:,2),P2(:,3), ...
+  &#39;MarkerEdgeColor&#39;,&#39;k&#39;,...
+  &#39;MarkerFaceColor&#39;,[1 0 0]);
+axis equal
 </code></pre>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/Housing.assets/Fig1.jpg" style="zoom: 100%;"></td><td><img src="/./img/Housing.assets/Fig2.jpg" style="zoom: 100%;"></td>
-		</tr>
-	</tbody>
-</table>
+<p>平移变换</p>
+<img src="/./img/TransForm.assets/Fig1.jpg" style="zoom:50%;" />
 
 
-<h3 id="Deform-the-plate-face-Flag-2"><a href="#Deform-the-plate-face-Flag-2" class="headerlink" title="Deform the plate face (Flag&#x3D;2)"></a>Deform the plate face (Flag&#x3D;2)</h3><p>下图为一个薄壁轴套的图纸：</p>
-<img src="/./img/Housing.assets/image-20250323130532313.png" alt="image-20250323130532313" style="zoom:50%;" />
-
-<pre><code class="language-matlab">a=Point2D(&#39;Point Ass1&#39;);
-a=AddPoint(a,[0;4],[110/2;110/2]);
-a=AddPoint(a,[4;4],[110/2;100/2]);
-a=AddPoint(a,[4;18],[100/2;100/2]);
-a=AddPoint(a,[18;18],[100/2;90/2]);
-a=AddPoint(a,[18;1],[90/2;90/2]);
-a=AddPoint(a,[1;0],[90/2;92/2]);
-a=AddPoint(a,[0;0],[92/2;110/2]);
-
-b=Line2D(&#39;Line Ass1&#39;);
-for i=1:7
-  b=AddCurve(b,a,i);
-end
-inputHousing.Outline= b;
-paramsHousing.Degree = 360;
-
-obj1=housing.Housing(paramsHousing, inputHousing);
-obj1=obj1.solve();
-Plot2D(obj1);
-Plot3D(obj1);
+<h3 id="Scale-Flag-2"><a href="#Scale-Flag-2" class="headerlink" title="Scale (Flag&#x3D;2)"></a>Scale (Flag&#x3D;2)</h3><pre><code class="language-matlab">P1=[-1,1,1;1,1,1;1,-1,1;-1,-1,1;-1,1,-1;1,1,-1;1,-1,-1;-1,-1,-1];
+T=Transform(P1);
+T=Scale(T,2,1,3);
+P2=Solve(T);
+scatter3(P1(:,1),P1(:,2),P1(:,3), ...
+  &#39;MarkerEdgeColor&#39;,&#39;k&#39;,...
+  &#39;MarkerFaceColor&#39;,[0 .75 .75]);
+hold on
+scatter3(P2(:,1),P2(:,2),P2(:,3), ...
+  &#39;MarkerEdgeColor&#39;,&#39;k&#39;,...
+  &#39;MarkerFaceColor&#39;,[1 0 0]);
+axis equal
 </code></pre>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/Housing.assets/Fig3.jpg" style="zoom: 100%;"></td><td><img src="/./img/Housing.assets/Fig4.jpg" style="zoom: 100%;"></td>
-		</tr>
-	</tbody>
-</table>
+<p>缩放</p>
+<img src="/./img/TransForm.assets/Fig2.jpg" style="zoom:50%;" />
+
+<h3 id="Rotate-Flag-3"><a href="#Rotate-Flag-3" class="headerlink" title="Rotate (Flag&#x3D;3)"></a>Rotate (Flag&#x3D;3)</h3><pre><code class="language-matlab">P1=[-1,1,1;1,1,1;1,-1,1;-1,-1,1;-1,1,-1;1,1,-1;1,-1,-1;-1,-1,-1];
+T=Transform(P1);
+T=Rotate(T,45,0,0);
+P2=Solve(T);
+scatter3(P1(:,1),P1(:,2),P1(:,3), ...
+  &#39;MarkerEdgeColor&#39;,&#39;k&#39;,...
+  &#39;MarkerFaceColor&#39;,[0 .75 .75]);
+hold on
+scatter3(P2(:,1),P2(:,2),P2(:,3), ...
+  &#39;MarkerEdgeColor&#39;,&#39;k&#39;,...
+  &#39;MarkerFaceColor&#39;,[1 0 0]);
+axis equal
+</code></pre>
+<p>旋转</p>
+<img src="/./img/TransForm.assets/Fig3.jpg" style="zoom:50%;" />
 
 
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
+
+<h3 id="Scale-wirh-origin-point-Flag-4"><a href="#Scale-wirh-origin-point-Flag-4" class="headerlink" title="Scale wirh origin point (Flag&#x3D;4)"></a>Scale wirh origin point (Flag&#x3D;4)</h3><pre><code class="language-matlab">P1=[-1,1,1;1,1,1;1,-1,1;-1,-1,1;-1,1,-1;1,1,-1;1,-1,-1;-1,-1,-1];
+T=Transform(P1);
+T=Scale(T,2,1,3,&#39;Ori&#39;,[-1,-1,-1]);
+P2=Solve(T);
+scatter3(P1(:,1),P1(:,2),P1(:,3), ...
+  &#39;MarkerEdgeColor&#39;,&#39;k&#39;,...
+  &#39;MarkerFaceColor&#39;,[0 .75 .75]);
+hold on
+scatter3(P2(:,1),P2(:,2),P2(:,3), ...
+  &#39;MarkerEdgeColor&#39;,&#39;k&#39;,...
+  &#39;MarkerFaceColor&#39;,[1 0 0]);
+axis equal
+</code></pre>
+<p>绕原点缩放</p>
+<img src="/./img/TransForm.assets/Fig4.jpg" style="zoom:50%;" />
+
+<h3 id="Rotate-wirh-origin-point-Flag-5"><a href="#Rotate-wirh-origin-point-Flag-5" class="headerlink" title="Rotate wirh origin point (Flag&#x3D;5)"></a>Rotate wirh origin point (Flag&#x3D;5)</h3><pre><code class="language-matlab">P1=[-1,1,1;1,1,1;1,-1,1;-1,-1,1;-1,1,-1;1,1,-1;1,-1,-1;-1,-1,-1];
+T=Transform(P1);
+T=Rotate(T,0,0,45,&#39;Ori&#39;,[-1,-1,-1]);
+P2=Solve(T);
+scatter3(P1(:,1),P1(:,2),P1(:,3), ...
+  &#39;MarkerEdgeColor&#39;,&#39;k&#39;,...
+  &#39;MarkerFaceColor&#39;,[0 .75 .75]);
+hold on
+scatter3(P2(:,1),P2(:,2),P2(:,3), ...
+  &#39;MarkerEdgeColor&#39;,&#39;k&#39;,...
+  &#39;MarkerFaceColor&#39;,[1 0 0]);
+axis equal
+</code></pre>
+<p>绕原点旋转</p>
+<img src="/./img/TransForm.assets/Fig5.jpg" style="zoom:50%;" />
+
+
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
     </div>

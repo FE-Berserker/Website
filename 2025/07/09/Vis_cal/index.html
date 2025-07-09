@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>BossPlate | Baffalo</title>
+  <title>Vis_cal | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="BossPlate | Baffalo">
+  <meta name="description" content="Vis_cal | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="介绍Vis_cal用于计算润滑油的粘度系数和温度，参考于ISO 6336-22$^{[1]}$ 原理运动粘度The kinematic viscosity at bulk temperature, $\nu_{\theta M}$, can be calculated from the kinematic viscosity at 40 $^\circ C$, $\nu_{40}$, and th">
 <meta property="og:type" content="article">
@@ -764,9 +764,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-BossPlate" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Vis_cal" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">BossPlate</h1>
+        <h1 class="article-title">Vis_cal</h1>
     
     <div class="article-meta">
         
@@ -776,7 +776,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo部件">Baffalo部件</a>
+            <a  data-rel="Baffalo方法">Baffalo方法</a>
             
         </span>
         
@@ -784,7 +784,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-03-08 23:11:52'>2025-03-08 23:08</time>
+            发布时间 : <time class="date" title='最后更新: 2025-07-09 11:07:45'>2025-07-09 11:05</time>
         
     </div>
     <div class="article-meta">
@@ -795,7 +795,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#BossPlate"><span class="toc-text">BossPlate</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-Boss-plate1-Flag-1"><span class="toc-text">Create Boss plate1 (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deform-the-plate-face-Flag-2"><span class="toc-text">Deform the plate face (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Extrude-outsize-surface-Flage-3"><span class="toc-text">Extrude outsize surface (Flage&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-outer-part-holes-Flag-4"><span class="toc-text">Add outer part holes (Flag&#x3D;4)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E5%8A%A8%E7%B2%98%E5%BA%A6"><span class="toc-text">运动粘度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E5%BA%A6"><span class="toc-text">密度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -811,235 +811,74 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="BossPlate"><a href="#BossPlate" class="headerlink" title="BossPlate"></a>BossPlate</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>BossPlate是一种带台阶的平板类。</p>
-<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/BossPlate.assets/Fig12.jpg" style="zoom:100%;" />
-
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Vis_cal用于计算润滑油的粘度系数和温度，参考于ISO 6336-22$^{[1]}$</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="运动粘度"><a href="#运动粘度" class="headerlink" title="运动粘度"></a>运动粘度</h3><p>The kinematic viscosity at bulk temperature, $\nu_{\theta M}$, can be calculated from the kinematic viscosity at 40 $^\circ C$, $\nu_{40}$, and the kinematic viscosity at 100 $^\circ C$, $\nu_{100}$. Extrapolation for temperature higher than 140$^\circ C$ should be confirmed by measurement.</p>
+<p>$$<br>log[log(\nu_{\theta M}+0.7)]&#x3D;A·log(\theta_{M}+273)+B<br>$$<br>where<br>$$<br>A&#x3D;\frac{log[log(\nu_{40}+0.7)&#x2F;log(\nu_{100}+0.7)]}{log(313&#x2F;373)}<br>$$</p>
+<p>$$<br>B&#x3D;log[log(\nu_{40}+0.7)]-A·log(313)<br>$$</p>
+<p>where</p>
+<p>$\theta_M$ is the bulk temperature.</p>
+<p>$\nu_{40}$ is the kinematic viscosity of the lubricant at 40$^\circ C$</p>
+<h3 id="密度"><a href="#密度" class="headerlink" title="密度"></a>密度</h3><p>If the density of the lubricant at bulk temperature, $\rho_{\theta M}$, is not available, it can be approximated based on the density of the lubricant at 15 $^\circ C$ according to<br>$$<br>\rho_{\theta M}&#x3D;\rho_{15}·[1-\frac{(\theta_M+273)-288}{15\rho_{15}}]<br>$$<br>where</p>
+<p>$\rho_{15}$ is the density of the lubricant at 15 $^\circ C$ according to the lubricant data sheet</p>
+<p>$\theta_M$ is the bulk temperature</p>
+<p>If no data for $\rho_{15}$ is available, then below formula can be used for approximation of mineral oils<br>$$<br>\rho_{15}&#x3D;43.37log\nu_{40}+805.5<br>$$</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/Vis_cal.assets/Fig1.jpg"></p>
 <p>输入 input：</p>
 <ul>
-<li>Meshsize : 单元尺寸</li>
-<li>PlateThickness : 板厚度</li>
-<li>OuterHole : 外部圆孔</li>
-<li>BossHeight : 台阶高度</li>
-<li>Outline : 外轮廓Line2D</li>
-<li>InnerHole : 内部圆孔 </li>
-<li>InnerLinne : 内轮廓Line2D</li>
-<li>MidLine : 台阶轮廓Line2D</li>
+<li>T : 温度</li>
 </ul>
 <p>参数 params:</p>
 <ul>
-<li>Order ：单元阶数</li>
-<li>Type : 台阶板类型</li>
-<li>Name : 名称</li>
-<li>Hole: 圆孔环向网格划分数量</li>
-<li>Material : 材料</li>
+<li>Material ：润滑油的材料属性</li>
 </ul>
 <p>输出 output :</p>
 <ul>
-<li>Assembly : 实体单元装配</li>
-<li>SolidMesh : 实体网格</li>
-<li>PlateNode : 底面节点编号</li>
+<li>Rou : 润滑油在该温度下的密度</li>
+<li>Vis1 : 该温度下运动粘度系数</li>
+<li>Vis2 : 该温度下动力粘度系数</li>
+<li>B : 参数B</li>
+<li>A : 参数A</li>
 </ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-Boss-plate1-Flag-1"><a href="#Create-Boss-plate1-Flag-1" class="headerlink" title="Create Boss plate1 (Flag&#x3D;1)"></a>Create Boss plate1 (Flag&#x3D;1)</h3><pre><code class="language-matlab">a=Point2D(&#39;Points assembly&#39;);
-a=AddPoint(a,0,0);
-Num=8;
-R1=180;
-R2=120;
-R3=30;
-r=30;
-for i=1:Num
-a=AddPoint(a,R1,-360/Num*(i-1),&#39;polar&#39;,&#39;deg&#39;);
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><p>以ISO-VG 100为例，计算70℃时的运动粘度系数。</p>
+<pre><code class="language-matlab">%% Caculate the vis
+S=RMaterial(&#39;Lubricant&#39;);
+Mat=GetMat(S,3);
+inputStruct1.T=70;
+paramsStruct1.Material=Mat&#123;1,1&#125;;
+Vis=method.Vis_cal(paramsStruct1, inputStruct1);
+Vis=Vis.solve();
+%% Plot vis, rou&amp;Tempearture curve
+x=(30:10:150)&#39;;
+y1=NaN(numel(x),1);
+y2=NaN(numel(x),1);
+for i=1:numel(x)
+    Vis.input.T=x(i);
+    Vis=Vis.solve();
+    y1(i)=Vis.output.Vis1;
+    y2(i)=Vis.output.Rou;  
 end
-Angle1=acos(r/2/R1)*2/pi*180;
-Angle2=360/Num-(180-Angle1)*2;
-b1=Line2D(&#39;OutLine&#39;);
-for i=1:Num
-Sang1=180-Angle1/2-(i-1)*360/Num;
-b1=AddCircle(b1,r,a,i+1,&#39;sang&#39;,Sang1,&#39;ang&#39;,Angle1);
-Sang2=-180+Angle1-(i-1)*360/Num;
-b1=AddCircle(b1,R1,a,1,&#39;Sang&#39;,Sang2,&#39;ang&#39;,-Angle2);
-end
-b2=Line2D(&#39;MidLine&#39;);
-b2=AddCircle(b2,R2,a,1);
-b3=Line2D(&#39;InnerLine&#39;);
-b3=AddCircle(b3,R3,a,1);
-inputStruct.OutLine=b1;
-inputStruct.MidLine=b2;
-inputStruct.InnerLine=b3;
-inputStruct.BossHeight=100;
-inputStruct.PlateThickness=30;
-inputStruct.Meshsize=10;
-paramsStruct=struct();
-obj= plate.BossPlate(paramsStruct, inputStruct);
-obj= obj.solve();
-Plot2D(obj);
-Plot3D(obj);
+figure
+plot(x,y1)
+title(&#39;Kinematic Viscosity &amp; Temperature Curve&#39;)
+xlabel(&#39;Temperature (℃)&#39;)
+ylabel(&#39;Kinematic Viscosity (mm2/s)&#39;)
+figure
+plot(x,y2)
+title(&#39;Density &amp; Temperature Curve&#39;)
+xlabel(&#39;Temperature (℃)&#39;)
+ylabel(&#39;Density (g/cm3)&#39;)
 </code></pre>
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
 		<tr>
-			<td style="padding: 6px"><img src="/./img/BossPlate.assets/Fig1.jpg" style="zoom: 100%;"></td><td><img src="/./img/BossPlate.assets/Fig2.jpg" style="zoom: 100%;"></td>
+			<td style="padding: 6px"><img src="/./img/Vis_cal.assets/Fig2.jpg" style="zoom: 100%;"></td><td><img src="/./img/Vis_cal.assets/Fig3.jpg" style="zoom: 100%;"></td>
 		</tr>
 	</tbody>
 </table>
 
-<h3 id="Deform-the-plate-face-Flag-2"><a href="#Deform-the-plate-face-Flag-2" class="headerlink" title="Deform the plate face (Flag&#x3D;2)"></a>Deform the plate face (Flag&#x3D;2)</h3><p>利用DeformFace可将台阶边缘进行轻微的变形（如果变形过大，可能会网格的畸变，此时可加密网格来缓解畸变）。</p>
-<pre><code class="language-matlab">a=Point2D(&#39;Points assembly&#39;);
-a=AddPoint(a,0,0);
-Num=8;
-R1=180;
-R2=120;
-R3=30;
-r=30;
-for i=1:Num
-  a=AddPoint(a,R1,-360/Num*(i-1),&#39;polar&#39;,&#39;deg&#39;);
-end
-Angle1=acos(r/2/R1)*2/pi*180;
-Angle2=360/Num-(180-Angle1)*2;
-b1=Line2D(&#39;OutLine&#39;);
-for i=1:Num
-  Sang1=180-Angle1/2-(i-1)*360/Num;
-  b1=AddCircle(b1,r,a,i+1,&#39;sang&#39;,Sang1,&#39;ang&#39;,Angle1);
-  Sang2=-180+Angle1-(i-1)*360/Num;
-  b1=AddCircle(b1,R1,a,1,&#39;Sang&#39;,Sang2,&#39;ang&#39;,-Angle2);
-end
-b2=Line2D(&#39;MidLine&#39;);
-b2=AddCircle(b2,R2,a,1);
-b3=Line2D(&#39;InnerLine&#39;);
-b3=AddCircle(b3,R3,a,1);
-inputStruct.OutLine=b1;
-inputStruct.MidLine=b2;
-inputStruct.InnerLine=b3;
-inputStruct.BossHeight=100;
-inputStruct.PlateThickness=30;
-inputStruct.Meshsize=10;
-paramsStruct=struct();
-obj= plate.BossPlate(paramsStruct, inputStruct);
-obj= obj.solve();
-Plot3D(obj);
-f1=@(r)(sqrt(360^2-r.^2)-360);
-obj=DeformFace(obj,f1,1);
-f2=@(r)(sqrt(360^2-r.^2)-360+30);
-obj=DeformFace(obj,f2,2);
-Plot3D(obj);
-</code></pre>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/BossPlate.assets/Fig7.jpg" style="zoom: 100%;"></td><td><img src="/./img/BossPlate.assets/Fig8.jpg" style="zoom: 100%;"></td>
-		</tr>
-	</tbody>
-</table>
 
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/BossPlate.assets/Fig9.jpg" style="zoom: 100%;"></td><td><img src="/./img/BossPlate.assets/Fig10.jpg" style="zoom: 100%;"></td>
-		</tr>
-	</tbody>
-</table>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] ISO\TR 6336-22</p>
 
-<h3 id="Extrude-outsize-surface-Flage-3"><a href="#Extrude-outsize-surface-Flage-3" class="headerlink" title="Extrude outsize surface (Flage&#x3D;3)"></a>Extrude outsize surface (Flage&#x3D;3)</h3><p>更改带台阶板的种类，可以改变台阶位置，将外侧拉伸。</p>
-<pre><code class="language-matlab">a=Point2D(&#39;Points assembly&#39;);
-a=AddPoint(a,0,0);
-Num=8;
-R1=180;
-R2=120;
-R3=30;
-r=30;
-for i=1:Num
-a=AddPoint(a,R1,-360/Num*(i-1),&#39;polar&#39;,&#39;deg&#39;);
-end
-Angle1=acos(r/2/R1)*2/pi*180;
-Angle2=360/Num-(180-Angle1)*2;
-b1=Line2D(&#39;OutLine&#39;);
-for i=1:Num
-Sang1=180-Angle1/2-(i-1)*360/Num;
-b1=AddCircle(b1,r,a,i+1,&#39;sang&#39;,Sang1,&#39;ang&#39;,Angle1);
-Sang2=-180+Angle1-(i-1)*360/Num;
-b1=AddCircle(b1,R1,a,1,&#39;Sang&#39;,Sang2,&#39;ang&#39;,-Angle2);
-end
-b2=Line2D(&#39;MidLine&#39;);
-b2=AddCircle(b2,R2,a,1);
-b3=Line2D(&#39;InnerLine&#39;);
-b3=AddCircle(b3,R3,a,1);
-inputStruct.OutLine=b1;
-inputStruct.MidLine=b2;
-inputStruct.InnerLine=b3;
-inputStruct.BossHeight=100;
-inputStruct.PlateThickness=30;
-inputStruct.Meshsize=10;
-paramsStruct=struct();
-obj= plate.BossPlate(paramsStruct, inputStruct);
-obj= obj.solve();
-Plot3D(obj);
-f1=@(r)(sqrt(360^2-r.^2)-360);
-obj=DeformFace(obj,f1,1);
-f2=@(r)(sqrt(360^2-r.^2)-360+30);
-obj=DeformFace(obj,f2,2);
-Plot3D(obj);
-</code></pre>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/BossPlate.assets/Fig3.jpg" style="zoom: 100%;"></td><td><img src="/./img/BossPlate.assets/Fig4.jpg" style="zoom: 100%;"></td>
-		</tr>
-	</tbody>
-</table>
-
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/BossPlate.assets/Fig5.jpg" style="zoom: 100%;"></td><td><img src="/./img/BossPlate.assets/Fig6.jpg" style="zoom: 100%;"></td>
-		</tr>
-	</tbody>
-</table>
-
-<h3 id="Add-outer-part-holes-Flag-4"><a href="#Add-outer-part-holes-Flag-4" class="headerlink" title="Add outer part holes (Flag&#x3D;4)"></a>Add outer part holes (Flag&#x3D;4)</h3><p>设置InnerHole或者OuterHole可在对应区域打孔。</p>
-<pre><code class="language-matlab">r1=81/2;
-r2=52/2;
-r3=32/2;
-rp=66/2;
-a=Point2D(&#39;Points assembly&#39;);
-a=AddPoint(a,0,0);
-b1=Line2D(&#39;OutLine&#39;);
-b1=AddCircle(b1,r1,a,1);
-b2=Line2D(&#39;MidLine&#39;);
-b2=AddCircle(b2,r2,a,1);
-b3=Line2D(&#39;InnerLine&#39;);
-b3=AddCircle(b3,r3,a,1);
-
-h1=Line2D(&#39;Hole&#39;);
-h2=Line2D(&#39;Hole&#39;);
-h3=Line2D(&#39;Hole&#39;);
-h4=Line2D(&#39;Hole&#39;);
-
-a=AddPoint(a,rp,0);
-a=AddPoint(a,0,rp);
-a=AddPoint(a,-rp,0);
-a=AddPoint(a,0,-rp);
-
-h1=AddCircle(h1,6.1/2,a,2);
-h2=AddCircle(h2,11.5/2,a,3);
-h3=AddCircle(h3,6.1/2,a,4);
-h4=AddCircle(h4,11.5/2,a,5);
-inputStruct.OutLine=b1;
-inputStruct.MidLine=b2;
-inputStruct.InnerLine=b3;
-inputStruct.BossHeight=16;
-inputStruct.PlateThickness=10;
-inputStruct.Meshsize=10;
-inputStruct.OuterHole=[h1;h2;h3;h4];
-paramsStruct.Type=1;
-obj= plate.BossPlate(paramsStruct, inputStruct);
-obj= obj.solve();
-Plot3D(obj);
-</code></pre>
-<img src="/./img/BossPlate.assets/Fig11.jpg" style="zoom:33%;" />
-
-
-
-
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
     </div>

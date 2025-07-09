@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Dome | Baffalo</title>
+  <title>RadialAMB | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Dome | Baffalo">
+  <meta name="description" content="RadialAMB | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="介绍RadialAMB用于创建主动径向磁力轴承，它可调用FEMM进行仿真计算并输出磁力轴承的关键参数。 类结构  输入 input：  ny : 线圈匝数 nx : 线圈层数 Acu : 线圈腔面积 Ib : 偏置电流 I: 各线圈上的电流 x0 : 气隙 Rh : 外壳外半径 RN : 定子尺寸 Rc : 芯轴半径 R : 定子外半径 R0 : 定子内半径 b : 磁极宽度 l : 轴承长度 N">
 <meta property="og:type" content="article">
@@ -776,9 +776,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Dome" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-RadialAMB" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Dome</h1>
+        <h1 class="article-title">RadialAMB</h1>
     
     <div class="article-meta">
         
@@ -796,7 +796,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-03-27 11:41:57'>2025-03-27 11:39</time>
+            发布时间 : <time class="date" title='最后更新: 2025-07-09 16:41:07'>2025-07-09 16:39</time>
         
     </div>
     <div class="article-meta">
@@ -807,7 +807,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dome1-Flag-1"><span class="toc-text">Dome1 (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dome2-Flag-2"><span class="toc-text">Dome2 (Flag&#x3D;2)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-radial-active-magnetic-bearing-Flag-1"><span class="toc-text">Create radial active magnetic bearing  (Flag&#x3D;1)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -823,79 +823,105 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Dome类用于绘制薄壁穹顶结构，它可以根据曲线旋转生成穹顶。</p>
-<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/Dome.assets/Fig5.jpg" style="zoom:100%;" />
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>RadialAMB用于创建主动径向磁力轴承，它可调用FEMM进行仿真计算并输出磁力轴承的关键参数。</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/RadialAMB.assets/Fig6.jpg" style="zoom:100%;" />
 
 <p>输入 input：</p>
 <ul>
-<li>Meshsize : 单元尺寸</li>
-<li>Thickness : 厚度</li>
-<li>Curve : 曲线</li>
+<li>ny : 线圈匝数</li>
+<li>nx : 线圈层数</li>
+<li>Acu : 线圈腔面积</li>
+<li>Ib : 偏置电流</li>
+<li>I: 各线圈上的电流</li>
+<li>x0 : 气隙</li>
+<li>Rh : 外壳外半径</li>
+<li>RN : 定子尺寸</li>
+<li>Rc : 芯轴半径</li>
+<li>R : 定子外半径</li>
+<li>R0 : 定子内半径</li>
+<li>b : 磁极宽度</li>
+<li>l : 轴承长度</li>
+<li>N : 磁极数</li>
 </ul>
 <p>参数 params:</p>
 <ul>
-<li>Order ：单元阶数</li>
+<li>Mu0 ：真空磁导率</li>
 <li>Name : 名称</li>
-<li>E_Revolve: 壳单元旋转方向网格划分数量</li>
-<li>Offset : 偏移位置</li>
-<li>Material : 材料</li>
+<li>Meshsize: 网格尺寸</li>
+<li>Material : 材料(1. 芯轴 2. 转子 3. 定子 4. 线圈 5. 壳体)</li>
+<li>Lambda : 占空系数</li>
+<li>J : 电流密度</li>
+<li>Gap : 线圈与磁极距离</li>
 </ul>
 <p>输出 output :</p>
 <ul>
-<li>Assembly : 壳单元装配</li>
-<li>ShellMesh : 壳网格</li>
+<li>Assembly : 实体单元装配</li>
+<li>SolidMesh2 : 线圈网格</li>
+<li>SolidMesh1 : 定子网格</li>
+<li>FEA_Force : FEMM计算中转子上的力</li>
+<li>L : 磁感应</li>
+<li>Ki : 参数Ki [N&#x2F;A]</li>
+<li>Ks  : 轴承负刚度</li>
+<li>Surface : 定子截面</li>
+<li>Section : 轴承截面</li>
+<li>Acu ：线圈腔面积</li>
+<li>A : 磁极面积</li>
 </ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Dome1-Flag-1"><a href="#Dome1-Flag-1" class="headerlink" title="Dome1 (Flag&#x3D;1)"></a>Dome1 (Flag&#x3D;1)</h3><pre><code class="language-matlab">a=Point2D(&#39;PointAss&#39;);
-b=Line2D(&#39;LineAss&#39;);
-a=AddPoint(a,[0;1376/2],[-601;-601]);
-a=AddPoint(a,[1376/2;1376/2],[-601;0]);
-b=AddLine(b,a,1);
-b=AddLine(b,a,2);
-b=CreateRadius(b,1,300);
-Plot(b);
-inputStruct.Curve=b;
-inputStruct.Thickness=repmat(8,size(b.Point.PP,1),1);
-inputStruct.Meshsize=30;
-paramsStruct.Offset=&quot;TOP&quot;;
-obj= dome.Dome(paramsStruct, inputStruct);
-obj= obj.solve();
-Plot3D(obj,&#39;face_normal&#39;,1);
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-radial-active-magnetic-bearing-Flag-1"><a href="#Create-radial-active-magnetic-bearing-Flag-1" class="headerlink" title="Create radial active magnetic bearing  (Flag&#x3D;1)"></a>Create radial active magnetic bearing  (Flag&#x3D;1)</h3><p>案例来自于参考文献$^{[1]}$, 气隙设置为0.4mm, 定子内径为50mm,定子外径为100，定子和转子材料为硅钢片，外壳外径为150mm，外壳材料为304不锈钢。设置偏置电流为2A，单个线圈最大电流为10A, 计算磁轴承产生的力。</p>
+<pre><code class="language-matlab">S=RMaterial(&#39;Magnetic&#39;);
+mat=GetMat(S,[72,80,80,93,92]&#39;);
+b=12;
+x0=0.4;
+inputStruct1.x0=x0;
+inputStruct1.R0=50+x0;
+inputStruct1.R=100;
+inputStruct1.N=8;
+inputStruct1.RN=100-b;
+inputStruct1.b=b;
+inputStruct1.l=60;
+inputStruct1.Rc=30;
+inputStruct1.Rh=150;
+inputStruct1.I=[0,10,-10,0,0,0,0,0];
+% inputStruct1.Acu=274;
+% inputStruct1.I=[2,-2,2,-2,2,-2,2,-2];
+inputStruct1.Ib=2;
+inputStruct1.ny=12;
+inputStruct1.nx=4;
+paramsStruct1.J=5;
+paramsStruct1.Material=mat;
+paramsStruct1.Gap=0.5;
+B= bearing.RadialAMB(paramsStruct1, inputStruct1);
+B= B.solve();
+Plot2D(B)
+Plot3D(B)
+B=CalMagneticField(B);
+disp(B.output.FEA_Force)
 </code></pre>
+<p>剪力的模型如下：</p>
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
 		<tr>
-			<td style="padding: 6px"><img src="/./img/Dome.assets/Fig1.jpg" style="zoom: 100%;"></td><td><img src="/./img/Dome.assets/Fig2.jpg" style="zoom: 100%;"></td>
+			<td style="padding: 6px"><img src="/./img/RadialAMB.assets/Fig1.jpg" style="zoom: 100%;"></td><td><img src="/./img/RadialAMB.assets/Fig2.jpg" style="zoom: 100%;"></td>
 		</tr>
 	</tbody>
-</table>
+</table
+
+
+<img src="/./img/RadialAMB.assets/Fig3.jpg" style="zoom:20%;" />
+
+<p>FEMM计算得到的轴承力如下：</p>
+<p>0.4984  781.8808</p>
+<p>输出的3D网格包含定子和线圈，且已经通过固定接触绑定。</p>
+<img src="/./img/RadialAMB.assets/Fig4.jpg" style="zoom:100%;" />
 
 
 
-<h3 id="Dome2-Flag-2"><a href="#Dome2-Flag-2" class="headerlink" title="Dome2 (Flag&#x3D;2)"></a>Dome2 (Flag&#x3D;2)</h3><pre><code class="language-matlab">a=Point2D(&#39;PointAss&#39;);
-b=Line2D(&#39;LineAss&#39;);
-a=AddPoint(a,[1376/2;1376/2],[0;-601]);
-a=AddPoint(a,[1376/2;200],[-601;-601]);
-b=AddLine(b,a,1);
-b=AddLine(b,a,2);
-b=CreateRadius(b,1,300);
-Plot(b);
-inputStruct.Curve=b;
-inputStruct.Thickness=repmat(8,size(b.Point.PP,1),1);
-inputStruct.Meshsize=30;
-paramsStruct.Offset=&quot;TOP&quot;;
-obj= dome.Dome(paramsStruct, inputStruct);
-obj= obj.solve();
-Plot3D(obj,&#39;face_normal&#39;,1);
-</code></pre>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/Dome.assets/Fig3.jpg" style="zoom: 100%;"></td><td><img src="/./img/Dome.assets/Fig4.jpg" style="zoom: 100%;"></td>
-		</tr>
-	</tbody>
-</table>
+<p>更改输入电流调整为偏置电流，可观察该状态下磁场分布情况。</p>
+<img src="/./img/RadialAMB.assets/Fig5.jpg" style="zoom:20%;" />
 
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 磁力轴承的基础理论和应用</p>
+<p>[2] <a target="_blank" rel="noopener" href="https://www.femm.info/wiki/HomePage">https://www.femm.info/wiki/HomePage</a></p>
+
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
     </div>

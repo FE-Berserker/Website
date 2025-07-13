@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>InterferenceFit | Baffalo</title>
+  <title>开源转子动力学模块 | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="InterferenceFit | Baffalo">
+  <meta name="description" content="开源转子动力学模块 | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="介绍Baffalo RotDyn用于分析转子动力学问题。转子动力学用于分析转子的动力学问题，相较于普通的运动学方程，它在动力学方程中考虑了旋转软化效应。 Baffalo中开源转子动力学模块，参考了开源工具箱AMrotor,基于Timoshenko单元，引入了图形学计算，可以更方便的获得叶片和转子的质量。同时加入了控制模块，可以添加PID控制和主动磁力轴承。 功能FRF分析频响分析反应了转子输入与输">
 <meta property="og:type" content="article">
@@ -801,9 +801,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-InterferenceFit" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-开源转子动力学模块" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">InterferenceFit</h1>
+        <h1 class="article-title">开源转子动力学模块</h1>
     
     <div class="article-meta">
         
@@ -813,7 +813,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo方法">Baffalo方法</a>
+            <a  data-rel="Baffalo框架">Baffalo框架</a>
             
         </span>
         
@@ -821,7 +821,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-05-12 09:36:13'>2025-05-11 23:27</time>
+            发布时间 : <time class="date" title='最后更新: 2025-07-13 20:18:22'>2025-07-13 20:15</time>
         
     </div>
     <div class="article-meta">
@@ -832,7 +832,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#InterferenceFit"><span class="toc-text">InterferenceFit</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#InterferenceFit-Calculation-and-output-to-ANSYS-Flag-1"><span class="toc-text">InterferenceFit Calculation and output to ANSYS (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Consider-temperature-influence-in-ANSYS-Flag-2"><span class="toc-text">Consider temperature influence in ANSYS (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Safety-factor-Flag-3"><span class="toc-text">Safety factor (Flag&#x3D;3)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="toc-text">功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#FRF%E5%88%86%E6%9E%90"><span class="toc-text">FRF分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%80%81%E5%88%86%E6%9E%90"><span class="toc-text">模态分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%90%E5%93%8D%E5%BA%94%E5%88%86%E6%9E%90"><span class="toc-text">谐响应分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E5%BA%8F%E5%88%86%E6%9E%90"><span class="toc-text">时序分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CheatTable"><span class="toc-text">CheatTable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -848,152 +848,79 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="InterferenceFit"><a href="#InterferenceFit" class="headerlink" title="InterferenceFit"></a>InterferenceFit</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>InterferenceFit用于校核过盈连接，参照DIN 7190$^{[1]}$编写。过盈配合是一种常见零部件组装方式，在机械工程中普遍采用过盈配合做周向定位和传递扭矩。采用过盈联接必须精确确定孔轴表面的接触压力，以确定许用传递扭矩；同时由于过盈配合引起的变形会导致装配处轴肩的应力集中和疲劳开裂，需要对采用过盈联接的零件的应力分布有全面了解。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>过盈连接的理论计算基于左图的简化模型计算，采用弹性力学中的拉梅方程计算。</p>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/InterferenceFit.assets/Fig110.jpg" style="zoom: 100%;"></td><td><img src="/./img/InterferenceFit.assets/Fig111.jpg" style="zoom: 100%;"></td>
-		</tr>
-    <tr><td><strong>计算模型</strong></td><td><strong>实际过盈连接节点</strong></td></tr>
-	</tbody>
-</table>
-
-<p>由于轴与轴套表面是粗糙的，我们首先计算节点的有效过盈量，这点经常被忽略，公式如下：<br>$$<br>U_w&#x3D;U-0.4(R_{ZA}+R_{zl})<br>$$<br>式中0.4为考虑粗糙度后的光滑系数。</p>
-<p>那么过盈压力可由下式计算：<br>$$<br>p&#x3D;\frac{\xi_wE_A}{K}<br>$$<br>式中：<br>$$<br>K&#x3D;\frac{E_A}{El}(\frac{1+Q_l^2}{1-Q_l^2}-\mu_1)+\frac{1+Q_A^2}{1-Q_A^2}+\mu_A<br>$$<br>$Q_l$和$Q_A$为无量纲几何参数<br>$$<br>Q_A&#x3D;\frac{D_F}{D_{aA}}<br>$$</p>
-<p>$$<br>Q_l&#x3D;\frac{D_{il}}{D_F}<br>$$</p>
-<p>$$<br>\xi_w&#x3D;\frac{U_w}{D_F}<br>$$</p>
-<p>DIN 7190中也介绍了过盈节点弹塑性的设计方法，但实际应用中还是尽量保证节点在弹性的工作范围内运行。在Baffalo中，写入了弹性状态下过盈工程计算方法，同时也可直接输出过盈连接的有限元装配模型，因此也可以更轻松的考虑离心力、温度和倒角等对过盈的影响。</p>
-<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/InterferenceFit.assets/Fig1.jpg" style="zoom:100%;" />
-
-<p>输入 input：</p>
-<ul>
-<li>Umax : 最大过盈量</li>
-<li>Umin : 最小过盈量</li>
-<li>LF: 过盈连接节点的有效长度</li>
-<li>Dil : 轴内径</li>
-<li>DF : 接触面直径</li>
-<li>DaA: 轴套外径</li>
-<li>Shaft_Mat : 轴材料</li>
-<li>Hub_Mat : 轴套材料</li>
-<li>Hub_Rp : 轴套抗拉强度</li>
-<li>Hub_Rm : 轴套屈服强度</li>
-<li>Shaft_Rp : 轴抗拉强度</li>
-<li>Shaft_Pm : 轴屈服强度</li>
-</ul>
-<p>参数 params:</p>
-<ul>
-<li>Name : 名称</li>
-<li>uf: 摩擦系数</li>
-<li>RzA : 轴套表面粗糙度</li>
-<li>Rzl : 轴表面粗糙度</li>
-<li>T_Ref : 参考温度</li>
-<li>Temperature : 温度</li>
-<li>KA : 应用系数</li>
-</ul>
-<p>输出 output :</p>
-<ul>
-<li><p>Assembly : 过盈连接节点装配体</p>
-</li>
-<li><p>Shaft_Outer_Stress : 轴外表面应力</p>
-</li>
-<li><p>Shaft_Inner_Stress : 轴内表面应力</p>
-</li>
-<li><p>Hub_Stress : 轴套应力</p>
-</li>
-<li><p>Torque : 节点可承受的扭矩</p>
-</li>
-<li><p>F : 拔出力</p>
-</li>
-<li><p>P : 过盈压力</p>
-</li>
-<li><p>Uwmax : 有效最大过盈量</p>
-</li>
-<li><p>Uwmin : 有效最小过盈量</p>
-</li>
-</ul>
-<p>能力 capacity</p>
-<ul>
-<li>S_sRp : 轴断裂安全系数</li>
-<li>S_sRm ：轴屈服安全系数</li>
-<li>S_hRp ：轴套断裂安全系数</li>
-<li>S_hRm : 轴套屈服安全系数</li>
-<li>Sr : 打滑安全系数</li>
-</ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="InterferenceFit-Calculation-and-output-to-ANSYS-Flag-1"><a href="#InterferenceFit-Calculation-and-output-to-ANSYS-Flag-1" class="headerlink" title="InterferenceFit Calculation and output to ANSYS (Flag&#x3D;1)"></a>InterferenceFit Calculation and output to ANSYS (Flag&#x3D;1)</h3><p>此处以Kisssoft软件计算结果作为对比，尺寸参数如下所示：</p>
-<img src="/./img/InterferenceFit.assets/Fig113.png" style="zoom:100%;" />
-
-<pre><code class="language-matlab">S=RMaterial(&#39;Basic&#39;);
-Mat=GetMat(S,22);
-inputStruct.Hub_Mat=Mat&#123;1,1&#125;;
-inputStruct.Shaft_Mat=Mat&#123;1,1&#125;;
-inputStruct.DaA=440;
-inputStruct.DF=240;
-inputStruct.Dil=0;
-inputStruct.LF=280;
-inputStruct.Umin=0.094;
-inputStruct.Umax=0.169;
-paramsStruct.RzA=32;
-paramsStruct.Rzl=32;
-Con1=connection.InterferenceFit(paramsStruct, inputStruct);
-Con1=Con1.solve;
-Con1=OutputAss(Con1);
-disp(Con1.output.P);
-disp(Con1.output.Torque);  
-</code></pre>
-<p>计算得到的过盈压力</p>
-<p>43.2323   20.6213   31.9268</p>
-<img src="/./img/InterferenceFit.assets/Fig114.jpg" style="zoom:100%;" />
-
-<center>Kisssoft过盈压力计算</center>
-
-<p>可以发现两者计算结果是一致的。</p>
-<p>同时Baffalo已经生成对应的有限元模型，可直接导入ANSYS计算。</p>
-<img src="/./img/InterferenceFit.assets/Fig115.jpg" style="zoom:100%;" />
-
-<h3 id="Consider-temperature-influence-in-ANSYS-Flag-2"><a href="#Consider-temperature-influence-in-ANSYS-Flag-2" class="headerlink" title="Consider temperature influence in ANSYS (Flag&#x3D;2)"></a>Consider temperature influence in ANSYS (Flag&#x3D;2)</h3><p>其他参数不变，将轴的温度设置为40℃，轴套温度设为20℃。</p>
-<pre><code class="language-matlab">paramsStruct.Temperature=[40,20];
-</code></pre>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/InterferenceFit.assets/Fig116.jpg" style="zoom: 100%;"></td><td><img src="/./img/InterferenceFit.assets/Fig117.jpg" style="zoom: 100%;"></td>
-		</tr>
-    <tr><td><strong>[20,20]</strong></td><td><strong>[40,20]</strong></td></tr>
-	</tbody>
-</table>
-
-<h3 id="Safety-factor-Flag-3"><a href="#Safety-factor-Flag-3" class="headerlink" title="Safety factor (Flag&#x3D;3)"></a>Safety factor (Flag&#x3D;3)</h3><p>计算过盈的安全系数：</p>
-<pre><code class="language-matlab">S=RMaterial(&#39;Basic&#39;);
-Mat=GetMat(S,22);
-inputStruct.Hub_Mat=Mat&#123;1,1&#125;;
-inputStruct.Shaft_Mat=Mat&#123;1,1&#125;;
-inputStruct.DaA=440;
-inputStruct.DF=240;
-inputStruct.Dil=0;
-inputStruct.LF=280;
-inputStruct.Umin=0.094;
-inputStruct.Umax=0.169;
-inputStruct.Tn=400000;
-inputStruct.Shaft_Rm=590;
-inputStruct.Shaft_Rp=345;
-inputStruct.Hub_Rm=590;
-inputStruct.Hub_Rp=325;
-paramsStruct.RzA=32;
-paramsStruct.Rzl=32;
-baselineStruct=struct();
-Con1=connection.InterferenceFit(paramsStruct, inputStruct,baselineStruct);
-Con1=Con1.solve;
-Con1=OutputAss(Con1);
-disp(Con1.capacity);
-</code></pre>
-<pre><code>S_sRm: 13.6472
-   Sr: 195.9058
-S_hRm: 7.3886
-S_hRp: 3.0049
-S_sRp: 7.9801
-</code></pre>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] DIN7190</p>
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Baffalo RotDyn用于分析转子动力学问题。<br>转子动力学用于分析转子的动力学问题，相较于普通的运动学方程，它在动力学方程中考虑了旋转软化效应。</p>
+<p><img src="/./img/%E5%BC%80%E6%BA%90%E8%BD%AC%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E5%9D%97.assets/c82736938d85d4ace3b611be2d9f11d9_MD5.jpeg"><br>Baffalo中开源转子动力学模块，参考了开源工具箱AMrotor,基于Timoshenko单元，引入了图形学计算，可以更方便的获得叶片和转子的质量。同时加入了控制模块，可以添加PID控制和主动磁力轴承。</p>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><h3 id="FRF分析"><a href="#FRF分析" class="headerlink" title="FRF分析"></a>FRF分析</h3><p>频响分析反应了转子输入与输出的关系，其也是控制的重要参考依据。</p>
+<p><img src="/./img/%E5%BC%80%E6%BA%90%E8%BD%AC%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E5%9D%97.assets/1e4d450ce49f78131b286b663f803578_MD5.jpeg"></p>
+<h3 id="模态分析"><a href="#模态分析" class="headerlink" title="模态分析"></a>模态分析</h3><p>模态分析功能目前主要调用ANSYS求解器。</p>
+<p>选择Local的分析方法，调用Matlab eigs()函数来求解，该方法目前还未调整完毕，因为矩阵通常会出现行与列数值为0值的情况，会导致结果出现极小值，后续会通过删除行列的方式来修复。</p>
+<p>当转速设置为0时为静止状态下的模态分析,当考虑不同转速时可得计算系统Campbell图。<br>![](&#x2F;.&#x2F;img&#x2F;开源转子动力学模块.assets&#x2F;Pasted image 20250713193907.png)</p>
+<h3 id="谐响应分析"><a href="#谐响应分析" class="headerlink" title="谐响应分析"></a>谐响应分析</h3><p>谐响应分析主要依靠调用ANSYS</p>
+<p><img src="/./img/%E5%BC%80%E6%BA%90%E8%BD%AC%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E5%9D%97.assets/a2090db5b176207bacc87a5a2bf701f5_MD5.jpeg"></p>
+<h3 id="时序分析"><a href="#时序分析" class="headerlink" title="时序分析"></a>时序分析</h3><p>时序分析调用Matlab的ode15s实现，传统的Newmark法并不能很好的考虑运动系统控制。而ode15s函数在求解DAE方程的同时也能考虑控制。<br>以下为无控制下和加入主动磁力轴承控制后的轴系响应。</p>
+<p><img src="/./img/%E5%BC%80%E6%BA%90%E8%BD%AC%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E5%9D%97.assets/11e2c27cb94b4de9c8b225890b318729_MD5.jpeg"></p>
+<h2 id="CheatTable"><a href="#CheatTable" class="headerlink" title="CheatTable"></a>CheatTable</h2><p>主要函数如下：</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AddBearing</td>
+<td>加入轴向或径向轴承</td>
+</tr>
+<tr>
+<td>AddBendingBearing</td>
+<td>加入弯曲轴承(双列角接触或圆锥滚子可考虑)</td>
+</tr>
+<tr>
+<td>AddBlade</td>
+<td>加入叶片(截面网格，转换为转动惯量和质量)</td>
+</tr>
+<tr>
+<td>AddDisc</td>
+<td>加入圆盘</td>
+</tr>
+<tr>
+<td>AddHousingBearing</td>
+<td>加入支座轴向或径向轴承</td>
+</tr>
+<tr>
+<td>AddHousingBendingBearing</td>
+<td>加入支座弯曲轴承</td>
+</tr>
+<tr>
+<td>AddHousingTorBearing</td>
+<td>加入扭转轴承(联轴器可考虑此刚度)</td>
+</tr>
+<tr>
+<td>AddLUTBearing</td>
+<td>加入刚度随转速变化轴承(比如滑动轴承)</td>
+</tr>
+<tr>
+<td>AddPIDController</td>
+<td>加入PID控制器</td>
+</tr>
+<tr>
+<td>AddPointMass</td>
+<td>加入质量块</td>
+</tr>
+<tr>
+<td>AddTorBearng</td>
+<td>加入扭转轴承</td>
+</tr>
+<tr>
+<td>注：主动磁力轴承可通过PID控制和径向负刚度轴承组合实现</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] ANSYS结构动力分析与应用</p>
+<p>[2] 转动机械的转子动力学设计</p>
+<p>[3] <a target="_blank" rel="noopener" href="https://github.com/AppliedMechanics/AMrotor">https://github.com/AppliedMechanics/AMrotor</a></p>
+<p>[4] AMrotor – A MATLAB Toolbox for the Simulation of Rotating Machinery, Johannes Maierhofer, M.Kreutz, T.Mulser, T. Thümmel, D. Rixen. DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.1201/9781003132639">10.1201&#x2F;9781003132639</a></p>
+<p>[5] Comparison of different time integration schemes and application to a rotor system with magnetic bearings in Matlab, Michael Kreutz, J. Maierhofer, T. Thümmel, D. Rixen. DOI: <a target="_blank" rel="noopener" href="https://doi.org/10.1201/9781003132639">10.1201&#x2F;9781003132639</a></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>

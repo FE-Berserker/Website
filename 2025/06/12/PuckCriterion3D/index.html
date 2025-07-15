@@ -6,25 +6,24 @@
   <meta name="keywords" content="">
   <meta name="description" content="PuckCriterion3D | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="本文根据纤维缠绕气瓶爆炸测试的结果进行了分析，试验数据和报告来源于参考文献[1]，笔者水平有限，如果错误，请批评指正。 不同位置失效影响为了探究不同位置失效对压力容器的影响，设计了如下三种气瓶：  Layup A : 加厚了封头和与法兰结合部分，让失效发生于气瓶中段 Layup C : 降低封头处的厚度，使得失效放生于封头处 Layup D : 降低结合部的厚度，让结合部优先发生失效  测试的气瓶">
+<meta name="description" content="介绍SignalAnalysis用于信号分析和处理。 类结构 输入 input：  Fs : 采样频率 TimeSeries : 时间序列  参数 params:  Name ：名称 DataName : 数据名称  输出 output :  FFT : 傅里叶变换计算结果 F : 频率 T : 时间 Length :  数据长度  案例Do the analysis based on the b">
 <meta property="og:type" content="article">
-<meta property="og:title" content="纤维缠绕气瓶爆炸测试">
-<meta property="og:url" content="http://example.com/2025/07/14/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E6%B0%94%E7%93%B6%E7%88%86%E7%82%B8%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:title" content="SignalAnalysis">
+<meta property="og:url" content="http://example.com/2025/07/15/SignalAnalysis/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="本文根据纤维缠绕气瓶爆炸测试的结果进行了分析，试验数据和报告来源于参考文献[1]，笔者水平有限，如果错误，请批评指正。 不同位置失效影响为了探究不同位置失效对压力容器的影响，设计了如下三种气瓶：  Layup A : 加厚了封头和与法兰结合部分，让失效发生于气瓶中段 Layup C : 降低封头处的厚度，使得失效放生于封头处 Layup D : 降低结合部的厚度，让结合部优先发生失效  测试的气瓶">
+<meta property="og:description" content="介绍SignalAnalysis用于信号分析和处理。 类结构 输入 input：  Fs : 采样频率 TimeSeries : 时间序列  参数 params:  Name ：名称 DataName : 数据名称  输出 output :  FFT : 傅里叶变换计算结果 F : 频率 T : 时间 Length :  数据长度  案例Do the analysis based on the b">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E6%B0%94%E7%93%B6%E7%88%86%E7%82%B8%E6%B5%8B%E8%AF%95.assets/625d68c9caa90f1feeacbc003b9d9d08_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E6%B0%94%E7%93%B6%E7%88%86%E7%82%B8%E6%B5%8B%E8%AF%95.assets/c5bbc4024b756b830aeef0d4ab01a6e8_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E6%B0%94%E7%93%B6%E7%88%86%E7%82%B8%E6%B5%8B%E8%AF%95.assets/c128afecd8423c33fbd041335ade9a2f_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E6%B0%94%E7%93%B6%E7%88%86%E7%82%B8%E6%B5%8B%E8%AF%95.assets/b9172697dbe99d010a4771f68a553616_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E6%B0%94%E7%93%B6%E7%88%86%E7%82%B8%E6%B5%8B%E8%AF%95.assets/867777b7fc48401cc9fccf0deca04398_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E6%B0%94%E7%93%B6%E7%88%86%E7%82%B8%E6%B5%8B%E8%AF%95.assets/d5bfdad6be586ebc3511188c039c0c86_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E6%B0%94%E7%93%B6%E7%88%86%E7%82%B8%E6%B5%8B%E8%AF%95.assets/60ef6044b60ae3299e51b705b3547cbb_MD5.jpeg">
-<meta property="article:published_time" content="2025-07-14T07:53:13.639Z">
-<meta property="article:modified_time" content="2025-07-14T08:05:15.774Z">
+<meta property="og:image" content="http://example.com/img/SignalAnalysis.assets/Fig6.jpg">
+<meta property="og:image" content="http://example.com/img/SignalAnalysis.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/SignalAnalysis.assets/Fig2.jpg">
+<meta property="og:image" content="http://example.com/img/SignalAnalysis.assets/Fig3.jpg">
+<meta property="og:image" content="http://example.com/img/SignalAnalysis.assets/Fig4.jpg">
+<meta property="og:image" content="http://example.com/img/SignalAnalysis.assets/Fig5.jpg">
+<meta property="article:published_time" content="2025-07-15T01:29:02.661Z">
+<meta property="article:modified_time" content="2025-07-15T01:30:52.838Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E6%B0%94%E7%93%B6%E7%88%86%E7%82%B8%E6%B5%8B%E8%AF%95.assets/625d68c9caa90f1feeacbc003b9d9d08_MD5.jpeg">
+<meta name="twitter:image" content="http://example.com/img/SignalAnalysis.assets/Fig6.jpg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -111,7 +110,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(61)</small>
+                <small>(62)</small>
             
         </div>
     </li>
@@ -153,7 +152,7 @@
         <div data-rel="Baffalo方法">
             
             Baffalo方法
-            <small>(12)</small>
+            <small>(13)</small>
         </div>
         
     </li>
@@ -204,7 +203,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="61">
+<input type="hidden" id="yelog_site_posts_number" value="62">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -254,6 +253,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/15/SignalAnalysis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SignalAnalysis">SignalAnalysis</span>
+            <span class="post-date" title="2025-07-15 09:29:02">2025/07/15</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo笔记 "

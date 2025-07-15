@@ -13,17 +13,17 @@
 <meta property="og:site_name" content="Baffalo">
 <meta property="og:description" content="介绍DNVGL_0361参照DNV规范给出合成SN曲线。 原理S&#x2F;N curves for cast steel, cast, forged and rolled partsReducing influences: The following reducing influences on the fatigue resistance shall be considered:— type">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/DNVGL_0361.assets/Fig3.JPG">
+<meta property="og:image" content="http://example.com/img/DNVGL_0361.assets/Fig3.jpg">
 <meta property="og:image" content="http://example.com/img/DNVGL_0361.assets/image-20250715111117103.png">
 <meta property="og:image" content="http://example.com/img/DNVGL_0361.assets/image-20250715111140826.png">
 <meta property="og:image" content="http://example.com/img/DNVGL_0361.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/DNVGL_0361.assets/Fig4.JPG">
-<meta property="og:image" content="http://example.com/img/DNVGL_0361.assets/Fig5.JPG">
+<meta property="og:image" content="http://example.com/img/DNVGL_0361.assets/Fig4.jpg">
+<meta property="og:image" content="http://example.com/img/DNVGL_0361.assets/Fig5.jpg">
 <meta property="article:published_time" content="2025-07-15T03:31:49.033Z">
-<meta property="article:modified_time" content="2025-07-15T03:34:10.520Z">
+<meta property="article:modified_time" content="2025-07-15T03:38:52.880Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/DNVGL_0361.assets/Fig3.JPG">
+<meta name="twitter:image" content="http://example.com/img/DNVGL_0361.assets/Fig3.jpg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -859,7 +859,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-07-15 11:34:10'>2025-07-15 11:31</time>
+            发布时间 : <time class="date" title='最后更新: 2025-07-15 11:38:52'>2025-07-15 11:31</time>
         
     </div>
     <div class="article-meta">
@@ -896,7 +896,7 @@
 <p>When determining synthetic S&#x2F;N curves , both the thickness-dependent mechanical characteristic values (guaranteed minimum tensile strength and yield point) as well as the reduction through the existing surface roughness shall be observed.</p>
 <p> The assumed surface roughness for the determination of the S&#x2F;N curve shall be consistent with the specified surface roughness.</p>
 <p>Stress cycle numbers: For stress cycle numbers $N_i &gt; N_D$ , the S&#x2F;N curves shall be extended from $Δ σ * A$with the slope parameters $2m_1 -1$, where $m_1$ is the slope parameter of the fatigue strength line. Here the limiting stress cycle number $N_D$ is that number at which, under optimum test conditions (no corrosion effect, etc.), the endurance limit is given. Where synthetic S&#x2F;N curves are used, $N_D$ results from its calculation.</p>
-<img src="/./img/DNVGL_0361.assets/Fig3.JPG" style="zoom:50%;" />
+<img src="/./img/DNVGL_0361.assets/Fig3.jpg" style="zoom:50%;" />
 
 <p>In case of unfinished (raw and cleaned) casting surfaces a value of at least R z &#x3D; 200 µm shall be assumed for the calculation, if no other value is specified.</p>
 <p>In using synthetic S&#x2F;N curves for cast iron, the influence of the quality levels  and  shall be considered through the factor<br>$$<br>S_d&#x3D;0.85^{(j-j_0)}<br>$$<br>where:<br>For the assessment of the casting and surface quality and the testing techniques to be applied. MT&#x2F;PT quality level is limited to level 3 in general. For the UT quality level 1 area, MT&#x2F;PT quality level will be limited to level 2. This will ensure that, in the UT quality level 1 area, the more critical surface flaws detected by MT&#x2F;PT are not allowed to be bigger than internal flaws detected by UT.</p>
@@ -976,7 +976,7 @@ SNCurve= method.DNVGL_0361(paramsStruct, inputStruct);
 SNCurve= SNCurve.solve();
 Plot(SNCurve);
 </code></pre>
-<img src="/./img/DNVGL_0361.assets/Fig4.JPG" style="zoom:50%;" />
+<img src="/./img/DNVGL_0361.assets/Fig4.jpg" style="zoom:50%;" />
 
 <h3 id="Create-spheroidal-graphite-cast-iron-SN-curve-Flag-2"><a href="#Create-spheroidal-graphite-cast-iron-SN-curve-Flag-2" class="headerlink" title="Create spheroidal graphite cast iron SN curve (Flag&#x3D;2)"></a>Create spheroidal graphite cast iron SN curve (Flag&#x3D;2)</h3><pre><code class="language-matlab">S=RMaterial(&#39;Basic&#39;);
 Mat=GetMat(S,60);
@@ -991,7 +991,7 @@ SNCurve= method.DNVGL_0361(paramsStruct, inputStruct);
 SNCurve= SNCurve.solve();
 Plot(SNCurve);
 </code></pre>
-<img src="/./img/DNVGL_0361.assets/Fig5.JPG" style="zoom:50%;" />
+<img src="/./img/DNVGL_0361.assets/Fig5.jpg" style="zoom:50%;" />
 
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] DNVGL-0361</p>
 

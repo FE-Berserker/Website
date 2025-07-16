@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>DiscCouplingEstimate | Baffalo</title>
+  <title>Ramberg_Osgood | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="DiscCouplingEstimate | Baffalo">
+  <meta name="description" content="Ramberg_Osgood | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="介绍Ramberg_Osgood用来生成应力应变曲线。 原理MMPDS $^{[1] [2]}$是美国航空专业最权威的材料标准,包含航空航天领域各种金属材料力学性能。在本规范中，单参数Ramberg-Osgood Parameter n和双参数Dual Bron Parameters n1, n2应力应变曲线被应用来求解金属材料的力学性能。这两种半经验公式可以用来评估材料的强度。 已知材料的弹性模">
 <meta property="og:type" content="article">
@@ -853,9 +853,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-DiscCouplingEstimate" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Ramberg_Osgood" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">DiscCouplingEstimate</h1>
+        <h1 class="article-title">Ramberg_Osgood</h1>
     
     <div class="article-meta">
         
@@ -873,7 +873,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-07-01 14:13:31'>2025-07-01 14:11</time>
+            发布时间 : <time class="date" title='最后更新: 2025-07-16 10:30:44'>2025-07-16 09:56</time>
         
     </div>
     <div class="article-meta">
@@ -900,67 +900,43 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>DiscCouplingEstimate用于预测圆环型叠片联轴器的刚度。</p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>叠片联轴器具有轴向、角向、径向、不对中的补偿能力，有时轴向补偿可达10mm，角向补偿可达10。其计算模型可简化为具有扭转刚度、轴向刚度、径向刚度及角向刚度的“弹簧”。</p>
-<p>在方案设计初始阶段，当无法提供叠片的有关设计数据而文需对转子进行动力特性计算分析时，可以粗略地将叠片联轴器简化为“中间铰”。</p>
-<img src="/./img//DiscCouplingEstimate.assets/image-20250701104713831.png" style="zoom:50%;" />
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Ramberg_Osgood用来生成应力应变曲线。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>MMPDS $^{[1] [2]}$是美国航空专业最权威的材料标准,包含航空航天领域各种金属材料力学性能。在本规范中，单参数Ramberg-Osgood Parameter n和双参数Dual Bron Parameters n1, n2应力应变曲线被应用来求解金属材料的力学性能。这两种半经验公式可以用来评估材料的强度。</p>
+<p>已知材料的弹性模量E, 抗拉强度Ftu, 屈服强度Fty, 断裂伸长率εmax, 通过这几个参数即可求出材料的应力应变曲线。</p>
+<p>首先通过极限的抗拉强度和断裂伸长率求出极限应变值$\epsilon_{us}$：<br>$$<br>\epsilon_{us}&#x3D;100(\epsilon_{max}-\frac{F_{tu}}{E})<br>$$<br>接着应用极限应变值，求出Ramberg-Osgood系数n:<br>$$<br>n&#x3D;\frac{ln(\epsilon_{us}&#x2F;0.2)}{F_{tu}&#x2F;F_{ty}}<br>$$<br>  运用Hill $^{[46]}$提出的方程算出材料的应力应变曲线：<br>$$<br>\epsilon&#x3D;\frac{\sigma}{E}+0.002(\frac{\sigma}{F_{ty}})^n<br>$$<br>材料的真实应力和应变值和工程应力应变为log关系，由下式可得：<br>$$<br>\epsilon_{true}&#x3D;ln(1+\epsilon)<br>$$</p>
+<p>$$<br>\sigma_{true}&#x3D;\sigma(1+\epsilon)<br>$$</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/Ramberg_Osgood.assets/Fig2.jpg" style="zoom:100%;" />
 
-<p>1一法兰盘;2—衬套;3膜片;4—垫圈;5—中间轴;6—法兰盘</p>
-<p>在 航空发动机手册 第19分册$^{[1]}$记录了圆环形叠片联轴器的刚度预估，可以将其作为参考和预估。</p>
-<p>扭转刚度：<br>$$<br>K_T&#x3D;\alpha_cNEtR^2<br>$$<br>径向刚度：<br>$$<br>K_R&#x3D;\frac{\beta_cNEtZ}{12}<br>$$<br>轴向刚度：<br>$$<br>K_a&#x3D;\frac{2.15Ebt^3ZNF(u)}{(R\theta)^3}<br>$$<br>角向刚度：<br>$$<br>K_\alpha&#x3D;\frac{1.15Ebt^3ZN}{R\theta^3}<br>$$<br>N——法兰盘的螺栓数量</p>
-<p>t——膜片厚度</p>
-<p>E——膜片材料的弹性模量</p>
-<p>R——链接螺栓中心圆周半径</p>
-<p>Z——膜片层数</p>
-<p>b——膜片环边径向宽度</p>
-<p>d1——垫圈外径</p>
-<p>$\theta$——相邻连接螺栓间膜片可弹性变形部分夹角，$\theta&#x3D;\frac{\pi}{N}-\frac{0.8d_1}{R}$</p>
-<p>$\alpha_c$和$\beta_c$可以按照下表选取：</p>
-<img src="/./img//DiscCouplingEstimate.assets/image-20250701111808558.png" style="zoom:80%;" />
-
-<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/DiscCouplingEstimate.assets/Fig1.jpg"></p>
 <p>输入 input：</p>
 <ul>
-<li>d1 : 垫圈外径</li>
-<li>b: 膜片环形径向宽度</li>
-<li>Z: 膜片层数</li>
-<li>R : 螺栓中心圆半径</li>
-<li>E: 膜片弹性模量</li>
-<li>t : 膜片厚度</li>
-<li>N : 螺栓数量</li>
-</ul>
-<p>参数 params:</p>
-<ul>
-<li>Name : 名称</li>
+<li>Fty : 材料屈服强度</li>
+<li>Ftu : 材料拉伸强度</li>
+<li>E : 弹性模量</li>
+<li>Epsilon : 断裂延伸率</li>
 </ul>
 <p>输出 output :</p>
 <ul>
-<li>Theta : 可变形夹角</li>
-<li>betac : 计算参数</li>
-<li>alphac: 计算参数</li>
-<li>Kalpha : 转角刚度</li>
-<li>Kr : 径向刚度</li>
-<li>KT : 扭转刚度</li>
+<li>n :  参数</li>
+<li>True_Strain : 真实应变</li>
+<li>True_Stress : 真实应力</li>
+<li>Normal_Strain : 名义应变</li>
+<li>Normal_Stress : 名义应力</li>
 </ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><pre><code class="language-matlab">inputStruct.N=4;
-inputStruct.t=0.35;
-inputStruct.E=1.93e5;
-inputStruct.R=77/2;
-inputStruct.Z=9;
-inputStruct.b=16.5;
-inputStruct.d1=13;
-paramsStruct=struct();
-D= method.DiscCouplingEstimate(paramsStruct, inputStruct);
-D=D.solve();
-disp(D.output.KT)
-disp(D.output.Kr)
-disp(D.output.Kalpha)
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><pre><code class="language-matlab">inputStruct1.E=71018.5;
+inputStruct1.Ftu=468.8;
+inputStruct1.Fty=386.12;
+inputStruct1.Epsilon=0.1;
+paramsStruct1=struct();
+obj1=method.Stress_Strain_Curve.Ramberg_Osgood(paramsStruct1,inputStruct1);
+obj1=obj1.solve();
+obj1=obj1.plot();
 </code></pre>
-<p>计算得到的刚度   </p>
-<p>7.0215e+08</p>
-<p>   3.5248e+06</p>
-<p>   1.0732e+06</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 航空发动机手册 第19分册</p>
+<img src="/./img/Ramberg_Osgood.assets/Fig1.jpg" style="zoom:50%;" />
+
+
+
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] DOTFAAAR-MMPDS-01_Metallic Materials Properties Development and Standardization(MMPDS)</p>
+<p>[2] Metallic Materials Properties Development and Standardization (MMPDS-11)</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>

@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>IBeam | Baffalo</title>
+  <title>RubberProperty | Baffalo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="IBeam | Baffalo">
+  <meta name="description" content="RubberProperty | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="介绍Ramberg_Osgood用来生成应力应变曲线。 原理MMPDS $^{[1] [2]}$是美国航空专业最权威的材料标准,包含航空航天领域各种金属材料力学性能。在本规范中，单参数Ramberg-Osgood Parameter n和双参数Dual Bron Parameters n1, n2应力应变曲线被应用来求解金属材料的力学性能。这两种半经验公式可以用来评估材料的强度。 已知材料的弹性模">
 <meta property="og:type" content="article">
@@ -862,9 +862,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-IBeam" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-RubberProperty" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">IBeam</h1>
+        <h1 class="article-title">RubberProperty</h1>
     
     <div class="article-meta">
         
@@ -874,7 +874,7 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo部件">Baffalo部件</a>
+            <a  data-rel="Baffalo方法">Baffalo方法</a>
             
         </span>
         
@@ -882,7 +882,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-04-04 22:03:08'>2025-04-04 22:01</time>
+            发布时间 : <time class="date" title='最后更新: 2025-07-16 11:29:18'>2025-07-16 11:27</time>
         
     </div>
     <div class="article-meta">
@@ -893,7 +893,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-IBeam-Flag-1"><span class="toc-text">Create IBeam (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-IBeam-with-stiffner-Flag-2"><span class="toc-text">Create IBeam with stiffner (Flag&#x3D;2)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -909,79 +909,57 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>IBeam类用于生成工字梁的实体网格。工字梁在钢结构中使用比较多，在工厂一些工装中也有较多的应用。在设计时，应尽量使用标准通用的型号，如规范 GB&#x2F;T 706 热轧型钢 $^{[1]}$。</p>
-<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/IBeam.assets/Fig146.jpg"></p>
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>RubberProperty通过硬度估算橡胶的材料属性。</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/RubberProperty.assets/Fig2.jpg" style="zoom:100%;" />
+
 <p>输入 input：</p>
 <ul>
-<li>Meshsize : 网格尺寸</li>
-<li>Stiffner : 加筋肋位置</li>
-<li>l: 长度</li>
-<li>b: 腿宽度</li>
-<li>d : 腰厚度</li>
-<li>r: 内圆弧倒角</li>
-<li>h : 高度</li>
-<li>t : 平均腿厚度</li>
+<li>Hs : 邵氏硬度</li>
 </ul>
-<p>参数 params:</p>
+<p>参数 params :</p>
 <ul>
 <li>Name : 名称</li>
-<li>Material: 材料</li>
-<li>Order: 阶数</li>
 </ul>
 <p>输出 output :</p>
 <ul>
-<li>Assembly : 装配体</li>
-<li>SolidMesh : 实体网格</li>
-<li>Stiffner_Surface : 加筋肋截面</li>
-<li>Surface : 工字梁截面</li>
+<li>G :  剪切模量</li>
+<li>d : 动静比</li>
+<li>E : 弹性模量</li>
 </ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-IBeam-Flag-1"><a href="#Create-IBeam-Flag-1" class="headerlink" title="Create IBeam (Flag&#x3D;1)"></a>Create IBeam (Flag&#x3D;1)</h3><pre><code class="language-matlab">inputStruct.t=[12,12];
-inputStruct.r=[4,4];
-inputStruct.b=[120,120];
-inputStruct.d=8;
-inputStruct.h=200;
-inputStruct.l=400;
-paramsStruct=struct();
-obj= beam.IBeam(paramsStruct, inputStruct);
-obj= obj.solve();
-Plot2D(obj);
-Plot3D(obj);
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><pre><code class="language-matlab">E=NaN(41,1);
+d=NaN(41,1);
+G=NaN(41,1);
+HS=(30:70)&#39;;
+for i=30:70
+  inputRubber.HS=i;
+  paramsRubber= struct();
+  obj1=method.Rubber.RubberProperty(paramsRubber, inputRubber);
+  obj1=obj1.solve();
+  E(i-29,1)=obj1.output.E;
+  G(i-29,1)=obj1.output.G;
+  d(i-29,1)=obj1.output.d;
+end
+X1=&#123;HS;HS&#125;;
+Y1=&#123;E;G&#125;;
+Color&#123;1,1&#125;=&#39;E&#39;;
+Color&#123;2,1&#125;=&#39;G&#39;;
+g(1,1)=Rplot(&#39;x&#39;,X1,&#39;y&#39;,Y1,&#39;color&#39;,Color);
+g(1,1)=geom_line(g(1,1));
+g(1,1)=set_axe_options(g(1,1),&#39;grid&#39;,1);
+g(1,1)=set_names(g(1,1),&#39;column&#39;,&#39;Origin&#39;,&#39;x&#39;,&quot;HS&quot;,&#39;y&#39;,&#39;Property (N/mm2)&#39;,&#39;color&#39;,&#39;Property&#39;);
+g(1,2)=Rplot(&#39;x&#39;,HS,&#39;y&#39;,d);
+g(1,2)=geom_line(g(1,2));
+g(1,2)=set_axe_options(g(1,2),&#39;grid&#39;,1);
+g(1,2)=set_names(g(1,2),&#39;column&#39;,&#39;Origin&#39;,&#39;x&#39;,&quot;HS&quot;,&#39;y&#39;,&#39;Ed/Es&#39;);
+g=set_title(g,&#39;Relationship between HS and Property&#39;);
+figure(&#39;Position&#39;,[100 100 1000 500]);
+draw(g);
 </code></pre>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/IBeam.assets/Fig144.jpg" style="zoom: 100%;"></td><td><img src="/./img/IBeam.assets/Fig145.jpg" style="zoom: 100%;"></td>
-		</tr>
-    <tr><td><strong>工字梁截面</strong></td><td><strong>工字梁实体网格</strong></td></tr>
-	</tbody>
-</table>
+<img src="/./img/RubberProperty.assets/Fig1.jpg" style="zoom:50%;" />
 
 
 
-
-<h3 id="Create-IBeam-with-stiffner-Flag-2"><a href="#Create-IBeam-with-stiffner-Flag-2" class="headerlink" title="Create IBeam with stiffner (Flag&#x3D;2)"></a>Create IBeam with stiffner (Flag&#x3D;2)</h3><pre><code class="language-matlab">inputStruct.t=[16,16];
-inputStruct.r=[5,5];
-inputStruct.b=[180,180];
-inputStruct.d=12;
-inputStruct.h=240;
-inputStruct.l=480;
-inputStruct.Stiffner=[120+6,12;360-6,12];
-paramsStruct=struct();
-obj= beam.IBeam(paramsStruct, inputStruct);
-obj= obj.solve();
-Plot2D(obj);
-Plot3D(obj);
-</code></pre>
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/IBeam.assets/Fig147.jpg" style="zoom: 100%;"></td><td><img src="/./img/IBeam.assets/Fig148.jpg" style="zoom: 100%;"></td>
-		</tr>
-    <tr><td><strong>工字梁截面</strong></td><td><strong>加筋肋工字梁实体网格</strong></td></tr>
-	</tbody>
-</table>
-
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1]  GB&#x2F;T 706</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 轨道车辆转向架橡胶弹性元件应用技术</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>

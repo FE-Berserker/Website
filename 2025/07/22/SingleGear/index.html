@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SingleGear | Baffalo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="SingleGear | Baffalo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="介绍SingleGear模块用于生成单个齿轮齿形和网格。 原理摘自于参考文献[1],下图是一个无修缘无根切齿轮的端面齿廓。由下列四段曲线构成：  齿根圆弧HH’，半径等于$r_f$；  过渡曲线HG;  基本齿廓曲线KG：  齿顶圆弧KK’，其半径为$r_a$。   齿顶圆系制作齿坏时车制而成，而齿根圆是滚刀节线在齿轮分度圆上滚动时，由顶刃包络切成。按下图中所示配置齿轮坐标系Oxy，其中Ox轴是齿">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SingleGear">
+<meta property="og:url" content="http://example.com/2025/07/22/SingleGear/index.html">
+<meta property="og:site_name" content="Baffalo">
+<meta property="og:description" content="介绍SingleGear模块用于生成单个齿轮齿形和网格。 原理摘自于参考文献[1],下图是一个无修缘无根切齿轮的端面齿廓。由下列四段曲线构成：  齿根圆弧HH’，半径等于$r_f$；  过渡曲线HG;  基本齿廓曲线KG：  齿顶圆弧KK’，其半径为$r_a$。   齿顶圆系制作齿坏时车制而成，而齿根圆是滚刀节线在齿轮分度圆上滚动时，由顶刃包络切成。按下图中所示配置齿轮坐标系Oxy，其中Ox轴是齿">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/SingleGear.assets/image-20250721215109210.png">
+<meta property="og:image" content="http://example.com/img/SingleGear.assets/3d977cacb858a4954c17d8d31e96bf08.jpeg">
+<meta property="og:image" content="http://example.com/img/SingleGear.assets/f9b707f1-7dc3-47e2-a57f-f7f0c967dd0d.png">
+<meta property="og:image" content="http://example.com/img/SingleGear.assets/Fig7.jpg">
+<meta property="og:image" content="http://example.com/img/SingleGear.assets/Fig2.jpg">
+<meta property="og:image" content="http://example.com/img/SingleGear.assets/Fig3.jpg">
+<meta property="og:image" content="http://example.com/img/SingleGear.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/SingleGear.assets/Fig4.jpg">
+<meta property="og:image" content="http://example.com/img/SingleGear.assets/Fig6.jpg">
+<meta property="article:published_time" content="2025-07-22T12:25:22.840Z">
+<meta property="article:modified_time" content="2025-07-22T12:28:22.297Z">
+<meta property="article:author" content="FE-Beserker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/SingleGear.assets/image-20250721215109210.png">
+
+
+<link rel="icon" href="/img/Baffalo.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/Baffalo.png"/>
+</a>
+<div class="author">
+    <span>FE-Beserker</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/FE-Berserker"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:392176462@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(70)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo框架">
+            
+            Baffalo框架
+            <small>(15)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo部件">
+            
+            Baffalo部件
+            <small>(26)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo方法">
+            
+            Baffalo方法
+            <small>(16)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo求解">
+            
+            Baffalo求解
+            <small>(3)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo笔记">
+            
+            Baffalo笔记
+            <small>(10)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="70">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/07/22/SingleGear/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SingleGear">SingleGear</span>
+            <span class="post-date" title="2025-07-22 20:25:22">2025/07/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/21/%E7%A9%BA%E5%BF%83%E8%9E%BA%E6%A0%93%E7%9A%84%E5%88%9A%E5%BA%A6%E4%BF%AE%E6%AD%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="空心螺栓的刚度修正">空心螺栓的刚度修正</span>
+            <span class="post-date" title="2025-07-21 20:00:42">2025/07/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/21/%E7%A3%81%E5%8A%9B%E8%81%94%E8%BD%B4%E5%99%A8%E5%BB%BA%E6%A8%A1%E4%B8%8E%E8%AE%A1%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="磁力联轴器建模与计算">磁力联轴器建模与计算</span>
+            <span class="post-date" title="2025-07-21 17:59:27">2025/07/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/07/20/MagnetCoupling/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MagnetCoupling">MagnetCoupling</span>
+            <span class="post-date" title="2025-07-20 21:00:03">2025/07/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/16/RubberProperty/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RubberProperty">RubberProperty</span>
+            <span class="post-date" title="2025-07-16 11:27:39">2025/07/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/16/Ramberg_Osgood/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ramberg_Osgood">Ramberg_Osgood</span>
+            <span class="post-date" title="2025-07-16 09:56:58">2025/07/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/15/%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E6%AC%A1%E8%A1%A8%E9%9D%A2%E5%BA%94%E5%8A%9B%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="赫兹接触和次表面应力分析">赫兹接触和次表面应力分析</span>
+            <span class="post-date" title="2025-07-15 19:56:01">2025/07/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/15/DNVGL_0361/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="DNVGL_0361">DNVGL_0361</span>
+            <span class="post-date" title="2025-07-15 11:31:49">2025/07/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/15/SignalAnalysis/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SignalAnalysis">SignalAnalysis</span>
+            <span class="post-date" title="2025-07-15 09:29:02">2025/07/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/14/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E6%B0%94%E7%93%B6%E7%88%86%E7%82%B8%E6%B5%8B%E8%AF%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="纤维缠绕气瓶爆炸测试">纤维缠绕气瓶爆炸测试</span>
+            <span class="post-date" title="2025-07-14 15:53:13">2025/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/14/HertzContact/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="HertzContact">HertzContact</span>
+            <span class="post-date" title="2025-07-14 14:15:07">2025/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/07/13/%E5%BC%80%E6%BA%90%E8%BD%AC%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E5%9D%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="开源转子动力学模块">开源转子动力学模块</span>
+            <span class="post-date" title="2025-07-13 20:15:48">2025/07/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/07/10/OilSeal/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="OilSeal">OilSeal</span>
+            <span class="post-date" title="2025-07-10 16:23:32">2025/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/09/%E4%B8%BB%E5%8A%A8%E7%A3%81%E5%8A%9B%E8%BD%B4%E6%89%BF%E8%AE%BE%E8%AE%A1%E4%B8%8E%E4%BB%BF%E7%9C%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="主动磁力轴承设计与仿真">主动磁力轴承设计与仿真</span>
+            <span class="post-date" title="2025-07-09 18:33:26">2025/07/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/07/09/RadialAMB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RadialAMB">RadialAMB</span>
+            <span class="post-date" title="2025-07-09 16:39:06">2025/07/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/09/Vis_cal/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Vis_cal">Vis_cal</span>
+            <span class="post-date" title="2025-07-09 11:05:51">2025/07/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo求解 "
+           href="/2025/07/08/SubModel/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SubModel">SubModel</span>
+            <span class="post-date" title="2025-07-08 11:48:03">2025/07/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/07/07/Transform/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Transform">Transform</span>
+            <span class="post-date" title="2025-07-07 22:32:56">2025/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/06/Puck%E5%87%86%E5%88%99%E4%B8%8E%E6%B8%90%E8%BF%9B%E6%8D%9F%E4%BC%A4%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Puck准则与渐进损伤分析">Puck准则与渐进损伤分析</span>
+            <span class="post-date" title="2025-07-06 20:08:48">2025/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/07/03/WovenRing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="WovenRing">WovenRing</span>
+            <span class="post-date" title="2025-07-03 16:59:18">2025/07/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/02/%E5%8D%95%E5%88%97%E5%BE%84%E5%90%91%E8%A2%AB%E5%8A%A8%E7%A3%81%E5%8A%9B%E8%BD%B4%E6%89%BF%E4%BB%BF%E7%9C%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="单列径向被动磁力轴承仿真">单列径向被动磁力轴承仿真</span>
+            <span class="post-date" title="2025-07-02 11:56:59">2025/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/07/02/RadialPMB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RadialPMB">RadialPMB</span>
+            <span class="post-date" title="2025-07-02 10:26:09">2025/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/01/DiscCouplingEstimate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="DiscCouplingEstimate">DiscCouplingEstimate</span>
+            <span class="post-date" title="2025-07-01 14:11:48">2025/07/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/06/29/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何画出好看的轴零件网格">如何画出好看的轴零件网格</span>
+            <span class="post-date" title="2025-06-29 21:26:41">2025/06/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/06/27/Mori-Tanaka%E6%96%B9%E6%B3%95%E4%B8%8E%E5%BE%AE%E8%A7%82%E5%8A%9B%E5%AD%A6%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mori-Tanaka方法与微观力学分析">Mori-Tanaka方法与微观力学分析</span>
+            <span class="post-date" title="2025-06-27 12:55:54">2025/06/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/06/25/TexGen%E6%93%8D%E4%BD%9C%E7%AE%80%E4%BB%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="TexGen操作简介">TexGen操作简介</span>
+            <span class="post-date" title="2025-06-25 14:51:11">2025/06/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/06/24/Baffalo%E4%BB%8B%E7%BB%8D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Baffalo介绍">Baffalo介绍</span>
+            <span class="post-date" title="2025-06-24 16:35:02">2025/06/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/06/24/WovenCell/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="WovenCell">WovenCell</span>
+            <span class="post-date" title="2025-06-24 12:40:52">2025/06/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/06/12/PuckCriterion3D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PuckCriterion3D">PuckCriterion3D</span>
+            <span class="post-date" title="2025-06-12 12:06:06">2025/06/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/31/FlangeBolt/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="FlangeBolt">FlangeBolt</span>
+            <span class="post-date" title="2025-05-31 19:24:58">2025/05/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/29/BoltJoint/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="BoltJoint">BoltJoint</span>
+            <span class="post-date" title="2025-05-29 12:21:15">2025/05/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/19/RotatingDisc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RotatingDisc">RotatingDisc</span>
+            <span class="post-date" title="2025-05-19 22:09:07">2025/05/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/15/Bolt/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Bolt">Bolt</span>
+            <span class="post-date" title="2025-05-15 14:36:42">2025/05/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/13/ThickWallCylinder/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ThickWallCylinder">ThickWallCylinder</span>
+            <span class="post-date" title="2025-05-13 17:08:54">2025/05/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/11/InterferenceFit/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="InterferenceFit">InterferenceFit</span>
+            <span class="post-date" title="2025-05-11 23:27:10">2025/05/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/08/Laminate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Laminate">Laminate</span>
+            <span class="post-date" title="2025-05-08 17:37:48">2025/05/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/07/Composite_ElasticConstant/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Composite_ElasticConstant">Composite_ElasticConstant</span>
+            <span class="post-date" title="2025-05-07 16:33:33">2025/05/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/05/06/FEMM%20Solver%20Test/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="FEMM Solver Test">FEMM Solver Test</span>
+            <span class="post-date" title="2025-05-06 16:50:17">2025/05/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/06/CompositeRing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CompositeRing">CompositeRing</span>
+            <span class="post-date" title="2025-05-06 14:46:53">2025/05/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/06/Composite_Micromechanics/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Composite_Micromechanics">Composite_Micromechanics</span>
+            <span class="post-date" title="2025-05-06 13:45:30">2025/05/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/04/22/ANSYS%20Element%20Test/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ANSYS Element Test">ANSYS Element Test</span>
+            <span class="post-date" title="2025-04-22 18:24:31">2025/04/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/04/05/LBeam/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="LBeam">LBeam</span>
+            <span class="post-date" title="2025-04-05 10:20:52">2025/04/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/04/05/CBeam/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CBeam">CBeam</span>
+            <span class="post-date" title="2025-04-05 09:56:42">2025/04/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/04/04/IBeam/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IBeam">IBeam</span>
+            <span class="post-date" title="2025-04-04 22:01:48">2025/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/04/02/RayleighEstimate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RayleighEstimate">RayleighEstimate</span>
+            <span class="post-date" title="2025-04-02 17:34:16">2025/04/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/28/WindturbineTower/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="WindturbineTower">WindturbineTower</span>
+            <span class="post-date" title="2025-03-28 09:43:11">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/27/Dome/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Dome">Dome</span>
+            <span class="post-date" title="2025-03-27 11:39:48">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/26/Body/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Body">Body</span>
+            <span class="post-date" title="2025-03-26 12:25:49">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/25/ShaftSupport/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ShaftSupport">ShaftSupport</span>
+            <span class="post-date" title="2025-03-25 12:11:46">2025/03/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/24/FoilGen/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="FoilGen">FoilGen</span>
+            <span class="post-date" title="2025-03-24 23:00:24">2025/03/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/23/Housing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Housing">Housing</span>
+            <span class="post-date" title="2025-03-23 13:14:08">2025/03/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/23/ForceLoad/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ForceLoad">ForceLoad</span>
+            <span class="post-date" title="2025-03-23 09:37:04">2025/03/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/09/CouplingMembrane/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CouplingMembrane">CouplingMembrane</span>
+            <span class="post-date" title="2025-03-09 22:03:45">2025/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/08/BossPlate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="BossPlate">BossPlate</span>
+            <span class="post-date" title="2025-03-08 23:08:23">2025/03/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/05/Foil/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Foil">Foil</span>
+            <span class="post-date" title="2025-03-05 14:33:16">2025/03/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo求解 "
+           href="/2025/03/04/RotDyn/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RotDyn">RotDyn</span>
+            <span class="post-date" title="2025-03-04 18:46:40">2025/03/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/02/25/Commonplate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Commonplate">Commonplate</span>
+            <span class="post-date" title="2025-02-25 23:39:29">2025/02/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/22/Layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Layer">Layer</span>
+            <span class="post-date" title="2025-02-22 16:48:02">2025/02/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/02/22/ISO1940/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ISO1940">ISO1940</span>
+            <span class="post-date" title="2025-02-22 10:21:27">2025/02/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo求解 "
+           href="/2025/02/21/SubStr/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SubStr">SubStr</span>
+            <span class="post-date" title="2025-02-21 12:22:35">2025/02/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/02/20/Commonshaft/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Commonshaft">Commonshaft</span>
+            <span class="post-date" title="2025-02-20 12:07:33">2025/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/19/Mesh/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mesh">Mesh</span>
+            <span class="post-date" title="2025-02-19 18:42:15">2025/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/18/Mesh2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mesh2D">Mesh2D</span>
+            <span class="post-date" title="2025-02-18 17:23:50">2025/02/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/18/Surface2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Surface2D">Surface2D</span>
+            <span class="post-date" title="2025-02-18 17:19:49">2025/02/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/17/Line/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Line">Line</span>
+            <span class="post-date" title="2025-02-17 17:54:26">2025/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/16/Line2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Line2D">Line2D</span>
+            <span class="post-date" title="2025-02-16 17:39:49">2025/02/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Point/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Point">Point</span>
+            <span class="post-date" title="2025-02-15 21:15:50">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Point2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Point2D">Point2D</span>
+            <span class="post-date" title="2025-02-15 21:13:34">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Margin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Margin">Margin</span>
+            <span class="post-date" title="2025-02-15 21:07:31">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/13/Component/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Component">Component</span>
+            <span class="post-date" title="2025-02-13 18:00:56">2025/02/13</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-SingleGear" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">SingleGear</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Baffalo部件">Baffalo部件</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2025-07-22 20:28:22'>2025-07-22 20:25</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-Single-gear-Flag-1"><span class="toc-text">Create Single gear (Flag&#x3D;1)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-6 i,
+    .toc-level-6 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>SingleGear模块用于生成单个齿轮齿形和网格。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>摘自于参考文献[1],下图是一个无修缘无根切齿轮的端面齿廓。由下列四段曲线构成：</p>
+<ol>
+<li><p>齿根圆弧HH’，半径等于$r_f$；</p>
+</li>
+<li><p>过渡曲线HG;</p>
+</li>
+<li><p>基本齿廓曲线KG：</p>
+</li>
+<li><p>齿顶圆弧KK’，其半径为$r_a$。</p>
+</li>
+</ol>
+<p>齿顶圆系制作齿坏时车制而成，而齿根圆是滚刀节线在齿轮分度圆上滚动时，由顶刃包络切成。按下图中所示配置齿轮坐标系Oxy，其中Ox轴是齿廓的对称轴，与0x轴相垂直的Oy轴通过齿根圆与齿槽对称轴的交点H，于是便确定了坐标原点O，它与齿轮轴心O之间的距离为 $r_fcos（\pi&#x2F;z)$。</p>
+<img src="/./img/SingleGear.assets/image-20250721215109210.png" style="zoom: 10%;" />
+
+<p>下图(a)所示为用一齿条刀加工齿轮的示意图，坐标系$Px_0y_0$固连于刀具之上，其坐标原点为节点P，刀具中线与节线之距离为xm（变位量）。</p>
+<p><img src="/./img/SingleGear.assets/3d977cacb858a4954c17d8d31e96bf08.jpeg"></p>
+<p>设刀具齿廓上任意一点M’在刀具坐标系$Px_1y_1$中的坐标为x0和y0，该点的法线M’N与刀具节线$Py_0$的交点为N；在刀具节线沿齿轮分度圆滚动的过程中，当N点与分度圆接触时，点 M将与齿轮齿廓上的对应点M接触（如上图（b）所示），二者的公法线亦通过N点。于是，把M’点在坐标系$Px_0y_0$中的坐标xo、yo转换至坐标系Oxy中，即可得到齿轮齿廓上相应M 点的坐标x、y。设齿条刀滚动角为Φ,则:<br>$$<br>x&#x3D;(r-x_0)cos\phi+(r_{\phi}-y_0)sin\phi-r_fcos(\frac{\pi}{z})<br>$$</p>
+<p>$$<br>y&#x3D;(r-x_0)sin\phi-(r_{\phi}-y_0)cos\phi<br>$$</p>
+<p>$$<br>\phi&#x3D;\frac{\overline{PN}}{r}<br>$$</p>
+<p>上式即是用齿条刀加工的齿轮齿廓普遍方程式，也是x0、y0和$\phi$的函数。因此，若已知刀具齿廓上任意点M’的坐标（x0、y0）、$\overline{PN}$及r的值时，就可以用上式求出该点（齿轮齿廓上相应点为M）在齿轮坐标系Oxy中的坐标（x、y）。若取齿条刀具上的若干点，利用上式求出齿轮齿廓上相应各点的坐标（x、y）加以连结，便得到所加工齿轮的齿廓曲线。顺便指出，用齿轮滚刀切制齿轮时，也近似地将其当作用齿条刀加工，故研究结果也适用于滚齿。</p>
+<p>齿轮齿根过渡曲线HG段是由齿条刀的齿顶倒圆部分bb’所切出的（如下图所示）。M’在刀具坐标系$Px_0y_0$中的坐标（x0,y0）为：<br>$$<br>x_0&#x3D;x_c+\rho_0cos\gamma<br>$$</p>
+<p>$$<br>y_0&#x3D;y_c-\rho_0sin\gamma<br>$$</p>
+<p>$$<br>\gamma&#x3D;arctan\frac{r\phi-y_c}{x_c}<br>$$</p>
+<img src="/./img/SingleGear.assets/f9b707f1-7dc3-47e2-a57f-f7f0c967dd0d.png" style="zoom:25%;" />
+
+<p>式中角度$\gamma$在下述范围中变动：<br>$$<br>0\le\gamma\le(\pi&#x2F;2-\alpha)<br>$$<br>式中。$\alpha$为齿条到的齿形角，一般为20°。</p>
+<p>将（4）<del>（6）式带入 （1）</del>（3）式可以得到齿轮齿廓齿根的过渡曲线方程：<br>$$<br>x&#x3D;(r-x_c-\rho_0cos\gamma)cos\phi+(x_ctan\gamma+\rho_0sin\gamma)sin\phi-r_fcos(\frac{\pi}{2})<br>$$</p>
+<p>$$<br>y&#x3D;(r-x_c-\rho_0cos\gamma)sin\phi+(x_ctan\gamma+\rho_0sin\gamma)cos\phi<br>$$</p>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><img src="/./img/SingleGear.assets/Fig7.jpg" style="zoom:100%;" />
+
+<p>输入 input：</p>
+<ul>
+<li>Tool: 刀具参数</li>
+<li>alphan : 压力角</li>
+<li>beta : 螺旋角</li>
+<li>ID : 齿轮内径</li>
+<li>Z:  齿数</li>
+<li>b : 齿宽</li>
+<li>x : 变位系数</li>
+</ul>
+<p>参数 params:</p>
+<ul>
+<li>Name ： 名称</li>
+<li>Material ：材料</li>
+<li>Order ：单元阶数</li>
+<li>h_fp ： 齿根高系数</li>
+<li>rho_fp ： 齿根半径系数</li>
+<li>h_ap： 齿顶高系数</li>
+<li>Type : 1.齿轮基准齿廓 2. 滚刀无切顶  3.滚刀含切顶</li>
+<li>Lsize1 : Shell mesh line esize</li>
+<li>Lsize2 : Solid mesh line esize</li>
+<li>MeshNTooth : Shell mesh gear number </li>
+<li>NWidth : Solid mesh gear width segment</li>
+<li>Helix : right, left</li>
+<li>NMaster : Number of master point</li>
+</ul>
+<p>输出 output :</p>
+<ul>
+<li>xt : 端面变位系数</li>
+<li>mt : 端面模数 [mm]</li>
+<li>alphat : 端面压力角 [°]</li>
+<li>cp : 顶隙系数</li>
+<li>d :分度圆直径 [mm]</li>
+<li>db : 基圆直径 [mm]</li>
+<li>da : 齿顶圆直径 [mm]</li>
+<li>df’ : 齿根圆直径 [mm]</li>
+<li>h : 齿高 [mm]</li>
+<li>ha : 齿顶高 [mm]</li>
+<li>hf’ : 齿根高 [mm]</li>
+<li>betaf’ : 分度圆螺旋角 [°]</li>
+<li>betab : 基圆螺旋角 [°]</li>
+<li>Tool : 刀具参数</li>
+<li>ToolCurve : 刀具曲线</li>
+<li>GearCurve : 齿轮齿廓</li>
+<li>ShellMesh : Shell mesh with tooth</li>
+<li>SolidMesh : Solid mesh with tooth</li>
+<li>Assembly : Solid mesh assembly</li>
+<li>Assembly1 : Shell mesh assembly</li>
+<li>MasterPoint : 主节点</li>
+</ul>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-Single-gear-Flag-1"><a href="#Create-Single-gear-Flag-1" class="headerlink" title="Create Single gear (Flag&#x3D;1)"></a>Create Single gear (Flag&#x3D;1)</h3><pre><code class="language-matlab">inputSingleGear.mn= 1;
+inputSingleGear.alphan = 20;
+inputSingleGear.Z=17;
+inputSingleGear.b=10;
+inputSingleGear.x=0.3;
+inputSingleGear.beta=20;
+paramsingleGear.MeshNTooth = 17;
+obj1=gear.SingleGear(paramsingleGear, inputSingleGear);
+obj1=obj1.solve();
+PlotCutting(obj1);
+PlotToolCurve(obj1);
+PlotGearCurve(obj1);
+Plot2D(obj1);
+Plot3D(obj1,&#39;faceno&#39;,101);
+</code></pre>
+<p>刀具和单个齿形绘制：</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/SingleGear.assets/Fig2.jpg" style="zoom: 100%;"></td><td><img src="/./img/SingleGear.assets/Fig3.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<img src="/./img/SingleGear.assets/Fig1.jpg" style="zoom:100%;" />
+
+<p>平面模型网格：</p>
+<img src="/./img/SingleGear.assets/Fig4.jpg" style="zoom:100%;" />
+
+<p>实体网格：</p>
+<img src="/./img/SingleGear.assets/Fig6.jpg" style="zoom:100%;" />
+
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 圆柱齿轮几何计算原理及实用算法</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2025 FE-Berserker
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

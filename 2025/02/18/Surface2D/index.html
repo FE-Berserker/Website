@@ -6,27 +6,25 @@
   <meta name="keywords" content="">
   <meta name="description" content="Surface2D | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="介绍SingleGear模块用于生成单个齿轮齿形和网格。 原理摘自于参考文献[1],下图是一个无修缘无根切齿轮的端面齿廓。由下列四段曲线构成：  齿根圆弧HH’，半径等于$r_f$；  过渡曲线HG;  基本齿廓曲线KG：  齿顶圆弧KK’，其半径为$r_a$。   齿顶圆系制作齿坏时车制而成，而齿根圆是滚刀节线在齿轮分度圆上滚动时，由顶刃包络切成。按下图中所示配置齿轮坐标系Oxy，其中Ox轴是齿">
+<meta name="description" content="齿轮的网格通常要求采用映射的方式画网格，在齿廓和齿根圆弧要有明显的边界，这个边界点为齿廓的起点，也是接触的起点。这样的分界好处时后期做齿廓修形时可以很方便的修改齿形，而齿根的圆弧与刀具的选择相关性很大，做齿根圆弧优化时也可以只调整齿根曲线。 另外在做接触或者接触斑的分析时，齿廓一般不用考虑侧隙，这样就不用花费额外时间调整齿形副的装配位置，以便更好的帮助分析收敛，所以再用Kisssoft或者Roma">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SingleGear">
-<meta property="og:url" content="http://example.com/2025/07/22/SingleGear/index.html">
+<meta property="og:title" content="齿轮的网格划分">
+<meta property="og:url" content="http://example.com/2025/07/23/%E9%BD%BF%E8%BD%AE%E7%9A%84%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="介绍SingleGear模块用于生成单个齿轮齿形和网格。 原理摘自于参考文献[1],下图是一个无修缘无根切齿轮的端面齿廓。由下列四段曲线构成：  齿根圆弧HH’，半径等于$r_f$；  过渡曲线HG;  基本齿廓曲线KG：  齿顶圆弧KK’，其半径为$r_a$。   齿顶圆系制作齿坏时车制而成，而齿根圆是滚刀节线在齿轮分度圆上滚动时，由顶刃包络切成。按下图中所示配置齿轮坐标系Oxy，其中Ox轴是齿">
+<meta property="og:description" content="齿轮的网格通常要求采用映射的方式画网格，在齿廓和齿根圆弧要有明显的边界，这个边界点为齿廓的起点，也是接触的起点。这样的分界好处时后期做齿廓修形时可以很方便的修改齿形，而齿根的圆弧与刀具的选择相关性很大，做齿根圆弧优化时也可以只调整齿根曲线。 另外在做接触或者接触斑的分析时，齿廓一般不用考虑侧隙，这样就不用花费额外时间调整齿形副的装配位置，以便更好的帮助分析收敛，所以再用Kisssoft或者Roma">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/SingleGear.assets/Fig4.jpg">
 <meta property="og:image" content="http://example.com/img/SingleGear.assets/image-20250721215109210.png">
 <meta property="og:image" content="http://example.com/img/SingleGear.assets/3d977cacb858a4954c17d8d31e96bf08.jpeg">
 <meta property="og:image" content="http://example.com/img/SingleGear.assets/f9b707f1-7dc3-47e2-a57f-f7f0c967dd0d.png">
-<meta property="og:image" content="http://example.com/img/SingleGear.assets/Fig7.jpg">
-<meta property="og:image" content="http://example.com/img/SingleGear.assets/Fig2.jpg">
-<meta property="og:image" content="http://example.com/img/SingleGear.assets/Fig3.jpg">
-<meta property="og:image" content="http://example.com/img/SingleGear.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/SingleGear.assets/Fig4.jpg">
-<meta property="og:image" content="http://example.com/img/SingleGear.assets/Fig6.jpg">
-<meta property="article:published_time" content="2025-07-22T12:25:22.840Z">
-<meta property="article:modified_time" content="2025-07-22T12:28:22.297Z">
+<meta property="og:image" content="http://example.com/img/%E9%BD%BF%E8%BD%AE%E7%9A%84%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86.assets/61f5291b5e3dc3728dd94229951ee047_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E9%BD%BF%E8%BD%AE%E7%9A%84%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86.assets/c3918b6cbcfdec10bd57c5c7e40fbf79_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E9%BD%BF%E8%BD%AE%E7%9A%84%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86.assets/d6bd420bcbcc73cc874dd5191490005f_MD5.jpeg">
+<meta property="article:published_time" content="2025-07-23T05:31:06.200Z">
+<meta property="article:modified_time" content="2025-07-23T05:38:43.366Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/SingleGear.assets/image-20250721215109210.png">
+<meta name="twitter:image" content="http://example.com/img/SingleGear.assets/Fig4.jpg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -113,7 +111,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(70)</small>
+                <small>(73)</small>
             
         </div>
     </li>
@@ -140,7 +138,7 @@
         <div data-rel="Baffalo部件">
             
             Baffalo部件
-            <small>(26)</small>
+            <small>(27)</small>
         </div>
         
     </li>
@@ -185,7 +183,7 @@
         <div data-rel="Baffalo笔记">
             
             Baffalo笔记
-            <small>(10)</small>
+            <small>(12)</small>
         </div>
         
     </li>
@@ -206,7 +204,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="70">
+<input type="hidden" id="yelog_site_posts_number" value="73">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -256,6 +254,33 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/23/%E5%8F%A0%E7%89%87%E7%BD%91%E6%A0%BC%E5%92%8C%E5%BB%BA%E6%A8%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="叠片网格和建模">叠片网格和建模</span>
+            <span class="post-date" title="2025-07-23 17:01:53">2025/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/23/%E9%BD%BF%E8%BD%AE%E7%9A%84%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="齿轮的网格划分">齿轮的网格划分</span>
+            <span class="post-date" title="2025-07-23 13:31:06">2025/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/07/23/Bracket/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Bracket">Bracket</span>
+            <span class="post-date" title="2025-07-23 13:21:16">2025/07/23</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo部件 "

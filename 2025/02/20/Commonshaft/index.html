@@ -6,25 +6,27 @@
   <meta name="keywords" content="">
   <meta name="description" content="Commonshaft | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="介绍NonHertzContact用来计算非赫兹接触问题。 类结构Roller_Calculation 输入 input：  D2 : 半径2 D1 : 半径1 Lwe : 滚子有效长度 y : 滚子轮廓长度方向坐标 x : 滚子轮廓径向 Q : 载荷  参数 params:  v2 : 泊松比2 v1 : 泊松比1 tol : 计算精度 Delta0 : 初始变形 E2 : 弹性模量2 E1 :">
+<meta name="description" content="介绍赫兹接触解释了无限长圆柱体的接触问题，无限长柱体之间的理想线接触状态在实际问题中是不存在的。在滚子轴承中，滚子的长度一般都小于滚道的宽度，而当滚子的轮廓不是一条直线，并且滚子相对于滚道产生倾斜时，这样的问题无法用Hertz 线接触理论解决，此类问题被称为非Hertz问题。 非赫兹接触首先观察赫兹接触条件下的压力分布，其截面的压力为：$$p(x)&#x3D;p_{max}\sqrt{1-(x&amp;#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NonHertzContact">
-<meta property="og:url" content="http://example.com/2025/07/27/NonHertzContact/index.html">
+<meta property="og:title" content="非赫兹接触和轴承滚子修形">
+<meta property="og:url" content="http://example.com/2025/07/28/%E9%9D%9E%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E8%BD%B4%E6%89%BF%E6%BB%9A%E5%AD%90%E4%BF%AE%E5%BD%A2/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="介绍NonHertzContact用来计算非赫兹接触问题。 类结构Roller_Calculation 输入 input：  D2 : 半径2 D1 : 半径1 Lwe : 滚子有效长度 y : 滚子轮廓长度方向坐标 x : 滚子轮廓径向 Q : 载荷  参数 params:  v2 : 泊松比2 v1 : 泊松比1 tol : 计算精度 Delta0 : 初始变形 E2 : 弹性模量2 E1 :">
+<meta property="og:description" content="介绍赫兹接触解释了无限长圆柱体的接触问题，无限长柱体之间的理想线接触状态在实际问题中是不存在的。在滚子轴承中，滚子的长度一般都小于滚道的宽度，而当滚子的轮廓不是一条直线，并且滚子相对于滚道产生倾斜时，这样的问题无法用Hertz 线接触理论解决，此类问题被称为非Hertz问题。 非赫兹接触首先观察赫兹接触条件下的压力分布，其截面的压力为：$$p(x)&#x3D;p_{max}\sqrt{1-(x&amp;#">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/NonHertzContact.assets/Fig7.jpg">
-<meta property="og:image" content="http://example.com/img/NonHertzContact.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/NonHertzContact.assets/Fig2.jpg">
-<meta property="og:image" content="http://example.com/img/NonHertzContact.assets/Fig3.jpg">
-<meta property="og:image" content="http://example.com/img/NonHertzContact.assets/Fig4.jpg">
-<meta property="og:image" content="http://example.com/img/NonHertzContact.assets/Fig5.jpg">
-<meta property="og:image" content="http://example.com/img/NonHertzContact.assets/Fig6.jpg">
-<meta property="article:published_time" content="2025-07-27T07:32:16.639Z">
-<meta property="article:modified_time" content="2025-07-27T07:35:10.454Z">
+<meta property="og:image" content="http://example.com/img/%E9%9D%9E%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E8%BD%B4%E6%89%BF%E6%BB%9A%E5%AD%90%E4%BF%AE%E5%BD%A2.assets/67ec5bee69de50d22507129a278a5698_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E9%9D%9E%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E8%BD%B4%E6%89%BF%E6%BB%9A%E5%AD%90%E4%BF%AE%E5%BD%A2.assets/f93917e06fd1cc8418d2df053aab6a46_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E9%9D%9E%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E8%BD%B4%E6%89%BF%E6%BB%9A%E5%AD%90%E4%BF%AE%E5%BD%A2.assets/d921633cf2dfefe0296dfe57eb522515_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E9%9D%9E%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E8%BD%B4%E6%89%BF%E6%BB%9A%E5%AD%90%E4%BF%AE%E5%BD%A2.assets/b82bfe94da0815871b89d978e739b32d_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E9%9D%9E%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E8%BD%B4%E6%89%BF%E6%BB%9A%E5%AD%90%E4%BF%AE%E5%BD%A2.assets/0198623c87d0d4726db297efeccdbb17_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E9%9D%9E%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E8%BD%B4%E6%89%BF%E6%BB%9A%E5%AD%90%E4%BF%AE%E5%BD%A2.assets/f637c0b73a9e72cbf770068d5e6e8d74_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E9%9D%9E%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E8%BD%B4%E6%89%BF%E6%BB%9A%E5%AD%90%E4%BF%AE%E5%BD%A2.assets/5d62c2fe6f5173be1e27562982f88467_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E9%9D%9E%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E8%BD%B4%E6%89%BF%E6%BB%9A%E5%AD%90%E4%BF%AE%E5%BD%A2.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/%E9%9D%9E%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E8%BD%B4%E6%89%BF%E6%BB%9A%E5%AD%90%E4%BF%AE%E5%BD%A2.assets/Fig2.jpg">
+<meta property="article:published_time" content="2025-07-28T12:46:24.367Z">
+<meta property="article:modified_time" content="2025-07-28T12:48:59.635Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/NonHertzContact.assets/Fig7.jpg">
+<meta name="twitter:image" content="http://example.com/img/%E9%9D%9E%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E8%BD%B4%E6%89%BF%E6%BB%9A%E5%AD%90%E4%BF%AE%E5%BD%A2.assets/67ec5bee69de50d22507129a278a5698_MD5.jpeg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -111,7 +113,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(75)</small>
+                <small>(77)</small>
             
         </div>
     </li>
@@ -183,7 +185,7 @@
         <div data-rel="Baffalo笔记">
             
             Baffalo笔记
-            <small>(13)</small>
+            <small>(15)</small>
         </div>
         
     </li>
@@ -204,7 +206,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="75">
+<input type="hidden" id="yelog_site_posts_number" value="77">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -254,6 +256,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/28/%E5%A4%8D%E5%90%88%E6%9D%90%E6%96%99%E9%9D%99%E6%80%81%E5%8A%9B%E5%AD%A6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="复合材料静态力学性能测试">复合材料静态力学性能测试</span>
+            <span class="post-date" title="2025-07-28 20:51:11">2025/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/28/%E9%9D%9E%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E8%BD%B4%E6%89%BF%E6%BB%9A%E5%AD%90%E4%BF%AE%E5%BD%A2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="非赫兹接触和轴承滚子修形">非赫兹接触和轴承滚子修形</span>
+            <span class="post-date" title="2025-07-28 20:46:24">2025/07/28</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo方法 "

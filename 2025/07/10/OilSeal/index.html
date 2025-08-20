@@ -6,25 +6,28 @@
   <meta name="keywords" content="">
   <meta name="description" content="OilSeal | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="介绍 滚动轴承作为机械系统中的关键部件，具有非线性的特性，对计算方法要求很高。在之前的文章中介绍了如何建立滚子轴承，本文以深沟球轴承为例，介绍球轴承的有限元建模分析方法。  球轴承几何关系尽管滚珠轴承看似是简单的机械元件，但其内部几何结构，以及相应的运动和应力关系却相当复杂。最重要的几何参数如下图所示，该图展示了深沟球轴承（在径向载荷作用下）的变形。其中两个参数是滚珠直径D和节圆直径Dm，滚珠围绕">
+<meta name="description" content="介绍在之前的文章中介绍了纤维缠绕模块的开发，在确定完滑线系数、缠绕角后需要对整个部件的线型进行设计，使得缠绕的纤维均匀布满，这部分很多书籍和文献都没有介绍，本文将从最基本的数学原理介绍如何将纤维均匀布满。  一笔画多角星首先，我们来讨论如何画一个五角星，这个问题非常简单，几何所有人都可以不假思索的画出如下图形：  我们把多角星的角数定义为N, 把一条线跨过的角数称为P，对于N&#x3D;5角星，P">
 <meta property="og:type" content="article">
-<meta property="og:title" content="球轴承计算与建模仿真">
-<meta property="og:url" content="http://example.com/2025/08/19/%E7%90%83%E8%BD%B4%E6%89%BF%E8%AE%A1%E7%AE%97%E4%B8%8E%E5%BB%BA%E6%A8%A1%E4%BB%BF%E7%9C%9F/index.html">
+<meta property="og:title" content="纤维缠绕线型分析中的数学问题">
+<meta property="og:url" content="http://example.com/2025/08/20/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="介绍 滚动轴承作为机械系统中的关键部件，具有非线性的特性，对计算方法要求很高。在之前的文章中介绍了如何建立滚子轴承，本文以深沟球轴承为例，介绍球轴承的有限元建模分析方法。  球轴承几何关系尽管滚珠轴承看似是简单的机械元件，但其内部几何结构，以及相应的运动和应力关系却相当复杂。最重要的几何参数如下图所示，该图展示了深沟球轴承（在径向载荷作用下）的变形。其中两个参数是滚珠直径D和节圆直径Dm，滚珠围绕">
+<meta property="og:description" content="介绍在之前的文章中介绍了纤维缠绕模块的开发，在确定完滑线系数、缠绕角后需要对整个部件的线型进行设计，使得缠绕的纤维均匀布满，这部分很多书籍和文献都没有介绍，本文将从最基本的数学原理介绍如何将纤维均匀布满。  一笔画多角星首先，我们来讨论如何画一个五角星，这个问题非常简单，几何所有人都可以不假思索的画出如下图形：  我们把多角星的角数定义为N, 把一条线跨过的角数称为P，对于N&#x3D;5角星，P">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/%E7%90%83%E8%BD%B4%E6%89%BF%E8%AE%A1%E7%AE%97%E4%B8%8E%E5%BB%BA%E6%A8%A1%E4%BB%BF%E7%9C%9F.assets/ea63bebbff2453c6dc39433137031ac4_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%90%83%E8%BD%B4%E6%89%BF%E8%AE%A1%E7%AE%97%E4%B8%8E%E5%BB%BA%E6%A8%A1%E4%BB%BF%E7%9C%9F.assets/f51aadede7767a486443daebc20acbed_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%90%83%E8%BD%B4%E6%89%BF%E8%AE%A1%E7%AE%97%E4%B8%8E%E5%BB%BA%E6%A8%A1%E4%BB%BF%E7%9C%9F.assets/9f39613219ef0ed59c60291cef525271_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%90%83%E8%BD%B4%E6%89%BF%E8%AE%A1%E7%AE%97%E4%B8%8E%E5%BB%BA%E6%A8%A1%E4%BB%BF%E7%9C%9F.assets/740ff8c56f4299628bbfc42074e61953_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%90%83%E8%BD%B4%E6%89%BF%E8%AE%A1%E7%AE%97%E4%B8%8E%E5%BB%BA%E6%A8%A1%E4%BB%BF%E7%9C%9F.assets/f93c8330428075d13f4f014c3cbb3818_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%90%83%E8%BD%B4%E6%89%BF%E8%AE%A1%E7%AE%97%E4%B8%8E%E5%BB%BA%E6%A8%A1%E4%BB%BF%E7%9C%9F.assets/db8a88a025a34f7ec429ebde1932e1d8_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%90%83%E8%BD%B4%E6%89%BF%E8%AE%A1%E7%AE%97%E4%B8%8E%E5%BB%BA%E6%A8%A1%E4%BB%BF%E7%9C%9F.assets/7b90ca06bb37f74ed1c45212fc022cd6_MD5.jpeg">
-<meta property="article:published_time" content="2025-08-19T03:00:36.861Z">
-<meta property="article:modified_time" content="2025-08-19T03:02:51.588Z">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/f0bc2276e21e3f2661066a5ce86857c3_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/d1be3f2cefed9ab1fea64fec89e62a35_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/3d068de18cc338965df940a627535880_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/ca78bafff52912b8a2820249cd87e6d9_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/334275212da110bfdd6564fed9dd1386_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/bb37449c37f8d6aefb7841dc42e6cd27_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/a0ebfcd931a2ba43f8f81dc2fdfcd65b_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/2e157ed3b3778d40f68a276ea3abf433_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/50e8b6dab4e36eec387b83e422678f2c_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/Fig1.jpg">
+<meta property="article:published_time" content="2025-08-20T04:38:17.238Z">
+<meta property="article:modified_time" content="2025-08-20T04:40:33.484Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/%E7%90%83%E8%BD%B4%E6%89%BF%E8%AE%A1%E7%AE%97%E4%B8%8E%E5%BB%BA%E6%A8%A1%E4%BB%BF%E7%9C%9F.assets/ea63bebbff2453c6dc39433137031ac4_MD5.jpeg">
+<meta name="twitter:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/f0bc2276e21e3f2661066a5ce86857c3_MD5.jpeg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -111,7 +114,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(91)</small>
+                <small>(92)</small>
             
         </div>
     </li>
@@ -138,7 +141,7 @@
         <div data-rel="Baffalo部件">
             
             Baffalo部件
-            <small>(28)</small>
+            <small>(29)</small>
         </div>
         
     </li>
@@ -219,7 +222,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="91">
+<input type="hidden" id="yelog_site_posts_number" value="92">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -269,6 +272,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/08/20/CylindricalRollerBearing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CylindricalRollerBearing">CylindricalRollerBearing</span>
+            <span class="post-date" title="2025-08-20 20:40:33">2025/08/20</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo笔记 "

@@ -6,28 +6,24 @@
   <meta name="keywords" content="">
   <meta name="description" content="参数化叠片联轴器设计 | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="介绍在之前的文章中介绍了纤维缠绕模块的开发，在确定完滑线系数、缠绕角后需要对整个部件的线型进行设计，使得缠绕的纤维均匀布满，这部分很多书籍和文献都没有介绍，本文将从最基本的数学原理介绍如何将纤维均匀布满。  一笔画多角星首先，我们来讨论如何画一个五角星，这个问题非常简单，几何所有人都可以不假思索的画出如下图形：  我们把多角星的角数定义为N, 把一条线跨过的角数称为P，对于N&#x3D;5角星，P">
+<meta name="description" content="介绍DeepGrooveBallBearing用于深沟球轴承的计算和建模。 原理$C_0$The basic static radial load rating for radial roller bearings is given by the equation:$$C_0&#x3D;f_0iZD_{we}^2cos\alpha$$ $C_r$The basic dynamic radial l">
 <meta property="og:type" content="article">
-<meta property="og:title" content="纤维缠绕线型分析中的数学问题">
-<meta property="og:url" content="http://example.com/2025/08/20/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="DeepGrooveBallBearing">
+<meta property="og:url" content="http://example.com/2025/08/21/DeepGrooveBallBearing/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="介绍在之前的文章中介绍了纤维缠绕模块的开发，在确定完滑线系数、缠绕角后需要对整个部件的线型进行设计，使得缠绕的纤维均匀布满，这部分很多书籍和文献都没有介绍，本文将从最基本的数学原理介绍如何将纤维均匀布满。  一笔画多角星首先，我们来讨论如何画一个五角星，这个问题非常简单，几何所有人都可以不假思索的画出如下图形：  我们把多角星的角数定义为N, 把一条线跨过的角数称为P，对于N&#x3D;5角星，P">
+<meta property="og:description" content="介绍DeepGrooveBallBearing用于深沟球轴承的计算和建模。 原理$C_0$The basic static radial load rating for radial roller bearings is given by the equation:$$C_0&#x3D;f_0iZD_{we}^2cos\alpha$$ $C_r$The basic dynamic radial l">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/f0bc2276e21e3f2661066a5ce86857c3_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/d1be3f2cefed9ab1fea64fec89e62a35_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/3d068de18cc338965df940a627535880_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/ca78bafff52912b8a2820249cd87e6d9_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/334275212da110bfdd6564fed9dd1386_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/bb37449c37f8d6aefb7841dc42e6cd27_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/a0ebfcd931a2ba43f8f81dc2fdfcd65b_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/2e157ed3b3778d40f68a276ea3abf433_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/50e8b6dab4e36eec387b83e422678f2c_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/Fig1.jpg">
-<meta property="article:published_time" content="2025-08-20T04:38:17.238Z">
-<meta property="article:modified_time" content="2025-08-20T04:40:33.484Z">
+<meta property="og:image" content="http://example.com/img/DeepGrooveBallBearing.assets/Fig6.jpg">
+<meta property="og:image" content="http://example.com/img/DeepGrooveBallBearing.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/DeepGrooveBallBearing.assets/Fig2.jpg">
+<meta property="og:image" content="http://example.com/img/DeepGrooveBallBearing.assets/Fig3.jpg">
+<meta property="og:image" content="http://example.com/img/DeepGrooveBallBearing.assets/Fig4.jpg">
+<meta property="og:image" content="http://example.com/img/DeepGrooveBallBearing.assets/Fig5.jpg">
+<meta property="article:published_time" content="2025-08-21T03:17:33.806Z">
+<meta property="article:modified_time" content="2025-08-21T03:29:50.043Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98.assets/f0bc2276e21e3f2661066a5ce86857c3_MD5.jpeg">
+<meta name="twitter:image" content="http://example.com/img/DeepGrooveBallBearing.assets/Fig6.jpg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -114,7 +110,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(92)</small>
+                <small>(93)</small>
             
         </div>
     </li>
@@ -141,7 +137,7 @@
         <div data-rel="Baffalo部件">
             
             Baffalo部件
-            <small>(29)</small>
+            <small>(30)</small>
         </div>
         
     </li>
@@ -222,7 +218,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="92">
+<input type="hidden" id="yelog_site_posts_number" value="93">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -272,6 +268,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/08/21/DeepGrooveBallBearing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="DeepGrooveBallBearing">DeepGrooveBallBearing</span>
+            <span class="post-date" title="2025-08-21 11:17:33">2025/08/21</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo部件 "

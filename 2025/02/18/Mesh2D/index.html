@@ -6,21 +6,23 @@
   <meta name="keywords" content="">
   <meta name="description" content="Mesh2D | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="介绍球或滚子轴承通常用于承受各种负荷，同时允许轴或滑块转动或平动。滚动轴承中的运动通常是一些复杂的运动。例如，一滚动轴承安装在转速为 $n$ (r&#x2F;min) 的轴上，滚动体以转速 $n_m$(r&#x2F;min) 绕轴承轴线转动，同时又以转速 $n_R$ (r&#x2F;min) 绕自身轴线旋转。在多数工况下，特别是在轴承或外圈低速工况下，这些内部的速度能够运用简单的运动学关系式计算出">
+<meta name="description" content="介绍ShellGrid类用于生成网架结构。 类结构 输入 input：  VP : 可变荷载 PP : 永久荷载 ny:  nx:  kn: 参数 span: 参数 f: 高  参数 params:  Name : 名称 Section :截面属性 Material: 材料 Type : 网架类型 JointType : 节点类型 Gravity : 重力 BoundaryType : 边界类型">
 <meta property="og:type" content="article">
-<meta property="og:title" content="滚子轴承各部件运动速度">
-<meta property="og:url" content="http://example.com/2025/08/22/%E6%BB%9A%E5%AD%90%E8%BD%B4%E6%89%BF%E5%90%84%E9%83%A8%E4%BB%B6%E8%BF%90%E5%8A%A8%E9%80%9F%E5%BA%A6/index.html">
+<meta property="og:title" content="ShellGrid">
+<meta property="og:url" content="http://example.com/2025/08/21/ShellGrid/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="介绍球或滚子轴承通常用于承受各种负荷，同时允许轴或滑块转动或平动。滚动轴承中的运动通常是一些复杂的运动。例如，一滚动轴承安装在转速为 $n$ (r&#x2F;min) 的轴上，滚动体以转速 $n_m$(r&#x2F;min) 绕轴承轴线转动，同时又以转速 $n_R$ (r&#x2F;min) 绕自身轴线旋转。在多数工况下，特别是在轴承或外圈低速工况下，这些内部的速度能够运用简单的运动学关系式计算出">
+<meta property="og:description" content="介绍ShellGrid类用于生成网架结构。 类结构 输入 input：  VP : 可变荷载 PP : 永久荷载 ny:  nx:  kn: 参数 span: 参数 f: 高  参数 params:  Name : 名称 Section :截面属性 Material: 材料 Type : 网架类型 JointType : 节点类型 Gravity : 重力 BoundaryType : 边界类型">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/%E6%BB%9A%E5%AD%90%E8%BD%B4%E6%89%BF%E5%90%84%E9%83%A8%E4%BB%B6%E8%BF%90%E5%8A%A8%E9%80%9F%E5%BA%A6.assets/b64c353f12f46fc5a13af5b560f9d502_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E6%BB%9A%E5%AD%90%E8%BD%B4%E6%89%BF%E5%90%84%E9%83%A8%E4%BB%B6%E8%BF%90%E5%8A%A8%E9%80%9F%E5%BA%A6.assets/dcde097cd333c2d9dd5c3668e0b51ac3_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E6%BB%9A%E5%AD%90%E8%BD%B4%E6%89%BF%E5%90%84%E9%83%A8%E4%BB%B6%E8%BF%90%E5%8A%A8%E9%80%9F%E5%BA%A6.assets/b459b9ec341172ae3ffc50651d18fef5_MD5.jpeg">
-<meta property="article:published_time" content="2025-08-22T06:04:08.158Z">
-<meta property="article:modified_time" content="2025-08-22T12:04:23.177Z">
+<meta property="og:image" content="http://example.com/img/ShellGrid.assets/Fig5.jpg">
+<meta property="og:image" content="http://example.com/img/ShellGrid.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/ShellGrid.assets/Fig2.jpg">
+<meta property="og:image" content="http://example.com/img/ShellGrid.assets/Fig3.jpg">
+<meta property="og:image" content="http://example.com/img/ShellGrid.assets/Fig4.jpg">
+<meta property="article:published_time" content="2025-08-21T09:43:15.006Z">
+<meta property="article:modified_time" content="2025-08-21T09:51:24.744Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/%E6%BB%9A%E5%AD%90%E8%BD%B4%E6%89%BF%E5%90%84%E9%83%A8%E4%BB%B6%E8%BF%90%E5%8A%A8%E9%80%9F%E5%BA%A6.assets/b64c353f12f46fc5a13af5b560f9d502_MD5.jpeg">
+<meta name="twitter:image" content="http://example.com/img/ShellGrid.assets/Fig5.jpg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -1168,7 +1170,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-02-18 17:29:42'>2025-02-18 17:23</time>
+            发布时间 : <time class="date" title='最后更新: 2025-08-24 14:56:20'>2025-02-18 17:23</time>
         
     </div>
     <div class="article-meta">
@@ -1179,7 +1181,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mesh2D"><span class="toc-text">Mesh2D</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MESH2D-Delaunay-based-unstructured-mesh-generation"><span class="toc-text">MESH2D: Delaunay-based unstructured mesh-generation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-gear-obj-Flag-1"><span class="toc-text">Create gear obj (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-quad-circle-Flag-2"><span class="toc-text">Create quad circle (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-quad-plate-Flag-3"><span class="toc-text">Create quad plate (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Elements-Flag-4"><span class="toc-text">Add Elements (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Convhull-Flag-5"><span class="toc-text">Convhull (Flag&#x3D;5)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Convcave1-Flag-6"><span class="toc-text">Convcave1 (Flag&#x3D;6)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Convcave2-Flag-7"><span class="toc-text">Convcave2 (Flag&#x3D;7)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Covert-quad-to-tri-Flag-8"><span class="toc-text">Covert quad to tri (Flag&#x3D;8)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-2D-Tensor-Grid-Flag-9"><span class="toc-text">Mesh 2D Tensor Grid (Flag&#x3D;9)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-2D-Grid-Flag-10"><span class="toc-text">Mesh 2D Grid (Flag&#x3D;10)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Compute-MRST-G-Flag-11"><span class="toc-text">Compute MRST G (Flag&#x3D;11)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Load-msh-file-Flag-12"><span class="toc-text">Load msh file (Flag&#x3D;12)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MeshDual-Flag-13"><span class="toc-text">MeshDual (Flag&#x3D;13)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plot-Dual-center-and-area-Flag-14"><span class="toc-text">Plot Dual center and area (Flag&#x3D;14)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Calculate-geometry-information-Flag-15"><span class="toc-text">Calculate geometry information (Flag&#x3D;15)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plot-Mesh2D-in-paraview-Flag-16"><span class="toc-text">Plot Mesh2D in paraview (Flag&#x3D;16)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plot-Mesh2D-G-and-celldata-in-paraview-Flag-17"><span class="toc-text">Plot Mesh2D G and celldata in paraview (Flag&#x3D;17)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-edge-Flag-18"><span class="toc-text">Mesh edge (Flag&#x3D;18)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-ring-Flag-19"><span class="toc-text">Mesh ring (Flag&#x3D;19)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-edge-layer-Flag-20"><span class="toc-text">Mesh edge layer (Flag&#x3D;20)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CheatTable"><span class="toc-text">CheatTable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mesh2D"><span class="toc-text">Mesh2D</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MESH2D-Delaunay-based-unstructured-mesh-generation"><span class="toc-text">MESH2D: Delaunay-based unstructured mesh-generation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-gear-obj-Flag-1"><span class="toc-text">Create gear obj (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-quad-circle-Flag-2"><span class="toc-text">Create quad circle (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-quad-plate-Flag-3"><span class="toc-text">Create quad plate (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-Elements-Flag-4"><span class="toc-text">Add Elements (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Convhull-Flag-5"><span class="toc-text">Convhull (Flag&#x3D;5)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Convcave1-Flag-6"><span class="toc-text">Convcave1 (Flag&#x3D;6)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Convcave2-Flag-7"><span class="toc-text">Convcave2 (Flag&#x3D;7)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Covert-quad-to-tri-Flag-8"><span class="toc-text">Covert quad to tri (Flag&#x3D;8)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-2D-Tensor-Grid-Flag-9"><span class="toc-text">Mesh 2D Tensor Grid (Flag&#x3D;9)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-2D-Grid-Flag-10"><span class="toc-text">Mesh 2D Grid (Flag&#x3D;10)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Compute-MRST-G-Flag-11"><span class="toc-text">Compute MRST G (Flag&#x3D;11)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Load-msh-file-Flag-12"><span class="toc-text">Load msh file (Flag&#x3D;12)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MeshDual-Flag-13"><span class="toc-text">MeshDual (Flag&#x3D;13)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plot-Dual-center-and-area-Flag-14"><span class="toc-text">Plot Dual center and area (Flag&#x3D;14)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Calculate-geometry-information-Flag-15"><span class="toc-text">Calculate geometry information (Flag&#x3D;15)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plot-Mesh2D-in-paraview-Flag-16"><span class="toc-text">Plot Mesh2D in paraview (Flag&#x3D;16)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plot-Mesh2D-G-and-celldata-in-paraview-Flag-17"><span class="toc-text">Plot Mesh2D G and celldata in paraview (Flag&#x3D;17)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-edge-Flag-18"><span class="toc-text">Mesh edge (Flag&#x3D;18)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-ring-Flag-19"><span class="toc-text">Mesh ring (Flag&#x3D;19)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-edge-layer-Flag-20"><span class="toc-text">Mesh edge layer (Flag&#x3D;20)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Baffalo-logo-Flag-21"><span class="toc-text">Baffalo logo (Flag&#x3D;21)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-with-constraints-Flag-22"><span class="toc-text">Mesh with constraints (Flag&#x3D;22)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CheatTable"><span class="toc-text">CheatTable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1556,9 +1558,8 @@ Plot(m)
 		</tr>
 	</tbody>
 </table>
-### Baffalo logo
 
-<pre><code class="language-matlab">Data=load(&#39;Data.mat&#39;).Data;
+<h3 id="Baffalo-logo-Flag-21"><a href="#Baffalo-logo-Flag-21" class="headerlink" title="Baffalo logo (Flag&#x3D;21)"></a>Baffalo logo (Flag&#x3D;21)</h3><pre><code class="language-matlab">Data=load(&#39;Data.mat&#39;).Data;
 a=Point2D(&#39;Temp&#39;);
 a=AddPoint(a,Data(:,1),Data(:,2));
 % Add outline
@@ -1579,6 +1580,43 @@ Plot2(m)
 <p>并设置自己喜欢的色阶，</p>
 <p><img src="/./img/Mesh2D.assets/Fig61.jpg"></p>
 <img src="/./img/Mesh2D.assets/Fig62.jpg" style="zoom:33%;" />
+
+<h3 id="Mesh-with-constraints-Flag-22"><a href="#Mesh-with-constraints-Flag-22" class="headerlink" title="Mesh with constraints (Flag&#x3D;22)"></a>Mesh with constraints (Flag&#x3D;22)</h3><pre><code class="language-matlab">a=Point2D(&#39;Temp&#39;);
+a=AddPoint(a,[1,1,-1,-1,1]&#39;,[1,-1,-1,1,1]&#39;);
+% Add outline
+b=Line2D(&#39;Out&#39;);
+b=AddCurve(b,a,1);
+Plot(b)
+S=Surface2D(b);
+m=Mesh2D(&#39;Temp&#39;);
+m=AddSurface(m,S);
+m=SetSize(m,0.1);
+Cnode = [
+  +.0, +.0; +.2, +.7
+  +.6, +.2; +.4, +.8
+  +0., +.5; -.7, +.3
+  -.1, +.1; -.6, +.5
+  -.9, -.8; -.6, -.7
+  -.3, -.6; +.0, -.5
+  +.3, -.4; -.3, +.4
+  -.1, +.3
+] ;
+Cedge = [
+  1 ,  2 ;  1 ,  3
+  1 ,  4 ;  1 ,  5
+  1 , 6 ;  1 , 7
+  1 , 8 ;  1 , 9
+  1 , 10 ;  1 , 11
+  1 , 12 ;  1 , 13
+  1 , 14 ;  1 , 15
+] ;
+m=AddCNode(m,Cnode);
+m=AddCEdge(m,Cedge);
+m=Mesh(m);
+Plot(m)
+</code></pre>
+<p>带约束的网格划分，图中虚线为约束的线段。</p>
+<img src="/./img/Mesh2D.assets/Fig63.jpg" style="zoom:33%;" />
 
 <h2 id="CheatTable"><a href="#CheatTable" class="headerlink" title="CheatTable"></a>CheatTable</h2><table>
 <thead>

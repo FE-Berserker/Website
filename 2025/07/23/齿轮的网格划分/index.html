@@ -6,23 +6,30 @@
   <meta name="keywords" content="">
   <meta name="description" content="齿轮的网格划分 | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="介绍ShellGrid类用于生成网架结构。 类结构 输入 input：  VP : 可变荷载 PP : 永久荷载 ny:  nx:  kn: 参数 span: 参数 f: 高  参数 params:  Name : 名称 Section :截面属性 Material: 材料 Type : 网架类型 JointType : 节点类型 Gravity : 重力 BoundaryType : 边界类型">
+<meta name="description" content="介绍轴套类零件其内径不为零，按结构特点分为: 有支承回转体的各种轴承圈、轴套, 夹具上的钻套和导向套, 内燃机上的气缸套, 液压系统中的液压缸、电液伺服阀的阀套, 电主轴内的冷却套等。 建模因为轴套类零件可以按照旋转的方式生成，因此其很容易参数化，再Baffalo中，Housing用于生成轴套，它可以通过定义并旋转一个平面生成网格。 其按照以下流程建立旋转网格： flowchart LR">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ShellGrid">
-<meta property="og:url" content="http://example.com/2025/08/21/ShellGrid/index.html">
+<meta property="og:title" content="旋转轴套参数化网格建模">
+<meta property="og:url" content="http://example.com/2025/08/25/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="介绍ShellGrid类用于生成网架结构。 类结构 输入 input：  VP : 可变荷载 PP : 永久荷载 ny:  nx:  kn: 参数 span: 参数 f: 高  参数 params:  Name : 名称 Section :截面属性 Material: 材料 Type : 网架类型 JointType : 节点类型 Gravity : 重力 BoundaryType : 边界类型">
+<meta property="og:description" content="介绍轴套类零件其内径不为零，按结构特点分为: 有支承回转体的各种轴承圈、轴套, 夹具上的钻套和导向套, 内燃机上的气缸套, 液压系统中的液压缸、电液伺服阀的阀套, 电主轴内的冷却套等。 建模因为轴套类零件可以按照旋转的方式生成，因此其很容易参数化，再Baffalo中，Housing用于生成轴套，它可以通过定义并旋转一个平面生成网格。 其按照以下流程建立旋转网格： flowchart LR">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/ShellGrid.assets/Fig5.jpg">
-<meta property="og:image" content="http://example.com/img/ShellGrid.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/ShellGrid.assets/Fig2.jpg">
-<meta property="og:image" content="http://example.com/img/ShellGrid.assets/Fig3.jpg">
-<meta property="og:image" content="http://example.com/img/ShellGrid.assets/Fig4.jpg">
-<meta property="article:published_time" content="2025-08-21T09:43:15.006Z">
-<meta property="article:modified_time" content="2025-08-21T09:51:24.744Z">
+<meta property="og:image" content="http://example.com/img/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/e5d02de80b28adac84586e6dfd5c688e_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/93d1da0df06c08b1c5fae2cb660b98f2_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/c8819a24f00ee74b047e26f0e2acde90_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/ba059f6cd95d557b56361aaab72fd838_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/8a44988bf961ef21dee89b2693508260_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/3b87ddecbbc7c7d9089c2917c47f467d_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/8a44988bf961ef21dee89b2693508260_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/80fbbfaed19b7dff984519dd922b584a_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/40ade455bcbf5dfa13819d525b6132bc_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/8a44988bf961ef21dee89b2693508260_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/cc8ef17cc0b3be8065bd004dfba5f043_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/77aea3f1d8d60b2609f1c5371c57ca80_MD5.jpeg">
+<meta property="article:published_time" content="2025-08-25T04:18:18.933Z">
+<meta property="article:modified_time" content="2025-08-25T04:23:46.445Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/ShellGrid.assets/Fig5.jpg">
+<meta name="twitter:image" content="http://example.com/img/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/e5d02de80b28adac84586e6dfd5c688e_MD5.jpeg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -109,7 +116,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(96)</small>
+                <small>(98)</small>
             
         </div>
     </li>
@@ -136,7 +143,7 @@
         <div data-rel="Baffalo部件">
             
             Baffalo部件
-            <small>(32)</small>
+            <small>(33)</small>
         </div>
         
     </li>
@@ -181,7 +188,7 @@
         <div data-rel="Baffalo笔记">
             
             Baffalo笔记
-            <small>(25)</small>
+            <small>(26)</small>
         </div>
         
     </li>
@@ -217,7 +224,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="96">
+<input type="hidden" id="yelog_site_posts_number" value="98">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -267,6 +274,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/08/25/ToothShaft/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ToothShaft">ToothShaft</span>
+            <span class="post-date" title="2025-08-25 12:49:05">2025/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/08/25/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="旋转轴套参数化网格建模">旋转轴套参数化网格建模</span>
+            <span class="post-date" title="2025-08-25 12:18:18">2025/08/25</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo笔记 "

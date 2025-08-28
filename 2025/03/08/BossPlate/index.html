@@ -6,24 +6,25 @@
   <meta name="keywords" content="">
   <meta name="description" content="BossPlate | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="介绍ToothShaft可建立端部带齿槽的轴。 类结构  输入 input：  ToothWidth : 齿宽 ToothPos : 齿部开始位置 ToothNum : 齿数量 Meshsize : 网格尺寸 Outline : 外轮廓Line2D  参数 params:  Order ：单元阶数 ToothType : 齿槽类型 ToothSlice : 齿部网格数量 SlotSlice : 槽">
+<meta name="description" content="介绍在纤维缠绕轨迹规划中，为了保证纤维的稳定缠绕，必须要满足两个条件：  不架空条件，即纤维紧贴在芯模表面，纤维应稳定存在并不产生滑动而偏离轨迹，如下图所示。 不滑线条件，即按设计轨迹将纤维缠绕到芯模表面，纤维应稳定存在并不产生滑动   纤维受力分析为了计算纤维的稳定性，首先需要精准的计算缠绕纤维的受力。  在芯模表面任取一段微元，沿着纤维方向每单位长度上会产生一个力：$$f_r&#x3D;f_t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ToothShaft">
-<meta property="og:url" content="http://example.com/2025/08/25/ToothShaft/index.html">
+<meta property="og:title" content="纤维缠绕稳定性分析">
+<meta property="og:url" content="http://example.com/2025/08/26/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="介绍ToothShaft可建立端部带齿槽的轴。 类结构  输入 input：  ToothWidth : 齿宽 ToothPos : 齿部开始位置 ToothNum : 齿数量 Meshsize : 网格尺寸 Outline : 外轮廓Line2D  参数 params:  Order ：单元阶数 ToothType : 齿槽类型 ToothSlice : 齿部网格数量 SlotSlice : 槽">
+<meta property="og:description" content="介绍在纤维缠绕轨迹规划中，为了保证纤维的稳定缠绕，必须要满足两个条件：  不架空条件，即纤维紧贴在芯模表面，纤维应稳定存在并不产生滑动而偏离轨迹，如下图所示。 不滑线条件，即按设计轨迹将纤维缠绕到芯模表面，纤维应稳定存在并不产生滑动   纤维受力分析为了计算纤维的稳定性，首先需要精准的计算缠绕纤维的受力。  在芯模表面任取一段微元，沿着纤维方向每单位长度上会产生一个力：$$f_r&#x3D;f_t">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/ToothShaft.assets/Fig5.jpg">
-<meta property="og:image" content="http://example.com/img/ToothShaft.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/ToothShaft.assets/Fig2.jpg">
-<meta property="og:image" content="http://example.com/img/ToothShaft.assets/image-20250825114015667.png">
-<meta property="og:image" content="http://example.com/img/ToothShaft.assets/Fig3.jpg">
-<meta property="og:image" content="http://example.com/img/ToothShaft.assets/Fig4.jpg">
-<meta property="article:published_time" content="2025-08-25T04:49:05.848Z">
-<meta property="article:modified_time" content="2025-08-25T05:38:04.536Z">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90.assets/bad8f3db4e3aafb0b9ce5272720dbcb5_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90.assets/db6adea85224887c4f08f9b106684deb_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90.assets/d9ed9a3daadfe485143f3cbb1551ce2d_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90.assets/c5757ff1cdbb97937cc32b62af0585a0_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90.assets/2c48e22d2223365ac0b9e65bd4a6c90c_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90.assets/71873014d6929f3874bbe8d677f58d57_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90.assets/334c7acda6fb82ee253114533c7d88d2_MD5.jpeg">
+<meta property="article:published_time" content="2025-08-26T06:20:23.062Z">
+<meta property="article:modified_time" content="2025-08-26T06:23:02.149Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/ToothShaft.assets/Fig5.jpg">
+<meta name="twitter:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90.assets/bad8f3db4e3aafb0b9ce5272720dbcb5_MD5.jpeg">
 
 
 <link rel="icon" href="/img/Baffalo.png">

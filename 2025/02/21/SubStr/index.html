@@ -6,27 +6,28 @@
   <meta name="keywords" content="">
   <meta name="description" content="SubStr | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="介绍本文介绍Bafflo中端部带齿槽轴参数化网格建模。这部分结构的特点是齿和槽交错排列，难点在于齿和槽采用旋转生成，连接处保持节点相连，且齿和槽采用不同的旋转次数和角度。  在Baffalo中设定步骤如下： flowchart LR     Point --&gt; line --&gt; ToothRange --&gt; 2DMesh --&gt; 3DMesh   案例同样借鉴之前文章的模型">
+<meta name="description" content="介绍电机是将电能转化为机械能的装置，其在制造业、能源、交通等众多领域得到了广泛应用。随着新能源和机器人行业的发展，为了更好的集成，节省空间，看到了很多电机和减速机一体化的设计，比如电车中的多合一电驱，机器人的关节。 但是目前并没有一种很好软件综合分析电机合齿轮系统的动力学响应。 在Romax和ANSYS motion中需要导入电机的激励，而Maxwell更多的侧重于电机设计。 在求解器方面，很多软">
 <meta property="og:type" content="article">
-<meta property="og:title" content="端部带槽轴参数化网格建模">
-<meta property="og:url" content="http://example.com/2025/08/29/%E7%AB%AF%E9%83%A8%E5%B8%A6%E6%A7%BD%E8%BD%B4%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1/index.html">
+<meta property="og:title" content="电机模块开发规划">
+<meta property="og:url" content="http://example.com/2025/08/31/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="介绍本文介绍Bafflo中端部带齿槽轴参数化网格建模。这部分结构的特点是齿和槽交错排列，难点在于齿和槽采用旋转生成，连接处保持节点相连，且齿和槽采用不同的旋转次数和角度。  在Baffalo中设定步骤如下： flowchart LR     Point --&gt; line --&gt; ToothRange --&gt; 2DMesh --&gt; 3DMesh   案例同样借鉴之前文章的模型">
+<meta property="og:description" content="介绍电机是将电能转化为机械能的装置，其在制造业、能源、交通等众多领域得到了广泛应用。随着新能源和机器人行业的发展，为了更好的集成，节省空间，看到了很多电机和减速机一体化的设计，比如电车中的多合一电驱，机器人的关节。 但是目前并没有一种很好软件综合分析电机合齿轮系统的动力学响应。 在Romax和ANSYS motion中需要导入电机的激励，而Maxwell更多的侧重于电机设计。 在求解器方面，很多软">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/%E7%AB%AF%E9%83%A8%E5%B8%A6%E6%A7%BD%E8%BD%B4%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/014dbfe3aaa33043c620a2e8a925b1f3_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%AB%AF%E9%83%A8%E5%B8%A6%E6%A7%BD%E8%BD%B4%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/e5d02de80b28adac84586e6dfd5c688e_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%AB%AF%E9%83%A8%E5%B8%A6%E6%A7%BD%E8%BD%B4%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/6fa42a5fb8272fc156f325329941e5f7_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%AB%AF%E9%83%A8%E5%B8%A6%E6%A7%BD%E8%BD%B4%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/1683b5fb93d39171b1761bd04f2703d8_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%AB%AF%E9%83%A8%E5%B8%A6%E6%A7%BD%E8%BD%B4%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/36cfc0278d896f3ed22ccff22d0d63d9_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%AB%AF%E9%83%A8%E5%B8%A6%E6%A7%BD%E8%BD%B4%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/849f724b35350cfc4d654f3ad86310c7_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%AB%AF%E9%83%A8%E5%B8%A6%E6%A7%BD%E8%BD%B4%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/4f9a180862e0d7c7d4ea5d47ddc445fd_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%AB%AF%E9%83%A8%E5%B8%A6%E6%A7%BD%E8%BD%B4%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/900c6cb2af3af20991329268bd4b6e31_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%AB%AF%E9%83%A8%E5%B8%A6%E6%A7%BD%E8%BD%B4%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/06a3ef1d4b0a54a2e7074633a760fdcd_MD5.jpeg">
-<meta property="article:published_time" content="2025-08-29T02:11:33.473Z">
-<meta property="article:modified_time" content="2025-08-29T02:17:02.298Z">
+<meta property="og:image" content="http://example.com/img/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92.assets/31e4d6bc389b1dd0d96d50d47888ff93_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92.assets/8d465b3d92edd6d50b73dd093d02cfd6_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92.assets/07f625bf9f78f022ea45dc89fe322b1e_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92.assets/dc5a0abeff8a72ae262d8eb85f56b878_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92.assets/407a0787f5e92f70e15f83e4779084d4_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92.assets/b62ede59fbef059a92ea7bd61b60bb33_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92.assets/fcb51f147004bf6f554d5b14ed263164_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92.assets/f60a192eecdf4dd086f06b017ec9eac0_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92.assets/27e9b9b49f8b9121adcf35fe81a9ad00_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92.assets/be630de5103c8fe5dc3e1c44f1a6ca2e_MD5.jpeg">
+<meta property="article:published_time" content="2025-08-31T13:47:55.339Z">
+<meta property="article:modified_time" content="2025-08-31T13:49:23.063Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/%E7%AB%AF%E9%83%A8%E5%B8%A6%E6%A7%BD%E8%BD%B4%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1.assets/014dbfe3aaa33043c620a2e8a925b1f3_MD5.jpeg">
+<meta name="twitter:image" content="http://example.com/img/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92.assets/31e4d6bc389b1dd0d96d50d47888ff93_MD5.jpeg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -81,7 +82,7 @@
     
         
             <a title="github"
-               href="https://ssh.github.com/FE-Berserker"
+               href="https://github.com/FE-Berserker"
                target="_blank">
                 
                     <svg class="iconfont-svg" aria-hidden="true">
@@ -113,7 +114,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(100)</small>
+                <small>(101)</small>
             
         </div>
     </li>
@@ -185,7 +186,7 @@
         <div data-rel="Baffalo笔记">
             
             Baffalo笔记
-            <small>(28)</small>
+            <small>(29)</small>
         </div>
         
     </li>
@@ -221,7 +222,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="100">
+<input type="hidden" id="yelog_site_posts_number" value="101">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -271,6 +272,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/08/31/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="电机模块开发规划">电机模块开发规划</span>
+            <span class="post-date" title="2025-08-31 21:47:55">2025/08/31</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo笔记 "

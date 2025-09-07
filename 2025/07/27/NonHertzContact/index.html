@@ -6,26 +6,23 @@
   <meta name="keywords" content="">
   <meta name="description" content="NonHertzContact | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="介绍渐开线齿轮是现代常用的机械零件，目前几乎所有的齿轮设计书籍会直接告诉你一堆复杂的公式，却忽视思考的核心。本文从传动正向设计的角度出发，带来渐开线齿轮的一些思考，也希望给你一些启发。 传动首先从最朴实的想法出发，设计一个传动系统，希望两个轴系之间实现转速的传递。同时希望保持传动的平稳，也就是说两个轴系间的力大小和方向都不随时间改变。 这似乎很简单，我们设计两个圆，圆的半径不随转角的变化而变化，也">
+<meta name="description" content="介绍导向轴支座是一种用于支撑、固定导向轴并承受载荷的机械工件，广泛应用于工厂自动化领域，常与导向轴、直线轴承等部件配合形成线性导向机构。在任何一个非标的产品手册中，均有介绍，因为其为标准件，也很容易参数化。Baffalo中的ShaftSupport模块可方便生成支座，以便在仿真中使用。 原理在之前的文章中，介绍了带凸台平板的参数化建模，ShaftSupport模块是基于BossPlate凸台平板模">
 <meta property="og:type" content="article">
-<meta property="og:title" content="为什么齿轮用渐开线">
-<meta property="og:url" content="http://example.com/2025/09/02/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%BD%BF%E8%BD%AE%E7%94%A8%E6%B8%90%E5%BC%80%E7%BA%BF/index.html">
+<meta property="og:title" content="导向轴支座参数化网格模型">
+<meta property="og:url" content="http://example.com/2025/09/07/%E5%AF%BC%E5%90%91%E8%BD%B4%E6%94%AF%E5%BA%A7%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="介绍渐开线齿轮是现代常用的机械零件，目前几乎所有的齿轮设计书籍会直接告诉你一堆复杂的公式，却忽视思考的核心。本文从传动正向设计的角度出发，带来渐开线齿轮的一些思考，也希望给你一些启发。 传动首先从最朴实的想法出发，设计一个传动系统，希望两个轴系之间实现转速的传递。同时希望保持传动的平稳，也就是说两个轴系间的力大小和方向都不随时间改变。 这似乎很简单，我们设计两个圆，圆的半径不随转角的变化而变化，也">
+<meta property="og:description" content="介绍导向轴支座是一种用于支撑、固定导向轴并承受载荷的机械工件，广泛应用于工厂自动化领域，常与导向轴、直线轴承等部件配合形成线性导向机构。在任何一个非标的产品手册中，均有介绍，因为其为标准件，也很容易参数化。Baffalo中的ShaftSupport模块可方便生成支座，以便在仿真中使用。 原理在之前的文章中，介绍了带凸台平板的参数化建模，ShaftSupport模块是基于BossPlate凸台平板模">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%BD%BF%E8%BD%AE%E7%94%A8%E6%B8%90%E5%BC%80%E7%BA%BF.assets/78ae52786c1b2a784d2eb5d25feb516d_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%BD%BF%E8%BD%AE%E7%94%A8%E6%B8%90%E5%BC%80%E7%BA%BF.assets/a8c7c7ffea85eb9c5f761e4b22ccf9cb_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%BD%BF%E8%BD%AE%E7%94%A8%E6%B8%90%E5%BC%80%E7%BA%BF.assets/3ee5fa6337679ed635cc8b72618317a9_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%BD%BF%E8%BD%AE%E7%94%A8%E6%B8%90%E5%BC%80%E7%BA%BF.assets/cbf3918e359f6afcc5de776b77439bf9_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%BD%BF%E8%BD%AE%E7%94%A8%E6%B8%90%E5%BC%80%E7%BA%BF.assets/3eca0d7361cde76bb9528f78aea2e886_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%BD%BF%E8%BD%AE%E7%94%A8%E6%B8%90%E5%BC%80%E7%BA%BF.assets/524251f43feb01c9d37a21dd903a9c28_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%BD%BF%E8%BD%AE%E7%94%A8%E6%B8%90%E5%BC%80%E7%BA%BF.assets/b2a314e23625e57e968ef8dff1e819ee_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%BD%BF%E8%BD%AE%E7%94%A8%E6%B8%90%E5%BC%80%E7%BA%BF.assets/cc68aac6f81e7eac606d693ff1d421f3_MD5.jpeg">
-<meta property="article:published_time" content="2025-09-02T06:34:20.286Z">
-<meta property="article:modified_time" content="2025-09-02T06:42:49.917Z">
+<meta property="og:image" content="http://example.com/img/%E5%AF%BC%E5%90%91%E8%BD%B4%E6%94%AF%E5%BA%A7%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B.assets/2ace0c8a8bbba9030a489b6f347a47aa_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E5%AF%BC%E5%90%91%E8%BD%B4%E6%94%AF%E5%BA%A7%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B.assets/4d5a98a5e1866f48ddf6f20e53ee050e_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E5%AF%BC%E5%90%91%E8%BD%B4%E6%94%AF%E5%BA%A7%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B.assets/66efc1cdb743af5f2a67ff0270a018bf_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E5%AF%BC%E5%90%91%E8%BD%B4%E6%94%AF%E5%BA%A7%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B.assets/82932717caf578093392402ba96fb0fc_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E5%AF%BC%E5%90%91%E8%BD%B4%E6%94%AF%E5%BA%A7%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B.assets/3dd6e90e1adade1e79ba65ed1fb70682_MD5.jpeg">
+<meta property="article:published_time" content="2025-09-07T13:12:16.038Z">
+<meta property="article:modified_time" content="2025-09-07T13:48:04.591Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%BD%BF%E8%BD%AE%E7%94%A8%E6%B8%90%E5%BC%80%E7%BA%BF.assets/78ae52786c1b2a784d2eb5d25feb516d_MD5.jpeg">
+<meta name="twitter:image" content="http://example.com/img/%E5%AF%BC%E5%90%91%E8%BD%B4%E6%94%AF%E5%BA%A7%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B.assets/2ace0c8a8bbba9030a489b6f347a47aa_MD5.jpeg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -112,7 +109,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(102)</small>
+                <small>(103)</small>
             
         </div>
     </li>
@@ -184,7 +181,7 @@
         <div data-rel="Baffalo笔记">
             
             Baffalo笔记
-            <small>(30)</small>
+            <small>(31)</small>
         </div>
         
     </li>
@@ -220,7 +217,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="102">
+<input type="hidden" id="yelog_site_posts_number" value="103">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -270,6 +267,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/09/07/%E5%AF%BC%E5%90%91%E8%BD%B4%E6%94%AF%E5%BA%A7%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="导向轴支座参数化网格模型">导向轴支座参数化网格模型</span>
+            <span class="post-date" title="2025-09-07 21:12:16">2025/09/07</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo笔记 "

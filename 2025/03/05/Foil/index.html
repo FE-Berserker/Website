@@ -6,24 +6,25 @@
   <meta name="keywords" content="">
   <meta name="description" content="Foil | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="介绍在纤维缠绕复合材料的设计合仿真中，筒身和封头段精准的壁厚是建立有限元网格模型的关键，没有准确的网格，就无法正确的计算出容器的应力和位移。  网格理论对于厚度，最经典的公式是体积除以面积$$t&#x3D;\frac{V}{A}$$在缠绕的过程中，纤维处于张紧的状态，可忽略截面积的变化。且暂时不考虑曲面表面曲率对纤维的影响。我们将缠绕芯模展开，把纤维投影到2D的平面中，对于一个固定的区间，为了保证">
+<meta name="description" content="介绍SlotHousing用于建立带槽的轴套。 类结构  输入 input：  SlotWidth : 槽宽 SlotPos : 槽部开始位置 SlotNum : 齿槽数量 Meshsize : 网格尺寸 Outline : 外轮廓Line2D  参数 params:  Order ：单元阶数 ToothType : 齿类型 SlotTyoe : 槽类型 ToothSlice : 齿部网格数量 S">
 <meta property="og:type" content="article">
-<meta property="og:title" content="纤维缠绕厚度估算">
-<meta property="og:url" content="http://example.com/2025/09/15/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E5%8E%9A%E5%BA%A6%E4%BC%B0%E7%AE%97/index.html">
+<meta property="og:title" content="SlotHousing">
+<meta property="og:url" content="http://example.com/2025/09/17/SlotHousing/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="介绍在纤维缠绕复合材料的设计合仿真中，筒身和封头段精准的壁厚是建立有限元网格模型的关键，没有准确的网格，就无法正确的计算出容器的应力和位移。  网格理论对于厚度，最经典的公式是体积除以面积$$t&#x3D;\frac{V}{A}$$在缠绕的过程中，纤维处于张紧的状态，可忽略截面积的变化。且暂时不考虑曲面表面曲率对纤维的影响。我们将缠绕芯模展开，把纤维投影到2D的平面中，对于一个固定的区间，为了保证">
+<meta property="og:description" content="介绍SlotHousing用于建立带槽的轴套。 类结构  输入 input：  SlotWidth : 槽宽 SlotPos : 槽部开始位置 SlotNum : 齿槽数量 Meshsize : 网格尺寸 Outline : 外轮廓Line2D  参数 params:  Order ：单元阶数 ToothType : 齿类型 SlotTyoe : 槽类型 ToothSlice : 齿部网格数量 S">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E5%8E%9A%E5%BA%A6%E4%BC%B0%E7%AE%97.assets/321386c0cf89ffa356041523a9eeba8d_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E5%8E%9A%E5%BA%A6%E4%BC%B0%E7%AE%97.assets/59cb39d453c9f6efead381c56cbc2832_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E5%8E%9A%E5%BA%A6%E4%BC%B0%E7%AE%97.assets/06b941347d14a54677dd4dd6e106fded_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E5%8E%9A%E5%BA%A6%E4%BC%B0%E7%AE%97.assets/034d6302609067880da87f1f8838aab4_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E5%8E%9A%E5%BA%A6%E4%BC%B0%E7%AE%97.assets/0210454f1c493af1286637c1bcde5869_MD5.jpeg">
-<meta property="og:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E5%8E%9A%E5%BA%A6%E4%BC%B0%E7%AE%97.assets/7ac531bccf5f5fb8c589f8286a555e0d_MD5.jpeg">
-<meta property="article:published_time" content="2025-09-15T02:07:14.200Z">
-<meta property="article:modified_time" content="2025-09-15T02:09:27.232Z">
+<meta property="og:image" content="http://example.com/img/SlotHousing.assets/Fig6.jpg">
+<meta property="og:image" content="http://example.com/img/SlotHousing.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/SlotHousing.assets/Fig2.jpg">
+<meta property="og:image" content="http://example.com/img/ToothShaft.assets/image-20250825114015667.png">
+<meta property="og:image" content="http://example.com/img/SlotHousing.assets/Fig3.jpg">
+<meta property="og:image" content="http://example.com/img/SlotHousing.assets/Fig4.jpg">
+<meta property="og:image" content="http://example.com/img/SlotHousing.assets/Fig5.jpg">
+<meta property="article:published_time" content="2025-09-17T08:43:10.936Z">
+<meta property="article:modified_time" content="2025-09-17T08:46:25.831Z">
 <meta property="article:author" content="FE-Beserker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E5%8E%9A%E5%BA%A6%E4%BC%B0%E7%AE%97.assets/321386c0cf89ffa356041523a9eeba8d_MD5.jpeg">
+<meta name="twitter:image" content="http://example.com/img/SlotHousing.assets/Fig6.jpg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -110,7 +111,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(104)</small>
+                <small>(105)</small>
             
         </div>
     </li>
@@ -137,7 +138,7 @@
         <div data-rel="Baffalo部件">
             
             Baffalo部件
-            <small>(33)</small>
+            <small>(34)</small>
         </div>
         
     </li>
@@ -218,7 +219,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="104">
+<input type="hidden" id="yelog_site_posts_number" value="105">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -268,6 +269,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/09/17/SlotHousing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SlotHousing">SlotHousing</span>
+            <span class="post-date" title="2025-09-17 16:43:10">2025/09/17</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo笔记 "

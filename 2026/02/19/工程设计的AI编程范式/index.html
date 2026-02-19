@@ -2,25 +2,30 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>SignalAnalysis | Baffalo</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="SignalAnalysis | Baffalo">
+  <title>工程设计的AI编程范式 | Baffalo</title>
+  <meta name="keywords" content=" 笔记 ">
+  <meta name="description" content="工程设计的AI编程范式 | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="介绍LaminatePlate用于建立层合板网格。 类结构 输入 input：  Tply : 铺层厚度 Plymat : 铺层材料编号 Orient : 铺层角度 Meshsize : 网格大小 Hole : 开洞几何 Outline : 外轮廓线  参数 params:  Order ：单元阶数 Offset : 壳单元偏置 Name : 名称 Material  : 复合材料属性  输出 o">
+<meta name="description" content="很早之前就很想测试下AI能否理解一些工程问题，编写相关的程序。我之前很多代码都是基于matlab写的，最近有时间测试了AI编程，发现在一些小的工程项目中，AI的编程能力简直逆天。 以下是一些 calude code 编程的简单实践，全程不需要亲自编写程序，只需要检查验收成果。 Pre requirement Claude code  Vscode matlab扩展   安装Matlab MCPCa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LaminatePlate">
-<meta property="og:url" content="http://example.com/2025/10/20/LaminatePlate/index.html">
+<meta property="og:title" content="AI编写matlab程序">
+<meta property="og:url" content="http://example.com/2026/02/19/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="介绍LaminatePlate用于建立层合板网格。 类结构 输入 input：  Tply : 铺层厚度 Plymat : 铺层材料编号 Orient : 铺层角度 Meshsize : 网格大小 Hole : 开洞几何 Outline : 外轮廓线  参数 params:  Order ：单元阶数 Offset : 壳单元偏置 Name : 名称 Material  : 复合材料属性  输出 o">
+<meta property="og:description" content="很早之前就很想测试下AI能否理解一些工程问题，编写相关的程序。我之前很多代码都是基于matlab写的，最近有时间测试了AI编程，发现在一些小的工程项目中，AI的编程能力简直逆天。 以下是一些 calude code 编程的简单实践，全程不需要亲自编写程序，只需要检查验收成果。 Pre requirement Claude code  Vscode matlab扩展   安装Matlab MCPCa">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/LaminatePlate.assets/Fig3.jpg">
-<meta property="og:image" content="http://example.com/img/LaminatePlate.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/LaminatePlate.assets/Fig2.jpg">
-<meta property="article:published_time" content="2025-10-20T10:15:49.283Z">
-<meta property="article:modified_time" content="2025-10-20T10:17:21.170Z">
+<meta property="og:image" content="http://example.com/img/image-20260128104223992.png">
+<meta property="og:image" content="http://example.com/img/image-20260128104456892.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F.png">
+<meta property="og:image" content="http://example.com/img/image-20260128104559458.png">
+<meta property="og:image" content="http://example.com/img/image-20260128104701645.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F-1.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F-2.png">
+<meta property="article:published_time" content="2026-02-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-02-19T03:52:45.394Z">
 <meta property="article:author" content="FE-Beserker">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/LaminatePlate.assets/Fig3.jpg">
+<meta name="twitter:image" content="http://example.com/img/image-20260128104223992.png">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -86,12 +91,36 @@
         
     
         
+            <a title="zhihu"
+               href="https://www.zhihu.com/column/c_1920893344915096610"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
             <a title="email"
                href="mailto:392176462@qq.com"
                target="_blank">
                 
                     <svg class="iconfont-svg" aria-hidden="true">
                         <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=392176462&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
                     </svg>
                 
             </a>
@@ -107,7 +136,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(113)</small>
+                <small>(120)</small>
             
         </div>
     </li>
@@ -134,7 +163,7 @@
         <div data-rel="Baffalo部件">
             
             Baffalo部件
-            <small>(40)</small>
+            <small>(41)</small>
         </div>
         
     </li>
@@ -149,7 +178,7 @@
         <div data-rel="Baffalo方法">
             
             Baffalo方法
-            <small>(21)</small>
+            <small>(20)</small>
         </div>
         
     </li>
@@ -179,7 +208,7 @@
         <div data-rel="Baffalo笔记">
             
             Baffalo笔记
-            <small>(32)</small>
+            <small>(39)</small>
         </div>
         
     </li>
@@ -215,7 +244,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="113">
+<input type="hidden" id="yelog_site_posts_number" value="120">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -259,12 +288,108 @@
     <input id="tag-search" />
     <div class="tag-wrapper">
         
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>频谱分析</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>橡胶弹性支撑</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>信号处理</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AI</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Baffalo_Component</a>
+            </li>
+        
     </div>
 
 </div>
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI编写matlab程序">AI编写matlab程序</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/19/SignalAnalysis/"
+           data-tag="Baffalo_Component,信号处理,频谱分析"
+           data-author="" >
+            <span class="post-title" title="SignalAnalysis - 信号处理分析组件">SignalAnalysis - 信号处理分析组件</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E5%88%9B%E5%BB%BA%E6%9C%89%E9%99%90%E5%85%83%E8%A3%85%E9%85%8D%E4%BD%93/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI创建有限元装配体">AI创建有限元装配体</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/%E8%A7%84%E8%8C%83%E5%8C%96AI%E7%BC%96%E7%A8%8B/"
+           data-tag="笔记,AI"
+           data-author="" >
+            <span class="post-title" title="规范化AI编程">规范化AI编程</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%94%9F%E6%88%90%E5%B9%B3%E6%9D%BF%E7%B1%BB%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI生成平板类零件网格模型">AI生成平板类零件网格模型</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/%E5%B7%A5%E7%A8%8B%E8%AE%BE%E8%AE%A1%E7%9A%84AI%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="工程设计的AI编程范式">工程设计的AI编程范式</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/%E6%A9%A1%E8%83%B6%E5%BC%B9%E6%80%A7%E6%94%AF%E6%92%91AI%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/"
+           data-tag="笔记,橡胶弹性支撑"
+           data-author="" >
+            <span class="post-title" title="橡胶弹性支撑AI编程实践">橡胶弹性支撑AI编程实践</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%94%9F%E6%88%90%E6%9C%89%E9%99%90%E5%85%83%E6%A8%A1%E5%9E%8B/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI生成有限元模型">AI生成有限元模型</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo部件 "
@@ -723,15 +848,6 @@
            data-author="" >
             <span class="post-title" title="DNVGL_0361">DNVGL_0361</span>
             <span class="post-date" title="2025-07-15 11:31:49">2025/07/15</span>
-        </a>
-        
-        
-        <a  class="全部文章 Baffalo方法 "
-           href="/2025/07/15/SignalAnalysis/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="SignalAnalysis">SignalAnalysis</span>
-            <span class="post-date" title="2025-07-15 09:29:02">2025/07/15</span>
         </a>
         
         
@@ -1301,9 +1417,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-SignalAnalysis" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-工程设计的AI编程范式" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">SignalAnalysis</h1>
+        <h1 class="article-title">工程设计的AI编程范式</h1>
     
     <div class="article-meta">
         
@@ -1313,15 +1429,22 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="Baffalo方法">Baffalo方法</a>
+            <a  data-rel="Baffalo笔记">Baffalo笔记</a>
             
         </span>
         
         
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">笔记</a>
+            
+        </span>
+        
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-07-15 09:30:52'>2025-07-15 09:29</time>
+            发布时间 : <time class="date" title='最后更新: 2026-02-19 11:56:12'>2026-02-19 00:00</time>
         
     </div>
     <div class="article-meta">
@@ -1332,7 +1455,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Do-the-analysis-based-on-the-bearing-tests-data-Flag-1"><span class="toc-text">Do the analysis based on the bearing tests data (Flag&#x3D;1)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3"><span class="toc-text">生成需求文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AI%E6%8B%86%E8%A7%A3%E9%9C%80%E6%B1%82"><span class="toc-text">AI拆解需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%8A%A5%E5%91%8A%E5%92%8C%E5%9B%BE%E8%A1%A8"><span class="toc-text">生成报告和图表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1348,66 +1471,182 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>SignalAnalysis用于信号分析和处理。</p>
-<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/./img/SignalAnalysis.assets/Fig6.jpg"></p>
-<p>输入 input：</p>
-<ul>
-<li>Fs : 采样频率</li>
-<li>TimeSeries : 时间序列</li>
-</ul>
-<p>参数 params:</p>
-<ul>
-<li>Name ：名称</li>
-<li>DataName : 数据名称</li>
-</ul>
-<p>输出 output :</p>
-<ul>
-<li>FFT : 傅里叶变换计算结果</li>
-<li>F : 频率</li>
-<li>T : 时间</li>
-<li>Length :  数据长度</li>
-</ul>
-<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Do-the-analysis-based-on-the-bearing-tests-data-Flag-1"><a href="#Do-the-analysis-based-on-the-bearing-tests-data-Flag-1" class="headerlink" title="Do the analysis based on the bearing tests data (Flag&#x3D;1)"></a>Do the analysis based on the bearing tests data (Flag&#x3D;1)</h3><pre><code class="language-matlab">data=load(&#39;97.mat&#39;);
-Start=1;
-DataNum=20000;
-x=data.X097_DE_time(Start:Start+DataNum,:);
-inputSignal.TimeSeries=x;
-inputSignal.Fs=12000;
-paramsSignal.DataName=&#39;Accleration [g]&#39;;
-Signal=method.SignalAnalysis( paramsSignal, inputSignal);
-Signal=Signal.solve();
-PlotTimeSeries(Signal)
-PlotFFT(Signal,&#39;Freq&#39;,[20,4000])
-PlotTET(Signal,3000);
-PlotSST(Signal,2000);
-PlotWT(Signal,2000);
+        <h2 id="生成需求文档"><a href="#生成需求文档" class="headerlink" title="生成需求文档"></a>生成需求文档</h2><p>这份案例参考自《轨道车辆转向架橡胶弹性元件应用技术》，我将关键的图片，截图整理到一个文档中，将文档丢给 <code>Gemini</code>或者<code>notebooklm</code>,让他总结设计流程，国内也可以用<code>豆包</code>，我测试的效果也不错。</p>
+<p><img src="/img/%E5%B7%A5%E7%A8%8B%E8%AE%BE%E8%AE%A1%E7%9A%84AI%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F.png"></p>
+<p><img src="/img/%E5%B7%A5%E7%A8%8B%E8%AE%BE%E8%AE%A1%E7%9A%84AI%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F-1.png"></p>
+<h2 id="AI拆解需求"><a href="#AI拆解需求" class="headerlink" title="AI拆解需求"></a>AI拆解需求</h2><p>需求文档写完后，我还是让 AI 拆解为 <code>input</code> 、<code>params</code>、<code>ouput</code>、<code>baseline</code>和<code>capacity</code>这几个属性，拆解完结构后，我让AI直接编程，大概能得到95%的效果。期间我让AI修改了单位制，我检查公式过程发现有一个公式不太对，把这些改完程序程序就已经跑通了。</p>
+<pre><code class="language-matlab">% 功能:
+% - 矩形橡胶堆垂向刚度计算
+% - 矩形橡胶堆水平方向刚度计算（剪切+弯曲）
+% - 形状系数和稳定性约束校核
+% - 刚度安全系数校核
+
+properties(Hidden, Constant)
+
+% Input 预期字段
+inputExpectedFields = &#123;
+&#39;Kz_target&#39; % 目标垂向刚度 (N/mm)
+&#39;Kx_target&#39; % 目标x向水平总刚度 (N/mm)
+&#39;Ky_target&#39; % 目标y向水平总刚度 (N/mm)
+&#39;Fz_max&#39; % 最大垂向载荷 (N)
+&#39;Fx_max&#39; % 最大x向水平力 (N)
+&#39;Fy_max&#39; % 最大y向水平力 (N)
+&#39;n&#39; % 橡胶层数
+&#39;a&#39; % 矩形橡胶长边 (mm)
+&#39;b&#39; % 矩形橡胶短边 (mm)
+&#39;h&#39; % 每层橡胶原有高度 (mm)
+&#39;t_plate_mid&#39; % 中间隔层钢板厚度 (mm)
+&#39;t_plate_end&#39; % 端板厚度 (mm)
+&#39;a_max&#39; % 长边最大允许尺寸 (mm)
+&#39;b_max&#39; % 短边最大允许尺寸 (mm)
+
+&#125;;
+
+% Output 预期字段
+outputExpectedFields = &#123;
+&#39;Ac&#39; % 橡胶承载面积 (mm²)
+&#39;S&#39; % 形状因子 (面积比)
+&#39;mu1&#39; % 垂向形状系数
+&#39;Kz_calc&#39; % 计算垂向总刚度 (N/mm)
+&#39;Jx&#39; % x向剪切形状系数
+&#39;Jy&#39; % y向剪切形状系数
+&#39;Kx_shear&#39; % x向剪切刚度 (N/mm)
+&#39;Ky_shear&#39; % y向剪切刚度 (N/mm)
+&#39;t&#39; % 橡胶堆计算高度 (mm)
+&#39;Krx&#39; % x向回转半径 (mm)
+&#39;Kry&#39; % y向回转半径 (mm)
+&#39;G_prime&#39; % x向橡胶计算剪切模数 (MPa)
+&#39;G_double_prime&#39; % y向橡胶计算剪切模数 (MPa)
+&#39;xb&#39; % x向弯曲挠度 (mm)
+&#39;yb&#39; % y向弯曲挠度 (mm)
+&#39;Kbx&#39; % x向弯曲刚度 (N/mm)
+&#39;Kby&#39; % y向弯曲刚度 (N/mm)
+&#39;Kx_total&#39; % x向水平总刚度 (N/mm)
+&#39;Ky_total&#39; % y向水平总刚度 (N/mm)
+&#39;H0&#39; % 橡胶堆自由高度 (mm)
+&#39;compression_strain&#39; % 压缩应变
+&#39;Assembly&#39; % FEM装配模型
+&#39;RubberProperty&#39; % 橡胶材料属性
+&#125;;
+
+% Params 预期字段
+paramsExpectedFields = &#123;
+&#39;HS&#39; % 橡胶硬度
+&#39;Material&#39; % 平板材料属性
+&#39;Name&#39; % 矩形橡胶堆设计组件名称
+&#39;Echo&#39; % 是否输出计算过程
+&#125;;
+
+% Baseline 预期字段
+baselineExpectedFields = &#123;
+&#39;min_Kz_ratio&#39; % 垂向刚度安全系数最低要求
+&#39;min_Kx_ratio&#39; % x向水平刚度安全系数最低要求
+&#39;min_Ky_ratio&#39; % y向水平刚度安全系数最低要求
+&#39;max_compression_strain&#39;% 最大允许压缩应变
+&#39;max_h_to_a_ratio&#39; % 最大h/a比值约束
+&#125;;
+
+% Params 默认值
+default_HS = 60; % 邵氏硬度
+default_Echo = 1;
+default_Material = [];
+default_Name = &#39;RectangularRubberStack_1&#39;
+
+% Input 默认值
+input_default_n = 4; % 橡胶层数
+input_default_a = 100; % 长边 100mm
+input_default_b = 80; % 短边 80mm
+input_default_h = 10; % 每层高度 10mm
+input_default_t_plate_mid = 2; % 中间隔层钢板 2mm
+input_default_t_plate_end = 8; % 端板 8mm
+
+% Baseline 默认值
+base_min_Kz_ratio = 1.0;
+base_min_Kx_ratio = 1.0;
+base_min_Ky_ratio = 1.0;
+base_max_compression_strain = 0.15; % 最大压缩应变15%
+base_max_h_to_a_ratio = 0.2; % h &lt;= a/5
 </code></pre>
-<img src="/./img/SignalAnalysis.assets/Fig1.jpg" style="zoom:50%;" />
+<h2 id="生成报告和图表"><a href="#生成报告和图表" class="headerlink" title="生成报告和图表"></a>生成报告和图表</h2><p>生成的测试代码中，AI对比了安全系数，同时比对了橡胶硬度对刚度的影响。整个流程跑下来我只是截了几张图，检查核对了公式，半天不到就处理结束。</p>
+<pre><code class="language-matlab">
+--- 橡胶材料属性计算 ---
+Successfully calculate the rubber property ! .
+  橡胶硬度 HS = 60
+  杨氏弹性模数 E = 6.05 MPa
+  剪切模数 G = 1.22 MPa
 
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/SignalAnalysis.assets/Fig2.jpg" style="zoom: 100%;"></td><td><img src="/./img/SignalAnalysis.assets/Fig3.jpg" style="zoom: 100%;"></td>
-		</tr>
-    <tr><td><strong>FFT</strong></td><td><strong>TET</strong></td></tr>
-	</tbody>
-</table>
+--- 垂向刚度计算 ---
+  承载面积 Ac = 8000.00 mm²
+  形状因子 S = 2.2222
+  垂向形状系数 μ1 = 11.8642
+  杨氏弹性模数 E = 6.05 MPa
+  计算垂向刚度 Kz = 14353.07 N/mm
 
+--- 水平方向刚度计算 ---
+  剪切刚度计算:
+    剪切模数 G = 1.22 MPa
+    x向剪切形状系数 Jx = 0.9971
+    x向剪切刚度 Kx_shear = 243.33 N/mm
+    y向剪切形状系数 Jy = 0.9955
+    y向剪切刚度 Ky_shear = 242.94 N/mm
+  弯曲刚度计算:
+    计算高度 t = 46.60 mm
+    x向回转半径 Krx = 28.87 mm
+    y向回转半径 Kry = 23.09 mm
+    x向计算剪切模数 G&#39; = 1.14 MPa
+    y向计算剪切模数 G&#39;&#39; = 1.10 MPa
+    x向弯曲刚度 Kbx = 2698.57 N/mm
+    y向弯曲刚度 Kby = 1663.91 N/mm
+  x向水平总刚度 Kx = 223.21 N/mm
+  y向水平总刚度 Ky = 211.99 N/mm
 
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="/./img/SignalAnalysis.assets/Fig4.jpg" style="zoom: 100%;"></td><td><img src="/./img/SignalAnalysis.assets/Fig5.jpg" style="zoom: 100%;"></td>
-		</tr>
-    <tr><td><strong>SST</strong></td><td><strong>WT</strong></td></tr>
-	</tbody>
-</table>
+--- 稳定性校核 ---
+  压缩应变: 5.62%
+  允许最大压缩应变: 15.00%
+  h/a比值: 0.10
+  允许最大h/a比值: 0.20
 
+--- 刚度安全系数计算 ---
+  垂向刚度安全系数: 7.18 (要求: 1.00)
+  x向水平刚度安全系数: 0.74 (要求: 1.00)
+  y向水平刚度安全系数: 0.71 (要求: 1.00)
 
+==========================================
+  计算完成
+==========================================
+ 
+ 
+==========================================
+  安全校核结果
+==========================================
+  发现 2 个警告:
 
+  警告 1: x向水平刚度安全系数 0.74 小于要求 1.00
+  警告 2: y向水平刚度安全系数 0.71 小于要求 1.00
+==========================================
+ 
 
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] A Concentrated Time–Frequency Analysis Tool for Bearing Fault Diagnosis</p>
-<p>[2] Second-order transient-extracting transform for the analysis of impulsive-like signals</p>
+========================================
+  计算结果汇总
+========================================
+橡胶承载面积 Ac = 8000.00 mm^2
+形状因子 S = 2.2222
+垂向形状系数 mu1 = 11.8642
+垂向刚度 Kz = 14353.07 N/mm (目标: 2000.00 N/mm)
+x向水平总刚度 Kx = 223.21 N/mm (目标: 300.00 N/mm)
+y向水平总刚度 Ky = 211.99 N/mm (目标: 300.00 N/mm)
+x向剪切刚度 = 243.33 N/mm
+y向剪切刚度 = 242.94 N/mm
+x向弯曲刚度 = 2698.57 N/mm
+y向弯曲刚度 = 1663.91 N/mm
+压缩应变 = 5.62%
+========================================
+</code></pre>
+<p><img src="/img/%E5%B7%A5%E7%A8%8B%E8%AE%BE%E8%AE%A1%E7%9A%84AI%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F-2.png"></p>
+<p><img src="/img/%E5%B7%A5%E7%A8%8B%E8%AE%BE%E8%AE%A1%E7%9A%84AI%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F-3.png"></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
+<li>轨道车辆转向架橡胶弹性元件应用技术</li>
+</ol>
 
       
        <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>

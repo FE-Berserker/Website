@@ -6,21 +6,26 @@
   <meta name="keywords" content="">
   <meta name="description" content="BossPlate | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="介绍LaminatePlate用于建立层合板网格。 类结构 输入 input：  Tply : 铺层厚度 Plymat : 铺层材料编号 Orient : 铺层角度 Meshsize : 网格大小 Hole : 开洞几何 Outline : 外轮廓线  参数 params:  Order ：单元阶数 Offset : 壳单元偏置 Name : 名称 Material  : 复合材料属性  输出 o">
+<meta name="description" content="很早之前就很想测试下AI能否理解一些工程问题，编写相关的程序。我之前很多代码都是基于matlab写的，最近有时间测试了AI编程，发现在一些小的工程项目中，AI的编程能力简直逆天。 以下是一些 calude code 编程的简单实践，全程不需要亲自编写程序，只需要检查验收成果。 Pre requirement Claude code  Vscode matlab扩展   安装Matlab MCPCa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LaminatePlate">
-<meta property="og:url" content="http://example.com/2025/10/20/LaminatePlate/index.html">
+<meta property="og:title" content="AI编写matlab程序">
+<meta property="og:url" content="http://example.com/2026/02/19/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="介绍LaminatePlate用于建立层合板网格。 类结构 输入 input：  Tply : 铺层厚度 Plymat : 铺层材料编号 Orient : 铺层角度 Meshsize : 网格大小 Hole : 开洞几何 Outline : 外轮廓线  参数 params:  Order ：单元阶数 Offset : 壳单元偏置 Name : 名称 Material  : 复合材料属性  输出 o">
+<meta property="og:description" content="很早之前就很想测试下AI能否理解一些工程问题，编写相关的程序。我之前很多代码都是基于matlab写的，最近有时间测试了AI编程，发现在一些小的工程项目中，AI的编程能力简直逆天。 以下是一些 calude code 编程的简单实践，全程不需要亲自编写程序，只需要检查验收成果。 Pre requirement Claude code  Vscode matlab扩展   安装Matlab MCPCa">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/LaminatePlate.assets/Fig3.jpg">
-<meta property="og:image" content="http://example.com/img/LaminatePlate.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/LaminatePlate.assets/Fig2.jpg">
-<meta property="article:published_time" content="2025-10-20T10:15:49.283Z">
-<meta property="article:modified_time" content="2025-10-20T10:17:21.170Z">
+<meta property="og:image" content="http://example.com/img/image-20260128104223992.png">
+<meta property="og:image" content="http://example.com/img/image-20260128104456892.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F.png">
+<meta property="og:image" content="http://example.com/img/image-20260128104559458.png">
+<meta property="og:image" content="http://example.com/img/image-20260128104701645.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F-1.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F-2.png">
+<meta property="article:published_time" content="2026-02-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-02-19T03:52:45.394Z">
 <meta property="article:author" content="FE-Beserker">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/LaminatePlate.assets/Fig3.jpg">
+<meta name="twitter:image" content="http://example.com/img/image-20260128104223992.png">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -86,12 +91,36 @@
         
     
         
+            <a title="zhihu"
+               href="https://www.zhihu.com/column/c_1920893344915096610"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
             <a title="email"
                href="mailto:392176462@qq.com"
                target="_blank">
                 
                     <svg class="iconfont-svg" aria-hidden="true">
                         <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=392176462&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
                     </svg>
                 
             </a>
@@ -107,7 +136,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(113)</small>
+                <small>(120)</small>
             
         </div>
     </li>
@@ -134,7 +163,7 @@
         <div data-rel="Baffalo部件">
             
             Baffalo部件
-            <small>(40)</small>
+            <small>(41)</small>
         </div>
         
     </li>
@@ -149,7 +178,7 @@
         <div data-rel="Baffalo方法">
             
             Baffalo方法
-            <small>(21)</small>
+            <small>(20)</small>
         </div>
         
     </li>
@@ -179,7 +208,7 @@
         <div data-rel="Baffalo笔记">
             
             Baffalo笔记
-            <small>(32)</small>
+            <small>(39)</small>
         </div>
         
     </li>
@@ -215,7 +244,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="113">
+<input type="hidden" id="yelog_site_posts_number" value="120">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -259,12 +288,108 @@
     <input id="tag-search" />
     <div class="tag-wrapper">
         
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>频谱分析</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>橡胶弹性支撑</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>信号处理</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AI</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Baffalo_Component</a>
+            </li>
+        
     </div>
 
 </div>
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI编写matlab程序">AI编写matlab程序</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/19/SignalAnalysis/"
+           data-tag="Baffalo_Component,信号处理,频谱分析"
+           data-author="" >
+            <span class="post-title" title="SignalAnalysis - 信号处理分析组件">SignalAnalysis - 信号处理分析组件</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E5%88%9B%E5%BB%BA%E6%9C%89%E9%99%90%E5%85%83%E8%A3%85%E9%85%8D%E4%BD%93/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI创建有限元装配体">AI创建有限元装配体</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/%E8%A7%84%E8%8C%83%E5%8C%96AI%E7%BC%96%E7%A8%8B/"
+           data-tag="笔记,AI"
+           data-author="" >
+            <span class="post-title" title="规范化AI编程">规范化AI编程</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%94%9F%E6%88%90%E5%B9%B3%E6%9D%BF%E7%B1%BB%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI生成平板类零件网格模型">AI生成平板类零件网格模型</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/%E5%B7%A5%E7%A8%8B%E8%AE%BE%E8%AE%A1%E7%9A%84AI%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="工程设计的AI编程范式">工程设计的AI编程范式</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/%E6%A9%A1%E8%83%B6%E5%BC%B9%E6%80%A7%E6%94%AF%E6%92%91AI%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/"
+           data-tag="笔记,橡胶弹性支撑"
+           data-author="" >
+            <span class="post-title" title="橡胶弹性支撑AI编程实践">橡胶弹性支撑AI编程实践</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%94%9F%E6%88%90%E6%9C%89%E9%99%90%E5%85%83%E6%A8%A1%E5%9E%8B/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI生成有限元模型">AI生成有限元模型</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo部件 "
@@ -723,15 +848,6 @@
            data-author="" >
             <span class="post-title" title="DNVGL_0361">DNVGL_0361</span>
             <span class="post-date" title="2025-07-15 11:31:49">2025/07/15</span>
-        </a>
-        
-        
-        <a  class="全部文章 Baffalo方法 "
-           href="/2025/07/15/SignalAnalysis/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="SignalAnalysis">SignalAnalysis</span>
-            <span class="post-date" title="2025-07-15 09:29:02">2025/07/15</span>
         </a>
         
         

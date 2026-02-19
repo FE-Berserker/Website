@@ -2,25 +2,30 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Baffalo</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="Baffalo">
+  <title>AI生成有限元模型 | Baffalo</title>
+  <meta name="keywords" content=" 笔记 ">
+  <meta name="description" content="AI生成有限元模型 | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="介绍LaminatePlate用于建立层合板网格。 类结构 输入 input：  Tply : 铺层厚度 Plymat : 铺层材料编号 Orient : 铺层角度 Meshsize : 网格大小 Hole : 开洞几何 Outline : 外轮廓线  参数 params:  Order ：单元阶数 Offset : 壳单元偏置 Name : 名称 Material  : 复合材料属性  输出 o">
+<meta name="description" content="很早之前就很想测试下AI能否理解一些工程问题，编写相关的程序。我之前很多代码都是基于matlab写的，最近有时间测试了AI编程，发现在一些小的工程项目中，AI的编程能力简直逆天。 以下是一些 calude code 编程的简单实践，全程不需要亲自编写程序，只需要检查验收成果。 Pre requirement Claude code  Vscode matlab扩展   安装Matlab MCPCa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LaminatePlate">
-<meta property="og:url" content="http://example.com/2025/10/20/LaminatePlate/index.html">
+<meta property="og:title" content="AI编写matlab程序">
+<meta property="og:url" content="http://example.com/2026/02/19/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="介绍LaminatePlate用于建立层合板网格。 类结构 输入 input：  Tply : 铺层厚度 Plymat : 铺层材料编号 Orient : 铺层角度 Meshsize : 网格大小 Hole : 开洞几何 Outline : 外轮廓线  参数 params:  Order ：单元阶数 Offset : 壳单元偏置 Name : 名称 Material  : 复合材料属性  输出 o">
+<meta property="og:description" content="很早之前就很想测试下AI能否理解一些工程问题，编写相关的程序。我之前很多代码都是基于matlab写的，最近有时间测试了AI编程，发现在一些小的工程项目中，AI的编程能力简直逆天。 以下是一些 calude code 编程的简单实践，全程不需要亲自编写程序，只需要检查验收成果。 Pre requirement Claude code  Vscode matlab扩展   安装Matlab MCPCa">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/LaminatePlate.assets/Fig3.jpg">
-<meta property="og:image" content="http://example.com/img/LaminatePlate.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/LaminatePlate.assets/Fig2.jpg">
-<meta property="article:published_time" content="2025-10-20T10:15:49.283Z">
-<meta property="article:modified_time" content="2025-10-20T10:17:21.170Z">
+<meta property="og:image" content="http://example.com/img/image-20260128104223992.png">
+<meta property="og:image" content="http://example.com/img/image-20260128104456892.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F.png">
+<meta property="og:image" content="http://example.com/img/image-20260128104559458.png">
+<meta property="og:image" content="http://example.com/img/image-20260128104701645.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F-1.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F-2.png">
+<meta property="article:published_time" content="2026-02-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-02-19T03:52:45.394Z">
 <meta property="article:author" content="FE-Beserker">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/LaminatePlate.assets/Fig3.jpg">
+<meta name="twitter:image" content="http://example.com/img/image-20260128104223992.png">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -60,7 +65,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -86,12 +91,36 @@
         
     
         
+            <a title="zhihu"
+               href="https://www.zhihu.com/column/c_1920893344915096610"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
             <a title="email"
                href="mailto:392176462@qq.com"
                target="_blank">
                 
                     <svg class="iconfont-svg" aria-hidden="true">
                         <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=392176462&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
                     </svg>
                 
             </a>
@@ -107,7 +136,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(113)</small>
+                <small>(120)</small>
             
         </div>
     </li>
@@ -134,7 +163,7 @@
         <div data-rel="Baffalo部件">
             
             Baffalo部件
-            <small>(40)</small>
+            <small>(41)</small>
         </div>
         
     </li>
@@ -149,7 +178,7 @@
         <div data-rel="Baffalo方法">
             
             Baffalo方法
-            <small>(21)</small>
+            <small>(20)</small>
         </div>
         
     </li>
@@ -179,7 +208,7 @@
         <div data-rel="Baffalo笔记">
             
             Baffalo笔记
-            <small>(32)</small>
+            <small>(39)</small>
         </div>
         
     </li>
@@ -215,7 +244,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="113">
+<input type="hidden" id="yelog_site_posts_number" value="120">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -259,12 +288,108 @@
     <input id="tag-search" />
     <div class="tag-wrapper">
         
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>频谱分析</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>橡胶弹性支撑</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>信号处理</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AI</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Baffalo_Component</a>
+            </li>
+        
     </div>
 
 </div>
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI编写matlab程序">AI编写matlab程序</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/19/SignalAnalysis/"
+           data-tag="Baffalo_Component,信号处理,频谱分析"
+           data-author="" >
+            <span class="post-title" title="SignalAnalysis - 信号处理分析组件">SignalAnalysis - 信号处理分析组件</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E5%88%9B%E5%BB%BA%E6%9C%89%E9%99%90%E5%85%83%E8%A3%85%E9%85%8D%E4%BD%93/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI创建有限元装配体">AI创建有限元装配体</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/%E8%A7%84%E8%8C%83%E5%8C%96AI%E7%BC%96%E7%A8%8B/"
+           data-tag="笔记,AI"
+           data-author="" >
+            <span class="post-title" title="规范化AI编程">规范化AI编程</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%94%9F%E6%88%90%E5%B9%B3%E6%9D%BF%E7%B1%BB%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI生成平板类零件网格模型">AI生成平板类零件网格模型</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/%E5%B7%A5%E7%A8%8B%E8%AE%BE%E8%AE%A1%E7%9A%84AI%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="工程设计的AI编程范式">工程设计的AI编程范式</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/%E6%A9%A1%E8%83%B6%E5%BC%B9%E6%80%A7%E6%94%AF%E6%92%91AI%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/"
+           data-tag="笔记,橡胶弹性支撑"
+           data-author="" >
+            <span class="post-title" title="橡胶弹性支撑AI编程实践">橡胶弹性支撑AI编程实践</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%94%9F%E6%88%90%E6%9C%89%E9%99%90%E5%85%83%E6%A8%A1%E5%9E%8B/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI生成有限元模型">AI生成有限元模型</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
         
         
         <a  class="全部文章 Baffalo部件 "
@@ -723,15 +848,6 @@
            data-author="" >
             <span class="post-title" title="DNVGL_0361">DNVGL_0361</span>
             <span class="post-date" title="2025-07-15 11:31:49">2025/07/15</span>
-        </a>
-        
-        
-        <a  class="全部文章 Baffalo方法 "
-           href="/2025/07/15/SignalAnalysis/"
-           data-tag=""
-           data-author="" >
-            <span class="post-title" title="SignalAnalysis">SignalAnalysis</span>
-            <span class="post-date" title="2025-07-15 09:29:02">2025/07/15</span>
         </a>
         
         
@@ -1299,12 +1415,47 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-AI生成有限元模型" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Baffalo"><span class="toc-text">Baffalo</span></a></li></ol>
+        <h1 class="article-title">AI生成有限元模型</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Baffalo笔记">Baffalo笔记</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">笔记</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2026-02-19 12:20:27'>2026-02-19 00:00</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%A2%E6%88%90-skills"><span class="toc-text">形成 skills</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E9%9B%B6%E4%BB%B6"><span class="toc-text">生成零件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E6%8D%AE%E5%9B%BE%E7%BA%B8%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B"><span class="toc-text">依据图纸生成模型</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1317,55 +1468,202 @@
     }
 </style>
 </div>
-            <h1 id="Baffalo"><a href="#Baffalo" class="headerlink" title="Baffalo"></a>Baffalo</h1><img src="./img/Baffalo.png" style="zoom: 25%;" />
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前的文章介绍了怎么用AI来编程，这次再上升一个难度，利用AI来生成有限元的零件。运用到的工具是 <code>Claude code</code>,<code>Matlab MCP</code>和我的开源工具箱<code>Baffalo</code>。</p>
+<p><code>Baffalo</code>的工具箱，我很早就开始构思接入AI, 你可以理解为这个工具箱是一个 <code>参数化</code> 的零件库。我个人觉得<code>参数化</code>是AI通往各个垂直领域最便捷的途径，不同于通用模型的几十亿参数，参数化将问题的复杂度降到最低。也就是说，并不需要通过训练、微调来达到目的，只需要将过去企业所用的工具模板化、参数化，告诉AI怎么用即可。</p>
+<h2 id="形成-skills"><a href="#形成-skills" class="headerlink" title="形成 skills"></a>形成 skills</h2><p>首先我跟AI对话，让他学习 <code>Baffalo</code> 的代码风格和结构，同时针对 <code>轴类零件</code>，我让他测试代码，生成报告。<br><img src="/img/AI%E7%94%9F%E6%88%90%E6%9C%89%E9%99%90%E5%85%83%E6%A8%A1%E5%9E%8B.png"></p>
+<p>测试完成后，告诉AI当我要生成轴零件时，调用对应的代码<br><img src="/img/AI%E7%94%9F%E6%88%90%E6%9C%89%E9%99%90%E5%85%83%E6%A8%A1%E5%9E%8B-1.png"></p>
+<h2 id="生成零件"><a href="#生成零件" class="headerlink" title="生成零件"></a>生成零件</h2><p>形成skills后，我告诉AI, 生成一根长500mm, 直径为50mm的轴</p>
+<pre><code class="language-matlab">% Create a 500mm long, 50mm diameter solid shaft
+% 创建长500mm、直径50mm的实心轴
+%
+% Author: Generated by Claude Code
+% Date: 2026-01-31
 
-<p>Baffalo (<a target="_blank" rel="noopener" href="https://github.com/FE-Berserker/Baffalo">https://github.com/FE-Berserker/Baffalo</a>) 是开源的Matlab工具箱来建立机械系统分析的工具，提供网格、画图和工程计算的功能，可直接进行网格层级的部件装配，并直接将文件导出到ANSYS和Simpack中进行分析。</p>
-<img src="./img/Fig1.jpg" style="zoom: 50%;" />
+clc
+clear
+close all
 
-<ol>
-<li>首先打开<strong>setBaffaloPath</strong>函数设置对应路径</li>
-</ol>
-<p>如果你拥有ANSYS,将ANSYS路径设置如下,ANSYS是优秀的有限元分析软件。</p>
-<pre><code class="language-matlab">% Set ANSYS Path
-ANSYS_Path=&#39;C:\Program Files\ANSYS Inc\v201\ansys\bin\winx64\ANSYS201.exe&#39;;
-</code></pre>
-<p>如果你拥有Simpack, 将Simpack路径设置如下，Simapck可提供系统的多体动力学分析。</p>
-<pre><code class="language-matlab">% SetSimpackPath
-Simpack_Path=&#39;D:\SimPack\run\bin\win64&#39;;
-</code></pre>
-<p>Paraview (<a target="_blank" rel="noopener" href="https://www.paraview.org/">https://www.paraview.org</a>) 是一款开源的可视化软件，Baffalo可将网格导出为VTK格式文件，Paraview路径设置如下：</p>
-<pre><code class="language-matlab">% SetParaViewPath
-ParaViewDir=&quot;D:\005_Lib\ParaView\bin&quot;;
-</code></pre>
-<ol start="2">
-<li>运行<strong>setBaffaloPath</strong></li>
-</ol>
-<p>Baffalo说明文档存放于Document中，案例文件存放于Tesing文件夹中。</p>
-<p>Baffalo (<a target="_blank" rel="noopener" href="https://github.com/FE-Berserker/Baffalo">https://github.com/FE-Berserker/Baffalo</a>) is open source Matlab tool to do the system simulation, it can output file to ANSYS or Simpack.</p>
-<p>Baffalo itself is not a solver, can provide the mesh 、figure 、engineer calculation functions</p>
-<ol>
-<li>First open the <strong>setBaffaloPath</strong> function to set the corresponding path</li>
-</ol>
-<p>If you own ANSYS, set the ANSYS path as follows. ANSYS is an excellent finite element analysis software.</p>
-<pre><code class="language-matlab">% Set ANSYS Path
-ANSYS_Path=&#39;C:\Program Files\ANSYS Inc\v201\ansys\bin\winx64\ANSYS201.exe&#39;;
-</code></pre>
-<p>If you have Simpack, set the Simpack path as follows. Simapck can provide multi-body dynamics analysis of the system.</p>
-<pre><code class="language-matlab">% SetSimpackPath
-Simpack_Path=&#39;D:\SimPack\run\bin\win64&#39;;
-</code></pre>
-<p>Paraview (<a target="_blank" rel="noopener" href="https://www.paraview.org/">https://www.paraview.org</a>) is an open source visualization software. Baffalo can export grids to VTK format files. The Paraview path is set as follows:</p>
-<pre><code class="language-matlab">% SetParaViewPath
-ParaViewDir=&quot;D:\005_Lib\ParaView\bin&quot;;
-</code></pre>
-<ol start="2">
-<li>Run <strong>setBaffaloPath</strong></li>
-</ol>
-<p>Baffalo documentation is stored in Document, and case files are stored in the Tesing folder.</p>
+%% 轴参数定义
+fprintf(&#39;========================================\n&#39;);
+fprintf(&#39;轴参数定义\n&#39;);
+fprintf(&#39;========================================\n&#39;);
+fprintf(&#39;长度: 500 mm\n&#39;);
+fprintf(&#39;外径: 50 mm\n&#39;);
+fprintf(&#39;内径: 0 mm (实心)\n\n&#39;);
 
-        </article>
-        
-        
+%% 输入参数
+% 定义轴的几何参数
+inputShaft.Length = 500; % 总长度 [mm]
+inputShaft.ID = [0, 0]; % 内径 [mm]，0表示实心
+inputShaft.OD = [50, 50]; % 外径 [mm]，保持不变
+
+%% 可选参数
+paramsShaft = struct();
+paramsShaft.Name = &#39;Shaft_500mm_D50mm&#39;; % 轴名称
+paramsShaft.Order = 1; % 单元阶次：1=一阶，2=二阶
+paramsShaft.E_Revolve = 40; % 旋转划分数（圆周分段）
+paramsShaft.Beam_N = 16; % 梁截面圆周分段数
+paramsShaft.N_Slice = 50; % 切片数量
+paramsShaft.Echo = 1; % 打印信息
+
+%% 创建轴对象
+fprintf(&#39;========================================\n&#39;);
+fprintf(&#39;创建轴对象...\n&#39;);
+fprintf(&#39;========================================\n&#39;);
+obj = shaft.Commonshaft(paramsShaft, inputShaft);
+
+%% 求解
+fprintf(&#39;========================================\n&#39;);
+fprintf(&#39;求解中...\n&#39;);
+fprintf(&#39;========================================\n&#39;);
+obj = obj.solve();
+
+%% 绘图
+fprintf(&#39;========================================\n&#39;);
+fprintf(&#39;绘制图形...\n&#39;);
+fprintf(&#39;========================================\n&#39;);
+
+% 2D截面图
+fprintf(&#39;绘制2D截面...\n&#39;);
+Plot2D(obj);
+
+% 3D图形
+fprintf(&#39;绘制3D模型...\n&#39;);
+Plot3D(obj);
+
+%% 网格信息
+fprintf(&#39;========================================\n&#39;);
+fprintf(&#39;网格统计信息\n&#39;);
+fprintf(&#39;========================================\n&#39;);
+fprintf(&#39;节点数: %d\n&#39;, size(obj.output.SolidMesh.Vert, 1));
+fprintf(&#39;面数: %d\n&#39;, size(obj.output.SolidMesh.Face, 1));
+
+%% 获取材料信息
+fprintf(&#39;========================================\n&#39;);
+fprintf(&#39;材料信息\n&#39;);
+fprintf(&#39;========================================\n&#39;);
+fprintf(&#39;材料名称: %s\n&#39;, obj.params.Material.Name);
+fprintf(&#39;密度: %.2e kg/mm^3\n&#39;, obj.params.Material.Dens);
+fprintf(&#39;弹性模量: %.2e MPa\n&#39;, obj.params.Material.E);
+fprintf(&#39;泊松比: %.3f\n&#39;, obj.params.Material.v);
+fprintf(&#39;热膨胀系数: %.2e /K\n&#39;, obj.params.Material.a);
+
+%% 边界标记说明
+fprintf(&#39;========================================\n&#39;);
+fprintf(&#39;边界标记说明\n&#39;);
+fprintf(&#39;========================================\n&#39;);
+fprintf(&#39;101: 外表面\n&#39;);
+fprintf(&#39;201: 内表面（无，因为ID=0）\n&#39;);
+fprintf(&#39;301: 左端面 (x=0mm)\n&#39;);
+fprintf(&#39;302: 右端面 (x=500mm)\n\n&#39;);
+
+%% 输出STL文件（可选）
+fprintf(&#39;========================================\n&#39;);
+fprintf(&#39;输出STL文件...\n&#39;);
+fprintf(&#39;========================================\n&#39;);
+OutputSTL(obj);
+
+%% 完成信息
+fprintf(&#39;========================================\n&#39;);
+fprintf(&#39;轴创建完成！\n&#39;);
+fprintf(&#39;========================================\n&#39;);
+fprintf(&#39;文件名: %s.stl\n&#39;, obj.params.Name);
+fprintf(&#39;实体装配: 已创建\n&#39;);
+fprintf(&#39;梁装配: 已创建\n&#39;);
+fprintf(&#39;========================================\n&#39;);
+
+%% 可选：导出ANSYS文件（如果需要）
+% fprintf(&#39;输出ANSYS文件...\n&#39;);
+% ANSYS_Output(obj.output.Assembly);
+% fprintf(&#39;ANSYS文件已生成\n&#39;);
+%% 显示图形
+
+figure(&#39;Position&#39;, [100, 100, 1200, 400]);
+% 2D截面
+subplot(1, 2, 1);
+Plot(obj.output.Surface);
+title(&#39;2D截面&#39;);
+axis equal;
+
+% 3D模型
+subplot(1, 2, 2);
+PlotFace(obj.output.SolidMesh);
+title(&#39;3D实体模型&#39;);
+axis equal;
+</code></pre>
+<p>同时令我意外的是，他还标注了如果要导出ANSYS,可以使用下列代码</p>
+<pre><code class="language-matlab">%% 可选：导出ANSYS文件（如果需要）
+% fprintf(&#39;输出ANSYS文件...\n&#39;);
+% ANSYS_Output(obj.output.Assembly);
+% fprintf(&#39;ANSYS文件已生成\n&#39;);
+</code></pre>
+<p>导出的轴如下，因为我之前专门对轴的网格进行了优化，导出轴的网格是非常好的。<br><img src="/img/AI%E7%94%9F%E6%88%90%E6%9C%89%E9%99%90%E5%85%83%E6%A8%A1%E5%9E%8B-2.png"></p>
+<h2 id="依据图纸生成模型"><a href="#依据图纸生成模型" class="headerlink" title="依据图纸生成模型"></a>依据图纸生成模型</h2><p>这里我也测试了依据图纸来生成有限元模型，这部分功能需要你按照额外的图像识别的mcp， 我用的智谱的模型。<br><img src="/img/AI%E7%94%9F%E6%88%90%E6%9C%89%E9%99%90%E5%85%83%E6%A8%A1%E5%9E%8B-3.png"></p>
+<p><img src="/img/AI%E7%94%9F%E6%88%90%E6%9C%89%E9%99%90%E5%85%83%E6%A8%A1%E5%9E%8B-4.png"></p>
+<p>AI虽然给我了生成了模型，但是准确度不行，生成的是完全不一样的模型。我觉得这里也不用较真，这其实是通用模型的能力问题，之后有机会我会找更好的模型来测试。<br><img src="/img/AI%E7%94%9F%E6%88%90%E6%9C%89%E9%99%90%E5%85%83%E6%A8%A1%E5%9E%8B-5.png"><br><img src="/img/AI%E7%94%9F%E6%88%90%E6%9C%89%E9%99%90%E5%85%83%E6%A8%A1%E5%9E%8B-6.png"></p>
+<p>我把相关的测试文件上传到了我的项目中。<br><a target="_blank" rel="noopener" href="https://github.com/FE-Berserker/Baffalo">https://github.com/FE-Berserker/Baffalo</a><br>位于Testing&#x2F;001_Demo&#x2F;001_Commonshaft的子路径下</p>
+<p>同时我也将skills打包上传，也就是说你也可以基于我的skills生成零件。目前测试的零件还不多，后续我还会上传更多的skills。</p>
+<p>大家帮忙给我点tokens钱，我的tokens不够了&#x2F;(ㄒoㄒ)&#x2F;~~</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -1374,11 +1672,11 @@ ParaViewDir=&quot;D:\005_Lib\ParaView\bin&quot;;
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 </body>

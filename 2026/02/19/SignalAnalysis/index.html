@@ -1,0 +1,2479 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SignalAnalysis - 信号处理分析组件 | Baffalo</title>
+  <meta name="keywords" content=" Baffalo_Component , 信号处理 , 频谱分析 ">
+  <meta name="description" content="SignalAnalysis - 信号处理分析组件 | Baffalo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="很早之前就很想测试下AI能否理解一些工程问题，编写相关的程序。我之前很多代码都是基于matlab写的，最近有时间测试了AI编程，发现在一些小的工程项目中，AI的编程能力简直逆天。 以下是一些 calude code 编程的简单实践，全程不需要亲自编写程序，只需要检查验收成果。 Pre requirement Claude code  Vscode matlab扩展   安装Matlab MCPCa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI编写matlab程序">
+<meta property="og:url" content="http://example.com/2026/02/19/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F/index.html">
+<meta property="og:site_name" content="Baffalo">
+<meta property="og:description" content="很早之前就很想测试下AI能否理解一些工程问题，编写相关的程序。我之前很多代码都是基于matlab写的，最近有时间测试了AI编程，发现在一些小的工程项目中，AI的编程能力简直逆天。 以下是一些 calude code 编程的简单实践，全程不需要亲自编写程序，只需要检查验收成果。 Pre requirement Claude code  Vscode matlab扩展   安装Matlab MCPCa">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/image-20260128104223992.png">
+<meta property="og:image" content="http://example.com/img/image-20260128104456892.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F.png">
+<meta property="og:image" content="http://example.com/img/image-20260128104559458.png">
+<meta property="og:image" content="http://example.com/img/image-20260128104701645.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F-1.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F-2.png">
+<meta property="article:published_time" content="2026-02-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-02-19T03:52:45.394Z">
+<meta property="article:author" content="FE-Beserker">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/image-20260128104223992.png">
+
+
+<link rel="icon" href="/img/Baffalo.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/Baffalo.png"/>
+</a>
+<div class="author">
+    <span>FE-Beserker</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/FE-Berserker"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/column/c_1920893344915096610"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:392176462@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=392176462&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(120)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo框架">
+            
+            Baffalo框架
+            <small>(15)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo部件">
+            
+            Baffalo部件
+            <small>(41)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo方法">
+            
+            Baffalo方法
+            <small>(20)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo求解">
+            
+            Baffalo求解
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo笔记">
+            
+            Baffalo笔记
+            <small>(39)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo案例">
+            
+            Baffalo案例
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="120">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>频谱分析</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>橡胶弹性支撑</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>信号处理</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AI</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Baffalo_Component</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI编写matlab程序">AI编写matlab程序</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/19/SignalAnalysis/"
+           data-tag="Baffalo_Component,信号处理,频谱分析"
+           data-author="" >
+            <span class="post-title" title="SignalAnalysis - 信号处理分析组件">SignalAnalysis - 信号处理分析组件</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E5%88%9B%E5%BB%BA%E6%9C%89%E9%99%90%E5%85%83%E8%A3%85%E9%85%8D%E4%BD%93/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI创建有限元装配体">AI创建有限元装配体</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/%E8%A7%84%E8%8C%83%E5%8C%96AI%E7%BC%96%E7%A8%8B/"
+           data-tag="笔记,AI"
+           data-author="" >
+            <span class="post-title" title="规范化AI编程">规范化AI编程</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%94%9F%E6%88%90%E5%B9%B3%E6%9D%BF%E7%B1%BB%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI生成平板类零件网格模型">AI生成平板类零件网格模型</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/%E5%B7%A5%E7%A8%8B%E8%AE%BE%E8%AE%A1%E7%9A%84AI%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="工程设计的AI编程范式">工程设计的AI编程范式</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/%E6%A9%A1%E8%83%B6%E5%BC%B9%E6%80%A7%E6%94%AF%E6%92%91AI%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/"
+           data-tag="笔记,橡胶弹性支撑"
+           data-author="" >
+            <span class="post-title" title="橡胶弹性支撑AI编程实践">橡胶弹性支撑AI编程实践</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%94%9F%E6%88%90%E6%9C%89%E9%99%90%E5%85%83%E6%A8%A1%E5%9E%8B/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI生成有限元模型">AI生成有限元模型</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/10/20/LaminatePlate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="LaminatePlate">LaminatePlate</span>
+            <span class="post-date" title="2025-10-20 18:15:49">2025/10/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/10/19/CoreLossCoeifficient/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CoreLossCoeifficient">CoreLossCoeifficient</span>
+            <span class="post-date" title="2025-10-19 10:48:44">2025/10/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/10/14/TaperPMB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="TaperPMB">TaperPMB</span>
+            <span class="post-date" title="2025-10-14 12:39:56">2025/10/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/10/12/SlotPolygonHousing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SlotPolygonHousing">SlotPolygonHousing</span>
+            <span class="post-date" title="2025-10-12 21:59:51">2025/10/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/10/12/CompositePolygonRing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CompositePolygonRing">CompositePolygonRing</span>
+            <span class="post-date" title="2025-10-12 21:58:36">2025/10/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/10/09/MagnetProperty/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MagnetProperty">MagnetProperty</span>
+            <span class="post-date" title="2025-10-09 16:15:29">2025/10/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/09/28/PolygonHousing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PolygonHousing">PolygonHousing</span>
+            <span class="post-date" title="2025-09-28 13:56:53">2025/09/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/09/22/Bearing_Dynamic/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Bearing_Dynamic">Bearing_Dynamic</span>
+            <span class="post-date" title="2025-09-22 15:59:03">2025/09/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/09/17/SlotHousing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SlotHousing">SlotHousing</span>
+            <span class="post-date" title="2025-09-17 16:43:10">2025/09/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/09/15/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E5%8E%9A%E5%BA%A6%E4%BC%B0%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="纤维缠绕厚度估算">纤维缠绕厚度估算</span>
+            <span class="post-date" title="2025-09-15 10:07:14">2025/09/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/09/07/%E5%AF%BC%E5%90%91%E8%BD%B4%E6%94%AF%E5%BA%A7%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="导向轴支座参数化网格模型">导向轴支座参数化网格模型</span>
+            <span class="post-date" title="2025-09-07 21:12:16">2025/09/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/09/02/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%BD%BF%E8%BD%AE%E7%94%A8%E6%B8%90%E5%BC%80%E7%BA%BF/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="为什么齿轮用渐开线">为什么齿轮用渐开线</span>
+            <span class="post-date" title="2025-09-02 14:34:20">2025/09/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/08/31/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="电机模块开发规划">电机模块开发规划</span>
+            <span class="post-date" title="2025-08-31 21:47:55">2025/08/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/08/29/%E7%AB%AF%E9%83%A8%E5%B8%A6%E6%A7%BD%E8%BD%B4%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="端部带槽轴参数化网格建模">端部带槽轴参数化网格建模</span>
+            <span class="post-date" title="2025-08-29 10:11:33">2025/08/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/08/26/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="纤维缠绕稳定性分析">纤维缠绕稳定性分析</span>
+            <span class="post-date" title="2025-08-26 14:20:23">2025/08/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/08/25/ToothShaft/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ToothShaft">ToothShaft</span>
+            <span class="post-date" title="2025-08-25 12:49:05">2025/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/08/25/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="旋转轴套参数化网格建模">旋转轴套参数化网格建模</span>
+            <span class="post-date" title="2025-08-25 12:18:18">2025/08/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/08/22/%E6%BB%9A%E5%AD%90%E8%BD%B4%E6%89%BF%E5%90%84%E9%83%A8%E4%BB%B6%E8%BF%90%E5%8A%A8%E9%80%9F%E5%BA%A6/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="滚子轴承各部件运动速度">滚子轴承各部件运动速度</span>
+            <span class="post-date" title="2025-08-22 14:04:08">2025/08/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/08/21/ShellGrid/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ShellGrid">ShellGrid</span>
+            <span class="post-date" title="2025-08-21 17:43:15">2025/08/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/08/21/Grid/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Grid">Grid</span>
+            <span class="post-date" title="2025-08-21 12:51:49">2025/08/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/08/21/DeepGrooveBallBearing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="DeepGrooveBallBearing">DeepGrooveBallBearing</span>
+            <span class="post-date" title="2025-08-21 11:17:33">2025/08/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/08/20/CylindricalRollerBearing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CylindricalRollerBearing">CylindricalRollerBearing</span>
+            <span class="post-date" title="2025-08-20 20:40:33">2025/08/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/08/20/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="纤维缠绕线型分析中的数学问题">纤维缠绕线型分析中的数学问题</span>
+            <span class="post-date" title="2025-08-20 12:38:17">2025/08/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/08/19/%E7%90%83%E8%BD%B4%E6%89%BF%E8%AE%A1%E7%AE%97%E4%B8%8E%E5%BB%BA%E6%A8%A1%E4%BB%BF%E7%9C%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="球轴承计算与建模仿真">球轴承计算与建模仿真</span>
+            <span class="post-date" title="2025-08-19 11:00:36">2025/08/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/08/17/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="纤维缠绕模块开发">纤维缠绕模块开发</span>
+            <span class="post-date" title="2025-08-17 09:53:05">2025/08/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo求解 "
+           href="/2025/08/15/FilamentWinding/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="FilamentWinding">FilamentWinding</span>
+            <span class="post-date" title="2025-08-15 23:45:13">2025/08/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/08/14/%E7%BB%86%E8%A7%82%E5%8A%9B%E5%AD%A6%E4%B8%8B%E7%9A%84%E6%B8%90%E8%BF%9B%E6%8D%9F%E4%BC%A4%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="细观力学下的渐进损伤分析">细观力学下的渐进损伤分析</span>
+            <span class="post-date" title="2025-08-14 18:39:42">2025/08/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/08/11/%E6%BB%9A%E5%AD%90%E8%BD%B4%E6%89%BF%E5%BB%BA%E6%A8%A1%E4%B8%8E%E8%AE%A1%E7%AE%97%E4%BB%BF%E7%9C%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="滚子轴承建模与计算仿真">滚子轴承建模与计算仿真</span>
+            <span class="post-date" title="2025-08-11 09:59:58">2025/08/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/08/11/%E8%BD%B4%E6%89%BF%E6%BB%9A%E5%AD%90%E4%BF%AE%E5%BD%A2%E7%AE%80%E4%BB%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="轴承滚子修形简介">轴承滚子修形简介</span>
+            <span class="post-date" title="2025-08-11 09:54:54">2025/08/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/08/07/MotorSlot/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MotorSlot">MotorSlot</span>
+            <span class="post-date" title="2025-08-07 16:36:32">2025/08/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo案例 "
+           href="/2025/08/05/%E5%8F%82%E6%95%B0%E5%8C%96%E5%8F%A0%E7%89%87%E8%81%94%E8%BD%B4%E5%99%A8%E8%AE%BE%E8%AE%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="参数化叠片联轴器设计">参数化叠片联轴器设计</span>
+            <span class="post-date" title="2025-08-05 18:26:52">2025/08/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/08/04/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90%E6%A2%81%E7%BD%91%E6%A0%BC%EF%BC%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何快速生成梁网格？">如何快速生成梁网格？</span>
+            <span class="post-date" title="2025-08-04 18:47:26">2025/08/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/08/04/%E8%A7%84%E8%8C%83%E4%B8%AD%E8%BD%B4%E6%89%BF%E5%AF%BF%E5%91%BD%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95%E7%9A%84%E6%BC%94%E5%8F%98/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="规范中轴承寿命计算方法的演变">规范中轴承寿命计算方法的演变</span>
+            <span class="post-date" title="2025-08-04 18:39:46">2025/08/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/30/WindageLoss/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="WindageLoss">WindageLoss</span>
+            <span class="post-date" title="2025-07-30 13:49:17">2025/07/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/30/%E7%90%83%E8%A1%A8%E9%9D%A2%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="球表面网格划分">球表面网格划分</span>
+            <span class="post-date" title="2025-07-30 12:08:08">2025/07/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/29/AirProperty/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="AirProperty">AirProperty</span>
+            <span class="post-date" title="2025-07-29 12:14:06">2025/07/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/28/%E5%A4%8D%E5%90%88%E6%9D%90%E6%96%99%E9%9D%99%E6%80%81%E5%8A%9B%E5%AD%A6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="复合材料静态力学性能测试">复合材料静态力学性能测试</span>
+            <span class="post-date" title="2025-07-28 20:51:11">2025/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/28/%E9%9D%9E%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E8%BD%B4%E6%89%BF%E6%BB%9A%E5%AD%90%E4%BF%AE%E5%BD%A2/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="非赫兹接触和轴承滚子修形">非赫兹接触和轴承滚子修形</span>
+            <span class="post-date" title="2025-07-28 20:46:24">2025/07/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/27/NonHertzContact/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="NonHertzContact">NonHertzContact</span>
+            <span class="post-date" title="2025-07-27 15:32:16">2025/07/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/27/%E5%87%B8%E5%8F%B0%E5%B9%B3%E6%9D%BF%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="凸台平板参数化网格建模">凸台平板参数化网格建模</span>
+            <span class="post-date" title="2025-07-27 15:22:54">2025/07/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/23/%E5%8F%A0%E7%89%87%E7%BD%91%E6%A0%BC%E5%92%8C%E5%BB%BA%E6%A8%A1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="叠片网格和建模">叠片网格和建模</span>
+            <span class="post-date" title="2025-07-23 17:01:53">2025/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/23/%E9%BD%BF%E8%BD%AE%E7%9A%84%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="齿轮的网格划分">齿轮的网格划分</span>
+            <span class="post-date" title="2025-07-23 13:31:06">2025/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/07/23/Bracket/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Bracket">Bracket</span>
+            <span class="post-date" title="2025-07-23 13:21:16">2025/07/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/07/22/SingleGear/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SingleGear">SingleGear</span>
+            <span class="post-date" title="2025-07-22 20:25:22">2025/07/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/21/%E7%A9%BA%E5%BF%83%E8%9E%BA%E6%A0%93%E7%9A%84%E5%88%9A%E5%BA%A6%E4%BF%AE%E6%AD%A3/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="空心螺栓的刚度修正">空心螺栓的刚度修正</span>
+            <span class="post-date" title="2025-07-21 20:00:42">2025/07/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/21/%E7%A3%81%E5%8A%9B%E8%81%94%E8%BD%B4%E5%99%A8%E5%BB%BA%E6%A8%A1%E4%B8%8E%E8%AE%A1%E7%AE%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="磁力联轴器建模与计算">磁力联轴器建模与计算</span>
+            <span class="post-date" title="2025-07-21 17:59:27">2025/07/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/07/20/MagnetCoupling/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="MagnetCoupling">MagnetCoupling</span>
+            <span class="post-date" title="2025-07-20 21:00:03">2025/07/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/16/RubberProperty/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RubberProperty">RubberProperty</span>
+            <span class="post-date" title="2025-07-16 11:27:39">2025/07/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/16/Ramberg_Osgood/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Ramberg_Osgood">Ramberg_Osgood</span>
+            <span class="post-date" title="2025-07-16 09:56:58">2025/07/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/15/%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E6%AC%A1%E8%A1%A8%E9%9D%A2%E5%BA%94%E5%8A%9B%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="赫兹接触和次表面应力分析">赫兹接触和次表面应力分析</span>
+            <span class="post-date" title="2025-07-15 19:56:01">2025/07/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/15/DNVGL_0361/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="DNVGL_0361">DNVGL_0361</span>
+            <span class="post-date" title="2025-07-15 11:31:49">2025/07/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/14/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E6%B0%94%E7%93%B6%E7%88%86%E7%82%B8%E6%B5%8B%E8%AF%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="纤维缠绕气瓶爆炸测试">纤维缠绕气瓶爆炸测试</span>
+            <span class="post-date" title="2025-07-14 15:53:13">2025/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/14/HertzContact/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="HertzContact">HertzContact</span>
+            <span class="post-date" title="2025-07-14 14:15:07">2025/07/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/07/13/%E5%BC%80%E6%BA%90%E8%BD%AC%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E5%9D%97/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="开源转子动力学模块">开源转子动力学模块</span>
+            <span class="post-date" title="2025-07-13 20:15:48">2025/07/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/07/10/OilSeal/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="OilSeal">OilSeal</span>
+            <span class="post-date" title="2025-07-10 16:23:32">2025/07/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/09/%E4%B8%BB%E5%8A%A8%E7%A3%81%E5%8A%9B%E8%BD%B4%E6%89%BF%E8%AE%BE%E8%AE%A1%E4%B8%8E%E4%BB%BF%E7%9C%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="主动磁力轴承设计与仿真">主动磁力轴承设计与仿真</span>
+            <span class="post-date" title="2025-07-09 18:33:26">2025/07/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/07/09/RadialAMB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RadialAMB">RadialAMB</span>
+            <span class="post-date" title="2025-07-09 16:39:06">2025/07/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/09/Vis_cal/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Vis_cal">Vis_cal</span>
+            <span class="post-date" title="2025-07-09 11:05:51">2025/07/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo求解 "
+           href="/2025/07/08/SubModel/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SubModel">SubModel</span>
+            <span class="post-date" title="2025-07-08 11:48:03">2025/07/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/07/07/Transform/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Transform">Transform</span>
+            <span class="post-date" title="2025-07-07 22:32:56">2025/07/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/06/Puck%E5%87%86%E5%88%99%E4%B8%8E%E6%B8%90%E8%BF%9B%E6%8D%9F%E4%BC%A4%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Puck准则与渐进损伤分析">Puck准则与渐进损伤分析</span>
+            <span class="post-date" title="2025-07-06 20:08:48">2025/07/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/07/03/WovenRing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="WovenRing">WovenRing</span>
+            <span class="post-date" title="2025-07-03 16:59:18">2025/07/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/07/02/%E5%8D%95%E5%88%97%E5%BE%84%E5%90%91%E8%A2%AB%E5%8A%A8%E7%A3%81%E5%8A%9B%E8%BD%B4%E6%89%BF%E4%BB%BF%E7%9C%9F/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="单列径向被动磁力轴承仿真">单列径向被动磁力轴承仿真</span>
+            <span class="post-date" title="2025-07-02 11:56:59">2025/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/07/02/RadialPMB/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RadialPMB">RadialPMB</span>
+            <span class="post-date" title="2025-07-02 10:26:09">2025/07/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/07/01/DiscCouplingEstimate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="DiscCouplingEstimate">DiscCouplingEstimate</span>
+            <span class="post-date" title="2025-07-01 14:11:48">2025/07/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/06/29/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="如何画出好看的轴零件网格">如何画出好看的轴零件网格</span>
+            <span class="post-date" title="2025-06-29 21:26:41">2025/06/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/06/27/Mori-Tanaka%E6%96%B9%E6%B3%95%E4%B8%8E%E5%BE%AE%E8%A7%82%E5%8A%9B%E5%AD%A6%E5%88%86%E6%9E%90/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mori-Tanaka方法与微观力学分析">Mori-Tanaka方法与微观力学分析</span>
+            <span class="post-date" title="2025-06-27 12:55:54">2025/06/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2025/06/25/TexGen%E6%93%8D%E4%BD%9C%E7%AE%80%E4%BB%8B/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="TexGen操作简介">TexGen操作简介</span>
+            <span class="post-date" title="2025-06-25 14:51:11">2025/06/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/06/24/Baffalo%E4%BB%8B%E7%BB%8D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Baffalo介绍">Baffalo介绍</span>
+            <span class="post-date" title="2025-06-24 16:35:02">2025/06/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/06/24/WovenCell/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="WovenCell">WovenCell</span>
+            <span class="post-date" title="2025-06-24 12:40:52">2025/06/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/06/12/PuckCriterion3D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="PuckCriterion3D">PuckCriterion3D</span>
+            <span class="post-date" title="2025-06-12 12:06:06">2025/06/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/31/FlangeBolt/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="FlangeBolt">FlangeBolt</span>
+            <span class="post-date" title="2025-05-31 19:24:58">2025/05/31</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/29/BoltJoint/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="BoltJoint">BoltJoint</span>
+            <span class="post-date" title="2025-05-29 12:21:15">2025/05/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/19/RotatingDisc/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RotatingDisc">RotatingDisc</span>
+            <span class="post-date" title="2025-05-19 22:09:07">2025/05/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/15/Bolt/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Bolt">Bolt</span>
+            <span class="post-date" title="2025-05-15 14:36:42">2025/05/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/13/ThickWallCylinder/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ThickWallCylinder">ThickWallCylinder</span>
+            <span class="post-date" title="2025-05-13 17:08:54">2025/05/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/11/InterferenceFit/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="InterferenceFit">InterferenceFit</span>
+            <span class="post-date" title="2025-05-11 23:27:10">2025/05/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/08/Laminate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Laminate">Laminate</span>
+            <span class="post-date" title="2025-05-08 17:37:48">2025/05/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/07/Composite_ElasticConstant/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Composite_ElasticConstant">Composite_ElasticConstant</span>
+            <span class="post-date" title="2025-05-07 16:33:33">2025/05/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/05/06/FEMM%20Solver%20Test/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="FEMM Solver Test">FEMM Solver Test</span>
+            <span class="post-date" title="2025-05-06 16:50:17">2025/05/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/05/06/CompositeRing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CompositeRing">CompositeRing</span>
+            <span class="post-date" title="2025-05-06 14:46:53">2025/05/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/05/06/Composite_Micromechanics/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Composite_Micromechanics">Composite_Micromechanics</span>
+            <span class="post-date" title="2025-05-06 13:45:30">2025/05/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/04/22/ANSYS%20Element%20Test/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ANSYS Element Test">ANSYS Element Test</span>
+            <span class="post-date" title="2025-04-22 18:24:31">2025/04/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/04/05/LBeam/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="LBeam">LBeam</span>
+            <span class="post-date" title="2025-04-05 10:20:52">2025/04/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/04/05/CBeam/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CBeam">CBeam</span>
+            <span class="post-date" title="2025-04-05 09:56:42">2025/04/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/04/04/IBeam/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="IBeam">IBeam</span>
+            <span class="post-date" title="2025-04-04 22:01:48">2025/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/04/02/RayleighEstimate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RayleighEstimate">RayleighEstimate</span>
+            <span class="post-date" title="2025-04-02 17:34:16">2025/04/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/28/WindturbineTower/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="WindturbineTower">WindturbineTower</span>
+            <span class="post-date" title="2025-03-28 09:43:11">2025/03/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/27/Dome/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Dome">Dome</span>
+            <span class="post-date" title="2025-03-27 11:39:48">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/26/Body/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Body">Body</span>
+            <span class="post-date" title="2025-03-26 12:25:49">2025/03/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/25/ShaftSupport/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ShaftSupport">ShaftSupport</span>
+            <span class="post-date" title="2025-03-25 12:11:46">2025/03/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/24/FoilGen/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="FoilGen">FoilGen</span>
+            <span class="post-date" title="2025-03-24 23:00:24">2025/03/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/23/Housing/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Housing">Housing</span>
+            <span class="post-date" title="2025-03-23 13:14:08">2025/03/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/23/ForceLoad/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ForceLoad">ForceLoad</span>
+            <span class="post-date" title="2025-03-23 09:37:04">2025/03/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/09/CouplingMembrane/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="CouplingMembrane">CouplingMembrane</span>
+            <span class="post-date" title="2025-03-09 22:03:45">2025/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/08/BossPlate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="BossPlate">BossPlate</span>
+            <span class="post-date" title="2025-03-08 23:08:23">2025/03/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/03/05/Foil/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Foil">Foil</span>
+            <span class="post-date" title="2025-03-05 14:33:16">2025/03/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo求解 "
+           href="/2025/03/04/RotDyn/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="RotDyn">RotDyn</span>
+            <span class="post-date" title="2025-03-04 18:46:40">2025/03/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/02/25/Commonplate/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Commonplate">Commonplate</span>
+            <span class="post-date" title="2025-02-25 23:39:29">2025/02/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/22/Layer/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Layer">Layer</span>
+            <span class="post-date" title="2025-02-22 16:48:02">2025/02/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2025/02/22/ISO1940/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="ISO1940">ISO1940</span>
+            <span class="post-date" title="2025-02-22 10:21:27">2025/02/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo求解 "
+           href="/2025/02/21/SubStr/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="SubStr">SubStr</span>
+            <span class="post-date" title="2025-02-21 12:22:35">2025/02/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2025/02/20/Commonshaft/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Commonshaft">Commonshaft</span>
+            <span class="post-date" title="2025-02-20 12:07:33">2025/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/19/Mesh/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mesh">Mesh</span>
+            <span class="post-date" title="2025-02-19 18:42:15">2025/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/18/Mesh2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Mesh2D">Mesh2D</span>
+            <span class="post-date" title="2025-02-18 17:23:50">2025/02/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/18/Surface2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Surface2D">Surface2D</span>
+            <span class="post-date" title="2025-02-18 17:19:49">2025/02/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/17/Line/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Line">Line</span>
+            <span class="post-date" title="2025-02-17 17:54:26">2025/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/16/Line2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Line2D">Line2D</span>
+            <span class="post-date" title="2025-02-16 17:39:49">2025/02/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Point/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Point">Point</span>
+            <span class="post-date" title="2025-02-15 21:15:50">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Point2D/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Point2D">Point2D</span>
+            <span class="post-date" title="2025-02-15 21:13:34">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/15/Margin/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Margin">Margin</span>
+            <span class="post-date" title="2025-02-15 21:07:31">2025/02/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2025/02/13/Component/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="Component">Component</span>
+            <span class="post-date" title="2025-02-13 18:00:56">2025/02/13</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-SignalAnalysis" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">SignalAnalysis - 信号处理分析组件</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Baffalo部件">Baffalo部件</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">Baffalo_Component</a>
+            
+            <a class="color5">信号处理</a>
+            
+            <a class="color5">频谱分析</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2026-02-19 12:02:50'>2026-02-19 00:00</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SignalAnalysis"><span class="toc-text">SignalAnalysis</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E7%BB%93%E6%9E%84"><span class="toc-text">类结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo1-%E6%AD%A3%E5%BC%A6%E6%B3%A2%E4%BF%A1%E5%8F%B7%E6%B5%8B%E8%AF%95"><span class="toc-text">Demo1 - 正弦波信号测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo2-%E5%8F%A0%E5%8A%A0%E5%99%AA%E5%A3%B0%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%B5%8B%E8%AF%95"><span class="toc-text">Demo2 - 叠加噪声的信号测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo3-%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BF%A1%E5%8F%B7%E6%B5%8B%E8%AF%95-Ricker-%E5%B0%8F%E6%B3%A2"><span class="toc-text">Demo3 - 自定义信号测试 (Ricker 小波)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo4-%E6%9C%80%E5%B0%8F%E7%9B%B8%E4%BD%8D%E5%92%8C%E9%9B%B6%E7%9B%B8%E4%BD%8D%E5%B0%8F%E6%B3%A2%E5%AF%B9%E6%AF%94"><span class="toc-text">Demo4 - 最小相位和零相位小波对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo5-%E6%B7%BB%E5%8A%A0%E9%9A%8F%E6%9C%BA%E5%99%AA%E5%A3%B0"><span class="toc-text">Demo5 - 添加随机噪声</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo6-%E7%9B%B8%E4%BD%8D%E6%97%8B%E8%BD%AC%EF%BC%8C%E5%8A%A0%E5%85%A5%E5%99%AA%E5%A3%B0-%E5%B0%8F%E6%B3%A2"><span class="toc-text">Demo6 - 相位旋转，加入噪声 (小波)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo7-%E6%97%B6%E9%97%B4%E5%81%8F%E7%A7%BB-%E5%B0%8F%E6%B3%A2"><span class="toc-text">Demo7 - 时间偏移 (小波)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo8-%E4%BF%A1%E5%8F%B7%E5%B9%B3%E6%BB%91-%E5%B0%8F%E6%B3%A2"><span class="toc-text">Demo8 - 信号平滑 (小波)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo9-%E9%AB%98%E6%96%AF%E4%BD%8E%E9%80%9A%E6%BB%A4%E6%B3%A2"><span class="toc-text">Demo9 - 高斯低通滤波</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo10-%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2-FFT"><span class="toc-text">Demo10 - 快速傅里叶变换 (FFT)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo11-%E5%90%8C%E6%AD%A5%E6%8C%A4%E5%8E%8B%E5%8F%98%E6%8D%A2-SST"><span class="toc-text">Demo11 - 同步挤压变换 (SST)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo12-%E7%9E%AC%E6%80%81%E6%8F%90%E5%8F%96%E5%8F%98%E6%8D%A2-TET"><span class="toc-text">Demo12 - 瞬态提取变换 (TET)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo13-%E5%B0%8F%E6%B3%A2%E5%8F%98%E6%8D%A2-WT"><span class="toc-text">Demo13 - 小波变换 (WT)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo14-%E5%B8%8C%E5%B0%94%E4%BC%AF%E7%89%B9%E5%8F%98%E6%8D%A2"><span class="toc-text">Demo14 - 希尔伯特变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo15-%E4%BF%A1%E5%8F%B7%E5%8C%85%E7%BB%9C"><span class="toc-text">Demo15 - 信号包络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo16-%E8%AF%86%E5%88%AB%E4%B8%BB%E9%A2%91%E7%8E%87"><span class="toc-text">Demo16 - 识别主频率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo17-%E5%B7%B4%E7%89%B9%E6%B2%83%E6%96%AF%E6%BB%A4%E6%B3%A2"><span class="toc-text">Demo17 - 巴特沃斯滤波</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo18-Gabor-%E5%8F%98%E6%8D%A2"><span class="toc-text">Demo18 - Gabor 变换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo19-%E7%9B%B8%E5%85%B3%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-text">Demo19 - 相关性分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Demo20-%E5%8A%9F%E7%8E%87%E8%B0%B1%E5%88%86%E6%9E%90"><span class="toc-text">Demo20 - 功率谱分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-6 i,
+    .toc-level-6 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="SignalAnalysis"><a href="#SignalAnalysis" class="headerlink" title="SignalAnalysis"></a>SignalAnalysis</h1><center>Claude</center>
+
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>SignalAnalysis 是用于信号处理分析的基础组件类。该类继承自 Component 框架，提供时间序列信号的处理和分析功能，包括时间间隔验证、信号变换、频谱分析、相关性分析和功率谱分析等功能。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>SignalAnalysis 基于 MATLAB 信号处理工具箱实现各种信号分析功能：</p>
+<ol>
+<li><strong>时间序列验证</strong> - 验证输入时间序列的时间间隔是否均匀，计算采样间隔 dt</li>
+<li><strong>信号变换</strong> - 支持小波变换、希尔伯特变换、快速傅里叶变换等</li>
+<li><strong>时频分析</strong> - 支持同步挤压变换(SST)、瞬态提取变换(TET)、小波变换(WT)、Gabor 变换</li>
+<li><strong>相关性分析</strong> - 自相关和互相关分析</li>
+<li><strong>功率谱分析</strong> - 自功率谱密度(PSD)和互功率谱密度(CPSD)分析</li>
+<li><strong>信号滤波</strong> - 信号平滑、巴特沃斯滤波、高斯低通滤波</li>
+</ol>
+<h2 id="类结构"><a href="#类结构" class="headerlink" title="类结构"></a>类结构</h2><p><img src="/img/SignalAnalysis.png"></p>
+<p>&#x3D;&#x3D;输入 input:&#x3D;&#x3D;</p>
+<ul>
+<li>t : 时间数组 [s]</li>
+<li>s : 信号幅值数组</li>
+</ul>
+<p>&#x3D;&#x3D;参数 params:&#x3D;&#x3D;</p>
+<ul>
+<li>Name : 组件名称 (默认 ‘SignalAnalysis_1’)</li>
+<li>Range : 时间范围 [t1, t2]，默认为全部范围</li>
+<li>Echo : 是否打印输出 (默认 1)</li>
+</ul>
+<p>&#x3D;&#x3D;输出 output :&#x3D;&#x3D;</p>
+<ul>
+<li>t : 输出时间数组</li>
+<li>dt : 时间间隔 [s]</li>
+<li>s_Transform : 变换后的信号</li>
+<li>Wavelet : 小波</li>
+<li>Noise : 噪声</li>
+<li>s_Synthesis : 合成噪声后的信号</li>
+<li>FFT_s : 原始信号快速傅里叶变换</li>
+<li>FFT_s_Transform : 变换信号快速傅里叶变换</li>
+<li>FFT_s_Synthesis : 合成信号快速傅里叶变换</li>
+<li>SST : 同步挤压变换结果</li>
+<li>TET : 瞬态提取变换结果</li>
+<li>WT : 小波变换结果</li>
+<li>Hilbert_s : 原始信号希尔伯特变换</li>
+<li>Hilbert_s_Transform : 变换信号希尔伯特变换</li>
+<li>Hilbert_s_Synthesis : 合成信号希尔伯特变换</li>
+<li>Env_s : 原始信号包络</li>
+<li>Env_s_Transform : 变换信号包络</li>
+<li>Env_s_Synthesis : 合成信号包络</li>
+<li>FreqDom_s : 原始信号主频</li>
+<li>FreqDom_s_Transform : 变换信号主频</li>
+<li>FreqDom_s_Synthesis : 合成信号主频</li>
+<li>Corr : 相关性分析结果</li>
+</ul>
+<p>&#x3D;&#x3D;基准 Baseline：&#x3D;&#x3D;</p>
+<p>无</p>
+<p>&#x3D;&#x3D;安全裕度 Capacity :&#x3D;&#x3D;</p>
+<p>无</p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Demo1-正弦波信号测试"><a href="#Demo1-正弦波信号测试" class="headerlink" title="Demo1 - 正弦波信号测试"></a>Demo1 - 正弦波信号测试</h3><p>案例介绍：</p>
+<p>生成包含两个频率成分的正弦波信号（50Hz + 150Hz），验证时间间隔计算功能。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-1.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">% 生成测试数据
+fs = 1000;  % 采样频率
+T = 1;      % 信号时长 [s]
+t = 0:1/fs:T-1/fs;  % 时间数组
+s = sin(2*pi*50*t) + 0.5*sin(2*pi*150*t);  % 信号幅值
+
+% 输入结构
+inputStruct.t = t;
+inputStruct.s = s;
+
+% 参数结构
+paramsStruct.Name = &#39;SineWave_Signal&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA = SA.solve();
+
+% 打印信息
+SA.PrintInfo();
+
+% 绘制原始信号
+PlotOriSignal(SA);
+</code></pre>
+<h3 id="Demo2-叠加噪声的信号测试"><a href="#Demo2-叠加噪声的信号测试" class="headerlink" title="Demo2 - 叠加噪声的信号测试"></a>Demo2 - 叠加噪声的信号测试</h3><p>案例介绍：</p>
+<p>生成正弦波信号并叠加高斯白噪声，展示含噪信号的处理和分析。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-2.png"></p>
+<p><img src="/img/SignalAnalysis-3.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">% 生成测试数据
+fs = 1000;  % 采样频率
+T = 0.5;    % 信号时长 [s]
+t = 0:1/fs:T-1/fs;  % 时间数组
+s_clean = sin(2*pi*50*t);
+noise = 0.3 * randn(size(t));
+s = s_clean + noise;  % 叠加噪声
+
+% 输入结构
+inputStruct.t = t;
+inputStruct.s = s;
+
+% 参数结构
+paramsStruct.Name = &#39;Noisy_Signal&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA = SA.solve();
+
+% 打印信息
+SA.PrintInfo();
+
+% 绘制原始信号
+PlotOriSignal(SA);
+PlotOriSignal(SA, &#39;Title&#39;, &#39;叠加噪声的信号&#39;, &#39;Geom&#39;, &#39;point&#39;);
+</code></pre>
+<h3 id="Demo3-自定义信号测试-Ricker-小波"><a href="#Demo3-自定义信号测试-Ricker-小波" class="headerlink" title="Demo3 - 自定义信号测试 (Ricker 小波)"></a>Demo3 - 自定义信号测试 (Ricker 小波)</h3><p>案例介绍：</p>
+<p>生成 Ricker 小波（墨西哥帽小波）信号，展示自定义信号的处理。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-4.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">% 生成测试数据 - Ricker 小波
+fs = 500;   % 采样频率
+t = -0.02:1/fs:0.02;  % 时间数组
+f0 = 50;    % 主频
+a = (pi * f0 * t).^2;
+s = (1 - 2*a) .* exp(-a);  % Ricker 小波
+
+% 输入结构
+inputStruct.t = t;
+inputStruct.s = s;
+
+% 参数结构
+paramsStruct.Name = &#39;RickerWavelet&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA = SA.solve();
+
+% 打印信息
+SA.PrintInfo();
+
+% 绘制原始信号
+PlotOriSignal(SA, &#39;Title&#39;, &#39;Ricker 小波&#39;, &#39;XLabel&#39;, &#39;时间 [s]&#39;, &#39;YLabel&#39;, &#39;幅值&#39;, &#39;Geom&#39;, &#39;line&#39;);
+</code></pre>
+<h3 id="Demo4-最小相位和零相位小波对比"><a href="#Demo4-最小相位和零相位小波对比" class="headerlink" title="Demo4 - 最小相位和零相位小波对比"></a>Demo4 - 最小相位和零相位小波对比</h3><p>案例介绍：</p>
+<p>创建反射系数序列，使用不同相位类型的小波进行变换，对比最小相位和零相位小波的效果。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-5.png"><br><img src="/img/SignalAnalysis-6.png"><br><img src="/img/SignalAnalysis-7.png"><br><img src="/img/SignalAnalysis-8.png"><br><img src="/img/SignalAnalysis-9.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">% 创建反射系数序列
+r = zeros(1001, 1);  % 创建长度为1001的零向量
+r(350) = 0.1;            % 在位置350设置正反射系数
+r(650) = -0.2;           % 在位置650设置负反射系数
+
+% 时间参数
+dt = 0.001;               % 时间采样间隔 [s]
+t = (0:1000)*dt;         % 时间坐标向量 [s]
+
+% 输入结构
+inputStruct.t = t;
+inputStruct.s = r;
+
+% 参数结构
+paramsStruct.Name = &#39;Demo4_1&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA = SA.solve();
+PlotOriSignal(SA);
+
+SA = WaveletTransform(SA, &#39;WaveType&#39;,&#39;min&#39;,&#39;tlength&#39;,0.4,&#39;fdom&#39;,20);
+PlotWavelet(SA);
+PlotTransformSignal(SA);
+
+SA = WaveletTransform(SA, &#39;WaveType&#39;,&#39;zero&#39;,&#39;tlength&#39;,0.4,&#39;fdom&#39;,20);
+PlotWavelet(SA);
+PlotTransformSignal(SA);
+</code></pre>
+<h3 id="Demo5-添加随机噪声"><a href="#Demo5-添加随机噪声" class="headerlink" title="Demo5 - 添加随机噪声"></a>Demo5 - 添加随机噪声</h3><p>案例介绍：</p>
+<p>生成反射系数序列，使用最小相位小波变换后添加随机噪声，展示噪声对信号的影响。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-10.png"><br><img src="/img/SignalAnalysis-11.png"><br><img src="/img/SignalAnalysis-12.png"><br><img src="/img/SignalAnalysis-13.png"><br><img src="/img/SignalAnalysis-14.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">dt = .001;  % time sample size
+t = (0:1000)*dt;  % time coordinate vector
+r = reflec(1, .001, .2, 7, 1);
+
+% 输入结构
+inputStruct.t = t;
+inputStruct.s = r;
+
+% 参数结构
+paramsStruct.Name = &#39;Demo5_1&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA = SA.solve();
+PlotOriSignal(SA);
+
+SA = WaveletTransform(SA, &#39;WaveType&#39;,&#39;min&#39;,&#39;tlength&#39;,0.4,&#39;fdom&#39;,20);
+PlotWavelet(SA);
+PlotTransformSignal(SA);
+
+SA = WaveletTransform(SA, &#39;WaveType&#39;,&#39;zero&#39;,&#39;tlength&#39;,0.4,&#39;fdom&#39;,20);
+PlotWavelet(SA);
+PlotTransformSignal(SA);
+</code></pre>
+<h3 id="Demo6-相位旋转，加入噪声-小波"><a href="#Demo6-相位旋转，加入噪声-小波" class="headerlink" title="Demo6 - 相位旋转，加入噪声 (小波)"></a>Demo6 - 相位旋转，加入噪声 (小波)</h3><p>案例介绍：</p>
+<p>创建包含两个反射系数序列的信号，添加相位旋转和随机噪声，展示相位变化对信号的影响。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-15.png"><br><img src="/img/SignalAnalysis-16.png"><br><img src="/img/SignalAnalysis-17.png"><br><img src="/img/SignalAnalysis-18.png"><br><img src="/img/SignalAnalysis-19.png"><br><img src="/img/SignalAnalysis-20.png"><br><img src="/img/SignalAnalysis-21.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">dt = .002; tmax = 2;  % 时间采样间隔 [s] 和记录长度 [s]
+fdom = 30; s2n = 1;  % 主频 [Hz] 和信噪比
+nlag = 100;  % 第二个反射系的延迟样点数
+
+% 创建反射系数序列
+[r1, t] = reflec(tmax, dt, .2, 3, 5);  % 第一个反射系数序列
+r2 = [zeros(nlag,1); r1(1:end-nlag)];  % r2 是 r1 延迟 nlag 个样本的结果
+rtmp = reflec(2, dt, .2, 3, 9);  % 用于填充 r2 前部零值的临时反射系数
+r2(1:nlag) = rtmp(1:nlag);  % 填充零值区域
+
+% 输入结构
+inputStruct.t = t;
+inputStruct.s = r1;
+
+% 参数结构
+paramsStruct.Name = &#39;Demo6_1&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA1 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA1 = SA1.solve();
+PlotOriSignal(SA1);
+
+SA1 = WaveletTransform(SA1, &#39;WaveType&#39;,&#39;min&#39;,&#39;tlength&#39;,0.2,&#39;fdom&#39;,fdom);
+PlotTransformSignal(SA1);
+
+inputStruct.s = r2;
+paramsStruct.Name = &#39;Demo6_2&#39;;
+SA2 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA2 = SA2.solve();
+PlotOriSignal(SA2);
+
+SA2 = WaveletTransform(SA2, &#39;WaveType&#39;,&#39;min&#39;,&#39;tlength&#39;,0.2,&#39;fdom&#39;,fdom);
+PlotTransformSignal(SA2);
+
+SA2 = WaveletTransform(SA2, &#39;WaveType&#39;,&#39;min&#39;,&#39;tlength&#39;,0.2,&#39;fdom&#39;,fdom,&#39;phaserot&#39;,90);
+PlotTransformSignal(SA2);
+
+% 添加随机噪声
+n1 = rnoise(SA1.output.s_Transform, s2n);  % 生成与 s1 信噪比为 s2n 的噪声
+SA2 = AddNoise(SA2, n1);
+PlotNoise(SA2);
+PlotSyntheticSignal(SA2);
+</code></pre>
+<h3 id="Demo7-时间偏移-小波"><a href="#Demo7-时间偏移-小波" class="headerlink" title="Demo7 - 时间偏移 (小波)"></a>Demo7 - 时间偏移 (小波)</h3><p>案例介绍：</p>
+<p>创建反射系数序列，使用零相位小波变换并应用时间偏移，展示时间偏移对信号的影响。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-22.png"><br><img src="/img/SignalAnalysis-23.png"><br><img src="/img/SignalAnalysis-24.png"><br><img src="/img/SignalAnalysis-25.png"><br><img src="/img/SignalAnalysis-26.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">dt = .002;
+tmax = 1;
+tlen = .1;
+t1 = .4; t2 = .6;
+[r, tr] = reflec(tmax, dt, .1, 3, 4);
+fdom = 30;
+
+% 输入结构
+inputStruct.t = tr;
+inputStruct.s = r;
+
+% 参数结构
+paramsStruct.Name = &#39;Demo7_1&#39;;
+paramsStruct.Range = [t1, t2];
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA1 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA1 = SA1.solve();
+PlotOriSignal(SA1);
+
+SA1 = WaveletTransform(SA1, &#39;WaveType&#39;,&#39;zero&#39;,&#39;tlength&#39;,tlen,&#39;fdom&#39;,fdom);
+PlotWavelet(SA1);
+PlotTransformSignal(SA1);
+
+SA1 = WaveletTransform(SA1, &#39;WaveType&#39;,&#39;zero&#39;,&#39;tlength&#39;,tlen,&#39;fdom&#39;,fdom,&#39;shift&#39;,0.01);
+PlotTransformSignal(SA1);
+
+SA1 = WaveletTransform(SA1, &#39;WaveType&#39;,&#39;zero&#39;,&#39;tlength&#39;,tlen,&#39;fdom&#39;,fdom,&#39;shift&#39;,0.01,&#39;phaserot&#39;,45);
+PlotTransformSignal(SA1);
+</code></pre>
+<h3 id="Demo8-信号平滑-小波"><a href="#Demo8-信号平滑-小波" class="headerlink" title="Demo8 - 信号平滑 (小波)"></a>Demo8 - 信号平滑 (小波)</h3><p>案例介绍：</p>
+<p>创建包含低频正弦波和线性趋势的信号，添加随机噪声后使用不同方法进行平滑处理。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-27.png"><br><img src="/img/SignalAnalysis-28.png"><br><img src="/img/SignalAnalysis-29.png"><br><img src="/img/SignalAnalysis-30.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">% 基本参数设置
+dt = .001;  % 时间采样间隔 [s]
+tmax = 1;   % 信号总时长 [s]
+t = 0:dt:tmax;  % 时间向量
+
+% 创建测试信号
+f1 = 5;  % 正弦波频率 [Hz]
+a1 = .1; a2 = 1;  % 振幅系数
+s = a1*sin(2*pi*f1*t) + a2*t;  % 合成信号：低频正弦波 + 线性趋势
+
+% 添加随机噪声
+n = .2*randn(size(t));  % 生成高斯白噪声（标准差为0.2）
+sn = s + n;  % 含噪信号 = 原始信号 + 噪声
+
+% 输入结构
+inputStruct.t = t;
+inputStruct.s = sn;
+
+% 参数结构
+paramsStruct.Name = &#39;Demo8_1&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA1 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA1 = SA1.solve();
+PlotOriSignal(SA1);
+
+SA1 = SignalSmooth(SA1, &#39;window&#39;,&#39;box&#39;,&#39;tsmo&#39;,0.1);
+PlotTransformSignal(SA1);
+
+SA1 = SignalSmooth(SA1, &#39;window&#39;,&#39;tri&#39;,&#39;tsmo&#39;,0.1);
+PlotTransformSignal(SA1);
+
+SA1 = SignalSmooth(SA1, &#39;window&#39;,&#39;gauss&#39;,&#39;tsmo&#39;,0.1);
+PlotTransformSignal(SA1);
+</code></pre>
+<h3 id="Demo9-高斯低通滤波"><a href="#Demo9-高斯低通滤波" class="headerlink" title="Demo9 - 高斯低通滤波"></a>Demo9 - 高斯低通滤波</h3><p>案例介绍：</p>
+<p>生成合成地震记录，使用高斯低通滤波和频域滤波去除噪声，对比不同滤波方法的效果。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-31.png"><br><img src="/img/SignalAnalysis-32.png"><br><img src="/img/SignalAnalysis-33.png"><br><img src="/img/SignalAnalysis-34.png"><br><img src="/img/SignalAnalysis-35.png"><br><img src="/img/SignalAnalysis-36.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">% 基本参数设置
+dt = .001;  % 时间采样间隔 [s]
+tmax = 1.0;  % 反射系数序列长度 [s]
+fdom = 30;  % 小波主频 [Hz]
+tlen = .2;  % 小波长度 [s]
+s2n = .5;  % 信噪比（信号与噪声的能量比）
+
+% 创建合成地震记录
+[r, t] = reflec(tmax, dt, .1, 5, 3);  % 生成反射系数序列 r 和时间坐标 t
+
+% 输入结构
+inputStruct.t = t;
+inputStruct.s = r;
+
+% 参数结构
+paramsStruct.Name = &#39;Temp&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA = SA.solve();
+PlotOriSignal(SA);
+
+SA = WaveletTransform(SA, &#39;WaveType&#39;,&#39;min&#39;,&#39;tlength&#39;,tlen,&#39;fdom&#39;,fdom);
+
+% 添加随机噪声
+n1 = rnoise(SA.output.s_Transform, s2n);  % 生成与 s1 信噪比为 s2n 的噪声
+SA = AddNoise(SA, n1);
+PlotNoise(SA);
+PlotSyntheticSignal(SA);
+
+% 输入结构
+inputStruct.t = t;
+inputStruct.s = SA.output.s_Synthesis;
+
+% 参数结构
+paramsStruct.Name = &#39;Demo9_1&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA1 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA1 = SA1.solve();
+PlotOriSignal(SA1);
+
+SA1 = SignalSmooth(SA1, &#39;window&#39;,&#39;box&#39;,&#39;tsmo&#39;,0.01);
+PlotTransformSignal(SA1);
+
+% 使用频域低通滤波进行对比
+SA1 = SignalSmooth(SA1, &#39;method&#39;,&#39;bandpass&#39;,&#39;fmin&#39;,0,&#39;fmax&#39;,[45 5]);
+PlotTransformSignal(SA1);
+</code></pre>
+<h3 id="Demo10-快速傅里叶变换-FFT"><a href="#Demo10-快速傅里叶变换-FFT" class="headerlink" title="Demo10 - 快速傅里叶变换 (FFT)"></a>Demo10 - 快速傅里叶变换 (FFT)</h3><p>案例介绍：</p>
+<p>加载实测信号数据，进行快速傅里叶变换分析，展示信号的频域特性。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-37.png"><br><img src="/img/SignalAnalysis-38.png"><br><img src="/img/SignalAnalysis-39.png"><br><img src="/img/SignalAnalysis-40.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">data = load(&#39;97.mat&#39;);
+Start = 1;
+DataNum = 20000;
+x = data.X097_DE_time(Start:Start+DataNum,:)&#39;;
+Fs = 12000;
+dt = 1/Fs;  % 时间采样间隔 [s]
+t = (0:DataNum)*dt;  % time coordinate vector
+
+% 输入结构
+inputStruct.t = t;
+inputStruct.s = x;
+
+% 参数结构
+paramsStruct.Name = &#39;Demo10_1&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA1 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA1 = SA1.solve();
+PlotOriSignal(SA1);
+
+SA1 = FFT(SA1);
+PlotFFT(SA1,&#39;Freq&#39;,[20,4000]);
+PlotdB(SA1,&#39;Freq&#39;,[20,4000]);
+PlotPhase(SA1,&#39;Freq&#39;,[20,100]);
+</code></pre>
+<h3 id="Demo11-同步挤压变换-SST"><a href="#Demo11-同步挤压变换-SST" class="headerlink" title="Demo11 - 同步挤压变换 (SST)"></a>Demo11 - 同步挤压变换 (SST)</h3><p>案例介绍：</p>
+<p>使用同步挤压变换 (SST) 对实测信号进行时频分析，提高时频分辨率。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-41.png"><br><img src="/img/SignalAnalysis-42.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">data = load(&#39;97.mat&#39;);
+Start = 1;
+DataNum = 20000;
+x = data.X097_DE_time(Start:Start+DataNum,:)&#39;;
+Fs = 12000;
+dt = 1/Fs;  % 时间采样间隔 [s]
+t = (0:DataNum)*dt;  % time coordinate vector
+
+% 输入结构
+inputStruct.t = t;
+inputStruct.s = x;
+
+% 参数结构
+paramsStruct.Name = &#39;Demo11_1&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA1 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA1 = SA1.solve();
+PlotOriSignal(SA1);
+
+SA1 = SST(SA1,&#39;hlength&#39;,2000);
+PlotSST(SA1);
+</code></pre>
+<h3 id="Demo12-瞬态提取变换-TET"><a href="#Demo12-瞬态提取变换-TET" class="headerlink" title="Demo12 - 瞬态提取变换 (TET)"></a>Demo12 - 瞬态提取变换 (TET)</h3><p>案例介绍：</p>
+<p>使用瞬态提取变换 (TET) 对实测信号进行瞬态特征提取，展示非平稳信号的时频特性。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-43.png"><br><img src="/img/SignalAnalysis-44.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">data = load(&#39;97.mat&#39;);
+Start = 1;
+DataNum = 20000;
+x = data.X097_DE_time(Start:Start+DataNum,:)&#39;;
+Fs = 12000;
+dt = 1/Fs;  % 时间采样间隔 [s]
+t = (0:DataNum)*dt;  % time coordinate vector
+
+% 输入结构
+inputStruct.t = t;
+inputStruct.s = x;
+
+% 参数结构
+paramsStruct.Name = &#39;Demo11_1&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA1 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA1 = SA1.solve();
+PlotOriSignal(SA1);
+
+SA1 = TET(SA1,&#39;hlength&#39;,2000);
+PlotTET(SA1);
+</code></pre>
+<h3 id="Demo13-小波变换-WT"><a href="#Demo13-小波变换-WT" class="headerlink" title="Demo13 - 小波变换 (WT)"></a>Demo13 - 小波变换 (WT)</h3><p>案例介绍：</p>
+<p>使用连续小波变换 (WT) 对实测信号进行多尺度时频分析。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-45.png"><br><img src="/img/SignalAnalysis-46.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">data = load(&#39;97.mat&#39;);
+Start = 1;
+DataNum = 20000;
+x = data.X097_DE_time(Start:Start+DataNum,:)&#39;;
+Fs = 12000;
+dt = 1/Fs;  % 时间采样间隔 [s]
+t = (0:DataNum)*dt;  % time coordinate vector
+
+% 输入结构
+inputStruct.t = t;
+inputStruct.s = x;
+
+% 参数结构
+paramsStruct.Name = &#39;Demo13&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA1 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA1 = SA1.solve();
+PlotOriSignal(SA1);
+
+SA1 = WT(SA1,&#39;hlength&#39;,2000);
+PlotWT(SA1);
+</code></pre>
+<h3 id="Demo14-希尔伯特变换"><a href="#Demo14-希尔伯特变换" class="headerlink" title="Demo14 - 希尔伯特变换"></a>Demo14 - 希尔伯特变换</h3><p>案例介绍：</p>
+<p>使用希尔伯特变换对正弦波信号进行解析信号分析，计算瞬时相位和幅值。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-47.png"><br><img src="/img/SignalAnalysis-48.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">t = 0:.001:1;  % make a time axis
+f = 10;  % we will make a 10 Hz signal
+s = sin(2*pi*f*t);  % 10 Hz sine wave
+
+% 输入结构
+inputStruct.t = t;
+inputStruct.s = s;
+
+% 参数结构
+paramsStruct.Name = &#39;Demo14&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA1 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA1 = SA1.solve();
+PlotOriSignal(SA1);
+
+SA1 = Hilbert(SA1);
+PlotHilbert(SA1);
+</code></pre>
+<h3 id="Demo15-信号包络"><a href="#Demo15-信号包络" class="headerlink" title="Demo15 - 信号包络"></a>Demo15 - 信号包络</h3><p>案例介绍：</p>
+<p>使用希尔伯特变换提取信号包络，分析信号的包络特性。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-49.png"><br><img src="/img/SignalAnalysis-50.png"><br><img src="/img/SignalAnalysis-51.png"><br><img src="/img/SignalAnalysis-52.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">[r, t] = reflec(1, .001);  % make a reflectivity
+
+% 输入结构
+inputStruct.t = t;
+inputStruct.s = r;
+
+% 参数结构
+paramsStruct.Name = &#39;Demo15&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA1 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA1 = SA1.solve();
+PlotOriSignal(SA1);
+
+SA1 = WaveletTransform(SA1);
+PlotWavelet(SA1);
+PlotTransformSignal(SA1);
+
+SA1 = Envelop(SA1,&#39;Type&#39;,1);
+PlotEnvelop(SA1,&#39;Type&#39;,1);
+</code></pre>
+<h3 id="Demo16-识别主频率"><a href="#Demo16-识别主频率" class="headerlink" title="Demo16 - 识别主频率"></a>Demo16 - 识别主频率</h3><p>案例介绍：</p>
+<p>使用不同的主频识别方法分析信号的主频成分，展示不同方法的差异。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-53.png"><br><img src="/img/SignalAnalysis-54.png"><br><img src="/img/SignalAnalysis-55.png"><br><img src="/img/SignalAnalysis-56.png"><br><img src="/img/SignalAnalysis-57.png"><br><img src="/img/SignalAnalysis-58.png"><br><img src="/img/SignalAnalysis-59.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">% 参数设置
+f1 = 20;  % 第一个子波的中心频率 (Hz)
+f2 = 60;  % 第二个子波的中心频率 (Hz)
+
+[r, t] = reflec(1, .001);  % make a reflectivity
+
+% 输入结构
+inputStruct.t = t&#39;;
+inputStruct.s = r&#39;;
+
+% 参数结构
+paramsStruct.Name = &#39;Demo16&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA1 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA1 = SA1.solve();
+PlotOriSignal(SA1);
+
+SA1 = WaveletTransform(SA1,&#39;WaveType&#39;,&#39;min&#39;,&#39;fdom&#39;,f1);
+PlotWavelet(SA1);
+PlotTransformSignal(SA1);
+
+SA1 = FreqDom(SA1,&#39;Type&#39;,1,&#39;p&#39;,2);
+SA1 = FFT(SA1,&#39;Type&#39;,0);
+PlotFFT(SA1,&#39;Type&#39;,0);
+
+SA1 = WaveletTransform(SA1,&#39;WaveType&#39;,&#39;min&#39;,&#39;fdom&#39;,f2);
+PlotWavelet(SA1);
+PlotTransformSignal(SA1);
+
+SA1 = FreqDom(SA1,&#39;Type&#39;,1,&#39;p&#39;,2);
+SA1 = FreqDom(SA1,&#39;Type&#39;,1,&#39;p&#39;,2);
+SA1 = FFT(SA1,&#39;Type&#39;,1);
+PlotFFT(SA1,&#39;Type&#39;,1);
+</code></pre>
+<h3 id="Demo17-巴特沃斯滤波"><a href="#Demo17-巴特沃斯滤波" class="headerlink" title="Demo17 - 巴特沃斯滤波"></a>Demo17 - 巴特沃斯滤波</h3><p>案例介绍：</p>
+<p>使用巴特沃斯带通滤波器对信号进行滤波，去除高频噪声。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-60.png"><br><img src="/img/SignalAnalysis-61.png"><br><img src="/img/SignalAnalysis-62.png"><br><img src="/img/SignalAnalysis-63.png"><br><img src="/img/SignalAnalysis-64.png"><br><img src="/img/SignalAnalysis-65.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">dt = .002;  % 时间采样间隔
+tmax = 1.022;  % 选择此值使长度为2的幂次
+[r, t] = reflec(tmax, dt, .2, 3, 4);  % 生成反射系数序列
+r(end-100:end) = 0;  % 将最后100个采样点置零
+r(end-50) = .1;  % 在零值区域中间放置一个尖峰
+fmin = [10 5]; fmax = [60 20];  % 用于 filtf 函数的频率参数
+n = 4;  % 巴特沃斯滤波器阶数
+
+% 输入结构
+inputStruct.t = t&#39;;
+inputStruct.s = r&#39;;
+
+% 参数结构
+paramsStruct.Name = &#39;Demo17&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA = SA.solve();
+PlotOriSignal(SA);
+
+SA = FFT(SA);
+PlotdB(SA);
+
+SA = SignalSmooth(SA,&#39;method&#39;,&#39;bandpass&#39;,&#39;fmin&#39;,fmin,&#39;fmax&#39;,fmax);
+PlotTransformSignal(SA);
+SA = FFT(SA,&#39;Type&#39;,1);
+PlotdB(SA,&#39;Type&#39;,1);
+
+SA = SignalSmooth(SA,&#39;method&#39;,&#39;butterband&#39;,&#39;fmin&#39;,fmin(1),&#39;fmax&#39;,fmax(1),&#39;n&#39;,n);
+PlotTransformSignal(SA);
+SA = FFT(SA,&#39;Type&#39;,1);
+PlotdB(SA,&#39;Type&#39;,1);
+</code></pre>
+<h3 id="Demo18-Gabor-变换"><a href="#Demo18-Gabor-变换" class="headerlink" title="Demo18 - Gabor 变换"></a>Demo18 - Gabor 变换</h3><p>案例介绍：</p>
+<p>使用 Gabor 变换对线性调频信号（Chirp 信号）进行时频分析，展示 Gabor 变换的时频定位能力。</p>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-66.png"><br><img src="/img/SignalAnalysis-67.png"><br><img src="/img/SignalAnalysis-68.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">% ========== Gabor Chirp（线性调频信号）==========
+% 1秒线性调频信号，采样率为8000 Hz
+Fs = 8000;  % 采样率
+t = linspace(0,1,Fs);  % 时间向量（0到1秒）
+x = sin(2*pi*2000*t.^2);  % 线性调频信号（从2000 Hz开始的线性调频）
+
+% 输入结构
+inputStruct.t = t;
+inputStruct.s = x;
+
+% 参数结构
+paramsStruct.Name = &#39;Demo18&#39;;
+paramsStruct.Echo = 1;
+
+% 创建并求解 SignalAnalysis 对象
+SA = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA = SA.solve();
+PlotOriSignal(SA);
+
+SA = WT(SA);
+PlotWT(SA);
+
+SA = Gabor(SA);
+PlotGabor(SA);
+</code></pre>
+<h3 id="Demo19-相关性分析"><a href="#Demo19-相关性分析" class="headerlink" title="Demo19 - 相关性分析"></a>Demo19 - 相关性分析</h3><p>案例介绍：</p>
+<p>演示三种相关性分析场景：</p>
+<ol>
+<li>自相关分析 - 正弦波的自相关函数</li>
+<li>信号内部互相关 - 原始信号与变换信号的互相关</li>
+<li>复合信号自相关 - 包含延迟信息的复合信号</li>
+</ol>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-69.png"><br><img src="/img/SignalAnalysis-70.png"><br><img src="/img/SignalAnalysis-71.png"><br><img src="/img/SignalAnalysis-72.png"><br><img src="/img/SignalAnalysis-73.png"><br><img src="/img/SignalAnalysis-74.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">%% 案例1: 自相关分析
+fs = 1000;
+T = 1;
+t = 0:1/fs:T-1/fs;
+s1 = sin(2*pi*50*t);
+
+inputStruct.t = t;
+inputStruct.s = s1;
+paramsStruct.Name = &#39;AutoCorrelation_Demo&#39;;
+paramsStruct.Echo = 1;
+
+SA1 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA1 = SA1.solve();
+
+% 自相关分析 (s1 vs s1)
+SA1 = Correlation(SA1, 0, 0);
+PlotCor(SA1, &#39;Title&#39;, &#39;自相关函数&#39;, &#39;Geom&#39;, &#39;stem&#39;);
+
+%% 案例2: 信号内部互相关
+SA2 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA2 = SA2.solve();
+
+% 进行信号变换
+SA2 = WaveletTransform(SA2, &#39;WaveType&#39;, &#39;min&#39;, &#39;fdom&#39;, 50);
+
+% 互相关分析 (input.s vs output.s_Transform)
+SA2 = Correlation(SA2, 0, 1);
+PlotCor(SA2, &#39;Title&#39;, &#39;互相关函数&#39;, &#39;LagRange&#39;, [-0.1, 0.1]);
+
+%% 案例3: 复合信号自相关
+% 创建包含两个频率成分的复合信号
+s3 = s1 + s2;  % 叠加原始信号和延迟信号
+
+inputStruct.s = s3;
+paramsStruct.Name = &#39;CrossCorrelation_Demo2&#39;;
+paramsStruct.Echo = 1;
+
+SA3 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA3 = SA3.solve();
+
+% 自相关分析
+SA3 = Correlation(SA3, 0, 0);
+PlotCor(SA3, &#39;Title&#39;, &#39;复合信号自相关函数&#39;, &#39;LagRange&#39;, [-0.2, 0.2]);
+</code></pre>
+<h3 id="Demo20-功率谱分析"><a href="#Demo20-功率谱分析" class="headerlink" title="Demo20 - 功率谱分析"></a>Demo20 - 功率谱分析</h3><p>案例介绍：</p>
+<p>演示功率谱密度分析的三个场景：</p>
+<ol>
+<li>自功率谱分析 - 使用 Welch 方法估计含噪双频信号的 PSD</li>
+<li>不同窗函数对比 - Hamming 窗和 Hann 窗的效果对比</li>
+<li>互功率谱分析 - 分析两个相关信号的互功率谱</li>
+</ol>
+<p>图表：</p>
+<p><img src="/img/SignalAnalysis-75.png"><br><img src="/img/SignalAnalysis-76.png"><br><img src="/img/SignalAnalysis-77.png"><br><img src="/img/SignalAnalysis-78.png"><br><img src="/img/SignalAnalysis-79.png"><br><img src="/img/SignalAnalysis-80.png"></p>
+<p>源代码：</p>
+<pre><code class="language-matlab">%% 案例1: 自功率谱分析
+fs = 1000;
+T = 1;
+t = 0:1/fs:T-1/fs;
+
+% 信号1: 包含两个频率成分的信号
+s1 = 0.8 * sin(2*pi*50*t) + 0.5 * sin(2*pi*120*t);
+s1 = s1 + 0.2 * randn(size(t));  % 添加随机噪声
+
+inputStruct.t = t;
+inputStruct.s = s1;
+paramsStruct.Name = &#39;PowerSpectrum_Demo1&#39;;
+paramsStruct.Echo = 1;
+
+SA1 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA1 = SA1.solve();
+
+% 自功率谱分析 (s1 vs s1)
+SA1 = PowerSpectrum(SA1, 0, 0, &#39;Window&#39;, &#39;hamming&#39;, &#39;WindowLength&#39;, 1024);
+
+% 绘制线性刻度的功率谱
+PlotPowerSpectrum(SA1, &#39;Title&#39;, &#39;自功率谱密度 (线性刻度)&#39;, &#39;YScale&#39;, &#39;linear&#39;);
+
+% 绘制 dB 刻度的功率谱
+PlotPowerSpectrum(SA1, &#39;Title&#39;, &#39;自功率谱密度 (dB)&#39;, &#39;YScale&#39;, &#39;db&#39;);
+
+%% 案例3: 互功率谱分析
+% 信号3: 与信号1有相似成分但相位不同
+s3 = 0.8 * sin(2*pi*50*t + pi/4) + 0.5 * sin(2*pi*120*t);
+
+inputStruct.s = s3;
+paramsStruct.Name = &#39;PowerSpectrum_Demo3&#39;;
+SA3 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA3 = SA3.solve();
+
+% 重新创建信号1的对象用于互功率谱
+inputStruct.s = s1;
+paramsStruct.Name = &#39;PowerSpectrum_Demo1_2&#39;;
+SA1_2 = signal.SignalAnalysis(paramsStruct, inputStruct);
+SA1_2 = SA1_2.solve();
+
+% 将信号1的数据存到SA3的output中
+SA3.output.s_Transform = SA1_2.input.s;
+
+% 互功率谱分析 (input.s vs output.s_Transform)
+SA3 = PowerSpectrum(SA3, 0, 1, &#39;Window&#39;, &#39;hamming&#39;, &#39;WindowLength&#39;, 1024);
+
+% 绘制互功率谱
+PlotPowerSpectrum(SA3, &#39;Title&#39;, &#39;互功率谱密度 (CPSD)&#39;, &#39;YScale&#39;, &#39;db&#39;);
+</code></pre>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] MATLAB Signal Processing Toolbox Documentation</p>
+<p>[2] Oppenheim, A. V., &amp; Schafer, R. W. (2009). Discrete-Time Signal Processing (3rd ed.). Pearson.</p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2025 FE-Berserker
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

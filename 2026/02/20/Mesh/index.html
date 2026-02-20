@@ -1,0 +1,3701 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mesh | Baffalo</title>
+  <meta name="keywords" content=" Baffalo , Matlab , 3D网格 , TetGen , MRST , 网格划分 ">
+  <meta name="description" content="Mesh | Baffalo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="介绍LaminatePlate用于建立层合板网格。 类结构 输入 input：  Tply : 铺层厚度 Plymat : 铺层材料编号 Orient : 铺层角度 Meshsize : 网格大小 Hole : 开洞几何 Outline : 外轮廓线  参数 params:  Order ：单元阶数 Offset : 壳单元偏置 Name : 名称 Material  : 复合材料属性  输出 o">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LaminatePlate">
+<meta property="og:url" content="http://example.com/2026/02/20/LaminatePlate/index.html">
+<meta property="og:site_name" content="Baffalo">
+<meta property="og:description" content="介绍LaminatePlate用于建立层合板网格。 类结构 输入 input：  Tply : 铺层厚度 Plymat : 铺层材料编号 Orient : 铺层角度 Meshsize : 网格大小 Hole : 开洞几何 Outline : 外轮廓线  参数 params:  Order ：单元阶数 Offset : 壳单元偏置 Name : 名称 Material  : 复合材料属性  输出 o">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/LaminatePlate.assets/Fig3.jpg">
+<meta property="og:image" content="http://example.com/img/LaminatePlate.assets/Fig1.jpg">
+<meta property="og:image" content="http://example.com/img/LaminatePlate.assets/Fig2.jpg">
+<meta property="article:published_time" content="2026-02-20T08:55:31.707Z">
+<meta property="article:modified_time" content="2026-02-20T08:55:31.707Z">
+<meta property="article:author" content="FE-Beserker">
+<meta property="article:tag" content="Baffalo">
+<meta property="article:tag" content="Matlab">
+<meta property="article:tag" content="建模">
+<meta property="article:tag" content="网格">
+<meta property="article:tag" content="层合板">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/LaminatePlate.assets/Fig3.jpg">
+
+
+<link rel="icon" href="/img/Baffalo.png">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/Baffalo.png"/>
+</a>
+<div class="author">
+    <span>FE-Beserker</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="github"
+               href="https://github.com/FE-Berserker"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/column/c_1920893344915096610"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="email"
+               href="mailto:392176462@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=392176462&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(120)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo框架">
+            
+            Baffalo框架
+            <small>(15)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo部件">
+            
+            Baffalo部件
+            <small>(41)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo方法">
+            
+            Baffalo方法
+            <small>(20)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo求解">
+            
+            Baffalo求解
+            <small>(4)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo笔记">
+            
+            Baffalo笔记
+            <small>(39)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+        
+            
+                
+    <li>
+        <div data-rel="Baffalo案例">
+            
+            Baffalo案例
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+            
+        
+    
+</ul>
+<div class="left-bottom">
+
+<div class="wechat-qrcode">
+    
+    <div class="wechat-qrcode-title">关注微信公众号</div>
+    
+    <div class="wechat-qrcode-img">
+        <img src="/img/weixin.jpg"
+             alt="微信公众号二维码"/>
+    </div>
+</div>
+
+
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="120">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>2D网格</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>3D</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>3D曲线</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>3D网格</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>安全系数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>板</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>爆炸测试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>笔记</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>编织</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>编织元胞</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>编织圆环</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>不滑线</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>不架空</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>不平衡量</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>部件</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>材料性能</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>参数化</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>参数化设计</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>槽钢</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>槽型</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>测地线</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>测试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>层合板</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>插值边界</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>超单元</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>齿廓</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>齿轮</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>齿形</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>传动</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>磁</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>磁场</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>磁钢</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>磁力联轴器</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>磁力轴承</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>次表面应力</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>带槽多边形轴套</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>带槽轴套</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>带齿槽轴</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>单元测试</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>弹性常数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>弹性模量</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>导向轴支座</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>点云</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>电磁</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>电工钢</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>电机</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>雕刻建模</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>叠片</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>叠片联轴器</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>动平衡</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>端部带槽轴</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>对数修形</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>多边形环</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>多边形轴套</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>多角星</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>法兰螺栓</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>法向</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>仿真</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>非赫兹接触</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>非结构化网格</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>风力发电</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>风摩损耗</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>复合材料</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>刚度</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>工字梁</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>故障诊断</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>滚子修形</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>滚子轴承</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>过盈配合</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>赫兹接触</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>桁架</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>厚壁圆筒</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>厚度估算</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>弧坡修形</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>划分</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>环</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>计算</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>剪切</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>剪切模量</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>建</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>建模</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>渐进损伤</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>渐开线</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>角度</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>角钢</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>接触力学</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>接触疲劳</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>径向被动磁力轴承</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>壳</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>壳网格</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>可靠度</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>空气</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>空心螺栓</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>拉梅方程</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>拉伸</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>离心力</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>力学性能</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>联轴器</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>梁</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>梁网格</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>路径计算</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>螺栓</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>螺栓连接</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>密度</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>模块开发</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>模态分析</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>膜片</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>摩擦扭矩</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>内禀矫顽力</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>内外压</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>拟合</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>疲劳</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>频谱分析</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>频响分析</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>平板</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>平面</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>平移</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>气动</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>气瓶</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>气隙</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>穹顶</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>球表面</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>球轴承</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>曲面</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>曲线</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>缺陷频率</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>热导率</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>热学</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>润滑</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>润滑油</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>设计基准</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>深沟球轴承</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>剩磁</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>失效准则</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>时间序列</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>寿命计算</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>数学问题</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>缩放</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>塔筒</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>体积计算</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>铁损</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>投影</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>凸台平板</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>图层</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>网格</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>网格划分</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>网架</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>微观力学</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>温度</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>稳定性</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>物性</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>细观力学</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>纤维缠绕</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>线型</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>线型设计</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>橡胶</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>橡胶弹性支撑</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>校核</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>信号处理</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>旋转</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>旋转圆盘</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>压力容器</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>压缩</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>翼型</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>应力分析</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>应力集中</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>应力应变</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>应力重新分布</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>映射网格</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>硬度</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>油封</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>有限元</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>预估</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>预紧力</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>圆柱滚子轴承</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>运动速度</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>运动学</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>载荷</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>粘度</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>支架</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>支座</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>轴</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>轴承</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>轴套</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>主动磁力轴承</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>转子动力学</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>装配</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>锥角被动磁力轴承</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>子结构</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>子模型</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>阻力</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>阻尼</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>阻尼参数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>坐标变换</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AI</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ANSYS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Baffalo</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Baffalo_Component</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>BH曲线</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>BP曲线</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>C型梁</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Delaunay</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>DIN7190</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>DNV规范</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>FEMM</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>HFGMC</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ISO16281</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ISO1940</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ISO281</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>ISO6336</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>L型梁</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Lundberg</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Matlab</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MMPDS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Mori-Tanaka</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MRST</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MT方法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>NOK</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>NURBS</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Palmgren</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>PID控制</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Puck准则</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Ramberg-Osgood</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Simpack</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>SN曲线</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>TetGen</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>TexGen</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>VDI2230</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>XFoil</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E6%BB%9A%E5%AD%90%E8%BD%B4%E6%89%BF%E5%90%84%E9%83%A8%E4%BB%B6%E8%BF%90%E5%8A%A8%E9%80%9F%E5%BA%A6/"
+           data-tag="Baffalo,Matlab,滚子轴承,运动学,运动速度,故障诊断"
+           data-author="" >
+            <span class="post-title" title="滚子轴承各部件运动速度">滚子轴承各部件运动速度</span>
+            <span class="post-date" title="2026-02-20 17:00:04">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2026/02/20/Mesh/"
+           data-tag="Baffalo,Matlab,3D网格,TetGen,MRST,网格划分"
+           data-author="" >
+            <span class="post-title" title="Mesh">Mesh</span>
+            <span class="post-date" title="2026-02-20 16:55:32">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/LaminatePlate/"
+           data-tag="Baffalo,Matlab,建模,网格,层合板"
+           data-author="" >
+            <span class="post-title" title="LaminatePlate">LaminatePlate</span>
+            <span class="post-date" title="2026-02-20 16:55:31">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/CoreLossCoeifficient/"
+           data-tag="Baffalo,Matlab,计算,铁损,BP曲线,电工钢,拟合"
+           data-author="" >
+            <span class="post-title" title="CoreLossCoeifficient">CoreLossCoeifficient</span>
+            <span class="post-date" title="2026-02-20 16:55:30">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/TaperPMB/"
+           data-tag="Baffalo,Matlab,建模,网格,刚度,锥角被动磁力轴承"
+           data-author="" >
+            <span class="post-title" title="TaperPMB">TaperPMB</span>
+            <span class="post-date" title="2026-02-20 16:55:21">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/SlotPolygonHousing/"
+           data-tag="Baffalo,Matlab,建模,网格,带槽多边形轴套"
+           data-author="" >
+            <span class="post-title" title="SlotPolygonHousing">SlotPolygonHousing</span>
+            <span class="post-date" title="2026-02-20 16:55:20">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/CompositePolygonRing/"
+           data-tag="Baffalo,Matlab,建模,网格,复合材料,多边形环"
+           data-author="" >
+            <span class="post-title" title="CompositePolygonRing">CompositePolygonRing</span>
+            <span class="post-date" title="2026-02-20 16:55:19">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/MagnetProperty/"
+           data-tag="Baffalo,Matlab,计算,磁钢,BH曲线,内禀矫顽力,剩磁"
+           data-author="" >
+            <span class="post-title" title="MagnetProperty">MagnetProperty</span>
+            <span class="post-date" title="2026-02-20 16:55:18">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/PolygonHousing/"
+           data-tag="Baffalo,Matlab,建模,网格,多边形轴套"
+           data-author="" >
+            <span class="post-title" title="PolygonHousing">PolygonHousing</span>
+            <span class="post-date" title="2026-02-20 16:55:17">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/Bearing_Dynamic/"
+           data-tag="Baffalo,Matlab,计算,轴承,缺陷频率"
+           data-author="" >
+            <span class="post-title" title="Bearing_Dynamic">Bearing_Dynamic</span>
+            <span class="post-date" title="2026-02-20 16:55:07">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/SlotHousing/"
+           data-tag="Baffalo,Matlab,建模,网格,带槽轴套"
+           data-author="" >
+            <span class="post-title" title="SlotHousing">SlotHousing</span>
+            <span class="post-date" title="2026-02-20 16:55:06">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E5%8E%9A%E5%BA%A6%E4%BC%B0%E7%AE%97/"
+           data-tag="Baffalo,Matlab,纤维缠绕,厚度估算,体积计算"
+           data-author="" >
+            <span class="post-title" title="纤维缠绕厚度估算">纤维缠绕厚度估算</span>
+            <span class="post-date" title="2026-02-20 16:55:05">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E5%AF%BC%E5%90%91%E8%BD%B4%E6%94%AF%E5%BA%A7%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/"
+           data-tag="Baffalo,Matlab,建模,网格,参数化,导向轴支座"
+           data-author="" >
+            <span class="post-title" title="导向轴支座参数化网格模型">导向轴支座参数化网格模型</span>
+            <span class="post-date" title="2026-02-20 16:55:04">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/ToothShaft/"
+           data-tag="Baffalo,Matlab,建模,网格,带齿槽轴"
+           data-author="" >
+            <span class="post-title" title="ToothShaft">ToothShaft</span>
+            <span class="post-date" title="2026-02-20 16:55:02">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E4%B8%BA%E4%BB%80%E4%B9%88%E9%BD%BF%E8%BD%AE%E7%94%A8%E6%B8%90%E5%BC%80%E7%BA%BF/"
+           data-tag="Baffalo,齿轮,渐开线,传动,齿廓"
+           data-author="" >
+            <span class="post-title" title="为什么齿轮用渐开线">为什么齿轮用渐开线</span>
+            <span class="post-date" title="2026-02-20 16:54:05">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E7%94%B5%E6%9C%BA%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91%E8%A7%84%E5%88%92/"
+           data-tag="Baffalo,Matlab,FEMM,电机,转子动力学,电磁"
+           data-author="" >
+            <span class="post-title" title="电机模块开发规划">电机模块开发规划</span>
+            <span class="post-date" title="2026-02-20 16:54:04">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E7%AB%AF%E9%83%A8%E5%B8%A6%E6%A7%BD%E8%BD%B4%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1/"
+           data-tag="Baffalo,Matlab,建模,网格,参数化,端部带槽轴"
+           data-author="" >
+            <span class="post-title" title="端部带槽轴参数化网格建模">端部带槽轴参数化网格建模</span>
+            <span class="post-date" title="2026-02-20 16:54:03">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%86%E6%9E%90/"
+           data-tag="Baffalo,Matlab,纤维缠绕,稳定性,不架空,不滑线"
+           data-author="" >
+            <span class="post-title" title="纤维缠绕稳定性分析">纤维缠绕稳定性分析</span>
+            <span class="post-date" title="2026-02-20 16:54:02">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/Housing/"
+           data-tag="Baffalo,Matlab,建模,网格,轴套"
+           data-author="" >
+            <span class="post-title" title="Housing">Housing</span>
+            <span class="post-date" title="2026-02-20 16:54:00">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E6%97%8B%E8%BD%AC%E8%BD%B4%E5%A5%97%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1/"
+           data-tag="Baffalo,Matlab,建模,网格,参数化,轴套"
+           data-author="" >
+            <span class="post-title" title="旋转轴套参数化网格建模">旋转轴套参数化网格建模</span>
+            <span class="post-date" title="2026-02-20 16:53:50">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2026/02/20/Mesh2D/"
+           data-tag="Baffalo,Matlab,2D网格,Delaunay,非结构化网格,划分"
+           data-author="" >
+            <span class="post-title" title="Mesh2D">Mesh2D</span>
+            <span class="post-date" title="2026-02-20 16:53:49">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/ShellGrid/"
+           data-tag="Baffalo,Matlab,建模,网格,网架"
+           data-author="" >
+            <span class="post-title" title="ShellGrid">ShellGrid</span>
+            <span class="post-date" title="2026-02-20 16:53:48">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/Grid/"
+           data-tag="桁架,Baffalo,Matlab,建模,网格"
+           data-author="" >
+            <span class="post-title" title="Grid">Grid</span>
+            <span class="post-date" title="2026-02-20 16:53:47">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/DeepGrooveBallBearing/"
+           data-tag="Baffalo,Matlab,建模,网格,深沟球轴承"
+           data-author="" >
+            <span class="post-title" title="DeepGrooveBallBearing">DeepGrooveBallBearing</span>
+            <span class="post-date" title="2026-02-20 16:53:46">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/CylindricalRollerBearing/"
+           data-tag="Baffalo,Matlab,建模,网格,圆柱滚子轴承"
+           data-author="" >
+            <span class="post-title" title="CylindricalRollerBearing">CylindricalRollerBearing</span>
+            <span class="post-date" title="2026-02-20 16:53:37">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E7%BA%BF%E5%9E%8B%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E6%95%B0%E5%AD%A6%E9%97%AE%E9%A2%98/"
+           data-tag="Baffalo,Matlab,纤维缠绕,线型,多角星,数学问题"
+           data-author="" >
+            <span class="post-title" title="纤维缠绕线型分析中的数学问题">纤维缠绕线型分析中的数学问题</span>
+            <span class="post-date" title="2026-02-20 16:53:36">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E5%8F%A0%E7%89%87%E7%BD%91%E6%A0%BC%E5%92%8C%E5%BB%BA%E6%A8%A1/"
+           data-tag="Baffalo,Matlab,建模,网格,联轴器,叠片"
+           data-author="" >
+            <span class="post-title" title="叠片网格和建模">叠片网格和建模</span>
+            <span class="post-date" title="2026-02-20 16:53:35">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E7%90%83%E8%BD%B4%E6%89%BF%E8%AE%A1%E7%AE%97%E4%B8%8E%E5%BB%BA%E6%A8%A1%E4%BB%BF%E7%9C%9F/"
+           data-tag="ANSYS,Baffalo,Matlab,建模,刚度,仿真,赫兹接触,球轴承"
+           data-author="" >
+            <span class="post-title" title="球轴承计算与建模仿真">球轴承计算与建模仿真</span>
+            <span class="post-date" title="2026-02-20 16:53:33">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/InterferenceFit/"
+           data-tag="Baffalo,Matlab,计算,应力分析,过盈配合,DIN7190,拉梅方程"
+           data-author="" >
+            <span class="post-title" title="InterferenceFit">InterferenceFit</span>
+            <span class="post-date" title="2026-02-20 16:53:32">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/"
+           data-tag="Baffalo,Matlab,纤维缠绕,模块开发,线型设计,压力容器"
+           data-author="" >
+            <span class="post-title" title="纤维缠绕模块开发">纤维缠绕模块开发</span>
+            <span class="post-date" title="2026-02-20 16:51:53">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo求解 "
+           href="/2026/02/20/FilamentWinding/"
+           data-tag="Baffalo,Matlab,纤维缠绕,测地线,厚度估算,路径计算"
+           data-author="" >
+            <span class="post-title" title="FilamentWinding">FilamentWinding</span>
+            <span class="post-date" title="2026-02-20 16:51:52">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/Composite_Micromechanics/"
+           data-tag="Baffalo,Matlab,复合材料,微观力学,渐进损伤,HFGMC,MT方法"
+           data-author="" >
+            <span class="post-title" title="Composite_Micromechanics">Composite_Micromechanics</span>
+            <span class="post-date" title="2026-02-20 16:51:51">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E7%BB%86%E8%A7%82%E5%8A%9B%E5%AD%A6%E4%B8%8B%E7%9A%84%E6%B8%90%E8%BF%9B%E6%8D%9F%E4%BC%A4%E5%88%86%E6%9E%90/"
+           data-tag="Baffalo,Matlab,复合材料,渐进损伤,失效准则,细观力学,应力重新分布"
+           data-author="" >
+            <span class="post-title" title="细观力学下的渐进损伤分析">细观力学下的渐进损伤分析</span>
+            <span class="post-date" title="2026-02-20 16:51:50">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E6%BB%9A%E5%AD%90%E8%BD%B4%E6%89%BF%E5%BB%BA%E6%A8%A1%E4%B8%8E%E8%AE%A1%E7%AE%97%E4%BB%BF%E7%9C%9F/"
+           data-tag="ANSYS,Baffalo,Matlab,建模,刚度,仿真,滚子轴承,ISO16281"
+           data-author="" >
+            <span class="post-title" title="滚子轴承建模与计算仿真">滚子轴承建模与计算仿真</span>
+            <span class="post-date" title="2026-02-20 16:51:48">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E8%BD%B4%E6%89%BF%E6%BB%9A%E5%AD%90%E4%BF%AE%E5%BD%A2%E7%AE%80%E4%BB%8B/"
+           data-tag="Baffalo,轴承,应力集中,滚子修形,对数修形,弧坡修形"
+           data-author="" >
+            <span class="post-title" title="轴承滚子修形简介">轴承滚子修形简介</span>
+            <span class="post-date" title="2026-02-20 16:51:34">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/MotorSlot/"
+           data-tag="Baffalo,Matlab,建模,电机,槽型"
+           data-author="" >
+            <span class="post-title" title="MotorSlot">MotorSlot</span>
+            <span class="post-date" title="2026-02-20 16:51:33">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo案例 "
+           href="/2026/02/20/%E5%8F%82%E6%95%B0%E5%8C%96%E5%8F%A0%E7%89%87%E8%81%94%E8%BD%B4%E5%99%A8%E8%AE%BE%E8%AE%A1/"
+           data-tag="Baffalo,Matlab,建模,叠片联轴器,参数化设计,装配"
+           data-author="" >
+            <span class="post-title" title="参数化叠片联轴器设计">参数化叠片联轴器设计</span>
+            <span class="post-date" title="2026-02-20 16:51:32">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E7%94%9F%E6%88%90%E6%A2%81%E7%BD%91%E6%A0%BC%EF%BC%9F/"
+           data-tag="Baffalo,Matlab,建模,参数化,工字梁,梁网格,L型梁,C型梁"
+           data-author="" >
+            <span class="post-title" title="如何快速生成梁网格？">如何快速生成梁网格？</span>
+            <span class="post-date" title="2026-02-20 16:51:31">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E8%A7%84%E8%8C%83%E4%B8%AD%E8%BD%B4%E6%89%BF%E5%AF%BF%E5%91%BD%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95%E7%9A%84%E6%BC%94%E5%8F%98/"
+           data-tag="Baffalo,轴承,寿命计算,ISO281,Lundberg,Palmgren"
+           data-author="" >
+            <span class="post-title" title="规范中轴承寿命计算方法的演变">规范中轴承寿命计算方法的演变</span>
+            <span class="post-date" title="2026-02-20 16:51:30">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/WindageLoss/"
+           data-tag="Baffalo,Matlab,计算,电机,风摩损耗,气隙,阻力"
+           data-author="" >
+            <span class="post-title" title="WindageLoss">WindageLoss</span>
+            <span class="post-date" title="2026-02-20 16:51:17">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E7%90%83%E8%A1%A8%E9%9D%A2%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86/"
+           data-tag="Baffalo,Matlab,轴承,网格划分,球表面,投影"
+           data-author="" >
+            <span class="post-title" title="球表面网格划分">球表面网格划分</span>
+            <span class="post-date" title="2026-02-20 16:51:16">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/AirProperty/"
+           data-tag="Baffalo,Matlab,空气,物性,密度,粘度,热导率,计算"
+           data-author="" >
+            <span class="post-title" title="AirProperty">AirProperty</span>
+            <span class="post-date" title="2026-02-20 16:51:15">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/ISO1940/"
+           data-tag="Baffalo,Matlab,计算,ISO1940,动平衡,不平衡量"
+           data-author="" >
+            <span class="post-title" title="ISO1940">ISO1940</span>
+            <span class="post-date" title="2026-02-20 16:51:14">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/Bracket/"
+           data-tag="Baffalo,Matlab,建模,网格,支架"
+           data-author="" >
+            <span class="post-title" title="Bracket">Bracket</span>
+            <span class="post-date" title="2026-02-20 16:51:13">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E5%A4%8D%E5%90%88%E6%9D%90%E6%96%99%E9%9D%99%E6%80%81%E5%8A%9B%E5%AD%A6%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/"
+           data-tag="Baffalo,复合材料,力学性能,测试,拉伸,压缩,剪切"
+           data-author="" >
+            <span class="post-title" title="复合材料静态力学性能测试">复合材料静态力学性能测试</span>
+            <span class="post-date" title="2026-02-20 16:51:01">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E9%9D%9E%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E8%BD%B4%E6%89%BF%E6%BB%9A%E5%AD%90%E4%BF%AE%E5%BD%A2/"
+           data-tag="Baffalo,Matlab,轴承,接触力学,非赫兹接触,滚子修形"
+           data-author="" >
+            <span class="post-title" title="非赫兹接触和轴承滚子修形">非赫兹接触和轴承滚子修形</span>
+            <span class="post-date" title="2026-02-20 16:50:59">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/NonHertzContact/"
+           data-tag="Baffalo,Matlab,计算,接触力学,非赫兹接触,滚子轴承"
+           data-author="" >
+            <span class="post-title" title="NonHertzContact">NonHertzContact</span>
+            <span class="post-date" title="2026-02-20 16:50:58">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E5%87%B8%E5%8F%B0%E5%B9%B3%E6%9D%BF%E5%8F%82%E6%95%B0%E5%8C%96%E7%BD%91%E6%A0%BC%E5%BB%BA%E6%A8%A1/"
+           data-tag="Baffalo,Matlab,建模,网格,参数化,凸台平板"
+           data-author="" >
+            <span class="post-title" title="凸台平板参数化网格建模">凸台平板参数化网格建模</span>
+            <span class="post-date" title="2026-02-20 16:50:57">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E9%BD%BF%E8%BD%AE%E7%9A%84%E7%BD%91%E6%A0%BC%E5%88%92%E5%88%86/"
+           data-tag="Baffalo,Matlab,网格划分,齿轮,齿廓,映射网格"
+           data-author="" >
+            <span class="post-title" title="齿轮的网格划分">齿轮的网格划分</span>
+            <span class="post-date" title="2026-02-20 16:50:56">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/SingleGear/"
+           data-tag="Baffalo,Matlab,建模,网格,齿轮,齿形"
+           data-author="" >
+            <span class="post-title" title="SingleGear">SingleGear</span>
+            <span class="post-date" title="2026-02-20 16:41:14">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E7%A9%BA%E5%BF%83%E8%9E%BA%E6%A0%93%E7%9A%84%E5%88%9A%E5%BA%A6%E4%BF%AE%E6%AD%A3/"
+           data-tag="Baffalo,Matlab,VDI2230,刚度,预紧力,空心螺栓"
+           data-author="" >
+            <span class="post-title" title="空心螺栓的刚度修正">空心螺栓的刚度修正</span>
+            <span class="post-date" title="2026-02-20 16:41:13">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E7%A3%81%E5%8A%9B%E8%81%94%E8%BD%B4%E5%99%A8%E5%BB%BA%E6%A8%A1%E4%B8%8E%E8%AE%A1%E7%AE%97/"
+           data-tag="Baffalo,Matlab,建模,FEMM,仿真,磁力联轴器"
+           data-author="" >
+            <span class="post-title" title="磁力联轴器建模与计算">磁力联轴器建模与计算</span>
+            <span class="post-date" title="2026-02-20 16:41:12">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/MagnetCoupling/"
+           data-tag="Baffalo,Matlab,建模,网格,FEMM,磁力联轴器"
+           data-author="" >
+            <span class="post-title" title="MagnetCoupling">MagnetCoupling</span>
+            <span class="post-date" title="2026-02-20 16:41:11">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/RubberProperty/"
+           data-tag="Baffalo,Matlab,计算,橡胶,硬度,弹性模量,剪切模量"
+           data-author="" >
+            <span class="post-title" title="RubberProperty">RubberProperty</span>
+            <span class="post-date" title="2026-02-20 16:41:10">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/Ramberg_Osgood/"
+           data-tag="Baffalo,Matlab,计算,Ramberg-Osgood,应力应变,MMPDS,材料性能"
+           data-author="" >
+            <span class="post-title" title="Ramberg_Osgood">Ramberg_Osgood</span>
+            <span class="post-date" title="2026-02-20 16:40:59">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E8%B5%AB%E5%85%B9%E6%8E%A5%E8%A7%A6%E5%92%8C%E6%AC%A1%E8%A1%A8%E9%9D%A2%E5%BA%94%E5%8A%9B%E5%88%86%E6%9E%90/"
+           data-tag="Baffalo,Matlab,轴承,赫兹接触,齿轮,次表面应力,接触疲劳"
+           data-author="" >
+            <span class="post-title" title="赫兹接触和次表面应力分析">赫兹接触和次表面应力分析</span>
+            <span class="post-date" title="2026-02-20 16:40:58">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/DNVGL_0361/"
+           data-tag="Baffalo,Matlab,DNV规范,SN曲线,疲劳"
+           data-author="" >
+            <span class="post-title" title="DNVGL_0361">DNVGL_0361</span>
+            <span class="post-date" title="2026-02-20 16:40:57">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E6%B0%94%E7%93%B6%E7%88%86%E7%82%B8%E6%B5%8B%E8%AF%95/"
+           data-tag="Baffalo,复合材料,纤维缠绕,压力容器,气瓶,爆炸测试"
+           data-author="" >
+            <span class="post-title" title="纤维缠绕气瓶爆炸测试">纤维缠绕气瓶爆炸测试</span>
+            <span class="post-date" title="2026-02-20 16:40:56">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/HertzContact/"
+           data-tag="Baffalo,Matlab,计算,赫兹接触,应力分析,接触力学"
+           data-author="" >
+            <span class="post-title" title="HertzContact">HertzContact</span>
+            <span class="post-date" title="2026-02-20 16:40:55">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2026/02/20/%E5%BC%80%E6%BA%90%E8%BD%AC%E5%AD%90%E5%8A%A8%E5%8A%9B%E5%AD%A6%E6%A8%A1%E5%9D%97/"
+           data-tag="ANSYS,Baffalo,Matlab,转子动力学,PID控制,模态分析,频响分析,磁力轴承"
+           data-author="" >
+            <span class="post-title" title="开源转子动力学模块">开源转子动力学模块</span>
+            <span class="post-date" title="2026-02-20 16:40:41">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/OilSeal/"
+           data-tag="Baffalo,Matlab,计算,油封,摩擦扭矩,NOK,润滑"
+           data-author="" >
+            <span class="post-title" title="OilSeal">OilSeal</span>
+            <span class="post-date" title="2026-02-20 16:40:38">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/RadialAMB/"
+           data-tag="Baffalo,Matlab,建模,网格,刚度,FEMM,磁场,主动磁力轴承"
+           data-author="" >
+            <span class="post-title" title="RadialAMB">RadialAMB</span>
+            <span class="post-date" title="2026-02-20 16:40:37">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/Vis_cal/"
+           data-tag="Baffalo,Matlab,密度,粘度,计算,润滑油,温度,ISO6336"
+           data-author="" >
+            <span class="post-title" title="Vis_cal">Vis_cal</span>
+            <span class="post-date" title="2026-02-20 16:40:36">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo求解 "
+           href="/2026/02/20/SubModel/"
+           data-tag="ANSYS,有限元,Baffalo,Matlab,子模型,应力集中,插值边界"
+           data-author="" >
+            <span class="post-title" title="SubModel">SubModel</span>
+            <span class="post-date" title="2026-02-20 16:40:35">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo求解 "
+           href="/2026/02/20/SubStr/"
+           data-tag="ANSYS,Baffalo,Matlab,模态分析,子结构,超单元,Simpack"
+           data-author="" >
+            <span class="post-title" title="SubStr">SubStr</span>
+            <span class="post-date" title="2026-02-20 16:40:18">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2026/02/20/Transform/"
+           data-tag="Baffalo,Matlab,坐标变换,平移,旋转,缩放"
+           data-author="" >
+            <span class="post-title" title="Transform">Transform</span>
+            <span class="post-date" title="2026-02-20 16:40:17">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/Puck%E5%87%86%E5%88%99%E4%B8%8E%E6%B8%90%E8%BF%9B%E6%8D%9F%E4%BC%A4%E5%88%86%E6%9E%90/"
+           data-tag="Baffalo,Matlab,复合材料,渐进损伤,失效准则,Puck准则"
+           data-author="" >
+            <span class="post-title" title="Puck准则与渐进损伤分析">Puck准则与渐进损伤分析</span>
+            <span class="post-date" title="2026-02-20 16:40:16">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/WovenRing/"
+           data-tag="Baffalo,Matlab,建模,网格,复合材料,编织圆环"
+           data-author="" >
+            <span class="post-title" title="WovenRing">WovenRing</span>
+            <span class="post-date" title="2026-02-20 16:40:15">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/RadialPMB/"
+           data-tag="Baffalo,Matlab,建模,网格,刚度,FEMM,径向被动磁力轴承"
+           data-author="" >
+            <span class="post-title" title="RadialPMB">RadialPMB</span>
+            <span class="post-date" title="2026-02-20 16:40:14">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/DiscCouplingEstimate/"
+           data-tag="Baffalo,Matlab,刚度,叠片联轴器,预估"
+           data-author="" >
+            <span class="post-title" title="DiscCouplingEstimate">DiscCouplingEstimate</span>
+            <span class="post-date" title="2026-02-20 16:39:48">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/Mori-Tanaka%E6%96%B9%E6%B3%95%E4%B8%8E%E5%BE%AE%E8%A7%82%E5%8A%9B%E5%AD%A6%E5%88%86%E6%9E%90/"
+           data-tag="Baffalo,Matlab,计算,复合材料,微观力学,Mori-Tanaka"
+           data-author="" >
+            <span class="post-title" title="Mori-Tanaka方法与微观力学分析">Mori-Tanaka方法与微观力学分析</span>
+            <span class="post-date" title="2026-02-20 16:39:47">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/WovenCell/"
+           data-tag="Baffalo,Matlab,建模,网格,复合材料,TexGen,编织元胞"
+           data-author="" >
+            <span class="post-title" title="WovenCell">WovenCell</span>
+            <span class="post-date" title="2026-02-20 16:39:46">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/PuckCriterion3D/"
+           data-tag="Baffalo,Matlab,复合材料,渐进损伤,失效准则,Puck准则,3D"
+           data-author="" >
+            <span class="post-title" title="PuckCriterion3D">PuckCriterion3D</span>
+            <span class="post-date" title="2026-02-20 16:39:45">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/FlangeBolt/"
+           data-tag="Baffalo,Matlab,建模,VDI2230,安全系数,法兰螺栓"
+           data-author="" >
+            <span class="post-title" title="FlangeBolt">FlangeBolt</span>
+            <span class="post-date" title="2026-02-20 16:39:43">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/BoltJoint/"
+           data-tag="Baffalo,Matlab,建模,螺栓连接,VDI2230,刚度,安全系数"
+           data-author="" >
+            <span class="post-title" title="BoltJoint">BoltJoint</span>
+            <span class="post-date" title="2026-02-20 16:39:33">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/RotatingDisc/"
+           data-tag="Baffalo,Matlab,计算,应力分析,旋转圆盘,离心力"
+           data-author="" >
+            <span class="post-title" title="RotatingDisc">RotatingDisc</span>
+            <span class="post-date" title="2026-02-20 16:39:32">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/Bolt/"
+           data-tag="Baffalo,Matlab,建模,网格,VDI2230,螺栓,预紧力"
+           data-author="" >
+            <span class="post-title" title="Bolt">Bolt</span>
+            <span class="post-date" title="2026-02-20 16:39:31">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/ThickWallCylinder/"
+           data-tag="Baffalo,Matlab,计算,应力分析,厚壁圆筒,内外压"
+           data-author="" >
+            <span class="post-title" title="ThickWallCylinder">ThickWallCylinder</span>
+            <span class="post-date" title="2026-02-20 16:39:30">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/Laminate/"
+           data-tag="Baffalo,Matlab,安全系数,复合材料,层合板,失效准则,校核"
+           data-author="" >
+            <span class="post-title" title="Laminate">Laminate</span>
+            <span class="post-date" title="2026-02-20 16:39:28">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2026/02/20/Component/"
+           data-tag="Baffalo,Matlab,建模,安全系数,部件,设计基准,可靠度"
+           data-author="" >
+            <span class="post-title" title="Component">Component</span>
+            <span class="post-date" title="2026-02-20 16:38:16">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/Composite_ElasticConstant/"
+           data-tag="Baffalo,Matlab,计算,复合材料,弹性常数,角度"
+           data-author="" >
+            <span class="post-title" title="Composite_ElasticConstant">Composite_ElasticConstant</span>
+            <span class="post-date" title="2026-02-20 16:38:15">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2026/02/20/FEMM%20Solver%20Test/"
+           data-tag="Matlab,FEMM,磁场,仿真,磁,热学"
+           data-author="" >
+            <span class="post-title" title="FEMM Solver Test">FEMM Solver Test</span>
+            <span class="post-date" title="2026-02-20 16:38:13">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/CompositeRing/"
+           data-tag="Baffalo,Matlab,建模,网格,复合材料,环"
+           data-author="" >
+            <span class="post-title" title="CompositeRing">CompositeRing</span>
+            <span class="post-date" title="2026-02-20 16:38:12">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2026/02/20/ANSYS%20Element%20Test/"
+           data-tag="ANSYS,有限元,单元测试,桁架,建,板,梁,壳,Baffalo,Matlab"
+           data-author="" >
+            <span class="post-title" title="ANSYS Element Test">ANSYS Element Test</span>
+            <span class="post-date" title="2026-02-20 16:38:11">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo求解 "
+           href="/2026/02/20/RotDyn/"
+           data-tag="ANSYS,Baffalo,Matlab,轴承,转子动力学,PID控制,模态分析,频响分析"
+           data-author="" >
+            <span class="post-title" title="RotDyn">RotDyn</span>
+            <span class="post-date" title="2026-02-20 16:38:10">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/LBeam/"
+           data-tag="Baffalo,Matlab,建模,网格,角钢"
+           data-author="" >
+            <span class="post-title" title="LBeam">LBeam</span>
+            <span class="post-date" title="2026-02-20 16:37:39">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/CBeam/"
+           data-tag="Baffalo,Matlab,建模,网格,槽钢"
+           data-author="" >
+            <span class="post-title" title="CBeam">CBeam</span>
+            <span class="post-date" title="2026-02-20 16:37:37">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/IBeam/"
+           data-tag="Baffalo,Matlab,建模,网格,工字梁"
+           data-author="" >
+            <span class="post-title" title="IBeam">IBeam</span>
+            <span class="post-date" title="2026-02-20 16:37:36">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo方法 "
+           href="/2026/02/20/RayleighEstimate/"
+           data-tag="Baffalo,Matlab,计算,阻尼,阻尼参数"
+           data-author="" >
+            <span class="post-title" title="RayleighEstimate">RayleighEstimate</span>
+            <span class="post-date" title="2026-02-20 16:37:35">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/WindturbineTower/"
+           data-tag="Baffalo,Matlab,建模,壳网格,风力发电,塔筒"
+           data-author="" >
+            <span class="post-title" title="WindturbineTower">WindturbineTower</span>
+            <span class="post-date" title="2026-02-20 16:37:34">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/Dome/"
+           data-tag="Baffalo,Matlab,建模,穹顶,壳网格"
+           data-author="" >
+            <span class="post-title" title="Dome">Dome</span>
+            <span class="post-date" title="2026-02-20 16:37:32">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E4%B8%BB%E5%8A%A8%E7%A3%81%E5%8A%9B%E8%BD%B4%E6%89%BF%E8%AE%BE%E8%AE%A1%E4%B8%8E%E4%BB%BF%E7%9C%9F/"
+           data-tag="ANSYS,Baffalo,建模,仿真,PID控制,磁力轴承"
+           data-author="" >
+            <span class="post-title" title="主动磁力轴承设计与仿真">主动磁力轴承设计与仿真</span>
+            <span class="post-date" title="2026-02-20 16:37:21">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E5%8D%95%E5%88%97%E5%BE%84%E5%90%91%E8%A2%AB%E5%8A%A8%E7%A3%81%E5%8A%9B%E8%BD%B4%E6%89%BF%E4%BB%BF%E7%9C%9F/"
+           data-tag="ANSYS,Baffalo,建模,仿真,磁力轴承"
+           data-author="" >
+            <span class="post-title" title="单列径向被动磁力轴承仿真">单列径向被动磁力轴承仿真</span>
+            <span class="post-date" title="2026-02-20 16:37:20">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/%E5%A6%82%E4%BD%95%E7%94%BB%E5%87%BA%E5%A5%BD%E7%9C%8B%E7%9A%84%E8%BD%B4%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC/"
+           data-tag="Baffalo,Matlab,建模,网格,轴"
+           data-author="" >
+            <span class="post-title" title="如何画出好看的轴零件网格">如何画出好看的轴零件网格</span>
+            <span class="post-date" title="2026-02-20 16:37:19">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/20/TexGen%E6%93%8D%E4%BD%9C%E7%AE%80%E4%BB%8B/"
+           data-tag="建模,网格,复合材料,编织,TexGen"
+           data-author="" >
+            <span class="post-title" title="TexGen操作简介">TexGen操作简介</span>
+            <span class="post-date" title="2026-02-20 16:37:18">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2026/02/20/Baffalo%E4%BB%8B%E7%BB%8D/"
+           data-tag="ANSYS,Baffalo,Matlab,建模,网格,参数化"
+           data-author="" >
+            <span class="post-title" title="Baffalo介绍">Baffalo介绍</span>
+            <span class="post-date" title="2026-02-20 16:37:17">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/Body/"
+           data-tag="Baffalo,Matlab,建模,网格,雕刻建模"
+           data-author="" >
+            <span class="post-title" title="Body">Body</span>
+            <span class="post-date" title="2026-02-20 16:37:16">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/ShaftSupport/"
+           data-tag="Baffalo,Matlab,建模,网格,支座"
+           data-author="" >
+            <span class="post-title" title="ShaftSupport">ShaftSupport</span>
+            <span class="post-date" title="2026-02-20 16:37:15">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/FoilGen/"
+           data-tag="Baffalo,Matlab,建模,翼型,曲面"
+           data-author="" >
+            <span class="post-title" title="FoilGen">FoilGen</span>
+            <span class="post-date" title="2026-02-20 16:37:14">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/ForceLoad/"
+           data-tag="Baffalo,Matlab,建模,载荷,时间序列"
+           data-author="" >
+            <span class="post-title" title="ForceLoad">ForceLoad</span>
+            <span class="post-date" title="2026-02-20 16:37:12">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/CouplingMembrane/"
+           data-tag="Baffalo,Matlab,建模,网格,联轴器,膜片"
+           data-author="" >
+            <span class="post-title" title="CouplingMembrane">CouplingMembrane</span>
+            <span class="post-date" title="2026-02-20 16:37:11">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/BossPlate/"
+           data-tag="Baffalo,Matlab,建模,网格,平板"
+           data-author="" >
+            <span class="post-title" title="BossPlate">BossPlate</span>
+            <span class="post-date" title="2026-02-20 16:37:10">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/Foil/"
+           data-tag="Baffalo,建模,翼型,气动,XFoil"
+           data-author="" >
+            <span class="post-title" title="Foil">Foil</span>
+            <span class="post-date" title="2026-02-20 16:37:09">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/Commonplate/"
+           data-tag="Baffalo,Matlab,建模,网格,平板"
+           data-author="" >
+            <span class="post-title" title="Commonplate">Commonplate</span>
+            <span class="post-date" title="2026-02-20 16:37:08">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2026/02/20/Layer/"
+           data-tag="Baffalo,Matlab,建模,网格,图层"
+           data-author="" >
+            <span class="post-title" title="Layer">Layer</span>
+            <span class="post-date" title="2026-02-20 16:37:07">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/20/Commonshaft/"
+           data-tag="Baffalo,Matlab,建模,网格,轴"
+           data-author="" >
+            <span class="post-title" title="Commonshaft">Commonshaft</span>
+            <span class="post-date" title="2026-02-20 16:37:06">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2026/02/20/Surface2D/"
+           data-tag="Baffalo,Matlab,建模,平面"
+           data-author="" >
+            <span class="post-title" title="Surface2D">Surface2D</span>
+            <span class="post-date" title="2026-02-20 16:37:05">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2026/02/20/Line/"
+           data-tag="Baffalo,Matlab,建模,3D曲线,NURBS"
+           data-author="" >
+            <span class="post-title" title="Line">Line</span>
+            <span class="post-date" title="2026-02-20 16:37:03">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2026/02/20/Line2D/"
+           data-tag="Baffalo,Matlab,建模,曲线"
+           data-author="" >
+            <span class="post-title" title="Line2D">Line2D</span>
+            <span class="post-date" title="2026-02-20 16:36:59">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2026/02/20/Point/"
+           data-tag="Baffalo,Matlab,建模,点云,法向"
+           data-author="" >
+            <span class="post-title" title="Point">Point</span>
+            <span class="post-date" title="2026-02-20 16:36:54">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2026/02/20/Point2D/"
+           data-tag="Baffalo,Matlab,建模,点云"
+           data-author="" >
+            <span class="post-title" title="Point2D">Point2D</span>
+            <span class="post-date" title="2026-02-20 16:36:43">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo框架 "
+           href="/2026/02/20/Margin/"
+           data-tag="Baffalo,建模,安全系数,仿真"
+           data-author="" >
+            <span class="post-title" title="Margin">Margin</span>
+            <span class="post-date" title="2026-02-20 16:36:38">2026/02/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E5%88%9B%E5%BB%BA%E6%9C%89%E9%99%90%E5%85%83%E8%A3%85%E9%85%8D%E4%BD%93/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI创建有限元装配体">AI创建有限元装配体</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%94%9F%E6%88%90%E5%B9%B3%E6%9D%BF%E7%B1%BB%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI生成平板类零件网格模型">AI生成平板类零件网格模型</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%94%9F%E6%88%90%E6%9C%89%E9%99%90%E5%85%83%E6%A8%A1%E5%9E%8B/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI生成有限元模型">AI生成有限元模型</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI编写matlab程序">AI编写matlab程序</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo部件 "
+           href="/2026/02/19/SignalAnalysis/"
+           data-tag="Baffalo_Component,信号处理,频谱分析"
+           data-author="" >
+            <span class="post-title" title="SignalAnalysis - 信号处理分析组件">SignalAnalysis - 信号处理分析组件</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/%E5%B7%A5%E7%A8%8B%E8%AE%BE%E8%AE%A1%E7%9A%84AI%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="工程设计的AI编程范式">工程设计的AI编程范式</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/%E6%A9%A1%E8%83%B6%E5%BC%B9%E6%80%A7%E6%94%AF%E6%92%91AI%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/"
+           data-tag="笔记,橡胶弹性支撑"
+           data-author="" >
+            <span class="post-title" title="橡胶弹性支撑AI编程实践">橡胶弹性支撑AI编程实践</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/%E8%A7%84%E8%8C%83%E5%8C%96AI%E7%BC%96%E7%A8%8B/"
+           data-tag="笔记,AI"
+           data-author="" >
+            <span class="post-title" title="规范化AI编程">规范化AI编程</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-Mesh" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">Mesh</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="Baffalo框架">Baffalo框架</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color3">Baffalo</a>
+            
+            <a class="color2">Matlab</a>
+            
+            <a class="color5">3D网格</a>
+            
+            <a class="color2">TetGen</a>
+            
+            <a class="color5">MRST</a>
+            
+            <a class="color5">网格划分</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2026-02-20 16:55:32'>2026-02-20 16:55</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mesh"><span class="toc-text">Mesh</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B"><span class="toc-text">案例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-cube-mesh-Flag-1"><span class="toc-text">Create cube mesh (Flag&#x3D;1)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-cylinder-mesh-Flag-2"><span class="toc-text">Create cylinder mesh (Flag&#x3D;2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-sphere-mesh-Flag-3"><span class="toc-text">Create sphere mesh (Flag&#x3D;3)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hex20-Plot-Flag-4"><span class="toc-text">Hex20 Plot (Flag&#x3D;4)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MeshHemiSphere-Flag-5"><span class="toc-text">MeshHemiSphere (Flag&#x3D;5)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-plate1-Flag-6"><span class="toc-text">Mesh plate1 (Flag&#x3D;6)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-plate2-Flag-7"><span class="toc-text">Mesh plate2 (Flag&#x3D;7)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-TriplyPeriodicMinimalSurface-Flag-8"><span class="toc-text">Mesh TriplyPeriodicMinimalSurface (Flag&#x3D;8)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-StochasticMicroStructure-Flag-9"><span class="toc-text">Mesh StochasticMicroStructure (Flag&#x3D;9)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-Spinodoid-Flag-10"><span class="toc-text">Mesh Spinodoid (Flag&#x3D;10)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Group-Test-Flag-11"><span class="toc-text">Group Test (Flag&#x3D;11)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Remesh-Flag-12"><span class="toc-text">Remesh (Flag&#x3D;12)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Drill-holes-Flag-13"><span class="toc-text">Drill holes (Flag&#x3D;13)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MeshQuadSphere-Flag-14"><span class="toc-text">MeshQuadSphere (Flag&#x3D;14)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-TensorGrid-Flag-15"><span class="toc-text">Mesh TensorGrid (Flag&#x3D;15)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PlotG-Flag-16"><span class="toc-text">PlotG (Flag&#x3D;16)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Simple-sculpture-Mesh-Flag-17"><span class="toc-text">Simple sculpture Mesh (Flag&#x3D;17)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Check-G-center-inner-mesh-Flag-18"><span class="toc-text">Check G center inner mesh (Flag&#x3D;18)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MeshOctahedron-Flag-19"><span class="toc-text">MeshOctahedron (Flag&#x3D;19)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Image-read-Flag-20"><span class="toc-text">Image read (Flag&#x3D;20)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plot-Face-in-ParaView-Flag-21"><span class="toc-text">Plot Face in ParaView (Flag&#x3D;21)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plot-Element-in-ParaView-Flag-22"><span class="toc-text">Plot Element in ParaView (Flag&#x3D;22)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Plot-G-and-cell-data-in-ParaView-Flag-23"><span class="toc-text">Plot G and cell data in ParaView (Flag&#x3D;23)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tri3-to-voronoi-Flag-24"><span class="toc-text">Tri3 to voronoi (Flag&#x3D;24)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nurb4Surf-Flag-25"><span class="toc-text">Nurb4Surf (Flag&#x3D;25)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nurb-Surface-Flag-26"><span class="toc-text">Nurb Surface (Flag&#x3D;26)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NurbRuled-Flag-27"><span class="toc-text">NurbRuled (Flag&#x3D;27)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Extrude2Solid-Flag-28"><span class="toc-text">Extrude2Solid (Flag&#x3D;28)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rotate-to-shell-Flag-29"><span class="toc-text">Rotate to shell (Flag&#x3D;29)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DrillThroughHole-Flag-30"><span class="toc-text">DrillThroughHole (Flag&#x3D;30)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-prism-Flag-31"><span class="toc-text">Mesh prism (Flag&#x3D;31)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-Geosphere-Flag-32"><span class="toc-text">Mesh Geosphere (Flag&#x3D;32)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mesh-pyramid-Flag-33"><span class="toc-text">Mesh pyramid (Flag&#x3D;33)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Add-internal-points-Flag-34"><span class="toc-text">Add internal points (Flag&#x3D;34)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Input-STP-file-Flag-35"><span class="toc-text">Input STP file (Flag&#x3D;35)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CheatTable"><span class="toc-text">CheatTable</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="toc-text">参考文献</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-6 i,
+    .toc-level-6 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mesh"><a href="#Mesh" class="headerlink" title="Mesh"></a>Mesh</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Baffalo_Mesh 是划分3D网格的模块，主要功能是：</p>
+<ul>
+<li>将2D的网格转换为3D的网格。</li>
+<li>建立基本的3D网格体</li>
+<li>雕刻3D网格</li>
+</ul>
+<p>主要参考的工具箱或代码：Gibbon$^{[1][2]}$,MRST$^{[3]}$,TetGen$^{[4]}$,voronoi3d$^{[5]}$</p>
+<h2 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h2><h3 id="Create-cube-mesh-Flag-1"><a href="#Create-cube-mesh-Flag-1" class="headerlink" title="Create cube mesh (Flag&#x3D;1)"></a>Create cube mesh (Flag&#x3D;1)</h3><pre><code class="language-matlab">%% Specifying dimensions and number of elements
+m=Mesh(&#39;Mesh&#39;);
+%% Create a box with hexahedral elements
+cubeDimensions=[10 10 10]; %Dimensions
+cubeElementNumbers=[5 5 5]; %Number of elements
+m=MeshCube(m,cubeDimensions,cubeElementNumbers);
+%% Plot elements
+PlotFace(m,&#39;face_alpha&#39;,1);
+sec.pos=[0,0,0];
+sec.vec=[1,0,0];
+PlotElement(m,&#39;section&#39;,sec);
+sec.vec=[1,1,-1];
+PlotElement(m,&#39;section&#39;,sec);
+</code></pre>
+<p>建立cube体网格：</p>
+<img src="/./img/Mesh.assets/Fig1.jpg" style="zoom:33%;" />
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig2.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig3.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Create-cylinder-mesh-Flag-2"><a href="#Create-cylinder-mesh-Flag-2" class="headerlink" title="Create cylinder mesh (Flag&#x3D;2)"></a>Create cylinder mesh (Flag&#x3D;2)</h3><pre><code class="language-matlab">%Specifying dimensions and number of elements
+mm=Mesh(&#39;Cylinder Mesh&#39;);
+mm=MeshCylinder(mm,1,30,50,&#39;ElementType&#39;,&#39;quad&#39;);
+PlotFace(mm);
+% The cyclinder is meshed using tetrahedral elements using tetgen
+mm=Mesh3D(mm); % Mesh model using tetrahedral elements using tetGen
+PlotElement(mm);
+sec.pos=[0,0,0];
+sec.vec=[1,0,0];
+PlotElement(mm,&#39;section&#39;,sec);
+</code></pre>
+<p>建立圆柱体网格：</p>
+<img src="/./img/Mesh.assets/Fig4.jpg" style="zoom:33%;" />
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig5.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig6.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Create-sphere-mesh-Flag-3"><a href="#Create-sphere-mesh-Flag-3" class="headerlink" title="Create sphere mesh (Flag&#x3D;3)"></a>Create sphere mesh (Flag&#x3D;3)</h3><pre><code class="language-matlab">%Sphere parameters
+numRefineStepsSphere=3;
+sphereRadius=2;
+mm=Mesh(&#39;Demo Sphere Mesh&#39;);
+mm=MeshSphere(mm,numRefineStepsSphere,sphereRadius);
+PlotFace(mm);
+sec.pos=[0,0,0];
+sec.vec=[1,0,0];
+PlotElement(mm,&#39;section&#39;,sec);
+</code></pre>
+<p>建立球体网格：</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig7.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig8.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Hex20-Plot-Flag-4"><a href="#Hex20-Plot-Flag-4" class="headerlink" title="Hex20 Plot (Flag&#x3D;4)"></a>Hex20 Plot (Flag&#x3D;4)</h3><pre><code class="language-matlab">%% Specifying dimensions and number of elements
+m=Mesh(&#39;Mesh&#39;);
+%% Create a box with hexahedral elements
+beamDimensions=[10 40 10]; %Dimensions
+beamElementNumbers=[4 20 4]; %Number of elements
+m=MeshCube(m,beamDimensions,beamElementNumbers,&#39;ElementType&#39;,&#39;hex20&#39;);
+PlotFace(m,&#39;marker&#39;,1);
+PlotFace2(m);
+</code></pre>
+<p>二阶六面体网格绘制：</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig9.jpg" style="zoom: 120%;"></td><td><img src="/./img/Mesh.assets/Fig10.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="MeshHemiSphere-Flag-5"><a href="#MeshHemiSphere-Flag-5" class="headerlink" title="MeshHemiSphere (Flag&#x3D;5)"></a>MeshHemiSphere (Flag&#x3D;5)</h3><pre><code class="language-matlab">% Control settings
+sphereRadius=1;
+numElementsMantel=6;
+m=Mesh(&#39;Mesh&#39;);
+m=MeshHemiSphere(m,sphereRadius, numElementsMantel);
+PlotFace(m);
+sec.pos=[0,0,0];
+sec.vec=[1,0,0];
+PlotElement(m,&#39;section&#39;,sec);
+</code></pre>
+<p>半球体网格绘制：</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig11.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig12.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Mesh-plate1-Flag-6"><a href="#Mesh-plate1-Flag-6" class="headerlink" title="Mesh plate1 (Flag&#x3D;6)"></a>Mesh plate1 (Flag&#x3D;6)</h3><pre><code class="language-matlab">% IR=211/2;
+% OR=801/2;
+% radius1=300/2;
+% radius2=600/2;
+% num=6;
+% par1=100;
+% Thickness=15;
+IR=80/2;
+OR=650/2;
+radius1=420/2;
+radius2=520/2;
+num=6;
+par1=100;
+Thickness=20;
+ang1=360/num-asin(par1/2/radius1)/pi*180*2;
+ang2=360/num-asin(par1/2/radius2)/pi*180*2;
+a=Point2D(&#39;Point Ass1&#39;);
+b=Line2D(&#39;Line Ass1&#39;);
+a=AddPoint(a,0,0);
+a=AddPoint(a,par1,0);
+a=AddPoint(a,[radius1*cos(ang1/2/180*pi);radius2*cos(ang2/2/180*pi)],...
+[radius1*sin(ang1/2/180*pi);radius2*sin(ang2/2/180*pi)]);
+a=AddPoint(a,[radius2*cos(-ang2/2/180*pi);radius1*cos(-ang1/2/180*pi)],...
+[radius2*sin(-ang2/2/180*pi);radius1*sin(-ang1/2/180*pi)]);
+b=AddCircle(b,OR,a,1);
+S=Surface2D(b);
+h1=Line2D(&#39;Hole Group1&#39;);
+h1=AddCircle(h1,IR,a,1);
+S=AddHole(S,h1);
+h2=Line2D(&#39;Hole Group2&#39;,&#39;Dtol&#39;,0.1);
+h2=AddCircle(h2,radius1,a,1,&#39;sang&#39;,-ang1/2,&#39;ang&#39;,ang1);
+h2=AddLine(h2,a,3);
+h2=AddCircle(h2,radius2,a,1,&#39;sang&#39;,ang2/2,&#39;ang&#39;,-ang2);
+h2=AddLine(h2,a,4);
+h2=CreateRadius(h2,1,10);
+h2=CreateRadius(h2,3,10);
+h2=CreateRadius(h2,5,10);
+h2=CreateRadius(h2,7,10);
+for i=1:num
+S=AddHole(S,h2,&#39;rot&#39;,360/num*(i-1));
+end
+m=Mesh2D(&#39;Mesh1&#39;);
+m=AddSurface(m,S);
+m=SetSize(m,20);
+m=Mesh(m);
+Plot(m);
+mm=Mesh(&#39;Mesh&#39;);
+mm=Extrude2Solid(mm,m,Thickness,3);
+PlotFace(mm);
+</code></pre>
+<p>绘制平板1</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig13.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig14.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Mesh-plate2-Flag-7"><a href="#Mesh-plate2-Flag-7" class="headerlink" title="Mesh plate2 (Flag&#x3D;7)"></a>Mesh plate2 (Flag&#x3D;7)</h3><pre><code class="language-matlab">% Parameter
+IR=640/2;
+OR=768/2;
+par=442;
+radius=70;
+R=116/2;
+num=6;
+Rp=460;
+t=30;
+hd=17.5;
+sang=asin(R/OR)/pi*180;
+ang=360/num-2*sang;
+a=Point2D(&#39;Point Ass1&#39;);
+b=Line2D(&#39;Line Ass1&#39;,&#39;Dtol&#39;,1);
+a=AddPoint(a,0,0);
+for i=1:num
+b=AddCircle(b,OR,a,1,&#39;sang&#39;,sang+ang-360/num*(i-1),&#39;ang&#39;,-ang);
+theta=-360/num/180*pi*(i-1);
+mat=[cos(theta),-sin(theta);sin(theta),cos(theta)];
+p1=mat*[sqrt(OR^2-R^2),par;R,R];
+p1=p1&#39;;
+a=AddPoint(a,p1(:,1),p1(:,2));
+b=AddLine(b,a,2+3*(i-1));
+p2=mat*[par;0];
+p2=p2&#39;;
+a=AddPoint(a,p2(1,1),p2(1,2));
+b=AddCircle(b,R,a,3+3*(i-1),&#39;sang&#39;,90+theta/pi*180,&#39;ang&#39;,-180);
+p3=mat*[par,sqrt(OR^2-R^2);-R,-R];
+p3=p3&#39;;
+a=AddPoint(a,p3(:,1),p3(:,2));
+b=AddLine(b,a,4+3*(i-1));
+end
+for i=1:num
+b=CreateRadius(b,1+6*(i-1),radius);
+b=CreateRadius(b,5+6*(i-1),radius);
+end
+Plot(b,&#39;clabel&#39;,1,&#39;equal&#39;,1)
+S=Surface2D(b);
+h1=Line2D(&#39;Hole Group1&#39;);
+h1=AddCircle(h1,IR,a,1);
+S=AddHole(S,h1);
+a1=Point2D(&#39;Point Ass2&#39;);
+a1=AddPoint(a1,Rp,0);
+h2=Line2D(&#39;Hole Group2&#39;);
+h2=AddCircle(h2,hd/2,a1,1);
+for i=1:num
+S=AddHole(S,h2,&#39;rot&#39;,360/num*(i-1));
+end
+m=Mesh2D(&#39;Mesh1&#39;);
+m=AddSurface(m,S);
+m=SetSize(m,20);
+m=Mesh(m);
+Plot(m);
+mm=Mesh(&#39;Mesh&#39;);
+mm=Extrude2Solid(mm,m,t,3);
+PlotFace(mm);
+</code></pre>
+<p>绘制平板2：</p>
+<img src="/./img/Mesh.assets/Fig15.jpg" style="zoom:33%;" />
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig16.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig17.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Mesh-TriplyPeriodicMinimalSurface-Flag-8"><a href="#Mesh-TriplyPeriodicMinimalSurface-Flag-8" class="headerlink" title="Mesh TriplyPeriodicMinimalSurface (Flag&#x3D;8)"></a>Mesh TriplyPeriodicMinimalSurface (Flag&#x3D;8)</h3><pre><code class="language-matlab">%Gyroid
+Length=10; % Length of the sample
+mm=Mesh(&#39;Demo Gyroid Mesh&#39;);
+mm=MeshTriplyPeriodicMinimalSurface(mm,Length);
+PlotFace(mm);
+</code></pre>
+<p>建立围观元胞：</p>
+<img src="/./img/Mesh.assets/Fig18.jpg" style="zoom:33%;" />
+
+<h3 id="Mesh-StochasticMicroStructure-Flag-9"><a href="#Mesh-StochasticMicroStructure-Flag-9" class="headerlink" title="Mesh StochasticMicroStructure (Flag&#x3D;9)"></a>Mesh StochasticMicroStructure (Flag&#x3D;9)</h3><pre><code class="language-matlab">%Stochastic structure
+Length=10; % Length of the sample
+paticleLength=1;
+mm=Mesh(&#39;Demo Stochastic structure Mesh&#39;);
+mm=MeshStochasticMicroStructure(mm,Length,paticleLength);
+PlotFace(mm);
+</code></pre>
+<p>建立微观元胞：</p>
+<img src="/./img/Mesh.assets/Fig19.jpg" style="zoom:33%;" />
+
+<h3 id="Mesh-Spinodoid-Flag-10"><a href="#Mesh-Spinodoid-Flag-10" class="headerlink" title="Mesh Spinodoid (Flag&#x3D;10)"></a>Mesh Spinodoid (Flag&#x3D;10)</h3><pre><code class="language-matlab">%spinodoid
+Length=10; % Length of the sample
+paticleLength=1;
+mm=Mesh(&#39;Demo spinodoid Mesh&#39;);
+mm=MeshSpinodoid(mm,Length,paticleLength);
+PlotFace(mm);
+</code></pre>
+<p>建立微观元胞：</p>
+<img src="/./img/Mesh.assets/Fig20.jpg" style="zoom:33%;" />
+
+<h3 id="Group-Test-Flag-11"><a href="#Group-Test-Flag-11" class="headerlink" title="Group Test (Flag&#x3D;11)"></a>Group Test (Flag&#x3D;11)</h3><pre><code class="language-matlab">%Stochastic structure
+Length=10; % Length of the sample
+paticleLength=1;
+mm=Mesh(&#39;Demo Stochastic structure Mesh&#39;);
+mm=MeshStochasticMicroStructure(mm,Length,paticleLength);
+PlotFace(mm);
+[G,~]=GroupTest(mm);
+disp(G);
+mm=KeepGroup(mm,1);
+PlotFace(mm);
+</code></pre>
+<p>用Group Test找到独立的网格，并保留其中一块独立的区域：</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig21.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig22.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Remesh-Flag-12"><a href="#Remesh-Flag-12" class="headerlink" title="Remesh (Flag&#x3D;12)"></a>Remesh (Flag&#x3D;12)</h3><pre><code class="language-matlab">%Gyroid
+Length=10; % Length of the sample
+mm=Mesh(&#39;Demo Gyroid Mesh&#39;);
+mm=MeshTriplyPeriodicMinimalSurface(mm,Length);
+PlotFace(mm);
+mm=Remesh(mm,0.5);
+PlotFace(mm);
+</code></pre>
+<p>网格重新绘制：</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig23.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig24.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Drill-holes-Flag-13"><a href="#Drill-holes-Flag-13" class="headerlink" title="Drill holes (Flag&#x3D;13)"></a>Drill holes (Flag&#x3D;13)</h3><pre><code class="language-matlab">% Derive patch data for a cylinder
+mm=Mesh(&#39;Cylinder Mesh&#39;);
+mm=MeshCylinder(mm,3,30,50);
+PlotFace(mm);
+% The cyclinder is meshed using tetrahedral elements using tetgen
+mm=Mesh3D(mm); % Mesh model using tetrahedral elements using tetGen
+sec.pos=[0,0,0];
+sec.vec=[1,0,0];
+PlotElement(mm,&#39;section&#39;,sec);
+mm=DrillHole(mm,[10;5],[10;15],[0,0],3,&#39;type&#39;,5,&#39;slice&#39;,8);
+mm=Mesh3D(mm); % Mesh model using tetrahedral elements using tetGen
+PlotFace(mm);
+sec.pos=[0,0,0];
+sec.vec=[1,0,0];
+PlotElement(mm,&#39;section&#39;,sec);
+</code></pre>
+<p>在指定的面上钻盲孔，并且可定义盲孔的尺寸。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig25.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig26.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig27.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig28.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="MeshQuadSphere-Flag-14"><a href="#MeshQuadSphere-Flag-14" class="headerlink" title="MeshQuadSphere (Flag&#x3D;14)"></a>MeshQuadSphere (Flag&#x3D;14)</h3><pre><code class="language-matlab">%Sphere parameters
+numRefineStepsSphere=4;
+sphereRadius=4;
+mm=Mesh(&#39;Demo Quad Sphere Mesh&#39;);
+mm=MeshQuadSphere(mm,numRefineStepsSphere,sphereRadius);
+PlotFace(mm);
+sec.pos=[0,0,0];
+sec.vec=[1,0,0];
+PlotElement(mm,&#39;section&#39;,sec);
+mm1=Mesh(&#39;Demo Quad hollow Sphere Mesh&#39;);
+mm1=MeshQuadSphere(mm1,numRefineStepsSphere,sphereRadius,&#39;hollow&#39;,1,&#39;coreRadius&#39;,sphereRadius/4);
+PlotFace(mm1);
+PlotElement(mm1,&#39;section&#39;,sec);
+</code></pre>
+<p>绘制六面体圆网格。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig29.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig30.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig31.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig32.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Mesh-TensorGrid-Flag-15"><a href="#Mesh-TensorGrid-Flag-15" class="headerlink" title="Mesh TensorGrid (Flag&#x3D;15)"></a>Mesh TensorGrid (Flag&#x3D;15)</h3><pre><code class="language-matlab">x = linspace(-2,2,21);
+mm=Mesh(&#39;Demo TensorGrid&#39;);
+mm=MeshTensorGrid(mm,x,x,x);
+PlotFace(mm);
+mm= ComputeGeometryG(mm);
+c = mm.G.cells.centroids;
+r = c(:,1).^2 + 0.25*c(:,2).^2+0.25*c(:,3).^2;
+mm = RemoveCells(mm, r&gt;1);
+PlotFace(mm);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig33.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig34.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="PlotG-Flag-16"><a href="#PlotG-Flag-16" class="headerlink" title="PlotG (Flag&#x3D;16)"></a>PlotG (Flag&#x3D;16)</h3><pre><code class="language-matlab">x=-1:0.05:1;
+xx=x-1/2/pi.*sin(pi.*x);
+yy=-1:0.05:1;
+zz=-1:0.05:1;
+mm=Mesh(&#39;Demo TensorGrid&#39;);
+mm=MeshTensorGrid(mm,xx,yy,zz);
+PlotFace(mm);
+mm= ComputeGeometryG(mm);
+PlotG(mm,&#39;volume&#39;,1);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig35.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig36.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Simple-sculpture-Mesh-Flag-17"><a href="#Simple-sculpture-Mesh-Flag-17" class="headerlink" title="Simple sculpture Mesh (Flag&#x3D;17)"></a>Simple sculpture Mesh (Flag&#x3D;17)</h3><pre><code class="language-matlab">x = linspace(-2,2,21);
+mm=Mesh(&#39;Demo TensorGrid&#39;);
+mm=MeshTensorGrid(mm,x,x,x);
+PlotFace(mm);
+mm= ComputeGeometryG(mm);
+c = mm.G.cells.centroids;
+r = c(:,1).^2 + 0.25*c(:,2).^2+0.25*c(:,3).^2;
+mm = RemoveCells(mm, r&gt;1);
+PlotFace(mm);
+mm=Remesh(mm,0.2);
+PlotFace(mm);
+mm= Smoothface(mm,10);
+mm=Mesh3D(mm);
+PlotFace(mm);
+sec.pos=[0,0,0];
+sec.vec=[1,0,0];
+PlotElement(mm,&#39;section&#39;,sec);
+</code></pre>
+<p>在六面体网格中雕刻出椭球体：</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig37.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig38.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig39.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig40.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<img src="/./img/Mesh.assets/Fig41.jpg" style="zoom:33%;" />
+
+<h3 id="Check-G-center-inner-mesh-Flag-18"><a href="#Check-G-center-inner-mesh-Flag-18" class="headerlink" title="Check G center inner mesh (Flag&#x3D;18)"></a>Check G center inner mesh (Flag&#x3D;18)</h3><pre><code class="language-matlab">% Original geometry
+x = linspace(-400,400,200);
+y=linspace(-400,400,200);
+z=linspace(-10,30,40);
+mm=Mesh(&#39;Demo TensorGrid&#39;);
+mm=MeshTensorGrid(mm,x,y,z);
+mm= ComputeGeometryG(mm);
+PlotFace(mm);
+% Plate
+IR=80/2;
+OR=650/2;
+radius1=420/2;
+radius2=520/2;
+num=6;
+par1=100;
+Thickness=20;
+ang1=360/num-asin(par1/2/radius1)/pi*180*2;
+ang2=360/num-asin(par1/2/radius2)/pi*180*2;
+a=Point2D(&#39;Point Ass1&#39;);
+b=Line2D(&#39;Line Ass1&#39;);
+a=AddPoint(a,0,0);
+a=AddPoint(a,par1,0);
+a=AddPoint(a,[radius1*cos(ang1/2/180*pi);radius2*cos(ang2/2/180*pi)],...
+[radius1*sin(ang1/2/180*pi);radius2*sin(ang2/2/180*pi)]);
+a=AddPoint(a,[radius2*cos(-ang2/2/180*pi);radius1*cos(-ang1/2/180*pi)],...
+[radius2*sin(-ang2/2/180*pi);radius1*sin(-ang1/2/180*pi)]);
+b=AddCircle(b,OR,a,1);
+S=Surface2D(b);
+h1=Line2D(&#39;Hole Group1&#39;);
+h1=AddCircle(h1,IR,a,1);
+S=AddHole(S,h1);
+h2=Line2D(&#39;Hole Group2&#39;,&#39;Dtol&#39;,0.1);
+h2=AddCircle(h2,radius1,a,1,&#39;sang&#39;,-ang1/2,&#39;ang&#39;,ang1);
+h2=AddLine(h2,a,3);
+h2=AddCircle(h2,radius2,a,1,&#39;sang&#39;,ang2/2,&#39;ang&#39;,-ang2);
+h2=AddLine(h2,a,4);
+h2=CreateRadius(h2,1,10);
+h2=CreateRadius(h2,3,10);
+h2=CreateRadius(h2,5,10);
+h2=CreateRadius(h2,7,10);
+for i=1:num
+S=AddHole(S,h2,&#39;rot&#39;,360/num*(i-1));
+end
+m=Mesh2D(&#39;Mesh1&#39;);
+m=AddSurface(m,S);
+m=SetSize(m,20);
+m=Mesh(m);
+Plot(m);
+mm1=Mesh(&#39;Mesh&#39;);
+mm1=Extrude2Solid(mm1,m,Thickness,3);
+PlotFace(mm1);
+% Check inner
+in = IsInMesh(mm,mm1);
+mm = RemoveCells(mm,~in);
+PlotFace(mm);
+mm=Remesh(mm,10);
+PlotFace(mm);
+mm= Smoothface(mm,10);
+mm=Mesh3D(mm); % Mesh model using tetrahedral elements using tetGen
+PlotFace(mm);
+mm=Remesh(mm,10);
+PlotFace(mm);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig42.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig43.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="MeshOctahedron-Flag-19"><a href="#MeshOctahedron-Flag-19" class="headerlink" title="MeshOctahedron (Flag&#x3D;19)"></a>MeshOctahedron (Flag&#x3D;19)</h3><pre><code class="language-matlab">dimension=[2,2,2];
+mm1=Mesh(&#39;Mesh&#39;);
+mm1=MeshOctahedron(mm1,dimension);
+PlotFace(mm1);
+</code></pre>
+<img src="/./img/Mesh.assets/Fig44.jpg" style="zoom:33%;" />
+
+<h3 id="Image-read-Flag-20"><a href="#Image-read-Flag-20" class="headerlink" title="Image read (Flag&#x3D;20)"></a>Image read (Flag&#x3D;20)</h3><pre><code class="language-matlab">hw=logical(imread(&#39;helloworld.png&#39;));
+imshow(hw);
+m=Mesh2D(&#39;Mesh1&#39;);
+nx=size(hw,2);ny=size(hw,1);
+lx=size(hw,2)-1;ly=size(hw,1)-1;
+m=MeshGrid(m,[nx, ny],[lx,ly]);
+m= ComputeGeometryG(m);
+PlotG(m);
+m = RemoveCells(m,fliplr(hw&#39;));
+m = Quad2Tri(m);
+PlotG(m);
+mm=Mesh(&#39;Demo Hello World&#39;);
+mm=Extrude2Solid(mm,m,10,3);
+mm=Remesh(mm,5);
+PlotFace(mm);
+</code></pre>
+<p>读取图片绘制网格：</p>
+<img src="/./img/Mesh.assets/Fig45.jpg" style="zoom:50%;" />
+
+<img src="/./img/Mesh.assets/Fig46.jpg" style="zoom:50%;" />
+
+<img src="/./img/Mesh.assets/Fig47.jpg" style="zoom:33%;" />
+
+<h3 id="Plot-Face-in-ParaView-Flag-21"><a href="#Plot-Face-in-ParaView-Flag-21" class="headerlink" title="Plot Face in ParaView (Flag&#x3D;21)"></a>Plot Face in ParaView (Flag&#x3D;21)</h3><pre><code class="language-matlab">%% Specifying dimensions and number of elements
+m=Mesh(&#39;Mesh&#39;);
+%% Create a box with hexahedral elements
+cubeDimensions=[10 10 10]; %Dimensions
+cubeElementNumbers=[5 5 5]; %Number of elements
+m=MeshCube(m,cubeDimensions,cubeElementNumbers);
+%% Plot Face
+PlotFace2(m);
+</code></pre>
+<p>在paraview显示表面网格：</p>
+<img src="/./img/Mesh.assets/Fig48.jpg" style="zoom:33%;" />
+
+<h3 id="Plot-Element-in-ParaView-Flag-22"><a href="#Plot-Element-in-ParaView-Flag-22" class="headerlink" title="Plot Element in ParaView (Flag&#x3D;22)"></a>Plot Element in ParaView (Flag&#x3D;22)</h3><pre><code class="language-matlab">%% Specifying dimensions and number of elements
+m=Mesh(&#39;Mesh&#39;);
+%% Create a box with hexahedral elements
+cubeDimensions=[10 10 10]; %Dimensions
+cubeElementNumbers=[5 5 5]; %Number of elements
+m=MeshCube(m,cubeDimensions,cubeElementNumbers);
+%% Plot Element
+PlotElement2(m)
+</code></pre>
+<p>在paraview中显示实体网格：</p>
+<img src="/./img/Mesh.assets/Fig49.jpg" style="zoom:33%;" />
+
+<h3 id="Plot-G-and-cell-data-in-ParaView-Flag-23"><a href="#Plot-G-and-cell-data-in-ParaView-Flag-23" class="headerlink" title="Plot G and cell data in ParaView (Flag&#x3D;23)"></a>Plot G and cell data in ParaView (Flag&#x3D;23)</h3><pre><code class="language-matlab">x=-1:0.05:1;
+xx=x-1/2/pi.*sin(pi.*x);
+yy=-1:0.05:1;
+zz=-1:0.05:1;
+mm=Mesh(&#39;Demo TensorGrid&#39;);
+mm=MeshTensorGrid(mm,xx,yy,zz);
+PlotFace(mm);
+mm= ComputeGeometryG(mm);
+mm=AddCellData(mm,mm.G.cells.volumes);
+PlotG2(mm);
+</code></pre>
+<p>在Mesh中加入celldata</p>
+<img src="/./img/Mesh.assets/Fig50.jpg" style="zoom:33%;" />
+
+<h3 id="Tri3-to-voronoi-Flag-24"><a href="#Tri3-to-voronoi-Flag-24" class="headerlink" title="Tri3 to voronoi (Flag&#x3D;24)"></a>Tri3 to voronoi (Flag&#x3D;24)</h3><pre><code class="language-matlab">%Specifying dimensions and number of elements
+mm=Mesh(&#39;Cylinder Mesh&#39;);
+mm=MeshCylinder(mm,5,30,50);
+PlotFace(mm);
+% The cyclinder is meshed using tetrahedral elements using tetgen
+mm=Mesh3D(mm); % Mesh model using tetrahedral elements using tetGen
+mm=Tri2Voronoi(mm);
+mm=AddPointData(mm,mm.Voronoi.Nodes(:,2));
+PlotVoronoi(mm);
+PlotVoronoi2(mm);
+</code></pre>
+<p>四面体网格转化为voronoi网格</p>
+<img src="/./img/Mesh.assets/Fig53.jpg" style="zoom:33%;" />
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig52.jpg" style="zoom: 140%;"></td><td><img src="/./img/Mesh.assets/Fig51.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Nurb4Surf-Flag-25"><a href="#Nurb4Surf-Flag-25" class="headerlink" title="Nurb4Surf (Flag&#x3D;25)"></a>Nurb4Surf (Flag&#x3D;25)</h3><pre><code class="language-matalab">% Define 4 corner points of surface
+mm=Mesh(&#39;Nurb surface&#39;);
+Points=[0,0,0.5;1,0,-0.5;0,1,-0.5;1,1,0.5];
+mm = Nurb4Surf(mm,Points,&#39;subd&#39;,[11,10]);
+PlotFace(mm);
+</code></pre>
+<img src="/./img/Mesh.assets/Fig54.jpg" style="zoom:33%;" />
+
+<h3 id="Nurb-Surface-Flag-26"><a href="#Nurb-Surface-Flag-26" class="headerlink" title="Nurb Surface (Flag&#x3D;26)"></a>Nurb Surface (Flag&#x3D;26)</h3><pre><code class="language-matlab">% allocate multi-dimensional array of control points
+pnts = zeros(3,5,5);
+% define a grid of control points
+% in this case a regular grid of u,v points
+% pnts(3,u,v)
+%
+pnts(:,:,1) = [ 0.0 3.0 5.0 8.0 10.0; % w*x
+0.0 0.0 0.0 0.0 0.0; % w*y
+2.0 2.0 7.0 7.0 8.0]; % w*z
+pnts(:,:,2) = [ 0.0 3.0 5.0 8.0 10.0;
+3.0 3.0 3.0 3.0 3.0;
+0.0 0.0 5.0 5.0 7.0];
+pnts(:,:,3) = [ 0.0 3.0 5.0 8.0 10.0;
+5.0 5.0 5.0 5.0 5.0;
+0.0 0.0 5.0 5.0 7.0];
+pnts(:,:,4) = [ 0.0 3.0 5.0 8.0 10.0;
+8.0 8.0 8.0 8.0 8.0;
+5.0 5.0 8.0 8.0 10.0];
+pnts(:,:,5) = [ 0.0 3.0 5.0 8.0 10.0;
+10.0 10.0 10.0 10.0 10.0;
+5.0 5.0 8.0 8.0 10.0];
+% knots
+knots&#123;1&#125; = [0 0 0 1/3 2/3 1 1 1]; % knots along u
+knots&#123;2&#125; = [0 0 0 1/3 2/3 1 1 1]; % knots along v
+mm=Mesh(&#39;Nurb surface&#39;);
+mm = NurbSurf(mm,pnts,knots);
+PlotFace(mm);
+</code></pre>
+<img src="/./img/Mesh.assets/Fig55.jpg" style="zoom:33%;" />
+
+<h3 id="NurbRuled-Flag-27"><a href="#NurbRuled-Flag-27" class="headerlink" title="NurbRuled (Flag&#x3D;27)"></a>NurbRuled (Flag&#x3D;27)</h3><pre><code class="language-matlab">coefs = [0.5 1.5 4.5 3.0 7.5 6.0 8.5;
+3.0 5.5 5.5 1.5 1.5 4.0 4.5;
+0.0 0.0 0.0 0.0 0.0 0.0 0.0]&#39;;
+knots=[0 0 0 1/10 2/5 3/5 4/5 1 1 1];
+b=Line(&#39;Line Ass1&#39;);
+b=AddNurb(b,coefs,knots);
+b=Move(b,1,[0,0,5],&#39;new&#39;,1);
+b=Scale(b,2,[0.5,0.5,1]);
+mm=Mesh(&#39;Nurb surface&#39;);
+mm = NurbRuled(mm,b,1,2);
+PlotFace(mm);
+</code></pre>
+<img src="/./img/Mesh.assets/Fig56.jpg" style="zoom:33%;" />
+
+<h3 id="Extrude2Solid-Flag-28"><a href="#Extrude2Solid-Flag-28" class="headerlink" title="Extrude2Solid (Flag&#x3D;28)"></a>Extrude2Solid (Flag&#x3D;28)</h3><pre><code class="language-matlab">a=Point2D(&#39;Temp&#39;);
+a=AddPoint(a,0,0);
+% Add outline
+b1=Line2D(&#39;Out&#39;);
+b1=AddCircle(b1,14,a,1);
+% Add innerline
+b2=Line2D(&#39;Inner&#39;);
+b2=AddCircle(b2,5,a,1,&#39;seg&#39;,40);
+% Add assembly hole
+h=Line2D(&#39;Hole&#39;);
+h=AddCircle(h,3.5/2,a,1,&#39;seg&#39;,16);
+S=Surface2D(b1);
+S=AddHole(S,b2);
+for i=1:4
+S=AddHole(S,h,&#39;dis&#39;,[10*cos(pi/2*(i-1)),10*sin(pi/2*(i-1))]);
+end
+m=Mesh2D(&#39;Temp&#39;);
+m=AddSurface(m,S);
+m=SetSize(m,5);
+m=Mesh(m);
+Plot(m)
+% Mesh Layer edge
+m=MeshLayerEdge(m,2,2);
+% Mesh Layer edge
+for i=3:6
+m=MeshLayerEdge(m,2,1);
+end
+Plot(m)
+mm=Mesh(&#39;Mesh1&#39;);
+mm=Extrude2Solid(mm,m,-10,6);
+PlotFace(mm);
+mm=Extrude2Solid(mm,m,10,6,&#39;Cb&#39;,2);
+PlotFace(mm);
+</code></pre>
+<p>拉伸成体：</p>
+<img src="/./img/Mesh.assets/Fig57.jpg" style="zoom:33%;" />
+
+<h3 id="Rotate-to-shell-Flag-29"><a href="#Rotate-to-shell-Flag-29" class="headerlink" title="Rotate to shell (Flag&#x3D;29)"></a>Rotate to shell (Flag&#x3D;29)</h3><pre><code class="language-matlab">Points = [0.5 1.5 4.5 3.0 7.5 6.0 8.5;
+3.0 5.5 5.5 1.5 1.5 4.0 4.5]&#39;;
+Knots=[0 0 0 1/10 2/5 3/5 4/5 1 1 1];
+b=Line2D(&#39;Nurb Test&#39;);
+b=AddNurb(b,Points,Knots);
+Plot(b);
+m1=Mesh(&#39;Mesh1&#39;);
+m1=Rot2Shell(m1,b,&#39;Type&#39;,2);
+PlotFace(m1);
+m2=Mesh(&#39;Mesh2&#39;);
+m2=Rot2Shell(m2,b,&#39;Type&#39;,1);
+PlotFace(m2);
+</code></pre>
+<p>旋转成壳</p>
+<img src="/./img/Mesh.assets/Fig58.jpg" style="zoom:33%;" />
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig59.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig60.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="DrillThroughHole-Flag-30"><a href="#DrillThroughHole-Flag-30" class="headerlink" title="DrillThroughHole (Flag&#x3D;30)"></a>DrillThroughHole (Flag&#x3D;30)</h3><pre><code class="language-matlab">% Derive patch data for a cylinder
+mm=Mesh(&#39;Cylinder Mesh&#39;);
+mm=MeshCylinder(mm,3,30,50);
+PlotFace(mm);
+% The cyclinder is meshed using tetrahedral elements using tetgen
+mm=Mesh3D(mm); % Mesh model using tetrahedral elements using tetGen
+sec.pos=[0,0,0];
+sec.vec=[1,0,0];
+PlotElement(mm,&#39;section&#39;,sec);
+mm=DrillThroughHole(mm,[10;5],[20;50],[0,0],[3;2],&#39;type&#39;,5,&#39;slice&#39;,8);
+mm=Mesh3D(mm); % Mesh model using tetrahedral elements using tetGen
+PlotFace(mm);
+sec.pos=[0,0,0];
+sec.vec=[1,0,0];
+PlotElement(mm,&#39;section&#39;,sec);
+</code></pre>
+<p>网格开通孔。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig61.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig62.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig63.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig64.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Mesh-prism-Flag-31"><a href="#Mesh-prism-Flag-31" class="headerlink" title="Mesh prism (Flag&#x3D;31)"></a>Mesh prism (Flag&#x3D;31)</h3><pre><code class="language-matlab">mm=Mesh(&#39;Prism Mesh&#39;);
+mm=MeshPrism(mm,5,10,50);
+PlotFace(mm);
+sec.pos=[0,0,0];
+sec.vec=[1,0,0];
+PlotElement(mm,&#39;section&#39;,sec);
+</code></pre>
+<p>棱柱网格。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig65.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig66.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Mesh-Geosphere-Flag-32"><a href="#Mesh-Geosphere-Flag-32" class="headerlink" title="Mesh Geosphere (Flag&#x3D;32)"></a>Mesh Geosphere (Flag&#x3D;32)</h3><pre><code class="language-matlab">mm=Mesh(&#39;Geosohere Mesh&#39;);
+mm=MeshGeoSphere(mm,4,5,&#39;Type&#39;,1);
+PlotFace(mm);
+mm=Mesh3D(mm);
+sec.pos=[0,0,0];
+sec.vec=[1,0,0];
+PlotElement(mm,&#39;section&#39;,sec);
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig67.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig68.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Mesh-pyramid-Flag-33"><a href="#Mesh-pyramid-Flag-33" class="headerlink" title="Mesh pyramid (Flag&#x3D;33)"></a>Mesh pyramid (Flag&#x3D;33)</h3><pre><code>mm=Mesh(&#39;Pyramid Mesh&#39;);
+mm=MeshPyramid(mm,5,10,20);
+PlotFace(mm);
+mm=Mesh3D(mm);
+sec.pos=[0,0,0];
+sec.vec=[1,0,0];
+PlotElement(mm,&#39;section&#39;,sec);
+</code></pre>
+<p>棱锥网格。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig69.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig70.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Add-internal-points-Flag-34"><a href="#Add-internal-points-Flag-34" class="headerlink" title="Add internal points (Flag&#x3D;34)"></a>Add internal points (Flag&#x3D;34)</h3><pre><code class="language-matlab">mm=Mesh(&#39;Pyramid Mesh&#39;);
+mm=MeshPyramid(mm,5,10,20);
+PlotFace(mm);
+mm=Mesh3D(mm,&#39;AddedNodes&#39;,[0,0,2;0,0,4;0,0,6;0,0,8;0,0,10]);
+sec.pos=[0,0,0];
+sec.vec=[1,0,0];
+PlotElement(mm,&#39;section&#39;,sec);
+</code></pre>
+<p>再网格内部加约束点，划分网格时会以内部点为约束生成网格。</p>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig71.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig72.jpg" style="zoom: 100%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3 id="Input-STP-file-Flag-35"><a href="#Input-STP-file-Flag-35" class="headerlink" title="Input STP file (Flag&#x3D;35)"></a>Input STP file (Flag&#x3D;35)</h3><pre><code class="language-matlab">mm=Mesh(&#39;Gear&#39;);
+mm=InputSTP(mm,&#39;Gear.step&#39;,&#39;Size&#39;,0.01);
+PlotFace(mm)
+</code></pre>
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="/./img/Mesh.assets/Fig73.jpg" style="zoom: 100%;"></td><td><img src="/./img/Mesh.assets/Fig74.jpg" style="zoom: 70%;"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<h2 id="CheatTable"><a href="#CheatTable" class="headerlink" title="CheatTable"></a>CheatTable</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Varargin</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AddCellData(obj,Data)</td>
+<td></td>
+<td>Add cell data to elements</td>
+</tr>
+<tr>
+<td>AddPointData(obj,Data)</td>
+<td></td>
+<td>Add point data to nodes</td>
+</tr>
+<tr>
+<td>AddPointVector(obj,Vec)</td>
+<td></td>
+<td>Add point vector to nodes</td>
+</tr>
+<tr>
+<td>CenterCal(obj)</td>
+<td></td>
+<td>Calculate center of elements</td>
+</tr>
+<tr>
+<td>Convert2Order2(obj)</td>
+<td></td>
+<td>Convert elements order</td>
+</tr>
+<tr>
+<td>DelNullElement(obj)</td>
+<td></td>
+<td>Delete null elements</td>
+</tr>
+<tr>
+<td>DrillHole(obj,<br>radius,depth,position,faceno)</td>
+<td>‘type’, ‘slice’,’holetype’</td>
+<td>Drill holes on elements face</td>
+</tr>
+<tr>
+<td>DrillThroughHole(obj,<br>radius,depth,position,faceno)</td>
+<td>‘type’, ‘slice’,’holetype’</td>
+<td>Drill through holes on elements face</td>
+</tr>
+<tr>
+<td>Extrude2Solid(obj,mesh2D,Height,Levels)</td>
+<td>‘Cb’</td>
+<td>Extrude 2D elements to 3D elements</td>
+</tr>
+<tr>
+<td>FindBoundary(obj)</td>
+<td></td>
+<td>Find boundary of elements</td>
+</tr>
+<tr>
+<td>GetFaceNormal(obj)</td>
+<td></td>
+<td>Get elements face normal</td>
+</tr>
+<tr>
+<td>GroupTest(obj)</td>
+<td></td>
+<td>Test face group</td>
+</tr>
+<tr>
+<td>IsInMesh(obj,mesh)</td>
+<td></td>
+<td>Check geometry inner mesh face</td>
+</tr>
+<tr>
+<td>KeepGroup(obj,GroupNum)</td>
+<td></td>
+<td>Keep group and remove unused nodes</td>
+</tr>
+<tr>
+<td>MergeFaceNode(obj)</td>
+<td></td>
+<td>Merge face node</td>
+</tr>
+<tr>
+<td>Mesh3D(obj)</td>
+<td>‘stringOpt’,<br>‘minRegionMarker’</td>
+<td>Create 3D meshes</td>
+</tr>
+<tr>
+<td>MeshCube(obj,<br>cubeDimensions,cubeElementNumbers)</td>
+<td>‘ElementType’,<br>,’outputStructType’,</td>
+<td>Mesh cube</td>
+</tr>
+<tr>
+<td>MeshCylinder(obj,esize,Radius,Height)</td>
+<td>‘ElementType’,’close’</td>
+<td>Mesh cylinder</td>
+</tr>
+<tr>
+<td>MeshHemiSphere(obj,Radius,MantelNum)</td>
+<td>‘coreRadius’,<br>‘outputStructType’,<br>‘hollow’,’smoothstep’</td>
+<td>Create Hemi Sphere mesh</td>
+</tr>
+<tr>
+<td>MeshOctahedron(obj,dimension)</td>
+<td></td>
+<td>Mesh octahedron</td>
+</tr>
+<tr>
+<td>MeshQuadSphere(obj,n,r)</td>
+<td>‘hollow’,’coreRadius’</td>
+<td>Mesh QuadSphere</td>
+</tr>
+<tr>
+<td>MeshSphere(obj,n,r)</td>
+<td></td>
+<td>Mesh sphere</td>
+</tr>
+<tr>
+<td>MeshSpinodoid(obj,Length,paticleLength)</td>
+<td>‘Nw’,’WaveNum’,’relD’,<br>‘thetas’,’cap’</td>
+<td>Mesh Spinodoid</td>
+</tr>
+<tr>
+<td>MeshStochasticMicroStructure(obj,<br>Length,paticleLength)</td>
+<td>‘Nw’,’q0’,’relD’,<br>‘anisotropy’,’cap’</td>
+<td>Mesh Stochastic MicroStructure</td>
+</tr>
+<tr>
+<td>MeshTensorGrid(obj,x,y,z)</td>
+<td></td>
+<td>Mesh tensor grid</td>
+</tr>
+<tr>
+<td>MeshTriplyPeriodicMinimalSurface(obj,<br>length)</td>
+<td>‘cap’,’surfaceCase’,<br>‘numPeriods’,levelset’,</td>
+<td>Mesh Triply Periodic Minimal Surface</td>
+</tr>
+<tr>
+<td>Nurb4Surf(obj,Points)</td>
+<td>‘subd’</td>
+<td>4 points nurb surface</td>
+</tr>
+<tr>
+<td>NurbRuled(obj,Points,crv1,crv2)</td>
+<td>‘subd’</td>
+<td>Nurb ruled</td>
+</tr>
+<tr>
+<td>NurbSurf(obj,pnts,knots)</td>
+<td>‘subd’</td>
+<td>Nurb surface</td>
+</tr>
+<tr>
+<td>PatchCentre(obj)</td>
+<td></td>
+<td>Get Center of Face boundary</td>
+</tr>
+<tr>
+<td>PlotElement(obj)</td>
+<td>‘grid’,’axe’,’equal’,’alpha’,<br>‘face_alpha’,’section’,<br>‘xlim’,ylim’,’zlim’,’view’</td>
+<td>Plot element</td>
+</tr>
+<tr>
+<td>PlotElement2(obj)</td>
+<td></td>
+<td>Plot elements in Paraview</td>
+</tr>
+<tr>
+<td>PlotFace(obj)</td>
+<td>‘grid’,’axe’,’equal’,<br>‘facecolor’,’alpha’,<br>‘face_alpha’,’face_normal’,<br>‘marker’,<br>‘xlim’,’ylim’,’zlim’,<br>‘view’</td>
+<td>Plot Face of element</td>
+</tr>
+<tr>
+<td>PlotFace2(obj)</td>
+<td></td>
+<td>Plot faces in Paraview</td>
+</tr>
+<tr>
+<td>PlotG(obj)</td>
+<td>‘grid’,’name’,’axe’,’equal’,<br>‘alpha’,’face_alpha’,<br>‘section’,’volume’</td>
+<td>Plot mesh MRST G</td>
+</tr>
+<tr>
+<td>PlotG2(obj)</td>
+<td></td>
+<td>Plot mesh MRST G in Paraview</td>
+</tr>
+<tr>
+<td>PlotVoronoi(obj)</td>
+<td>‘alpha’,’face_alpha’,’grid’,<br>‘equal’,’axe’,’marker’</td>
+<td>Plot Voronoi</td>
+</tr>
+<tr>
+<td>PlotVoronoi2(obj)</td>
+<td></td>
+<td>Plot voronoi mesh in Paraview</td>
+</tr>
+<tr>
+<td>Quad2tri(obj)</td>
+<td></td>
+<td>Quad element to tri</td>
+</tr>
+<tr>
+<td>Remesh(obj,length)</td>
+<td>‘anisotropy’,<br>‘pre_max_hole_area’,<br>‘pre_max_hole_edges’,<br>‘post_max_hole_area’,<br>,’post_max_hole_edges’,</td>
+<td>Remesh the elements</td>
+</tr>
+<tr>
+<td>RemoveCells(obj,cells)</td>
+<td></td>
+<td>Remove cells</td>
+</tr>
+<tr>
+<td>ReverseNormals(obj)</td>
+<td></td>
+<td>Reverse face normal</td>
+</tr>
+<tr>
+<td>Revolve2Solid(obj,mesh2D)</td>
+<td>‘Slice’,’Type’,’Degree’</td>
+<td>Revolve 2D elements to 3D elements</td>
+</tr>
+<tr>
+<td>Rot2Shell(obj,Line2D)</td>
+<td>‘Slice’,’Type’,’Degree’</td>
+<td>Revolve 1D elements to shell elements</td>
+</tr>
+<tr>
+<td>Smoothface(obj,N,method)</td>
+<td></td>
+<td>Smooth face</td>
+</tr>
+<tr>
+<td>STLWrite(obj)</td>
+<td>‘mode’</td>
+<td>Write STL file</td>
+</tr>
+<tr>
+<td>Tri2Voronoi(obj)</td>
+<td></td>
+<td>Tri to Voronoi mesh</td>
+</tr>
+<tr>
+<td>VolumeCal(obj)</td>
+<td></td>
+<td>Calculate volumn of mesh</td>
+</tr>
+<tr>
+<td>VTKWriteElement(obj)</td>
+<td></td>
+<td>Write VTK file of elements</td>
+</tr>
+<tr>
+<td>VTKWriteFace(obj)</td>
+<td>‘facecolor’</td>
+<td>Write VTK file of face</td>
+</tr>
+<tr>
+<td>VTKWriteG(obj)</td>
+<td></td>
+<td>Write VTK file of G</td>
+</tr>
+<tr>
+<td>VTKWriteVoronoi(obj)</td>
+<td></td>
+<td>Write VTK file of voronoi</td>
+</tr>
+</tbody></table>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] <a target="_blank" rel="noopener" href="https://www.mathworks.com/matlabcentral/fileexchange/48208-gibboncode-gibbon?s_tid=srchtitle">https://www.mathworks.com/matlabcentral/fileexchange/48208-gibboncode-gibbon?s_tid=srchtitle</a></p>
+<p>[2]  <a target="_blank" rel="noopener" href="https://www.gibboncode.org/">https://www.gibboncode.org</a></p>
+<p>[3] <a target="_blank" rel="noopener" href="https://www.sintef.no/projectweb/mrst/">https://www.sintef.no/projectweb/mrst/</a></p>
+<p>[4] <a target="_blank" rel="noopener" href="https://wias-berlin.de/software/index.jsp?id=TetGen&lang=1">https://wias-berlin.de/software/index.jsp?id=TetGen&amp;lang=1</a></p>
+<p>[5] <a target="_blank" rel="noopener" href="https://www.mathworks.com/matlabcentral/fileexchange/94955-3d-voronoi-via-fem-mesh-the-voronoi3d-class-visualization?s_tid=srchtitle">https://www.mathworks.com/matlabcentral/fileexchange/94955-3d-voronoi-via-fem-mesh-the-voronoi3d-class-visualization?s_tid=srchtitle</a></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 本网站基于Hexo 3-Hexz主题生成。如需转载请标注来源,如有错误请批评指正,欢迎邮件至 392176462@qq.com </span>
+    </div>
+</article>
+
+
+
+
+
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2025 FE-Berserker
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+        /* 渲染*/
+        function HTMLDecode(text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        }
+        if (window.mermaid){
+            window.mermaid = null
+        }
+        $.getScript("//cdn.jsdelivr.net/npm/mermaid@8.4.2/dist/mermaid.min.js", function () {
+            var mermaidOptions = JSON.parse(HTMLDecode("{&#34;theme&#34;:&#34;default&#34;,&#34;startOnLoad&#34;:true,&#34;flowchart&#34;:{&#34;useMaxWidth&#34;:false,&#34;htmlLabels&#34;:true}}"))
+            if (window.mermaid) {
+                mermaid.initialize(mermaidOptions)
+                mermaid.contentLoaded()
+            }
+        })
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

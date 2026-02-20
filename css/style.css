@@ -657,6 +657,24 @@
 .nav-left .left-bottom a.dynamic-menu {
   display: block;
 }
+.nav-left .wechat-qrcode {
+  text-align: center;
+  padding: 15px 10px;
+  border-top: 1px solid #fff;
+}
+.nav-left .wechat-qrcode .wechat-qrcode-title {
+  color: rgba(255,255,255,0.9);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.nav-left .wechat-qrcode .wechat-qrcode-img img {
+  width: 100px;
+  height: auto;
+  border-radius: 4px;
+  background: #fff;
+  padding: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
 .nav-right {
   width: 420px;
   height: 100%;

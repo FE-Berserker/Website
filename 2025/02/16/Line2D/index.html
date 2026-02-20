@@ -6,26 +6,25 @@
   <meta name="keywords" content="">
   <meta name="description" content="Line2D | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="很早之前就很想测试下AI能否理解一些工程问题，编写相关的程序。我之前很多代码都是基于matlab写的，最近有时间测试了AI编程，发现在一些小的工程项目中，AI的编程能力简直逆天。 以下是一些 calude code 编程的简单实践，全程不需要亲自编写程序，只需要检查验收成果。 Pre requirement Claude code  Vscode matlab扩展   安装Matlab MCPCa">
+<meta name="description" content="在机械设计中有些常规的零件范式，比如平板类零件，它是由一个平面拉伸形成，我们完全可以教会AI这一系列零件的生成。 形成 skills首先我还是会教AI怎么使用软件，我会让AI阅读和使用一些程序，并让他形成自己的心得，用来形成 skills ❯ 结合Commonplate的程序和测试报告，生成skills,当要求建立平板零件时调用  ● Read 1 file (ctrl+o to expand)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AI编写matlab程序">
-<meta property="og:url" content="http://example.com/2026/02/19/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F/index.html">
+<meta property="og:title" content="AI生成平板类零件网格模型">
+<meta property="og:url" content="http://example.com/2026/02/19/AI%E7%94%9F%E6%88%90%E5%B9%B3%E6%9D%BF%E7%B1%BB%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="很早之前就很想测试下AI能否理解一些工程问题，编写相关的程序。我之前很多代码都是基于matlab写的，最近有时间测试了AI编程，发现在一些小的工程项目中，AI的编程能力简直逆天。 以下是一些 calude code 编程的简单实践，全程不需要亲自编写程序，只需要检查验收成果。 Pre requirement Claude code  Vscode matlab扩展   安装Matlab MCPCa">
+<meta property="og:description" content="在机械设计中有些常规的零件范式，比如平板类零件，它是由一个平面拉伸形成，我们完全可以教会AI这一系列零件的生成。 形成 skills首先我还是会教AI怎么使用软件，我会让AI阅读和使用一些程序，并让他形成自己的心得，用来形成 skills ❯ 结合Commonplate的程序和测试报告，生成skills,当要求建立平板零件时调用  ● Read 1 file (ctrl+o to expand)">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/image-20260128104223992.png">
-<meta property="og:image" content="http://example.com/img/image-20260128104456892.png">
-<meta property="og:image" content="http://example.com/img/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F.png">
-<meta property="og:image" content="http://example.com/img/image-20260128104559458.png">
-<meta property="og:image" content="http://example.com/img/image-20260128104701645.png">
-<meta property="og:image" content="http://example.com/img/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F-1.png">
-<meta property="og:image" content="http://example.com/img/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F-2.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%94%9F%E6%88%90%E5%B9%B3%E6%9D%BF%E7%B1%BB%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%94%9F%E6%88%90%E5%B9%B3%E6%9D%BF%E7%B1%BB%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B-1.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%94%9F%E6%88%90%E5%B9%B3%E6%9D%BF%E7%B1%BB%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B-2.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%94%9F%E6%88%90%E5%B9%B3%E6%9D%BF%E7%B1%BB%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B-3.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%94%9F%E6%88%90%E5%B9%B3%E6%9D%BF%E7%B1%BB%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B-4.png">
+<meta property="og:image" content="http://example.com/img/AI%E7%94%9F%E6%88%90%E5%B9%B3%E6%9D%BF%E7%B1%BB%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B-5.png">
 <meta property="article:published_time" content="2026-02-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-02-19T03:52:45.394Z">
+<meta property="article:modified_time" content="2026-02-19T03:55:49.327Z">
 <meta property="article:author" content="FE-Beserker">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/image-20260128104223992.png">
+<meta name="twitter:image" content="http://example.com/img/AI%E7%94%9F%E6%88%90%E5%B9%B3%E6%9D%BF%E7%B1%BB%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B.png">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -233,6 +232,18 @@
     
 </ul>
 <div class="left-bottom">
+
+<div class="wechat-qrcode">
+    
+    <div class="wechat-qrcode-title">关注微信公众号</div>
+    
+    <div class="wechat-qrcode-img">
+        <img src="/img/weixin.jpg"
+             alt="微信公众号二维码"/>
+    </div>
+</div>
+
+
     <div class="menus">
         
             
@@ -321,6 +332,33 @@
         
         
         <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E5%88%9B%E5%BB%BA%E6%9C%89%E9%99%90%E5%85%83%E8%A3%85%E9%85%8D%E4%BD%93/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI创建有限元装配体">AI创建有限元装配体</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%94%9F%E6%88%90%E5%B9%B3%E6%9D%BF%E7%B1%BB%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI生成平板类零件网格模型">AI生成平板类零件网格模型</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/19/AI%E7%94%9F%E6%88%90%E6%9C%89%E9%99%90%E5%85%83%E6%A8%A1%E5%9E%8B/"
+           data-tag="笔记"
+           data-author="" >
+            <span class="post-title" title="AI生成有限元模型">AI生成有限元模型</span>
+            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
            href="/2026/02/19/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F/"
            data-tag="笔记"
            data-author="" >
@@ -334,33 +372,6 @@
            data-tag="Baffalo_Component,信号处理,频谱分析"
            data-author="" >
             <span class="post-title" title="SignalAnalysis - 信号处理分析组件">SignalAnalysis - 信号处理分析组件</span>
-            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
-        </a>
-        
-        
-        <a  class="全部文章 Baffalo笔记 "
-           href="/2026/02/19/AI%E5%88%9B%E5%BB%BA%E6%9C%89%E9%99%90%E5%85%83%E8%A3%85%E9%85%8D%E4%BD%93/"
-           data-tag="笔记"
-           data-author="" >
-            <span class="post-title" title="AI创建有限元装配体">AI创建有限元装配体</span>
-            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
-        </a>
-        
-        
-        <a  class="全部文章 Baffalo笔记 "
-           href="/2026/02/19/%E8%A7%84%E8%8C%83%E5%8C%96AI%E7%BC%96%E7%A8%8B/"
-           data-tag="笔记,AI"
-           data-author="" >
-            <span class="post-title" title="规范化AI编程">规范化AI编程</span>
-            <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
-        </a>
-        
-        
-        <a  class="全部文章 Baffalo笔记 "
-           href="/2026/02/19/AI%E7%94%9F%E6%88%90%E5%B9%B3%E6%9D%BF%E7%B1%BB%E9%9B%B6%E4%BB%B6%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B/"
-           data-tag="笔记"
-           data-author="" >
-            <span class="post-title" title="AI生成平板类零件网格模型">AI生成平板类零件网格模型</span>
             <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
         </a>
         
@@ -384,10 +395,10 @@
         
         
         <a  class="全部文章 Baffalo笔记 "
-           href="/2026/02/19/AI%E7%94%9F%E6%88%90%E6%9C%89%E9%99%90%E5%85%83%E6%A8%A1%E5%9E%8B/"
-           data-tag="笔记"
+           href="/2026/02/19/%E8%A7%84%E8%8C%83%E5%8C%96AI%E7%BC%96%E7%A8%8B/"
+           data-tag="笔记,AI"
            data-author="" >
-            <span class="post-title" title="AI生成有限元模型">AI生成有限元模型</span>
+            <span class="post-title" title="规范化AI编程">规范化AI编程</span>
             <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
         </a>
         

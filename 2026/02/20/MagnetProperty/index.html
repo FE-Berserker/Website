@@ -6,26 +6,27 @@
   <meta name="keywords" content=" Baffalo , Matlab , 计算 , 磁钢 , BH曲线 , 内禀矫顽力 , 剩磁 ">
   <meta name="description" content="MagnetProperty | Baffalo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="介绍LaminatePlate用于建立层合板网格。 类结构 输入 input：  Tply : 铺层厚度 Plymat : 铺层材料编号 Orient : 铺层角度 Meshsize : 网格大小 Hole : 开洞几何 Outline : 外轮廓线  参数 params:  Order ：单元阶数 Offset : 壳单元偏置 Name : 名称 Material  : 复合材料属性  输出 o">
+<meta name="description" content="介绍球或滚子轴承通常用于承受各种负荷，同时允许轴或滑块转动或平动。滚动轴承中的运动通常是一些复杂的运动。例如，一滚动轴承安装在转速为 $n$ (r&#x2F;min) 的轴上，滚动体以转速 $n_m$(r&#x2F;min) 绕轴承轴线转动，同时又以转速 $n_R$ (r&#x2F;min) 绕自身轴线旋转。在多数工况下，特别是在轴承或外圈低速工况下，这些内部的速度能够运用简单的运动学关系式计算出">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LaminatePlate">
-<meta property="og:url" content="http://example.com/2026/02/20/LaminatePlate/index.html">
+<meta property="og:title" content="滚子轴承各部件运动速度">
+<meta property="og:url" content="http://example.com/2026/02/20/%E6%BB%9A%E5%AD%90%E8%BD%B4%E6%89%BF%E5%90%84%E9%83%A8%E4%BB%B6%E8%BF%90%E5%8A%A8%E9%80%9F%E5%BA%A6/index.html">
 <meta property="og:site_name" content="Baffalo">
-<meta property="og:description" content="介绍LaminatePlate用于建立层合板网格。 类结构 输入 input：  Tply : 铺层厚度 Plymat : 铺层材料编号 Orient : 铺层角度 Meshsize : 网格大小 Hole : 开洞几何 Outline : 外轮廓线  参数 params:  Order ：单元阶数 Offset : 壳单元偏置 Name : 名称 Material  : 复合材料属性  输出 o">
+<meta property="og:description" content="介绍球或滚子轴承通常用于承受各种负荷，同时允许轴或滑块转动或平动。滚动轴承中的运动通常是一些复杂的运动。例如，一滚动轴承安装在转速为 $n$ (r&#x2F;min) 的轴上，滚动体以转速 $n_m$(r&#x2F;min) 绕轴承轴线转动，同时又以转速 $n_R$ (r&#x2F;min) 绕自身轴线旋转。在多数工况下，特别是在轴承或外圈低速工况下，这些内部的速度能够运用简单的运动学关系式计算出">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/LaminatePlate.assets/Fig3.jpg">
-<meta property="og:image" content="http://example.com/img/LaminatePlate.assets/Fig1.jpg">
-<meta property="og:image" content="http://example.com/img/LaminatePlate.assets/Fig2.jpg">
-<meta property="article:published_time" content="2026-02-20T08:55:31.707Z">
-<meta property="article:modified_time" content="2026-02-20T08:55:31.707Z">
+<meta property="og:image" content="http://example.com/img/%E6%BB%9A%E5%AD%90%E8%BD%B4%E6%89%BF%E5%90%84%E9%83%A8%E4%BB%B6%E8%BF%90%E5%8A%A8%E9%80%9F%E5%BA%A6.assets/b64c353f12f46fc5a13af5b560f9d502_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E6%BB%9A%E5%AD%90%E8%BD%B4%E6%89%BF%E5%90%84%E9%83%A8%E4%BB%B6%E8%BF%90%E5%8A%A8%E9%80%9F%E5%BA%A6.assets/dcde097cd333c2d9dd5c3668e0b51ac3_MD5.jpeg">
+<meta property="og:image" content="http://example.com/img/%E6%BB%9A%E5%AD%90%E8%BD%B4%E6%89%BF%E5%90%84%E9%83%A8%E4%BB%B6%E8%BF%90%E5%8A%A8%E9%80%9F%E5%BA%A6.assets/b459b9ec341172ae3ffc50651d18fef5_MD5.jpeg">
+<meta property="article:published_time" content="2026-02-20T09:00:04.840Z">
+<meta property="article:modified_time" content="2026-02-20T09:00:04.840Z">
 <meta property="article:author" content="FE-Beserker">
 <meta property="article:tag" content="Baffalo">
 <meta property="article:tag" content="Matlab">
-<meta property="article:tag" content="建模">
-<meta property="article:tag" content="网格">
-<meta property="article:tag" content="层合板">
+<meta property="article:tag" content="滚子轴承">
+<meta property="article:tag" content="运动学">
+<meta property="article:tag" content="运动速度">
+<meta property="article:tag" content="故障诊断">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/LaminatePlate.assets/Fig3.jpg">
+<meta name="twitter:image" content="http://example.com/img/%E6%BB%9A%E5%AD%90%E8%BD%B4%E6%89%BF%E5%90%84%E9%83%A8%E4%BB%B6%E8%BF%90%E5%8A%A8%E9%80%9F%E5%BA%A6.assets/b64c353f12f46fc5a13af5b560f9d502_MD5.jpeg">
 
 
 <link rel="icon" href="/img/Baffalo.png">
@@ -136,7 +137,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(120)</small>
+                <small>(121)</small>
             
         </div>
     </li>
@@ -208,7 +209,7 @@
         <div data-rel="Baffalo笔记">
             
             Baffalo笔记
-            <small>(39)</small>
+            <small>(40)</small>
         </div>
         
     </li>
@@ -256,7 +257,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="120">
+<input type="hidden" id="yelog_site_posts_number" value="121">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -558,6 +559,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>工字梁</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>公众号</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1085,6 +1090,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>article</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>Baffalo</a>
             </li>
         
@@ -1478,7 +1487,7 @@
         
         <a  class="全部文章 Baffalo方法 "
            href="/2026/02/20/InterferenceFit/"
-           data-tag="Baffalo,Matlab,计算,应力分析,过盈配合,DIN7190,拉梅方程"
+           data-tag="Baffalo,Matlab,计算,过盈配合,DIN7190,应力分析,拉梅方程"
            data-author="" >
             <span class="post-title" title="InterferenceFit">InterferenceFit</span>
             <span class="post-date" title="2026-02-20 16:53:32">2026/02/20</span>
@@ -1487,7 +1496,7 @@
         
         <a  class="全部文章 Baffalo笔记 "
            href="/2026/02/20/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/"
-           data-tag="Baffalo,Matlab,纤维缠绕,模块开发,线型设计,压力容器"
+           data-tag="Baffalo,Matlab,纤维缠绕,压力容器,模块开发,线型设计"
            data-author="" >
             <span class="post-title" title="纤维缠绕模块开发">纤维缠绕模块开发</span>
             <span class="post-date" title="2026-02-20 16:51:53">2026/02/20</span>
@@ -1676,7 +1685,7 @@
         
         <a  class="全部文章 Baffalo笔记 "
            href="/2026/02/20/%E7%A9%BA%E5%BF%83%E8%9E%BA%E6%A0%93%E7%9A%84%E5%88%9A%E5%BA%A6%E4%BF%AE%E6%AD%A3/"
-           data-tag="Baffalo,Matlab,VDI2230,刚度,预紧力,空心螺栓"
+           data-tag="Baffalo,Matlab,预紧力,VDI2230,刚度,空心螺栓"
            data-author="" >
             <span class="post-title" title="空心螺栓的刚度修正">空心螺栓的刚度修正</span>
             <span class="post-date" title="2026-02-20 16:41:13">2026/02/20</span>
@@ -1739,7 +1748,7 @@
         
         <a  class="全部文章 Baffalo笔记 "
            href="/2026/02/20/%E7%BA%A4%E7%BB%B4%E7%BC%A0%E7%BB%95%E6%B0%94%E7%93%B6%E7%88%86%E7%82%B8%E6%B5%8B%E8%AF%95/"
-           data-tag="Baffalo,复合材料,纤维缠绕,压力容器,气瓶,爆炸测试"
+           data-tag="Baffalo,复合材料,纤维缠绕,气瓶,爆炸测试,压力容器"
            data-author="" >
             <span class="post-title" title="纤维缠绕气瓶爆炸测试">纤维缠绕气瓶爆炸测试</span>
             <span class="post-date" title="2026-02-20 16:40:56">2026/02/20</span>
@@ -1748,7 +1757,7 @@
         
         <a  class="全部文章 Baffalo方法 "
            href="/2026/02/20/HertzContact/"
-           data-tag="Baffalo,Matlab,计算,赫兹接触,应力分析,接触力学"
+           data-tag="Baffalo,Matlab,计算,应力分析,赫兹接触,接触力学"
            data-author="" >
             <span class="post-title" title="HertzContact">HertzContact</span>
             <span class="post-date" title="2026-02-20 16:40:55">2026/02/20</span>
@@ -1892,7 +1901,7 @@
         
         <a  class="全部文章 Baffalo部件 "
            href="/2026/02/20/BoltJoint/"
-           data-tag="Baffalo,Matlab,建模,螺栓连接,VDI2230,刚度,安全系数"
+           data-tag="Baffalo,Matlab,建模,VDI2230,螺栓连接,刚度,安全系数"
            data-author="" >
             <span class="post-title" title="BoltJoint">BoltJoint</span>
             <span class="post-date" title="2026-02-20 16:39:33">2026/02/20</span>
@@ -1910,7 +1919,7 @@
         
         <a  class="全部文章 Baffalo部件 "
            href="/2026/02/20/Bolt/"
-           data-tag="Baffalo,Matlab,建模,网格,VDI2230,螺栓,预紧力"
+           data-tag="Baffalo,Matlab,建模,网格,螺栓,预紧力,VDI2230"
            data-author="" >
             <span class="post-title" title="Bolt">Bolt</span>
             <span class="post-date" title="2026-02-20 16:39:31">2026/02/20</span>
@@ -2251,19 +2260,19 @@
         
         
         <a  class="全部文章 Baffalo笔记 "
-           href="/2026/02/19/AI%E7%94%9F%E6%88%90%E6%9C%89%E9%99%90%E5%85%83%E6%A8%A1%E5%9E%8B/"
+           href="/2026/02/19/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F/"
            data-tag="笔记"
            data-author="" >
-            <span class="post-title" title="AI生成有限元模型">AI生成有限元模型</span>
+            <span class="post-title" title="AI编写matlab程序">AI编写matlab程序</span>
             <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
         </a>
         
         
         <a  class="全部文章 Baffalo笔记 "
-           href="/2026/02/19/AI%E7%BC%96%E5%86%99matlab%E7%A8%8B%E5%BA%8F/"
+           href="/2026/02/19/AI%E7%94%9F%E6%88%90%E6%9C%89%E9%99%90%E5%85%83%E6%A8%A1%E5%9E%8B/"
            data-tag="笔记"
            data-author="" >
-            <span class="post-title" title="AI编写matlab程序">AI编写matlab程序</span>
+            <span class="post-title" title="AI生成有限元模型">AI生成有限元模型</span>
             <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
         </a>
         
@@ -2278,19 +2287,19 @@
         
         
         <a  class="全部文章 Baffalo笔记 "
-           href="/2026/02/19/%E5%B7%A5%E7%A8%8B%E8%AE%BE%E8%AE%A1%E7%9A%84AI%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F/"
-           data-tag="笔记"
+           href="/2026/02/19/%E6%A9%A1%E8%83%B6%E5%BC%B9%E6%80%A7%E6%94%AF%E6%92%91AI%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/"
+           data-tag="笔记,橡胶弹性支撑"
            data-author="" >
-            <span class="post-title" title="工程设计的AI编程范式">工程设计的AI编程范式</span>
+            <span class="post-title" title="橡胶弹性支撑AI编程实践">橡胶弹性支撑AI编程实践</span>
             <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
         </a>
         
         
         <a  class="全部文章 Baffalo笔记 "
-           href="/2026/02/19/%E6%A9%A1%E8%83%B6%E5%BC%B9%E6%80%A7%E6%94%AF%E6%92%91AI%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5/"
-           data-tag="笔记,橡胶弹性支撑"
+           href="/2026/02/19/%E5%B7%A5%E7%A8%8B%E8%AE%BE%E8%AE%A1%E7%9A%84AI%E7%BC%96%E7%A8%8B%E8%8C%83%E5%BC%8F/"
+           data-tag="笔记"
            data-author="" >
-            <span class="post-title" title="橡胶弹性支撑AI编程实践">橡胶弹性支撑AI编程实践</span>
+            <span class="post-title" title="工程设计的AI编程范式">工程设计的AI编程范式</span>
             <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
         </a>
         
@@ -2301,6 +2310,15 @@
            data-author="" >
             <span class="post-title" title="规范化AI编程">规范化AI编程</span>
             <span class="post-date" title="2026-02-19 00:00:00">2026/02/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 Baffalo笔记 "
+           href="/2026/02/18/%E6%96%87%E7%AB%A02_AI%E6%97%B6%E4%BB%A3%E4%B8%8B%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%9F%A5%E8%AF%86%E7%AE%A1%E7%90%86%E7%9A%84%E6%80%9D%E8%80%83/"
+           data-tag="article,公众号"
+           data-author="" >
+            <span class="post-title" title="AI时代下的个人知识管理的思考">AI时代下的个人知识管理的思考</span>
+            <span class="post-date" title="2026-02-18 00:00:00">2026/02/18</span>
         </a>
         
         <div id="no-item-tips">
